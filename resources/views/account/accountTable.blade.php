@@ -164,7 +164,7 @@
                         <span><img class="button-img" src="./assets/document_16509258.png" alt="" /></span>
                         <span>CSV</span>
                     </button>
-                    <button class="button-width d-flex align-items-center gap-1">
+                    <button class="button-width d-flex align-items-center gap-1" id="downloadexcel">
                         <span><img class="button-img" src="./assets/document_16509258.png" alt="" /></span>
                         <span>Excel</span>
                     </button>
@@ -203,25 +203,29 @@
 
             <div class="container mb-5 ">
                 <div class="form-row">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="date">Date:</label>
                         <input type="date" class="formInput" id="date" required>
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <input type="text" class="formInput" id="description" placeholder="Enter description" required />
+                        <input type="text" class="formInput" name="description" id="description" placeholder="Enter description" required />
                     </div>
                     <div class="form-group">
                         <label for="cashOutDebit">CashOut Debit:</label>
-                        <input type="text" class="formInput" id="cashOutDebit" placeholder="Enter amount" required>
+                        <input type="text" class="formInput" name="cash_out" id="cashOutDebit" placeholder="Enter amount">
                     </div>
                     <div class="form-group">
                         <label for="cashInCredit">CashIn Credit:</label>
-                        <input type="text" class="formInput" id="cashInCredit" placeholder="Enter amount" required>
+                        <input type="text" class="formInput" name="cash_in" id="cashInCredit" placeholder="Enter amount" >
                     </div>
-                </div>
-                <div class=" btn-div">
-                    <button class="btn search-button" type="submit">ADD</button>
+                    <div class="form-group">
+                        <div class=" btn-div">
+                            <button class="btn search-button" type="submit">ADD</button>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </form>

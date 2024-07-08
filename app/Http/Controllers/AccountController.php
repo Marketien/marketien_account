@@ -26,15 +26,17 @@ class AccountController extends Controller
         $account = Account::latest('created_at')->first();
         $data = new Account();
         $data->description = $req->description;
-        $data->invoice_no = $req->invoice_no;
-        if ($req->type === "cash-out") {
-            $data->cash_in_credit = '0';
-            $data->cash_out_debit = $req->amount;
-        } else {
-            $data->cash_in_credit = $req->amount;
-            $data->cash_out_debit = '0';
-        }
-        $data->date = $req->date;
+        // $data->invoice_no = $req->invoice_no;
+        $data->cash_out_debit = $req->cash_out;
+        $data->cash_in_credit = $req->cash_in;
+        // if ($req->type === "cash-out") {
+        //     $data->cash_in_credit = '0';
+        //     $data->cash_out_debit = $req->amount;
+        // } else {
+        //     $data->cash_in_credit = $req->amount;
+        //     $data->cash_out_debit = '0';
+        // }
+        // $data->date = $req->date;
         // if($account){
         //     if($req->type === "cash-out"){
 
