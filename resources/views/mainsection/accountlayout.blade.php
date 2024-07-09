@@ -62,12 +62,12 @@
                 </div>
                 <!-- search button  -->
                 <div>
-                    <form class="d-flex ms-auto me-3">
+                    {{-- <form class="d-flex ms-auto me-3">
                         <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn search-button" type="submit">
-                            Search
-                        </button>
-                    </form>
+                    </form> --}}
+                    <a href="/account-master-form" class="btn search-button">
+                        Add
+                    </a>
                 </div>
             </div>
             <!-- Table section   -->

@@ -233,7 +233,7 @@
             <table class="overflow-auto" id="myTable">
                 <thead>
                     <tr>
-                        <td>Invoice No.</td>
+
                         <td>Date</td>
                         <td>Description</td>
                         <td>CashOut Debit</td>
@@ -247,24 +247,29 @@
                     @foreach ($accounts as $account)
                         <tr>
                             <!-- Dropdown button   -->
-                            <td>{{ $account->invoice_no }}</td>
                             <td>{{ $account->date }}</td>
                             <td>{{ $account->description }}</td>
                             <td>{{ $account->cash_out_debit }}</td>
                             <td>{{ $account->cash_in_credit }}</td>
                             <td>{{ $account->calc_amount }}</td>
                             <td>
+
                                 <div class="dropdown">
                                     <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Action
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item" href="#">Edit</a></li>
-                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item editBtn" href="#" data-bs-toggle="modal" data-bs-target="#editModal{{$account->id}}"
+                                            data-id="{{ $account->id }}"
+                                            >Edit</a></li>
+                                        {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$account->id}}">Delete</a></li>
                                     </ul>
                                 </div>
                             </td>
+                            @include('account.modalAccount')
+                            @include('account.modalDelete')
                         </tr>
                     @endforeach
                     <!-- table row 2  -->
@@ -273,10 +278,41 @@
             </table>
         </div>
     </div>
+    {{-- modal body --}}
+<!--Edit Modal -->
+
+  <!--Delete Modal -->
+
+
     <script>
         document.getElementById('downloadexcel').addEventListener('click', function() {
             var table2excel = new Table2Excel();
             table2excel.export(document.querySelectorAll("#myTable"));
         });
     </script>
+    {{-- <script>
+         // JavaScript to populate modal with row data
+    document.addEventListener('DOMContentLoaded', function() {
+        let editButtons = document.querySelectorAll('.edit-btn');
+
+        editButtons.forEach(function(button) {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                let accountId = button.getAttribute('data-id');
+                let row = button.closest('tr');
+                let description = row.cells[2].innerText.trim();
+                let cashOutDebit = row.cells[3].innerText.trim();
+                let cashInCredit = row.cells[4].innerText.trim();
+
+                // Set modal input values
+                document.getElementById('description').value = description;
+                document.getElementById('cashOutDebit').value = cashOutDebit;
+                document.getElementById('cashInCredit').value = cashInCredit;
+
+                // Optionally, you can set a hidden input field for account ID
+                document.getElementById('accountId').value = accountId;
+            });
+        });
+    });
+    </script> --}}
 @endsection

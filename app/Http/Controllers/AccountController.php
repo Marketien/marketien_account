@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use Carbon\Carbon;
 
 class AccountController extends Controller
 {
@@ -36,7 +37,7 @@ class AccountController extends Controller
         //     $data->cash_in_credit = $req->amount;
         //     $data->cash_out_debit = '0';
         // }
-        // $data->date = $req->date;
+        $data->date = Carbon::now()->format('Y-m-d');
         // if($account){
         //     if($req->type === "cash-out"){
 
@@ -62,5 +63,26 @@ class AccountController extends Controller
         } else {
             return back()->with('fail', 'something went wrong,try again');
         }
+    }
+    public function accountEdit(Request $req){
+        $data = Account::find($req->id);
+        $data->description = $req->description;
+        $data->cash_in_credit = $req->cash_in;
+        $data->cash_out_debit = $req->cash_out;
+        $result = $data->save();
+        if ($result) {
+            return back()->with('success', 'Your Acoount Edited Successfully');
+        } else {
+            return back()->with('fail', 'something went wrong,try again');
+        }
+    }
+    function accountDelete($id)
+    {
+        $data = Account::find($id);
+        $data->delete();
+        return back()->with('success','Your Acoount Edited Successfully');
+    }
+    public function accountMasterForm(){
+        return view('account.accountMasterForm');
     }
 }

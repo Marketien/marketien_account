@@ -44,6 +44,10 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/account-table',[AccountController::class,'accountTable'])->name('account-table');
     Route::get('/account-form',[AccountController::class,'accountForm'])->name('account-form');
     Route::post('/account-store',[AccountController::class,'accountStore'])->name('account-store');
+    Route::post('/account-edit',[AccountController::class,'accountEdit'])->name('account-edit');
+    Route::get('/account-delete/{id}', [AccountController::class, 'accountDelete'])->name('account-delete');
+    Route::get('/account-master-form',[AccountController::class,'accountMasterForm'])->name('account-master-form');
+
 
 
 });
