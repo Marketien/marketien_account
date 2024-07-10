@@ -36,27 +36,27 @@
                 <div class="d-flex align-items-center gap-2">
                     <!-- Export to CSV button -->
                     <button class="button-width d-flex align-items-center gap-1">
-                        <span><img class="button-img" src="./assets/document_16509258.png" alt="" /></span>
+                        <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span>CSV</span>
                     </button>
                     <!-- Export to Excel button -->
                     <button class="button-width d-flex align-items-center gap-1">
-                        <span><img class="button-img" src="./assets/document_16509258.png" alt="" /></span>
+                        <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span> Excel</span>
                     </button>
                     <!-- Print button -->
                     <button class="button-width d-flex align-items-center gap-1">
-                        <span><img class="button-img" src="./assets/printer_1041985.png" alt="" /></span>
+                        <span><img class="button-img" src="image/printer_1041985.png" alt="" /></span>
                         <span>Print</span>
                     </button>
                     <!-- Column visibility  -->
                     <button class="button-width d-flex align-items-center gap-1">
-                        <span><img class="button-img" src="./assets/file-storage_8316770.png" alt="" /></span>
+                        <span><img class="button-img" src="image/file-storage_8316770.png" alt="" /></span>
                         <span>visibility</span>
                     </button>
                     <!-- Export to PDF button  -->
                     <button class="button-width d-flex align-items-center gap-1">
-                        <span><img class="button-img" src="./assets/pdf.png" alt="" /></span>
+                        <span><img class="button-img" src="image/pdf.png" alt="" /></span>
                         <span>PDF</span>
                     </button>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\AccountMaster;
 use Carbon\Carbon;
 
 class AccountController extends Controller
@@ -82,7 +83,31 @@ class AccountController extends Controller
         $data->delete();
         return back()->with('success','Your Acoount Edited Successfully');
     }
+
+    // Acount Master
+
     public function accountMasterForm(){
         return view('account.accountMasterForm');
     }
+    public function accountMasterStore(Request $req){
+        $data = new AccountMaster();
+        $data->client_name = $req->client_name;
+        $data->invoice_no = $req->invoice_no;
+        $data->description = $req->description;
+        $data->invoice_date = $req->invoice_date;
+        $data->lpo = $req->lpo;
+        $data->amount = $req->amount;
+        $data->credit = $req->credit;
+        $data->due = $req->due;
+        $data->remark = $req->remark;
+
+        $result = $data->save();
+        if ($result) {
+            return back()->with('success', 'Your Acoount Master Added Successfully');
+        } else {
+            return back()->with('fail', 'something went wrong,try again');
+        }
+
+    }
+
 }

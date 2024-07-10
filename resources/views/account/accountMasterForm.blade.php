@@ -1,65 +1,161 @@
 @extends('adminMaster')
 @section('content')
-    <style>
-     .master-form {
-            background: linear-gradient(to left, #37d8a5, #114070);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+@vite(['resources/js/app.js','resources/css/app.css'])
+<style>
+    .master-form-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background: linear-gradient(to top, #3bb890, #114070);
+    }
+
+    .invoice-container {
+        margin-top: 80px;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        max-width: 800px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .invoice-header{
+        margin-bottom: 50px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .form-group > div {
+        flex: 1;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    .form-group > div:last-child {
+        margin-right: 0;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        height: 100px;
+    }
+
+
+    @media (max-width: 768px) {
+        .form-group {
+            flex-direction: column;
         }
 
-        .form-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+        .form-group > div {
+            margin-right: 0;
+            margin-bottom: 10px;
         }
+    }
+    .addressScope{
+        height: 150px;
+    }
+    .invoice-section2 input{
+        width: calc(100% - 16px); /* Adjust input width to fit within grid */
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .invoice-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    .invoice-table th {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+        background: linear-gradient(to top, #3bb890, #114070);
+        color: white;
+    }
+    .invoice-table td {
+        margin-bottom: 20px;
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+    .submit-button {
+        margin-top: -50px;
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: linear-gradient(to top, #3bb890, #114070);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .submit-button:hover {
+        background: linear-gradient(to bottom, #3bb890, #114070);
+    }
+      /* Adjusting form-group1 to justify-content-end */
+      .form-group1 {
+        display: flex;
+        justify-content: flex-end;
+        width: 60%;
+    }
 
-        .submit {
-            background: linear-gradient(to top, #37d8a5, #114070);
-            width: 100%;
-            padding: 2%;
-            color: white;
-            font-weight: 500;
-            border: none;
-            border-radius: 2%;
-        }
+    .form-group1 > div {
+        flex: 1;
+        margin-left: 10px; /* Adjust spacing between items if needed */
+    }
 
-        .submit:hover {
-            background: linear-gradient(to bottom, #37d8a5, #114070);
-        }
+    .form-group1 label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-        /* Style for the Description Textarea */
-        .textarea {
-            width: 100%;
-        }
+    .form-group1 input[type="text"] {
+        width: 100%; /* Ensure input fields take full width */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+        margin-left: -30px;
+    }
+    .form-group1Label{
+        width: 60% ;
 
-        /* Media Query for Medium and Large Devices */
-        @media (min-width: 768px) {
-            .textarea {
-                width: 210%;
-                border: 1px solid rgb(195, 194, 194);
-                border-radius: 5px;
-                color: gray;
-            }
-
-            .form-flex {
-                display: flex;
-                justify-content: space-between;
-                /* Adjust alignment as per your design */
-            }
-
-            .form-group {
-                width: 48%;
-                /* Adjust width of form groups as per your layout */
-            }
-        }
-    </style>
+    }
+    .form-group2{
+        visibility: hidden;
+        width: 30%;
+    }
+</style>
 <div class="master-form">
     <div class="form-container">
-        <h2 class="text-center mb-4">Form-0</h2>
+        {{-- <h2 class="text-center mb-4">Form-0</h2>
         <form>
             <div class="form-flex">
                 <!-- Invoice Number. input field  -->
@@ -105,7 +201,8 @@
                  Enter description</textarea>
             </div>
             <button type="submit" class="submit">Submit</button>
-        </form>
+        </form> --}}
+        <div id="app"></div>
     </div>
 </div>
 @endsection
