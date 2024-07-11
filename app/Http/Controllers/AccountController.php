@@ -5,22 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\AccountMaster;
+use App\Models\InputMaster;
 use Carbon\Carbon;
 
 class AccountController extends Controller
 {
-    public function accountTable(){
+    public function accountTable()
+    {
         $data = Account::all();
-        foreach($data as $account){
+        foreach ($data as $account) {
             $balance = Account::where('created_at', '<', $account->created_at)->get();
             $debit = $balance->sum('cash_out_debit');
             $credit = $balance->sum('cash_in_credit');
-            $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit ;
+            $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit;
         }
-        return view('account.accountTable',['accounts'=>$data]);
+        return view('account.accountTable', ['accounts' => $data]);
     }
 
-    public function accountForm(){
+    public function accountForm()
+    {
         return view('account.accountForm');
     }
     public function accountStore(Request $req)
@@ -65,7 +68,8 @@ class AccountController extends Controller
             return back()->with('fail', 'something went wrong,try again');
         }
     }
-    public function accountEdit(Request $req){
+    public function accountEdit(Request $req)
+    {
         $data = Account::find($req->id);
         $data->description = $req->description;
         $data->cash_in_credit = $req->cash_in;
@@ -81,33 +85,73 @@ class AccountController extends Controller
     {
         $data = Account::find($id);
         $data->delete();
-        return back()->with('success','Your Acoount Edited Successfully');
+        return back()->with('success', 'Your Acoount Edited Successfully');
     }
 
     // Acount Master
 
-    public function accountMasterForm(){
+    public function accountMasterForm()
+    {
         return view('account.accountMasterForm');
     }
-    public function accountMasterStore(Request $req){
+    public function accountMasterStore(Request $req)
+    {
         $data = new AccountMaster();
-        $data->client_name = $req->client_name;
+        $input = new InputMaster();
+        //acountmaster
+        $data->client_name = $req->name;
         $data->invoice_no = $req->invoice_no;
-        $data->description = $req->description;
-        $data->invoice_date = $req->invoice_date;
+        $data->description = $req->work_scope;
+        $data->invoice_date = $req->date;
         $data->lpo = $req->lpo;
-        $data->amount = $req->amount;
+        $data->amount = $req->amount_topay;
         $data->credit = $req->credit;
-        $data->due = $req->due;
-        $data->remark = $req->remark;
-
-        $result = $data->save();
-        if ($result) {
-            return back()->with('success', 'Your Acoount Master Added Successfully');
+        $data->due = $req->total_net_amount;
+        //masterDetail
+        $input->to = $req->to;
+        $input->address = $req->address;
+        $input->phoneNo = $req->phone_no;
+        $input->name = $req->name;
+        $input->date = $req->date;
+        $input->proect_name = $req->project_name;
+        $input->email = $req->email;
+        $input->ref_no = $req->ref_no;
+        $input->invoice_no = $req->invoice_no;
+        $input->work_scope = $req->work_scope;
+        $input->lpo = $req->lpo;
+        $input->trn1 = $req->trn1;
+        $input->trn2 = $req->trn2;
+        $input->credit = $req->credit;
+        $input->term_pay = $req->term_pay;
+        $input->projects = $req->projects;
+        $input->amount = $req->amount_topay;
+        $input->total_net_amount = $req->total_net_amount;
+        $result1 = $data->save();
+        $result2 = $input->save();
+        if ($result1 && $result2) {
+            return response([
+                'result' => "data stored successfully"
+            ]);
         } else {
-            return back()->with('fail', 'something went wrong,try again');
+            return response([
+                'result' => "something went wrong"
+            ]);
         }
-
     }
-
+    public function accountMasterTable()
+    {
+        $data = AccountMaster::all();
+        $total_amount = $data->sum('amount');
+        $total_credit = $data->sum('credit');
+        $total_due = $data->sum('due');
+        return view(
+            'mainsection.accountlayout',
+            [
+                'masters' => $data,
+                'amount' => $total_amount,
+                'credit' => $total_credit,
+                'due'   => $total_due
+            ]
+        );
+    }
 }

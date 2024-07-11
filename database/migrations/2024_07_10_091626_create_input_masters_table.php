@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('lpo')->nullable();
             $table->string('trn1')->nullable();
             $table->string('trn2')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('credit')->nullable();
             $table->string('total_net_amount')->nullable();
             $table->timestamps();
         });

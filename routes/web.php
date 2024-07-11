@@ -20,9 +20,9 @@ Route::get('/', function () {
     return view('adminLogin');
 });
 Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() {
-    Route::get('/admin', function () {
-        return view('mainsection.accountlayout');
-    });
+    // Route::get('/admin', function () {
+    //     return view('mainsection.accountlayout');
+    // });
     Route::get('/invoice', function () {
         return view('mainsection.invoiceForm');
     });
@@ -46,7 +46,10 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::post('/account-store',[AccountController::class,'accountStore'])->name('account-store');
     Route::post('/account-edit',[AccountController::class,'accountEdit'])->name('account-edit');
     Route::get('/account-delete/{id}', [AccountController::class, 'accountDelete'])->name('account-delete');
+    //account master
     Route::get('/account-master-form',[AccountController::class,'accountMasterForm'])->name('account-master-form');
+    Route::get('/account-master-table',[AccountController::class,'accountMasterTable'])->name('account-master-table');
+
 
 
 

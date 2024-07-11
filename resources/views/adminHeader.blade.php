@@ -80,7 +80,7 @@
         Accounts
       </button>
       <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
-        <li><a class="dropdown-item fst-italic" href="/admin">Account master</a></li>
+        <li><a class="dropdown-item fst-italic" href="/account-master-table'">Account master</a></li>
         <li><a class="dropdown-item fst-italic" href="/purchase-invoice">Purchase Order</a></li>
         <li><a class="dropdown-item fst-italic" href="/invoice">Text Invoice</a></li>
         <li><a class="dropdown-item fst-italic" href="/payslip">PaySlip</a></li>

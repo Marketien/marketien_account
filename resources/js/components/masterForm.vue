@@ -3,78 +3,78 @@
         <div class="invoice-container">
             <div>
                 <div class="invoice-header">
-                    <h1>TAX INVOICE</h1>
+                    <h1>Account Master Input</h1>
                 </div>
 
-                <form>
+                <form @submit.prevent="submit()">
                     <div class="form-group">
                         <div>
                             <label for="to">To:</label>
-                            <input type="text" id="to" name="to" required>
+                            <input type="text" id="to" name="to" v-model="to" >
                         </div>
                         <div>
                             <label for="invoiceNo">Invoice No:</label>
-                            <input type="text" id="invoiceNo" name="invoiceNo" required>
+                            <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no" >
                         </div>
                         <div>
                             <label for="date">Date:</label>
-                            <input type="text" id="date" name="date" required>
+                            <input type="date" id="date" name="date" v-model="date" >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div>
                             <label for="phoneNo">Phone No:</label>
-                            <input type="text" id="phoneNo" name="phoneNo" required>
+                            <input type="text" id="phoneNo" name="phoneNo" v-model="phone_no" >
                         </div>
                         <div>
                             <label for="LPO">LPO:</label>
-                            <input type="text" id="LPO" name="LPO" required>
+                            <input type="text" id="LPO" name="LPO" v-model="lpo" >
                         </div>
                         <div>
                             <label for="projectName">Project Name:</label>
-                            <input type="text" id="projectName" name="projectName" required>
+                            <input type="text" id="projectName" name="projectName" v-model="project_name">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div>
                             <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" v-model="email">
                         </div>
                         <div>
                             <label for="termOfPay">Term of Pay:</label>
-                            <input type="text" id="termOfPay" name="termOfPay" required>
+                            <input type="text" id="termOfPay" name="termOfPay" v-model="term_pay">
                         </div>
                         <div>
                             <label for="ref">Ref:</label>
-                            <input type="text" id="ref" name="ref" required>
+                            <input type="text" id="ref" name="ref" v-model="ref_no">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div>
                             <label for="nameAttn">Name/Attn:</label>
-                            <input type="text" id="nameAttn" name="nameAttn" required>
+                            <input type="text" id="nameAttn" name="nameAttn" v-model="name" >
                         </div>
                         <div>
                             <label for="trn1">Trn1:</label>
-                            <input type="text" id="trn1" name="trn1" required>
+                            <input type="text" id="trn1" name="trn1" v-model="trn1">
                         </div>
                         <div>
                             <label for="trn2">Trn2:</label>
-                            <input type="text" id="trn2" name="trn2" required>
+                            <input type="text" id="trn2" name="trn2" v-model="trn2">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div>
                             <label for="address">Address:</label>
-                            <input class="addressScope" type="text"  id="address" name="address" required>
+                            <input class="addressScope" type="text"  id="address" name="address" v-model="address">
                         </div>
                         <div>
                             <label for="scopeOfWork">Scope of Work:</label>
-                            <input class="addressScope" type="text" id="scopeOfWork" name="scopeOfWork" required>
+                            <input class="addressScope" type="text" id="scopeOfWork" name="scopeOfWork" v-model="work_scope" >
                         </div>
                     </div>
 
@@ -95,9 +95,9 @@
                                 <tr v-for="(key, keyIndex) in projects"  :key="key.id" >
                                     <td>1</td>
                                     <td><div ><input id="description" name="description" rows="2" v-model="key.description"></input></div></td>
-                                    <td><div ><input type="number" id="quantity" name="quantity" v-model="key.quantity"></div></td>
-                                    <td><div ><input type="number" id="unit-price" name="unit-price" step="0.01" v-model="key.unit_price"></div></td>
-                                    <td><div ><input type="number" id="amount" name="amount" step="0.01" v-model="key.amount"></div></td>
+                                    <td><div ><input type="number" id="quantity" name="quantity" v-model.number="key.quantity" @change="calculateRowTotal(keyIndex)"></div></td>
+                                    <td><div ><input type="number" id="unit-price" name="unit-price" step="0.01" v-model.number="key.unit_price" @change="calculateRowTotal(keyIndex)"></div></td>
+                                    <td><div ><input type="number" id="amount" name="amount" step="0.01" v-model="key.amount" readonly></div></td>
                                     <td>
                                         <div class="col-md-2">
                                             <!--                <label  class="row" v-if="keyIndex == 0"></label><br>-->
@@ -115,19 +115,28 @@
                         </table>
                         <!------------- lkhaodghloashgdloashgoh------------- -->
                         <div class="d-flex justify-content-between">
+                            <!-- hidden section -->
                             <div class="form-group2">
                                 <div>
                                 <div>
                                     <label for="totalAmount">Total Amount:</label>
-                                    <input type="text" id="totalAmount" name="totalAmount" required>
+                                    <input type="text" id="totalAmount" name="totalAmount" >
                                 </div>
                                 <div>
                                     <label for="vatAmount">+5% vat Amount:</label>
-                                    <input type="text" id="vatAmount" name="vatAmount" required>
+                                    <input type="text" id="vatAmount" name="vatAmount">
+                                </div>
+                                <div>
+                                    <label for="vatAmount">+5% vat Amount:</label>
+                                    <input type="text" id="vatAmount" name="vatAmount">
+                                </div>
+                                <div>
+                                    <label for="vatAmount">Credit:</label>
+                                    <input type="text" id="vatAmount" name="vatAmount">
                                 </div>
                                 <div>
                                     <label for="netAmount">Total Net Amount:</label>
-                                    <input type="text" id="netAmount" name="netAmount" required>
+                                    <input type="text" id="netAmount" name="netAmount">
                                 </div>
                             </div>
                             </div>
@@ -135,15 +144,23 @@
                                 <div>
                                 <div class="d-flex ">
                                     <label class="form-group1Label" for="totalAmount">Total Amount:</label>
-                                    <input type="text" id="totalAmount" name="totalAmount" required>
+                                    <input type="number" id="totalAmount" name="totalAmount" v-model="total_amount" readonly @change="calculateGrandTotal()">
                                 </div>
                                 <div class="d-flex ">
                                     <label class="form-group1Label" for="vatAmount">+5% vat Amount:</label>
-                                    <input type="text" id="vatAmount" name="vatAmount" required>
+                                    <input type="number" id="vatAmount" name="vatAmount" v-model="vat_amount" readonly @change="calculateGrandTotal()">
+                                </div>
+                                <div class="d-flex ">
+                                    <label class="form-group1Label" for="vatAmount">Amount To Pay:</label>
+                                    <input type="number" id="vatAmount" name="vatAmount" v-model="amount_topay" readonly >
+                                </div>
+                                <div class="d-flex ">
+                                    <label class="form-group1Label" for="vatAmount">Credit:</label>
+                                    <input type="number" id="vatAmount" name="vatAmount" v-model="credit" @change="calculateGrandTotal()">
                                 </div>
                                 <div class="d-flex ">
                                     <label class="form-group1Label" for="netAmount">Total Net Amount:</label>
-                                    <input type="text" id="netAmount" name="netAmount" required>
+                                    <input type="text" id="netAmount" name="netAmount" v-model="total_net_amount" readonly>
                                 </div>
                             </div>
                             </div>
@@ -174,21 +191,23 @@ export default {
             lpo:'',
             project_name:'',
             email:'',
-            ref:'',
+            ref_no:'',
             term_pay:'',
             name:'',
             trn1:'',
             trn2:'',
             address:'',
             work_scope:'',
-            total_net_amount:'',
-            vat_amount:'',
-            total_amount:'',
+            total_net_amount:0,
+            vat_amount: 0,
+            amount_topay:0,
+            credit:0,
+            total_amount:0,
             projects:[{
                description:'',
                quantity:'',
                unit_price:'',
-               amount:'',
+               amount:0,
             }],
         }
     },
@@ -213,7 +232,97 @@ export default {
                 }
 
             },
-    }
+            calculateRowTotal(keyIndex){
+                var total = parseFloat(this.projects[keyIndex].quantity)* parseFloat(this.projects[keyIndex].unit_price);
+                if (!isNaN(total)) {
+                    this.projects[keyIndex].amount = total.toFixed(2);
+                }
+                this.calculateTotal();
+            },
+            calculateTotal(keyIndex){
+                var lineTotal=0;
+
+                // for (let keyIndex = 0; keyIndex < this.products.length; keyIndex++) {
+                //
+                // }
+                lineTotal= this.projects.reduce(function (a,b){
+                    var rowTotal = parseFloat(b.amount);
+                    return a + rowTotal;
+                },0);
+                console.log(lineTotal);
+                this.total_amount = lineTotal.toFixed(2);
+                this.calculateGrandTotal();
+                this.calculateVat();
+            },
+            calculateVat(){
+
+                var vat = 0;
+                vat = this.total_amount * (5/100);
+                this.vat_amount = vat.toFixed(2);
+                 this.calculateGrandTotal();
+                 this.amountToPay();
+            },
+            amountToPay(){
+                var pay = parseFloat(this.total_amount) + parseFloat(this.vat_amount);
+                this.amount_topay = pay.toFixed(2);
+            },
+            calculateGrandTotal(){
+                var grand = 0;
+                if(!isNaN(this.credit)){
+
+                    grand = parseFloat(this.total_amount) + parseFloat(this.vat_amount) - parseFloat(this.credit);
+                }else{
+                    grand = parseFloat(this.total_amount) + parseFloat(this.vat_amount);
+                }
+                this.total_net_amount = grand.toFixed(2);
+                console.log("this value is",this.total_net_amount)
+            },
+            submit: function (e) {
+                    axios.post('/api/acount-store', {
+                        to:this.to,
+                invoice_no:this.invoice_no,
+                      date:this.date,
+                  phone_no:this.phone_no,
+                       lpo:this.lpo,
+              project_name:this.project_name,
+                     email:this.email,
+                    ref_no:this.ref_no,
+                  term_pay:this.term_pay,
+                      name:this.name,
+                      trn1:this.trn1,
+                      trn2:this.trn2,
+                   address:this.address,
+                work_scope:this.work_scope,
+          total_net_amount:this.total_net_amount,
+              amount_topay:this.amount_topay,
+                    credit:this.credit,
+                  projects:this.projects
+
+                    }).then((response) => {
+                        // console.log(response);
+                        // this.response = response.data
+                        // this.success = 'Data saved successfully';
+                        // this.response = JSON.stringify(response, null, 2)
+                        // this.id = response.data;
+
+                            window.location.href=('/admin');
+
+                            // window.location.href=('/purchase-total/');
+
+                    });
+
+                e.preventDefault();
+
+            }
+
+        },
+        mounted() {
+            this.calculateRowTotal();
+            this.calculateTotal();
+            this.calculateVat();
+            this.calculateGrandTotal();
+            this.amountToPay();
+        },
 
 
 }

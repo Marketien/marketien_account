@@ -88,6 +88,11 @@
                 </thead>
                 <tbody>
                     <!-- table row 1  -->
+                    @foreach ( $masters as $master)
+
+
+
+
                     <tr>
                         <!-- Dropdown button   -->
                         <td>
@@ -103,130 +108,27 @@
                                 </ul>
                             </div>
                         </td>
-                        <td>INV-QAK-23-128</td>
-                        <td>Prominent star cont. LLC</td>
-                        <td>AL mukathra</td>
-                        <td>25/02/2023</td>
-                        <td>QAK-QTN-/022-0254</td>
-                        <td>16613.27</td>
-                        <td></td>
-                        <td>16613.27</td>
-                        <td></td>
+                        <td>{{$master->invoice_no}}</td>
+                        <td>{{$master->client_name}}</td>
+                        <td>{{$master->description}}</td>
+                        <td>{{$master->invoice_date}}</td>
+                        <td>{{$master->lpo}}</td>
+                        <td>{{$master->amount}}</td>
+                        <td>{{$master->credit}}</td>
+                        <td>{{$master->due}}</td>
+                        <td>{{$master->remark}}</td>
                     </tr>
-                    <!-- table row 1  -->
-                    <tr>
-                        <!-- Dropdown button   -->
-                        <td>
-                            <div class="dropdown">
-                                <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Details </a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>INV-QAK-23-128</td>
-                        <td>Prominent star cont. LLC</td>
-                        <td>AL mukathra</td>
-                        <td>25/02/2023</td>
-                        <td>QAK-QTN-/022-0254</td>
-                        <td>16613.27</td>
-                        <td></td>
-                        <td>16613.27</td>
-                        <td></td>
-                    </tr>
-                    <!-- table row 2  -->
-                    <tr>
-                        <!-- Dropdown button   -->
-                        <td>
-                            <div class="dropdown">
-                                <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Details </a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>INV-QAK-23-128</td>
-                        <td>Prominent star cont. LLC</td>
-                        <td>AL mukathra</td>
-                        <td>25/02/2023</td>
-                        <td>QAK-QTN-/022-0254</td>
-                        <td>16613.27</td>
-                        <td></td>
-                        <td>16613.27</td>
-                        <td></td>
-                    </tr>
-                    <!-- table row 3  -->
-                    <tr>
-                        <!-- Dropdown button   -->
-                        <td>
-                            <div class="dropdown">
-                                <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Details </a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>INV-QAK-23-128</td>
-                        <td>Prominent star cont. LLC</td>
-                        <td>AL mukathra</td>
-                        <td>25/02/2023</td>
-                        <td>QAK-QTN-/022-0254</td>
-                        <td>16613.27</td>
-                        <td></td>
-                        <td>16613.27</td>
-                        <td></td>
-                    </tr>
-                    <!-- table row 4  -->
-                    <tr>
-                        <!-- Dropdown button   -->
-                        <td>
-                            <div class="dropdown">
-                                <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Details </a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>INV-QAK-23-128</td>
-                        <td>Prominent star cont. LLC</td>
-                        <td>AL mukathra</td>
-                        <td>25/02/2023</td>
-                        <td>QAK-QTN-/022-0254</td>
-                        <td>16613.27</td>
-                        <td></td>
-                        <td>16613.27</td>
-                        <td></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
 
         <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
             class="bg-light p-3 rounded mb-3 text-center lh-lg">
-            <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span> <span>570</span> </p>
-            <p class="d-flex justify-content-between"><span>Total Amount REcieved :</span> <span
-                    class="text-success">570</span> </p>
-            <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span class="text-danger">570</span>
+            <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span> <span>{{$amount}}</span> </p>
+            <p class="d-flex justify-content-between"><span>Total Amount Recieved :</span> <span
+                    class="text-success">{{$credit}}</span> </p>
+            <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span class="text-danger">{{$due}}</span>
             </p>
         </div>
     </div>
