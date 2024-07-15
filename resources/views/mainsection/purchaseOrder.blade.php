@@ -11,10 +11,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+
+
 </head>
 <style>
     body {
         font-family: Arial, sans-serif;
+    }
+
+    .header-image {
+        width: 100%;
     }
 
     .invoice-box {
@@ -63,7 +69,7 @@
     }
 
     .ownerName {
-        margin-top: 130px;
+        margin-top: 90px;
     }
 
     .signatureBody th {
@@ -93,123 +99,208 @@
     .submit-button:hover {
         background: linear-gradient(to bottom, #3bb890, #114070);
     }
+
+    .sealImg1 {
+        visibility: hidden;
+        width: 100%;
+        max-width: 150px;
+        display: block;
+        margin: auto;
+    }
+
+    .sealImg2 {
+        width: 100%;
+        max-width: 150px;
+        display: block;
+        margin: auto;
+    }
 </style>
 
 <body>
-    <div class="invoice-box">
-        <h2 class="InvoiceText">PURCHASE ORDER</h2>
-        <!-- table no 1  -->
-        <table>
-            <thead>
-                <tr>
-                    <th>To:</th>
-                    <th>M/S TAALEEM SPV LIMITED</th>
-                    <th>Date:</th>
-                    <th>24/01/2023</th>
-                </tr>
-            </thead>
-            <tbody class="heading">
-                <tr>
-                    <td>Address:</td>
-                    <td>
-                        24th Floor, Al Sila Tower 1, Abu-Dhabi<br />
-                        Global Market Square, U.A.E
-                    </td>
-                    <td>Invoice no:</td>
-                    <td>INV-QAK-023-154</td>
-                </tr>
-                <tr>
-                    <td>Tel:</td>
-                    <td>+971 4 349 8807</td>
-                    <td>Terms of payment:</td>
-                    <td>CDC</td>
-                </tr>
-                <tr>
-                    <td>Atm:</td>
-                    <td>Mr. Jamie McMaster</td>
-                    <td>Email:</td>
-                    <td>info@qalatalkhaleej.com</td>
-                </tr>
-                <tr>
-                    <td>Project:</td>
-                    <td>Boys Changing Room</td>
-                    <td>Ref:</td>
-                    <td>PO-111238</td>
-                </tr>
-                <tr>
-                    <td>TRN:</td>
-                    <td>10059856233685452</td>
-                    <td>TRN:</td>
-                    <td>10059856233685452</td>
-                </tr>
-                <tr>
-                    <td>Scope of Works</td>
-                    <td>
-                        carry out carpentry works and replace all 50 locks on lockers in
-                        girls changing rooms
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- table no 2  -->
-        <table>
-            <tr class="heading">
-                <td>SR.</td>
-                <td colspan="2">Description</td>
-                <td>Qty.</td>
-                <td>Unit price</td>
-                <td>Amount</td>
-            </tr>
-            <tr class="item">
-                <td>1.</td>
-                <td colspan="2">
-                    Replacement and Alignment checking work with minor maintenance -
-                    Hinges, knob, lock and towel rod.
-                </td>
-                <td>01</td>
-                <td>5,000.00</td>
-                <td>5,000.00</td>
-            </tr>
-            <tr class="total">
-                <td colspan="5" class="right-align">Subtotal:</td>
-                <td>5,000.00</td>
-            </tr>
-            <tr class="total">
-                <td colspan="5" class="right-align">+ 5% VAT Amount:</td>
-                <td>250.00</td>
-            </tr>
-            <tr class="total">
-                <td colspan="5" class="right-align">Total Net Amount:</td>
-                <td>5,250.00</td>
-            </tr>
-            <tr class="details text-center fw-bold">
-                <td colspan="6">
-                    In Words: AED – Five Thousand Two Hundred Fifty Only.
-                </td>
-            </tr>
-        </table>
-        <!-- table no 3  -->
-        <div class="mt-5">
+
+        <div class="invoice-box container_content" id="container_content">
+
+            <img class="header-image" src="/image/Header.png" alt="">
+
+            <h2 class="InvoiceText">PURCHASE ORDER</h2>
+            <!-- table no 1  -->
             <table>
-                <thead class="signatureBody">
-                    <th>Prepared By</th>
-                    <th>Approved</th>
+                <thead>
+                    <tr>
+                        <th>To:</th>
+                        <th>{{ $purchase->to }}</th>
+                        <th>Date:</th>
+                        <th>{{ $purchase->date }}</th>
+                    </tr>
                 </thead>
-                <tbody class="signatureBody">
-                    <td></td>
-                    <td></td>
+                <tbody class="heading">
+                    <tr>
+                        <td>Address:</td>
+                        <td>
+                            {{ $purchase->address }}
+                        </td>
+                        <td>Invoice no:</td>
+                        <td>{{ $purchase->invoice_no }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tel:</td>
+                        <td>{{ $purchase->phoneNo }}</td>
+                        <td>Terms of payment:</td>
+                        <td>{{ $purchase->term_pay }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{ $purchase->name }}</td>
+                        <td>Email:</td>
+                        <td>{{ $purchase->email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Project:</td>
+                        <td>{{ $purchase->proect_name }}</td>
+                        <td>Ref:</td>
+                        <td>PO-111238</td>
+                    </tr>
+                    <tr>
+                        <td>TRN:</td>
+                        <td>{{ $purchase->trn1 }}</td>
+                        <td>TRN:</td>
+                        <td>{{ $purchase->trn2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>Scope of Works</td>
+                        <td>
+                            {{ $purchase->work_scope }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="details center-align mt-5">
-            <p>Thanks & Best Regards<br /></p>
-            <p class="ownerName">Preethi S</p>
-            <p>Admin/Accounts</p>
+            <!-- table no 2  -->
+            <table>
+                <tr class="heading">
+                    <td>SR.</td>
+                    <td colspan="2">Description</td>
+                    <td>Qty.</td>
+                    <td>Unit price</td>
+                    <td>Amount</td>
+                </tr>
+                <?php
+                $projects = json_decode($purchase['projects']);
+                $amt = 0;
+                ?>
+                @foreach ($projects as $project)
+                    <tr class="item">
+                        <td scope="row">{{ $loop->iteration }}</td>
+                        <td colspan="2">
+                            {{ $project->description }}
+                        </td>
+                        <td>{{ $project->quantity }}</td>
+                        <td>{{ $project->unit_price }}</td>
+                        <td>{{ $project->amount }}</td>
+                        @php
+                            $amt += $project->amount;
+                        @endphp
+                    </tr>
+                @endforeach
+                @php
+                    $vat = $amt * (5 / 100);
+                @endphp
+                <tr class="total">
+                    <td colspan="5" class="right-align">Subtotal:</td>
+                    <td>{{ $amt }}</td>
+                </tr>
+                <tr class="total">
+                    <td colspan="5" class="right-align">+ 5% VAT Amount:</td>
+                    <td>{{ $vat }}</td>
+                </tr>
+                <tr class="total">
+                    <td colspan="5" class="right-align">Credit:</td>
+                    <td>{{ $purchase->credit }}</td>
+                </tr>
+                <tr class="total">
+                    <td colspan="5" class="right-align">Total Net Amount:</td>
+                    <td>{{ $purchase->total_net_amount }}</td>
+                </tr>
+                <tr class="details text-center fw-bold">
+                    <td colspan="6">
+                        In Words: AED – Five Thousand Two Hundred Fifty Only.
+                    </td>
+                </tr>
+            </table>
+            <!-- table no 3  -->
+            <div class="mt-5">
+                <table>
+                    <thead class="signatureBody">
+                        <th>Prepared By</th>
+                        <th>Approved</th>
+                    </thead>
+                    <tbody class="signatureBody">
+                        <td><img class="sealImg1" src="/image/Seal & Signature.png" alt=""></td>
+                        <td><img class="sealImg2" src="/image/Seal & Signature.png" alt=""></td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="details center-align mt-4">
+                <p>Thanks & Best Regards<br /></p>
+                <p class="ownerName">Preethi S</p>
+                <p>Admin/Accounts</p>
+            </div>
         </div>
         <div class="invoice-footer">
-            <input type="submit" value="Make PDF" class="submit-button">
+            <input type="button" id="rep" value="Make PDF" class="submit-button btn_print">
         </div>
-    </div>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function($) {
+
+        $(document).on('click', '.btn_print', function(event) {
+            event.preventDefault();
+
+            //credit : https://ekoopmans.github.io/html2pdf.js
+
+            var element = document.getElementById('container_content');
+
+            //easy
+            // html2pdf().from(element).save();
+
+            //custom file name
+            html2pdf().set({
+                filename: '{{ $purchase->invoice_no }}'+'_Qalat-al-khaleej' + '.pdf'
+            }).from(element).save();
+
+
+            //more custom settings
+            // var opt = {
+            //     margin: 1,
+            //     filename: 'pageContent_' + js.AutoCode() + '.pdf',
+            //     image: {
+            //         type: 'jpeg',
+            //         quality: 0.98
+            //     },
+            //     html2canvas: {
+            //         scale: 2
+            //     },
+            //     jsPDF: {
+            //         unit: 'in',
+            //         format: 'letter',
+            //         orientation: 'portrait'
+            //     }
+            // };
+
+            // New Promise-based usage:
+            // html2pdf().set(opt).from(element).save();
+
+
+        });
+
+
+
+    });
+</script>
 
 </html>

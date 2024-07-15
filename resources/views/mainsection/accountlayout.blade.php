@@ -91,7 +91,9 @@
                     @foreach ( $masters as $master)
 
 
-
+                    @php
+                        $input = \App\Models\InputMaster::where('invoice_no',$master->invoice_no)->first();
+                    @endphp
 
                     <tr>
                         <!-- Dropdown button   -->
@@ -103,7 +105,7 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Details </a></li>
+                                    <li><a class="dropdown-item" href="/master-detail/{{$input->id}}">Details </a></li>
                                     <li><a class="dropdown-item" href="#">Delete</a></li>
                                 </ul>
                             </div>

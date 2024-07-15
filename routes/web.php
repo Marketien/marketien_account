@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,9 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/tax', function () {
         return view('mainsection.taxInvoice');
     });
-    Route::get('/purchase', function () {
-        return view('mainsection.purchaseOrder');
-    });
+    // Route::get('/purchase', function () {
+    //     return view('mainsection.purchaseOrder');
+    // });
     Route::get('/quotation', function () {
         return view('mainsection.quotation');
     });
@@ -49,7 +50,15 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     //account master
     Route::get('/account-master-form',[AccountController::class,'accountMasterForm'])->name('account-master-form');
     Route::get('/account-master-table',[AccountController::class,'accountMasterTable'])->name('account-master-table');
+    Route::get('/master-detail/{id}',[AccountController::class,'purchaseInvoice'])->name('master-detail');
 
+    //attendance
+    Route::get('/attendance-form',[AttendanceController::class,'attendanceForm'])->name('attendance-form');
+    Route::post('/employee-store',[AttendanceController::class,'storeEmployee'])->name('employee-store');
+    Route::post('/location-store',[AttendanceController::class,'storeLocation'])->name('location-store');
+    Route::post('/attendance-store',[AttendanceController::class,'storeAttendance'])->name('attendance-store');
+
+    Route::get('/employee-location',[AttendanceController::class,'employeeLocation'])->name('employee-location');
 
 
 

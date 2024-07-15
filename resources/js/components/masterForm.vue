@@ -305,7 +305,7 @@ export default {
                         // this.response = JSON.stringify(response, null, 2)
                         // this.id = response.data;
 
-                            window.location.href=('/admin');
+                            window.location.href=('/account-master-table');
 
                             // window.location.href=('/purchase-total/');
 

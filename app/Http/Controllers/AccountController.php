@@ -123,7 +123,7 @@ class AccountController extends Controller
         $input->trn2 = $req->trn2;
         $input->credit = $req->credit;
         $input->term_pay = $req->term_pay;
-        $input->projects = $req->projects;
+        $input->projects =json_encode($req->projects);
         $input->amount = $req->amount_topay;
         $input->total_net_amount = $req->total_net_amount;
         $result1 = $data->save();
@@ -153,5 +153,9 @@ class AccountController extends Controller
                 'due'   => $total_due
             ]
         );
+    }
+    public function purchaseInvoice($id){
+         $data = InputMaster::find($id);
+         return view('mainsection.purchaseOrder',['purchase'=>$data]);
     }
 }
