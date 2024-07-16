@@ -57,68 +57,82 @@
         }
     </style>
     <div class="emp-body">
-    <div class="InvoiceTableContainer">
-        <div class="InvoiceTable-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Employee Name</th>
-                        <th>Designation</th>
-                        <th>Department</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01-Mar-23</td>
-                        <td>WED</td>
-                        <td>WED</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <td>01-Mar-23</td>
-                        <td>WED</td>
-                        <td>WED</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <td>01-Mar-23</td>
-                        <td>WED</td>
-                        <td>WED</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="InvoiceTableContainer">
+            <div class="InvoiceTable-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Designation</th>
+                            <th>Department</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($workers as $worker)
+                            <tr>
+                                <td>{{ $worker->employee_name }}</td>
+                                <td>{{ $worker->designation }}</td>
+                                <td>{{ $worker->department }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item editBtn" href="/employee-detail/{{$worker->id}}">Detail</a></li>
+                                            {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#staticBackdrop{{ $worker->id }}">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
 
-        <div class="InvoiceTable-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Location Name</th>
-                        <th>Location Code</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01-Mar-23</td>
-                        <td>WED</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <td>01-Mar-23</td>
-                        <td>WED</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr>
-                        <td>01-Mar-23</td>
-                        <td>WED</td>
-                        <td>Otto</td>
-                    </tr>
-                </tbody>
-            </table>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="InvoiceTable-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Location Name</th>
+                            <th>Location Code</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($locations as $location)
+                            <tr>
+                                <td>{{ $location->location_name }}</td>
+                                <td>{{ $location->location_code }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item editBtn" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#editModal{{ $location->id }}"
+                                                    data-id="{{ $location->id }}">Edit</a></li>
+                                            {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#staticBackdrop{{ $location->id }}">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-   </div>
 @endsection

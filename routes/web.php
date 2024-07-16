@@ -36,9 +36,9 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/quotation', function () {
         return view('mainsection.quotation');
     });
-    Route::get('/payslip', function () {
-        return view('mainsection.paySlip');
-    });
+    // Route::get('/payslip', function () {
+    //     return view('mainsection.paySlip');
+    // });
     Route::get('/purchase-invoice', function () {
         return view('mainsection.purchaceOrderForm');
     });
@@ -53,12 +53,16 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/master-detail/{id}',[AccountController::class,'purchaseInvoice'])->name('master-detail');
 
     //attendance
+    Route::get('/attendance',[AttendanceController::class,'attendance'])->name('attendance');
     Route::get('/attendance-form',[AttendanceController::class,'attendanceForm'])->name('attendance-form');
     Route::post('/employee-store',[AttendanceController::class,'storeEmployee'])->name('employee-store');
     Route::post('/location-store',[AttendanceController::class,'storeLocation'])->name('location-store');
     Route::post('/attendance-store',[AttendanceController::class,'storeAttendance'])->name('attendance-store');
 
     Route::get('/employee-location',[AttendanceController::class,'employeeLocation'])->name('employee-location');
+    Route::get('/employee-detail/{id}',[AttendanceController::class,'employeeDetail']);
+    Route::get('/payslip/{id}',[AttendanceController::class,'payslip']);
+
 
 
 

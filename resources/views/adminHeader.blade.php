@@ -5,7 +5,7 @@
             <!-- Menu button for large devices -->
             <button class="btn menu-button d-none d-lg-block text-white" id="sidebarToggle" aria-controls="sidebar"
                 aria-expanded="false" aria-label="Toggle sidebar">
-                <img class="menu-button-img" style="height: 20px" src="image/menu.png" alt="" srcset="" />
+                <img class="menu-button-img" style="height: 20px" src="{{asset('image/menu.png')}}" alt="" srcset="" />
             </button>
             <a class="navbar-brand text-white adminPanelText" href="#">AdminPanel</a>
             <!-- menu button  for medium and small device-->
@@ -28,7 +28,7 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 d-flex ms-auto me-3">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            <img src="https://i.pinimg.com/564x/6a/44/f0/6a44f0e35b10e6ed063eeebf7ed844f9.jpg"
+                            <img src="{{asset('https://i.pinimg.com/564x/6a/44/f0/6a44f0e35b10e6ed063eeebf7ed844f9.jpg')}}"
                                 alt="Profile" class="rounded-circle" width="30" height="30" />
                         </a>
                     </li>
