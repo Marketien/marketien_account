@@ -36,7 +36,7 @@
     }
     /* Adjust date table header width */
     table.date-table th:first-child {
-      width: 700px;
+      width: 1000px;
     }
 
     /* Media query for medium devices */
@@ -92,10 +92,10 @@
       <table>
         <tr>
           <td colspan="2">
-            <strong>Employee Name:</strong> ABDULLAH<br />
-            <strong>Designation:</strong> HELPER<br />
+            <strong>Employee Name:</strong> {{$employee->employee_name}}<br />
+            <strong>Designation:</strong> {{$employee->designation}}<br />
             <strong>ID#:</strong> <br />
-            <strong>Department:</strong> CIVIL MAINT.<br />
+            <strong>Department:</strong> {{$employee->department}}<br />
             <strong>Month:</strong> Mar-23<br />
           </td>
           <td colspan="2" class="imgsummary">
@@ -108,9 +108,9 @@
           </td>
           <td colspan="2" class="summary">
             <strong>SUMMARY</strong><br />
-            <strong>Salary & Benefits:</strong> AED 1,083.33<br />
-            <strong>Deductions:</strong> AED 0.00<br />
-            <strong>Due:</strong> AED 1,083.33<br />
+            <strong>Salary & Benefits:</strong> AED {{$salary->salary}}<br />
+            <strong>Deductions:</strong> AED {{$salary->deduction}}<br />
+            <strong>Due:</strong> AED {{$salary->net_salary}}<br />s
             <strong>Paid:</strong> AED <br />
             <strong>Leave Balance:</strong> <br />
           </td>
@@ -124,24 +124,24 @@
               <th colspan="4">Salary & Benefits</th>
             </tr>
             <tr>
-              <td><strong>Basic Salary:</strong> AED 1,000.00</td>
+              <td><strong>Basic Salary:</strong> AED {{$salary->basic}}</td>
               <td>
-                <strong>OT - Sundays & Public Holidays (1.5x Basic/Hr):</strong>
+                <strong>OT - Sundays & Public Holidays (1.5x Basic/Hr):{{$salary->holyday_ot}}</strong>
               </td>
               <td>
-                <strong>OT - Weekdays (1.25x Basic/Hr):</strong> AED 83.33
+                <strong>OT - Weekdays (1.25x Basic/Hr):{{$salary->weekday_ot}}</strong> AED 83.33
               </td>
               <td><strong>Incentive:</strong> NIL</td>
             </tr>
             <tr>
               <td><strong>Food Allowance:</strong> Company Provided</td>
               <td><strong>Travel Allowance:</strong></td>
-              <td><strong>Other Dues:</strong></td>
-              <td><strong>Total Bonus:</strong></td>
+              <td><strong>Other Dues:</strong>{{$salary->other_due}}</td>
+              <td><strong>Total Bonus:</strong>{{$salary->project_bonus}}</td>
             </tr>
             <tr>
               <td colspan="4">
-                <strong>Total Salary (Net Gross):</strong> AED 1,083.33
+                <strong>Total Salary (Net Gross):</strong> AED {{$salary->salary}}
               </td>
             </tr>
           </table>
@@ -171,240 +171,23 @@
               <th>BASE</th>
               <th>Remarks</th>
             </tr>
+            @foreach ($attendances as $attend )
+
             <tr>
-              <td>01-Mar-23</td>
-              <td>WED</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>1</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+                <td>{{$attend['date']}}</td>
+                <td>{{$attend['weekday']}}</td>
+                <td>{{$attend['project_location']}}</td>
+                <td>{{$attend['attd']}}</td>
+                <td>{{$attend['ph']}}</td>
+                <td>{{$attend['ph']}}</td>
+                <td>{{$attend['we']}}</td>
+                <td>{{$attend['ot']}}</td>
+                <td>{{$attend['inc']}}</td>
+                <td>{{$attend['base']}}</td>
+                <td>{{$attend['remarks']}}</td>
             </tr>
-            <tr>
-              <td>02-Mar-23</td>
-              <td>THU</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>03-Mar-23</td>
-              <td>FRI</td>
-              <td>OFF</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>01-Mar-23</td>
-              <td>WED</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>1</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>02-Mar-23</td>
-              <td>THU</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>03-Mar-23</td>
-              <td>FRI</td>
-              <td>OFF</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>01-Mar-23</td>
-              <td>WED</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>1</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>02-Mar-23</td>
-              <td>THU</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>03-Mar-23</td>
-              <td>FRI</td>
-              <td>OFF</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>01-Mar-23</td>
-              <td>WED</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>1</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>02-Mar-23</td>
-              <td>THU</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>03-Mar-23</td>
-              <td>FRI</td>
-              <td>OFF</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>01-Mar-23</td>
-              <td>WED</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>1</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>02-Mar-23</td>
-              <td>THU</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>03-Mar-23</td>
-              <td>FRI</td>
-              <td>OFF</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>01-Mar-23</td>
-              <td>WED</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>1</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>02-Mar-23</td>
-              <td>THU</td>
-              <td>831</td>
-              <td>P</td>
-              <td>8</td>
-              <td></td>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>03-Mar-23</td>
-              <td>FRI</td>
-              <td>OFF</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            @endforeach
+
             <!-- Add the remaining rows as necessary -->
           </table>
         </div>

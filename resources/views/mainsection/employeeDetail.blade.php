@@ -141,17 +141,17 @@
             <tr>
               <td colspan="3">Salary & Benefits:</td>
               <td colspan="2">AED</td>
-              <td colspan="3">{{$salary->salary}}</td>
+              <td colspan="3">{{optional($salary)->salary}}</td>
             </tr>
             <tr>
               <td colspan="3">Deduction:</td>
               <td colspan="2">AED</td>
-              <td colspan="3">{{$salary->deduction}}</td>
+              <td colspan="3">{{optional($salary)->deduction}}</td>
             </tr>
             <tr>
               <td colspan="3">Due:</td>
               <td colspan="2">AED</td>
-              <td colspan="3">{{$salary->net_salary}}</td>
+              <td colspan="3">{{optional($salary)->net_salary}}</td>
             </tr>
             <tr>
               <td colspan="3">Paid:</td>
@@ -204,7 +204,7 @@
             </table>
         </div>
         <div class="submitdiv">
-            <a href="/payslip/{{$salary->employee_id}}" class="submitbutton">Make PlaySlip</a>
+            <a href="/payslip/{{optional($salary)->employee_id}}" class="submitbutton">Make PlaySlip</a>
           </div>
     </div>
 @endsection

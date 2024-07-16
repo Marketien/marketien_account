@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td colspan="3">Ot - Weekdays (1.25X Basic /Hr)</td>
-                <td colspan="3"><input class="textInput" type="text" name="" id="" v-model="weekday_ot" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="weekday_ot" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Housing</td>
@@ -100,6 +100,13 @@ export default {
                     axios.post('/api/salary-store', {
                        id: window.location.href.split('/').pop(),
                        deduction: this.deduction,
+                       basic:this.basic,
+                       holyday_ot: this.holiday_ot,
+                       weekday_ot: this.weekday_ot,
+                       food: this.food,
+                       other: this.other,
+                       other_due: this.other_due,
+                       project_bonus: this.project_bonus,
                        total_net_salary: this.total_net_salary,
                     }).then((response) => {
                         console.log(response.data);

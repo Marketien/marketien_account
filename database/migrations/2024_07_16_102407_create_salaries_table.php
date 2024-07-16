@@ -16,9 +16,16 @@ return new class extends Migration
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id')->nullable();
+            $table->string('basic')->nullable();
+            $table->string('holyday_ot')->nullable();
+            $table->string('weekday_ot')->nullable();
+            $table->string('food')->nullable();
+            $table->string('other')->nullable();
+            $table->string('other_due')->nullable();
+            $table->string('project_bonus')->nullable();
             $table->string('salary')->nullable();
-            $table->integer('deduction')->nullable();
-            $table->integer('net_salary')->nullable();
+            $table->string('deduction')->nullable();
+            $table->string('net_salary')->nullable();
             $table->timestamps();
         });
     }

@@ -82,7 +82,7 @@ class AttendanceController extends Controller
             ];
         }
 
-        return json_encode($days);
+        return $days;
     }
     public function attendance()
     {
@@ -90,7 +90,7 @@ class AttendanceController extends Controller
         $month = Carbon::now()->format('m');
         $dayNumber = [];
         $daysInMonth = $this->findDateHelper($year, $month);
-        $dayNumber[] = json_decode($daysInMonth, true);
+        // $dayNumber[] = json_decode($daysInMonth, true);
         // Output the days
         // foreach ($dayNumber as $day) {
         //     return $day . "<br>";
@@ -107,6 +107,14 @@ class AttendanceController extends Controller
     {
         $data = new Salary();
         $data->employee_id = $req->id;
+        $data->basic = $req->basic;
+        $data->holyday_ot = $req->holyday_ot;
+        $data->weekday_ot = $req->weekday_ot;
+        $data->food = $req->food;
+        $data->other = $req->other;
+        $data->other_due = $req->other_due;
+        $data->project_bonus = $req->project_bonus;
+
         $data->salary = $req->total_net_salary;
         $data->deduction = $req->deduction;
         $data->net_salary = ($req->total_net_salary - $req->deduction);
@@ -127,38 +135,42 @@ class AttendanceController extends Controller
         $month = Carbon::now()->format('m');
         $dayNumber = [];
         $daysInMonth = $this->findDateHelper($year, $month);
-        $dayNumber[] = json_decode($daysInMonth, true);
-        foreach ($dayNumber as $days) {
+        $emp = Worker::where('id',$id)->first();
+        $salary = Salary::where('employee_id',$id)->latest('created_at')->first();
+        // $dayNumber[] = json_decode($daysInMonth, true);
 
 
-            foreach ($days as $day) { // Use &$day to modify the original array elements
-                $data = Attendance::where('employee_id', $id)
-                    ->where('date', $day['date']) // Access 'date' as array key
-                    ->first();
 
-                if ($data) {
-                    $day['project_location'] = $data->location_id;
-                    $day['attd'] = $data->attd;
-                    $day['std_hour'] = $data->std_hour;
-                    $day['ph'] = $data->ph;
-                    $day['we'] = $data->we;
-                    $day['ot'] = $data->ot;
-                    $day['inc'] = $data->inc;
-                    $day['remarks'] = $data->remarks;
-                } else {
-                    // Handle case where no attendance data is found for that day
-                    $day['project_location'] = null;
-                    $day['attd'] = null;
-                    $day['std_hour'] = null;
-                    $day['ph'] = null;
-                    $day['we'] = null;
-                    $day['ot'] = null;
-                    $day['inc'] = null;
-                    $day['remarks'] = null;
-                }
+        foreach ($daysInMonth as &$day) { // Use &$day to modify the original array elements
+            $data = Attendance::where('employee_id', $id)
+                ->where('date', $day['date']) // Access 'date' as array key
+                ->first();
+
+            if ($data) {
+                $day['project_location'] = $data->location_id;
+                $day['attd'] = $data->attd;
+                $day['std_hour'] = $data->std_hour;
+                $day['ph'] = $data->ph;
+                $day['we'] = $data->we;
+                $day['ot'] = $data->ot;
+                $day['inc'] = $data->inc;
+                $day['base'] = $data->base;
+
+                $day['remarks'] = $data->remarks;
+            } else {
+                // Handle case where no attendance data is found for that day
+                $day['project_location'] = null;
+                $day['attd'] = null;
+                $day['std_hour'] = null;
+                $day['ph'] = null;
+                $day['we'] = null;
+                $day['ot'] = null;
+                $day['inc'] = null;
+                $day['base'] = null;
+                $day['remarks'] = null;
             }
         }
-        // return view('mainsection.paySlip');
-        return $dayNumber;
+        return view('mainsection.paySlip',['attendances'=>$daysInMonth,'employee'=>$emp, 'salary'=> $salary]);
+        // return $daysInMonth;
     }
 }
