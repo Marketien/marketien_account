@@ -193,6 +193,7 @@
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: 10px;
   }
   .tableButton {
     background: linear-gradient(to top, #b83b3b, #114070);

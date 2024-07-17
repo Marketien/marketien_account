@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\QuotationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     //     return view('mainsection.purchaseOrder');
     // });
     Route::get('/quotation', function () {
+        return view('mainsection.qoutationForm');
+    });
+    Route::get('/quotation-detail', function () {
         return view('mainsection.quotation');
     });
     // Route::get('/payslip', function () {
@@ -62,6 +66,9 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/employee-location',[AttendanceController::class,'employeeLocation'])->name('employee-location');
     Route::get('/employee-detail/{id}',[AttendanceController::class,'employeeDetail']);
     Route::get('/payslip/{id}',[AttendanceController::class,'payslip']);
+
+    Route::get('/quotation-list',[QuotationController::class,'quotationList'])->name('quotation-list');
+    Route::get('/quotation-detail/{id}',[QuotationController::class,'quotationDetail']);
 
 
 

@@ -55,7 +55,7 @@
                         <span>visibility</span>
                     </button>
                     <!-- Export to PDF button  -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    <button type="submit" class="button-width d-flex align-items-center gap-1 btn_print">
                         <span><img class="button-img" src="image/pdf.png" alt="" /></span>
                         <span>PDF</span>
                     </button>
@@ -71,67 +71,123 @@
                 </div>
             </div>
             <!-- Table section   -->
-            <table class="overflow-auto">
-                <thead>
-                    <tr>
-                        <td>Actions</td>
-                        <td>Invoice No.</td>
-                        <td>Client Name</td>
-                        <td>Project Description</td>
-                        <td>Inv. Date</td>
-                        <td>LPO</td>
-                        <td>Amount(A&D)</td>
-                        <td>Credit</td>
-                        <td>Balance Amount <br>(A&C)</td>
-                        <td>Remarks</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- table row 1  -->
-                    @foreach ( $masters as $master)
+            <div id="container_content">
+                <table class="overflow-auto">
+                    <thead>
+                        <tr>
+                            <td>Actions</td>
+                            <td>Invoice No.</td>
+                            <td>Client Name</td>
+                            <td>Project Description</td>
+                            <td>Inv. Date</td>
+                            <td>LPO</td>
+                            <td>Amount(A&D)</td>
+                            <td>Credit</td>
+                            <td>Balance Amount <br>(A&C)</td>
+                            <td>Remarks</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- table row 1  -->
+                        @foreach ($masters as $master)
+                            @php
+                                $input = \App\Models\InputMaster::where('invoice_no', $master->invoice_no)->first();
+                            @endphp
 
-
-                    @php
-                        $input = \App\Models\InputMaster::where('invoice_no',$master->invoice_no)->first();
-                    @endphp
-
-                    <tr>
-                        <!-- Dropdown button   -->
-                        <td>
-                            <div class="dropdown">
-                                <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="/master-detail/{{$input->id}}">Details </a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>{{$master->invoice_no}}</td>
-                        <td>{{$master->client_name}}</td>
-                        <td>{{$master->description}}</td>
-                        <td>{{$master->invoice_date}}</td>
-                        <td>{{$master->lpo}}</td>
-                        <td>{{$master->amount}}</td>
-                        <td>{{$master->credit}}</td>
-                        <td>{{$master->due}}</td>
-                        <td>{{$master->remark}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                            <tr>
+                                <!-- Dropdown button   -->
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item" href="/master-detail/{{ $input->id }}">Details
+                                                </a></li>
+                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>{{ $master->invoice_no }}</td>
+                                <td>{{ $master->client_name }}</td>
+                                <td>{{ $master->description }}</td>
+                                <td>{{ $master->invoice_date }}</td>
+                                <td>{{ $master->lpo }}</td>
+                                <td>{{ $master->amount }}</td>
+                                <td>{{ $master->credit }}</td>
+                                <td>{{ $master->due }}</td>
+                                <td>{{ $master->remark }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
+                    class="bg-light p-3 rounded mb-3 text-center lh-lg">
+                    <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span>
+                        <span>{{ $amount }}</span> </p>
+                    <p class="d-flex justify-content-between"><span>Total Amount Recieved :</span> <span
+                            class="text-success">{{ $credit }}</span> </p>
+                    <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span
+                            class="text-danger">{{ $due }}</span>
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
-            class="bg-light p-3 rounded mb-3 text-center lh-lg">
-            <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span> <span>{{$amount}}</span> </p>
-            <p class="d-flex justify-content-between"><span>Total Amount Recieved :</span> <span
-                    class="text-success">{{$credit}}</span> </p>
-            <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span class="text-danger">{{$due}}</span>
-            </p>
-        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function($) {
+
+            $(document).on('click', '.btn_print', function(event) {
+                event.preventDefault();
+
+                //credit : https://ekoopmans.github.io/html2pdf.js
+
+                var element = document.getElementById('container_content');
+
+                //easy
+                // html2pdf().from(element).save();
+
+                //custom file name
+                // html2pdf().set({
+                //     filename: '' + '_Qalat-al-khaleej' + '.pdf'
+                // }).from(element).save();
+
+
+                // more custom settings
+                var opt = {
+                    margin: 0,
+                    filename: 'account_master' + '.pdf',
+                    image: {
+                        type: 'jpeg',
+                        quality: 0.98
+                    },
+                    html2canvas: {
+                        scale: 2
+                    },
+                    jsPDF: {
+                        unit: 'in',
+                        format: 'letter',
+                        orientation: 'portrait'
+                    }
+                };
+
+                // New Promise-based usage:
+                html2pdf().set(opt).from(element).save();
+
+
+            });
+
+
+
+        });
+    </script>
 @endsection

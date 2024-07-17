@@ -71,7 +71,17 @@
                 <a href="#" class="list-group-item list-group-item-action">Settings</a>
                 <a href="#" class="list-group-item list-group-item-action">Notification</a>
                 <a href="#" class="list-group-item list-group-item-action">SMS</a>
-                <a href="quotation" class="list-group-item list-group-item-action">Quotation</a>
+                <div class="dropdown">
+                    <button class="list-group-item list-group-item-action dropdown-toggle" type="button"
+                        id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Quotation
+                    </button>
+                    <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
+                        <li><a class="dropdown-item fst-italic" href="/quotation">Quotation Form</a></li>
+                        <li><a class="dropdown-item fst-italic" href="/quotation-list">Quotation List</a></li>
+                    </ul>
+                </div>
+                {{-- <a href="quotation" class="list-group-item list-group-item-action">Quotation</a> --}}
             </div>
         </div>
         <!--***************************** Main ****************************************** -->

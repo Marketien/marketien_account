@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\QuotationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/acount-store',[AccountController::class,'accountMasterStore']);
 Route::post('/salary-store',[AttendanceController::class,'salary']);
+Route::post('/quotation-store',[QuotationController::class,'quotationStore']);
