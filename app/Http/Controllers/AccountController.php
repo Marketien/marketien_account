@@ -85,7 +85,7 @@ class AccountController extends Controller
     {
         $data = Account::find($id);
         $data->delete();
-        return back()->with('success', 'Your Acoount Edited Successfully');
+        return back()->with('success', 'Your Acoount Deleted Successfully');
     }
 
     // Acount Master
@@ -157,5 +157,47 @@ class AccountController extends Controller
     public function purchaseInvoice($id){
          $data = InputMaster::find($id);
          return view('mainsection.purchaseOrder',['purchase'=>$data]);
+    }
+    function accountMasterDelete($id)
+    {
+        $data = AccountMaster::find($id);
+        $data->delete();
+        return back()->with('success', 'Your Acoount Master Deleted Successfully');
+    }
+    public function account_sms($id){
+        $data = AccountMaster::find($id);
+        $tel = '8801843884571';
+        $message = "your order $data->invoice_no 's date is $data->invoice_date";
+        $result = $this->sms_send($tel , $message);
+        if ($result) {
+            return back()->with('success', 'Sms Sent Successfully');
+        } else {
+            return back()->with('fail', 'something went wrong,try again');
+        }
+
+    }
+    function sms_send($phone, $sms)
+    {
+        $url = "http://bulksmsbd.net/api/smsapi";
+        $api_key = "tqaynG0piLxtv6zgxbNI";
+        $senderid = "8809617617020";
+        $number = $phone;
+        $message = $sms;
+
+        $data = [
+            "api_key" => $api_key,
+            "senderid" => $senderid,
+            "number" => $number,
+            "message" => $message
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        return $response;
     }
 }

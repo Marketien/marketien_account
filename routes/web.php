@@ -51,10 +51,13 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::post('/account-store',[AccountController::class,'accountStore'])->name('account-store');
     Route::post('/account-edit',[AccountController::class,'accountEdit'])->name('account-edit');
     Route::get('/account-delete/{id}', [AccountController::class, 'accountDelete'])->name('account-delete');
+    Route::get('/account-sms/{id}', [AccountController::class, 'account_sms'])->name('account-sms');
+
     //account master
     Route::get('/account-master-form',[AccountController::class,'accountMasterForm'])->name('account-master-form');
     Route::get('/account-master-table',[AccountController::class,'accountMasterTable'])->name('account-master-table');
     Route::get('/master-detail/{id}',[AccountController::class,'purchaseInvoice'])->name('master-detail');
+    Route::get('/account--master-delete/{id}', [AccountController::class, 'accountMasterDelete'])->name('account-master-delete');
 
     //attendance
     Route::get('/attendance',[AttendanceController::class,'attendance'])->name('attendance');
@@ -65,6 +68,8 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
 
     Route::get('/employee-location',[AttendanceController::class,'employeeLocation'])->name('employee-location');
     Route::get('/employee-detail/{id}',[AttendanceController::class,'employeeDetail']);
+    Route::get('/employee-delete/{id}', [AttendanceController::class, 'employeeDelete'])->name('employee-delete');
+    Route::get('/location-delete/{id}', [AttendanceController::class, 'locationDelete'])->name('location-delete');
     Route::get('/payslip/{id}',[AttendanceController::class,'payslip']);
 
     Route::get('/quotation-list',[QuotationController::class,'quotationList'])->name('quotation-list');

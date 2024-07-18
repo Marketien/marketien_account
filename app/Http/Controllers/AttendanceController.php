@@ -33,6 +33,12 @@ class AttendanceController extends Controller
             return back()->with('fail', 'something went wrong,try again');
         }
     }
+    function employeeDelete($id)
+    {
+        $data = Worker::find($id);
+        $data->delete();
+        return back()->with('success', 'Your Employee Deleted Successfully');
+    }
 
     public function storeLocation(Request $req)
     {
@@ -45,6 +51,12 @@ class AttendanceController extends Controller
         } else {
             return back()->with('fail', 'something went wrong,try again');
         }
+    }
+    function locationDelete($id)
+    {
+        $data = Location::find($id);
+        $data->delete();
+        return back()->with('success', 'Your location Deleted Successfully');
     }
     public function storeAttendance(Request $req)
     {

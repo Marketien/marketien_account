@@ -40,7 +40,7 @@
                         <span>CSV</span>
                     </button>
                     <!-- Export to Excel button -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    <button class="button-width d-flex align-items-center gap-1" id="downloadexcel">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span> Excel</span>
                     </button>
@@ -71,8 +71,21 @@
                 </div>
             </div>
             <!-- Table section   -->
+            <div style="background-color:green;">
+                @if (Session::get('success'))
+                    <div style="color:black; margin: 1rem; ">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+
+                @if (Session::get('fail'))
+                    <div style="color: rgb(238, 255, 0);">
+                        {{ Session::get('fail') }}
+                    </div>
+                @endif
+            </div>
             <div id="container_content">
-                <table class="overflow-auto">
+                <table class="overflow-auto" id="myTable">
                     <thead>
                         <tr>
                             <td>Actions</td>
@@ -103,10 +116,11 @@
                                             Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="#">Edit</a></li>
+                                            <li><a class="dropdown-item" href="/account-sms/{{$master->id}} ">SMS</a></li>
                                             <li><a class="dropdown-item" href="/master-detail/{{ $input->id }}">Details
                                                 </a></li>
-                                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop{{ $master->id }}">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -119,6 +133,7 @@
                                 <td>{{ $master->credit }}</td>
                                 <td>{{ $master->due }}</td>
                                 <td>{{ $master->remark }}</td>
+                                @include('account.modalMasterDelete')
                             </tr>
                         @endforeach
                     </tbody>
@@ -137,6 +152,13 @@
         </div>
 
     </div>
+    <script src="js/table2excel.js"></script>
+    <script>
+        document.getElementById('downloadexcel').addEventListener('click', function() {
+            var table2excel = new Table2Excel();
+            table2excel.export(document.querySelectorAll("#myTable"));
+        });
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>

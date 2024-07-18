@@ -88,6 +88,7 @@
                                         </ul>
                                     </div>
                                 </td>
+                                @include('mainsection.modalEmployeeDelete')
                             </tr>
                         @endforeach
 
@@ -122,10 +123,11 @@
                                                     data-id="{{ $location->id }}">Edit</a></li>
                                             {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
                                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop{{ $location->id }}">Delete</a></li>
+                                                    data-bs-target="#staticLBackdrop{{ $location->id }}">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
+                                @include('mainsection.modalLocationDelete')
                             </tr>
                         @endforeach
 
