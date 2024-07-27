@@ -41,7 +41,7 @@
     </nav>
     <!-- Sidebar -->
     <div class="d-flex">
-        <div class="sidebar-hidden SIDEBAR position-fixed" id="sidebar">
+        <div class="sidebar-hidden sidebar-expanded" id="sidebar">
             <div class="list-group list-group-flush">
                 <!-- Accounts dropdown -->
                 <div class="dropdown">
@@ -52,6 +52,7 @@
                     <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
                         <li><a class="dropdown-item fst-italic" href="/account-table">Accounts</a></li>
                         <li><a class="dropdown-item fst-italic" href="/account-master-table">Account master</a></li>
+                        <li><a class="dropdown-item fst-italic" href="/account-master-form">Create Invoice</a></li>
                         {{-- <li><a class="dropdown-item fst-italic" href="/purchase-invoice">Purchase Order</a></li>
                         <li><a class="dropdown-item fst-italic" href="/invoice">Text Invoice</a></li>
                         <li><a class="dropdown-item fst-italic" href="/payslip">PaySlip</a></li> --}}

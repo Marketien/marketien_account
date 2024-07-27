@@ -98,7 +98,7 @@
         background: linear-gradient(to bottom, #3bb890, #114070);
     }
     </style>
-    <div id="appq">
+    <div id="appq" class="flex-grow-1 main-content-expanded p-3">
 
     </div>
 

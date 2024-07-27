@@ -122,7 +122,7 @@
 
             <img class="header-image" src="/image/Header.png" alt="">
 
-            <h2 class="InvoiceText">PURCHASE ORDER</h2>
+            <h2 class="InvoiceText">Order Invoice</h2>
             <!-- table no 1  -->
             <table>
                 <thead>

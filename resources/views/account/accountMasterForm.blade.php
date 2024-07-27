@@ -153,7 +153,7 @@
         width: 30%;
     }
 </style>
-<div class="master-form">
+<div class="master-form flex-grow-1 main-content-expanded p-3">
     <div class="form-container">
         {{-- <h2 class="text-center mb-4">Form-0</h2>
         <form>

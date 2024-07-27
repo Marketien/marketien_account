@@ -56,7 +56,7 @@
             }
         }
     </style>
-    <div class="emp-body">
+    <div class="emp-body flex-grow-1 main-content-expanded p-3" >
         <div class="InvoiceTableContainer">
             <div class="InvoiceTable-container">
                 <table>

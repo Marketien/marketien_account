@@ -1,3 +1,4 @@
+
 // adminPanel page -----------------------------
 document.getElementById('menuButton').addEventListener('click', function() {
     const sidebar = document.getElementById('sidebar');
@@ -8,17 +9,14 @@ document.getElementById('menuButton').addEventListener('click', function() {
     }
 });
 
-// document.getElementById('sidebarToggle').addEventListener('click', function() {
-//     document.getElementById('sidebar').classList.toggle('sidebar-hidden');
-// });
-
 const sidebarToggle = document.getElementById('sidebarToggle');
-const sidebar = document.getElementById('sidebar');
 const mainContent = document.querySelector('.flex-grow-1');
+const sidebar = document.querySelector('.sidebar-hidden');
+// const sidebar = document.getElementById('sidebar');
 
 sidebarToggle.addEventListener('click', function() {
+    mainContent.classList.toggle('main-content-expanded');
   sidebar.classList.toggle('sidebar-expanded');
-  mainContent.classList.toggle('main-content-expanded');
 });
 
 

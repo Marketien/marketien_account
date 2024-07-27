@@ -65,9 +65,9 @@
                     {{-- <form class="d-flex ms-auto me-3">
                         <input class="form-control me-2 w-100" type="search" placeholder="Search" aria-label="Search" />
                     </form> --}}
-                    <a href="/account-master-form" class="btn search-button">
+                    {{-- <a href="/account-master-form" class="btn search-button">
                         Add
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             <!-- Table section   -->

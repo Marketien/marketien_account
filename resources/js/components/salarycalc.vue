@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <td colspan="3">OT - Sunday & Public holidays <br> (1.50k Basic /Hr) </td>
-                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="holiday_ot" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="holiday_ot" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Ot - Weekdays (1.25X Basic /Hr)</td>
-                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="weekday_ot" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" name="" id="" step="0.01" v-model="weekday_ot" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Housing</td>
@@ -69,8 +69,8 @@ export default {
             id: window.location.href.split('/').pop(),
             deduction:0,
             basic:'',
-            holiday_ot:0,
-            weekday_ot:0,
+            holiday_ot:0.00,
+            weekday_ot:0.00,
             housing:'Nill',
             transport:'Company Provided',
             food:0,
@@ -90,10 +90,12 @@ export default {
         },
         getTotalNetSalary(){
             var total = 0;
+            var w_ot = this.weekday_ot.toFixed(2);
+            var h_ot = this.holiday_ot.toFixed(2);
             total = this.total_salary+
                this.food + this.other
                + this.other_due + this.project_bonus
-               + this.weekday_ot + this.holiday_ot;
+               + this.holiday_ot + this.weekday_ot;
                this.total_net_salary = total.toFixed(2);
         },
         submit: function (e) {

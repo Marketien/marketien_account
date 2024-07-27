@@ -129,6 +129,14 @@ class AccountController extends Controller
         $result1 = $data->save();
         $result2 = $input->save();
         if ($result1 && $result2) {
+            if($req->credit > 0){
+                Account::create([
+                    'description' => $req->work_scope,
+                    'invoice_no' => $req->invoice_no,
+                    'cash_in_credit'=>$req->credit,
+                    'date' =>Carbon::now()->format('Y-m-d')
+                ]);
+            }
             return response([
                 'result' => "data stored successfully"
             ]);

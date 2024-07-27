@@ -57,59 +57,60 @@
             }
         }
     </style>
-    <div class="emp-body">
-        <div class="InvoiceTableContainer">
+    <div class="flex-grow-1 main-content-expanded p-3">
+        <div class="emp-body">
+            <div class="InvoiceTableContainer">
 
 
-            <div class="InvoiceTable-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Ref. No.</th>
-                            <th>Date</th>
-                            <th>M/S</th>
-                            <th>P.O</th>
-                            <th>Tel</th>
-                            <th>Email</th>
-                            <th>To</th>
-                            <th>Project Name</th>
-
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($quotations as $quotation)
+                <div class="InvoiceTable-container">
+                    <table>
+                        <thead>
                             <tr>
-                                <td>{{ $quotation->ref_no }}</td>
-                                <td>{{ $quotation->date}}</td>
-                                <td>{{ $quotation->ms }}</td>
-                                <td>{{ $quotation->po_box }}</td>
-                                <td>{{ $quotation->phone_no }}</td>
-                                <td>{{ $quotation->email }}</td>
-                                <td>{{ $quotation->kind_attn }}</td>
-                                <td>{{ $quotation->project_name }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            Action
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item editBtn" href="/quotation-detail/{{$quotation->id}}"
+                                <th>Ref. No.</th>
+                                <th>Date</th>
+                                <th>M/S</th>
+                                <th>P.O</th>
+                                <th>Tel</th>
+                                <th>Email</th>
+                                <th>To</th>
+                                <th>Project Name</th>
 
-                                                >Detail</a></li>
-                                            {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
-                                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop{{ $quotation->id }}">Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
+                                <th>Action</th>
                             </tr>
-                        @endforeach
+                        </thead>
+                        <tbody>
+                            @foreach ($quotations as $quotation)
+                                <tr>
+                                    <td>{{ $quotation->ref_no }}</td>
+                                    <td>{{ $quotation->date }}</td>
+                                    <td>{{ $quotation->ms }}</td>
+                                    <td>{{ $quotation->po_box }}</td>
+                                    <td>{{ $quotation->phone_no }}</td>
+                                    <td>{{ $quotation->email }}</td>
+                                    <td>{{ $quotation->kind_attn }}</td>
+                                    <td>{{ $quotation->project_name }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Action
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item editBtn"
+                                                        href="/quotation-detail/{{ $quotation->id }}">Detail</a></li>
+                                                {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop{{ $quotation->id }}">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
 
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

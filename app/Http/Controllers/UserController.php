@@ -15,7 +15,7 @@ class UserController extends Controller
         if($user){
             if(Hash::check($req->password,$user->password)){
                 $req->session()->put('admin',$user->id);
-                return redirect('/account-master-table');
+                return redirect('/account-master-form');
             }
             else{
                 return back()->with('fail','Invalid password');

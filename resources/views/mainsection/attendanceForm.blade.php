@@ -80,7 +80,7 @@
     </style>
 
 
-    <div class="attend-body">
+    <div class="attend-body flex-grow-1 main-content-expanded p-3">
         <div class="container-attend">
             <!-- Section 1 -->
             <div style="background-color:green;">

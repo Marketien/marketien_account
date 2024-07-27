@@ -1,6 +1,6 @@
 @extends('adminMaster')
 @section('content')
-@vite(['resources/js/app.js','resources/css/app.css'])
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
     <style>
         textarea {
             width: 100%;
@@ -48,123 +48,134 @@
 
         /* salary and benefits */
         /* ------------------------------- */
-       /* Common styles for tables */
-       .sos{
-        margin-top: 90px;
-       }
-    .invoiceTable1,
-    .invoiceTable2 {
-      width: 100%;
-      border: 1px solid black;
-      text-align: left;
-      margin-bottom: 20px; /* Add margin between tables */
-      box-sizing: border-box; /* Ensure padding and border are included in width */
-    }
+        /* Common styles for tables */
+        .sos {
+            margin-top: 90px;
+        }
 
-    .invoiceTable1 th,
-    .invoiceTable1 td,
-    .invoiceTable2 th,
-    .invoiceTable2 td {
-      border: 1px solid black;
-      padding: 10px; /* Adjust padding for better spacing */
-    }
+        .invoiceTable1,
+        .invoiceTable2 {
+            width: 100%;
+            border: 1px solid black;
+            text-align: left;
+            margin-bottom: 20px;
+            /* Add margin between tables */
+            box-sizing: border-box;
+            /* Ensure padding and border are included in width */
+        }
 
-    .thead1,
-    .thead2 {
-      background: linear-gradient(to left, #37d8a5, #114070);
-      color: white;
-      font-weight: bold;
-    }
+        .invoiceTable1 th,
+        .invoiceTable1 td,
+        .invoiceTable2 th,
+        .invoiceTable2 td {
+            border: 1px solid black;
+            padding: 10px;
+            /* Adjust padding for better spacing */
+        }
 
-    .textInput {
-      width: calc(100% - 20px);
-      margin: 0;
-      box-sizing: border-box;
-    }
+        .thead1,
+        .thead2 {
+            background: linear-gradient(to left, #37d8a5, #114070);
+            color: white;
+            font-weight: bold;
+        }
 
-    /* Media query for medium devices */
-    @media (max-width: 768px) {
-      .sos {
-        flex-direction: column;
-      }
-      .textInput {
-        width: calc(100% - 10px); /* Further adjust input width for smaller screens */
-      }
-    }
+        .textInput {
+            width: calc(100% - 20px);
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-    /* Media query for large devices */
-    @media (min-width: 769px) {
-      .sos {
-        display: flex;
-        justify-content: space-between;
-      }
-      .tableDiv1,
-      .tableDiv2 {
-        flex: 0 0 48%; /* Adjust the width as needed */
-      }
-    }
-    .submitdiv{
-      display: flex ;
-      justify-content: center;
-    }
-    .submitbutton{
-      background: linear-gradient(to top, #37d8a5, #114070);
-      color: white;
-      font-weight: 500;
-      padding: 10px;
-      border: 1px solid black ;
-      border-radius: 2px;
-    }
-    .submitbutton:hover{
-      background: linear-gradient(to bottom, #37d8a5, #114070);
-      color: white;
-      font-weight: 500;
-      padding: 10px;
-      border: 1px solid black ;
-      border-radius: 2px;
-    }
+        /* Media query for medium devices */
+        @media (max-width: 768px) {
+            .sos {
+                flex-direction: column;
+            }
+
+            .textInput {
+                width: calc(100% - 10px);
+                /* Further adjust input width for smaller screens */
+            }
+        }
+
+        /* Media query for large devices */
+        @media (min-width: 769px) {
+            .sos {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .tableDiv1,
+            .tableDiv2 {
+                flex: 0 0 48%;
+                /* Adjust the width as needed */
+            }
+        }
+
+        .submitdiv {
+            display: flex;
+            justify-content: center;
+        }
+
+        .submitbutton {
+            background: linear-gradient(to top, #37d8a5, #114070);
+            color: white;
+            font-weight: 500;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+
+        .submitbutton:hover {
+            background: linear-gradient(to bottom, #37d8a5, #114070);
+            color: white;
+            font-weight: 500;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
     </style>
 
-<div class="attn-table">
-    <div class="sos">
+    <div class="attn-table flex-grow-1 main-content-expanded p-3">
+        <div class="sos">
             <!-- Salary & Benefits  -->
             <div class="tableDiv1" id="apps"></div>
             <!-- Summary  -->
-      <div class="tableDiv2">
-        <table class="invoiceTable2">
-          <thead class="thead2">
-            <tr>
-              <th colspan="8" class="">Summary</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="3">Salary & Benefits:</td>
-              <td colspan="2">AED</td>
-              <td colspan="3">{{optional($salary)->salary}}</td>
-            </tr>
-            <tr>
-              <td colspan="3">Deduction:</td>
-              <td colspan="2">AED</td>
-              <td colspan="3">{{optional($salary)->deduction}}</td>
-            </tr>
-            <tr>
-              <td colspan="3">Due:</td>
-              <td colspan="2">AED</td>
-              <td colspan="3">{{optional($salary)->net_salary}}</td>
-            </tr>
-            <tr>
-              <td colspan="3">Paid:</td>
-              <td colspan="2">AED</td>
-              <td colspan="3"></td>
-            </tr>
-            <tr>
-              <td colspan="8">Leave Balance:</td>
-            </tr>
+            <div class="tableDiv2">
+                <table class="invoiceTable2">
+                    <thead class="thead2">
+                        <tr>
+                            <th colspan="8" class="">Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3">Salary & Benefits:</td>
+                            <td colspan="2">AED</td>
+                            <td colspan="3">{{ optional($salary)->salary }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Deduction:</td>
+                            <td colspan="2">AED</td>
+                            <td colspan="3">{{ optional($salary)->deduction }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Due:</td>
+                            <td colspan="2">AED</td>
+                            <td colspan="3">{{ optional($salary)->net_salary }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Paid:</td>
+                            <td colspan="2">AED</td>
+                            <td colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="8">Leave Balance:</td>
+                        </tr>
 
-          </tbody>
-        </table>
-      </div>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="tableDiv">
@@ -204,7 +215,7 @@
             </table>
         </div>
         <div class="submitdiv">
-            <a href="/payslip/{{optional($salary)->employee_id}}" class="submitbutton">Make PlaySlip</a>
-          </div>
+            <a href="/payslip/{{ optional($salary)->employee_id }}" class="submitbutton">Make PlaySlip</a>
+        </div>
     </div>
 @endsection

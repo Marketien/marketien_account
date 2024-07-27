@@ -3,7 +3,7 @@
         <div class="invoice-container">
             <div>
                 <div class="invoice-header">
-                    <h1>Account Master Input</h1>
+                    <h1>Invoice Form</h1>
                 </div>
 
                 <form @submit.prevent="submit()">
