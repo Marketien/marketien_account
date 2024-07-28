@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <button class="btn logout-btn mt-1" href="#">Logout</button>
+                        <a class="btn logout-btn mt-1" href="/logout">Logout</a>
                     </li>
                 </ul>
             </div>

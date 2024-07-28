@@ -14,11 +14,16 @@
                         </div>
                         <div>
                             <label for="invoiceNo">Invoice No:</label>
-                            <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no" >
-                        </div>
+                            <div class="invoiceDiv">
+                                <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no">
+                                <div type="button" @change="getInvoice()">
+                                    <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png" alt="" @click="getInvoice()">
+                                </div>
+                            </div>
+                        </div>
                         <div>
                             <label for="date">Date:</label>
-                            <input type="date" id="date" name="date" v-model="date" >
+                            <input class="dateinput" type="date" id="date" name="date" v-model="date" >
                         </div>
                     </div>
 
@@ -232,6 +237,12 @@ export default {
                 }
 
             },
+            getInvoice(){
+                axios.get("/api/invoice-no").then((response)=>{
+                  this.invoice_no = response.data;
+                  console.log(response.data);
+                });
+            },
             calculateRowTotal(keyIndex){
                 var total = parseFloat(this.projects[keyIndex].quantity)* parseFloat(this.projects[keyIndex].unit_price);
                 if (!isNaN(total)) {
@@ -322,6 +333,7 @@ export default {
             this.calculateVat();
             this.calculateGrandTotal();
             this.amountToPay();
+            this.getInvoice();
         },
 
 

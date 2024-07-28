@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\AccountMaster;
@@ -89,6 +90,11 @@ class AccountController extends Controller
     }
 
     // Acount Master
+
+    public function generateInvoice(){
+        $invoice_no = Helper::IdGenerator( new InputMaster(),'invoice_no',5,'QAK');
+        return response()->json($invoice_no);
+    }
 
     public function accountMasterForm()
     {

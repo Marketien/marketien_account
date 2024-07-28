@@ -43,7 +43,7 @@ class UserController extends Controller
     public function logout(){
       if(session()->has('admin')){
         session()->pull('admin');
-        return redirect('system');
+        return redirect('/');
       }
     }
 

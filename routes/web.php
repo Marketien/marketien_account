@@ -77,6 +77,6 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
 
 
 
-
+    Route::get('/logout',[UserController::class,'logout'])->name('logout');
 });
 Route::post('/check', [UserController::class, 'userCheck'])->name('check');

@@ -24,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/acount-store',[AccountController::class,'accountMasterStore']);
 Route::post('/salary-store',[AttendanceController::class,'salary']);
 Route::post('/quotation-store',[QuotationController::class,'quotationStore']);
+Route::get('/invoice-no',[AccountController::class,'generateInvoice'])->name('invoice-no');
