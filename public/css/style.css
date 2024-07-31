@@ -1,173 +1,213 @@
 /****************************** Header section ***************************** */
-
 .adminBody {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background: rgb(220, 219, 219);
-}
-.NAV {
-  background: linear-gradient(to left, #37d8a5, #114070);
-  z-index: 2;
-  width: 100%;
-}
-header {
-  flex: 0 0 auto;
-}
-.navbar-brand {
-  font-family: "Montserrat", sans-serif;
-}
-
-.search-button {
-  font-family: "Montserrat", sans-serif;
-  background: linear-gradient(to top, #3bb890, #114070);
-  color: white !important;
-  border: none;
-  padding: 0.75em 1.5em;
-  font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-  font-family: "Montserrat", sans-serif;
-  transition: background 0.3s ease;
-}
-
-.search-button:hover {
-  background: linear-gradient(to bottom, #2a9070, #0d3050);
-  opacity: 0.9;
-  color: white !important;
-}
-
-.logout-btn {
-  font-family: "Montserrat", sans-serif;
-  background: linear-gradient(to top, #b83b3b, #114070);
-  color: white !important;
-  border: none;
-  padding: 0.75em 1.5em;
-  font-weight: 600;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-  font-family: "Montserrat", sans-serif;
-  transition: background 0.3s ease;
-}
-
-.logout-btn:hover {
-  background: linear-gradient(to bottom, #b83b3b, #0d3050);
-  opacity: 0.9;
-  color: white !important;
-}
-
-.list-group {
-  width: 240px;
-  border-radius: 5%;
-}
-.list-group-item {
-  margin-top: 8px;
-  margin-bottom: 2px;
-  background: linear-gradient(to left, #3bb890, #114070) !important;
-  border-top: 1px solid gray !important;
-  border-bottom: 1px solid gray !important;
-  border-right: 1px solid gray !important;
-  color: white !important;
-  font-family: "Montserrat", sans-serif;
-}
-/* Adjustments for Sidebar and List-group */
-
-.sidebar-hidden {
-  display: none;
-  background: linear-gradient(to top, #3bb890, #114070);
-  z-index: 1;
-  position: fixed;
-  width: 280px;
-  height: 100vh;
-  transition: width 0.3s ease;
-  padding-top: 55px;
-}
-.sidebar-expanded {
-  width: 250px;
-}
-
-.list-group {
-  margin-top: 20px;
-  padding: 10;
-}
-
-.list-group-item {
-  background-color: #114070;
-  border: none;
-  color: white !important;
-  font-family: "Montserrat", sans-serif;
-}
-
-.flex-grow-1 {
-  margin-left: 0;
-  margin-top: 55px;
-}
-
-.filterImg {
-  width: 15px;
-}
-.filterText {
-  font-size: small;
-  font-family: "Montserrat", sans-serif;
-}
-/* select section  */
-.selector-width {
-  width: 20%;
-  font-family: "Montserrat", sans-serif;
-}
-.button-width {
-  background: linear-gradient(to top, #3bb890, #114070);
-  color: white;
-  border: 1px solid black;
-  width: "150px";
-  font-size: small;
-  font-family: "Montserrat", sans-serif;
-  border-radius: 5%;
-}
-.button-width:hover {
-  background: linear-gradient(to bottom, #3bb890, #114070);
-  color: white;
-}
-.button-img {
-  width: 10px;
-  margin-right: 2px;
-}
-
-/*+++++++++++++++++++++++++++++++ Media query starts ++++++++++++++++++++++++++++++ */
-@media (min-width: 767px) {
-  .navbar-collapse{
-    display: flex ;
-    justify-content: end;
-  }
-  .sidebar-expanded {
-    margin-left: 0px;
-  }
-  .menu-button {
-    display: none;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: rgb(220, 219, 219);
   }
-  table {
+  .NAV {
+    background: linear-gradient(to left, #37d8a5, #114070);
+    z-index: 2;
     width: 100%;
-    overflow-x: auto !important;
   }
-}
+  header {
+    flex: 0 0 auto;
+  }
+  .navbar-brand {
+    font-family: "Montserrat", sans-serif;
+  }
 
-@media (min-width: 992px) {
-  .navbar-collapse{
-  display: flex ;
-  justify-content: end;
-}
-  .sidebar-expanded {
-    margin-left: -280px;
+  .search-button {
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(to top, #3bb890, #114070);
+    color: white !important;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: "Montserrat", sans-serif;
+    transition: background 0.3s ease;
   }
+
+  .search-button:hover {
+    background: linear-gradient(to bottom, #2a9070, #0d3050);
+    opacity: 0.9;
+    color: white !important;
+  }
+
+  .logout-btn {
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(to top, #b83b3b, #114070);
+    color: white !important;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: "Montserrat", sans-serif;
+    transition: background 0.3s ease;
+  }
+
+  .logout-btn:hover {
+    background: linear-gradient(to bottom, #b83b3b, #0d3050);
+    opacity: 0.9;
+    color: white !important;
+  }
+  .small-logout-btn {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    width: 98%;
+    font-family: "Montserrat", sans-serif;
+    background: linear-gradient(to top, #b83b3b, #114070);
+    color: white !important;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: "Montserrat", sans-serif;
+    transition: background 0.3s ease;
+  }
+
+  .small-logout-btn:hover {
+    background: linear-gradient(to bottom, #b83b3b, #0d3050);
+    opacity: 0.9;
+    color: white !important;
+  }
+
+  .list-group {
+    width: 240px;
+    border-radius: 5%;
+  }
+  .list-group-item {
+    margin-top: 8px;
+    margin-bottom: 2px;
+    background: linear-gradient(to left, #3bb890, #114070) !important;
+    border-top: 1px solid gray !important;
+    border-bottom: 1px solid gray !important;
+    border-right: 1px solid gray !important;
+    color: white !important;
+    font-family: "Montserrat", sans-serif;
+  }
+  /* Adjustments for Sidebar and List-group */
+
   .sidebar-hidden {
-    display: block;
+    display: none;
+    background: linear-gradient(to top, #3bb890, #114070);
+    z-index: 1;
+    position: fixed;
+    width: 280px;
+    height: 100vh;
+    transition: width 0.3s ease;
+    padding-top: 55px;
   }
-}
-/*+++++++++++++++++++++++++++++++ Media query ends ++++++++++++++++++++++++++++++ */
+  .sidebar-expanded {
+    width: 250px;
+  }
+
+  .list-group {
+    margin-top: 20px;
+    padding: 10;
+  }
+
+  .list-group-item {
+    background-color: #114070;
+    border: none;
+    color: white !important;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .flex-grow-1 {
+    margin-left: 0;
+    margin-top: 55px;
+  }
+
+  .filterImg {
+    width: 15px;
+  }
+  .filterText {
+    font-size: small;
+    font-family: "Montserrat", sans-serif;
+  }
+  /* select section  */
+  .selector-width {
+    width: 20%;
+    font-family: "Montserrat", sans-serif;
+  }
+  .button-width {
+    background: linear-gradient(to top, #3bb890, #114070);
+    color: white;
+    border: 1px solid black;
+    width: "150px";
+    font-size: small;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 5%;
+  }
+  .button-width:hover {
+    background: linear-gradient(to bottom, #3bb890, #114070);
+    color: white;
+  }
+  .button-img {
+    width: 10px;
+    margin-right: 2px;
+  }
+
+  /*+++++++++++++++++++++++++++++++ Media query starts ++++++++++++++++++++++++++++++ */
+  /*+++++++++++++++++++++++++++++++ Media query starts ++++++++++++++++++++++++++++++ */
+@media (max-width: 479px) {
+    .navbar-collapse {
+      display: none;
+    }
+  }
+
+  @media (min-width: 767px) {
+    .small-logout-btn {
+      display: none;
+    }
+    .navbar-collapse{
+      display: none;
+    }
+    .sidebar-expanded {
+      margin-left: 0px;
+    }
+    .menu-button {
+      display: none;
+      display: flex;
+      align-items: center;
+    }
+    table {
+      width: 100%;
+      overflow-x: auto !important;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .small-logout-btn {
+      display: none;
+    }
+    .list-group{
+      padding-top: 0px;
+    }
+    .navbar-collapse{
+    display: flex ;
+    justify-content:flex-end;
+  }
+    .sidebar-expanded {
+      margin-left: -280px;
+    }
+    .sidebar-hidden {
+      display: block;
+    }
+  }
+  /*+++++++++++++++++++++++++++++++ Media query ends ++++++++++++++++++++++++++++++ */
+
+  /*+++++++++++++++++++++++++++++++ Media query ends ++++++++++++++++++++++++++++++ */
 
   /****************************** Table section ***************************** */
 

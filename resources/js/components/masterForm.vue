@@ -16,8 +16,8 @@
                             <label for="invoiceNo">Invoice No:</label>
                             <div class="invoiceDiv">
                                 <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no">
-                                <div type="button" @change="getInvoice()">
-                                    <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png" alt="" @click="getInvoice()">
+                                <div type="button" @click="getInvoice()" >
+                                    <img id="generateNumberIcon" class="passMngIcon" src="/image/password-manager-icon.png" alt="" >
                                 </div>
                             </div>
                         </div>

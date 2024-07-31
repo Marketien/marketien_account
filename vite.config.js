@@ -17,4 +17,11 @@ export default defineConfig({
             }
         })
     ],
+    server: {
+        // https: true,
+        // host: 'localhost',
+         hmr: {
+      host: 'localhost',
+    },
+    },
 });
