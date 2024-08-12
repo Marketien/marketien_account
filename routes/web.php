@@ -57,7 +57,7 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/account-master-form',[AccountController::class,'accountMasterForm'])->name('account-master-form');
     Route::get('/account-master-table',[AccountController::class,'accountMasterTable'])->name('account-master-table');
     Route::get('/master-detail/{id}',[AccountController::class,'purchaseInvoice'])->name('master-detail');
-    Route::get('/account--master-delete/{id}', [AccountController::class, 'accountMasterDelete'])->name('account-master-delete');
+    Route::get('/account-master-delete/{id}', [AccountController::class, 'accountMasterDelete'])->name('account-master-delete');
 
     //attendance
     Route::get('/attendance',[AttendanceController::class,'attendance'])->name('attendance');
@@ -74,6 +74,7 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
 
     Route::get('/quotation-list',[QuotationController::class,'quotationList'])->name('quotation-list');
     Route::get('/quotation-detail/{id}',[QuotationController::class,'quotationDetail']);
+    Route::get('/quotation-delete/{id}', [QuotationController::class, 'quotationDelete'])->name('quotation-delete');
 
 
 

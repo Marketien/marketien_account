@@ -42,4 +42,10 @@ class QuotationController extends Controller
         }
 
     }
+    function quotationDelete($id)
+    {
+        $data = Quotation::find($id);
+        $data->delete();
+        return back()->with('success', 'Your quotation Deleted Successfully');
+    }
 }

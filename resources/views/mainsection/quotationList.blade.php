@@ -99,8 +99,7 @@
                                                 <li><a class="dropdown-item editBtn"
                                                         href="/quotation-detail/{{ $quotation->id }}">Detail</a></li>
                                                 {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
-                                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop{{ $quotation->id }}">Delete</a></li>
+                                                <li><a class="dropdown-item" href="/quotation-delete/{{ $quotation->id }}" >Delete</a></li>
                                             </ul>
                                         </div>
                                     </td>

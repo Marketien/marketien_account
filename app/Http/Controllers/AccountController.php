@@ -176,7 +176,7 @@ class AccountController extends Controller
     {
         $data = AccountMaster::find($id);
         $data->delete();
-        return back()->with('success', 'Your Acoount Master Deleted Successfully');
+        return back()->with('success', 'Your Account Master Deleted Successfully');
     }
     public function account_sms($id){
         $data = AccountMaster::find($id);
