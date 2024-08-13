@@ -1,146 +1,8 @@
 @extends('adminMaster')
 @section('content')
-    {{-- /****************************** filter and input  section ***************************** */ --}}
-    <style>
-        .filterInputParentDiv {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .filterDiv {
-            width: 100%;
-        }
-
-        .inputDiv {
-            width: 100%;
-        }
-
-        .similarInputStyle {
-            width: 50%;
-            padding: 1%;
-            border-radius: 5px;
-            border: 1px solid rgba(128, 128, 128, 0.493);
-        }
-
-        .submit-button {
-            font-family: "Montserrat", sans-serif;
-            background: linear-gradient(to top, #3bb890, #114070);
-            color: white !important;
-            border: none;
-            padding: 8px;
-            font-weight: 500;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-            font-family: "Montserrat", sans-serif;
-            transition: background 0.3s ease;
-        }
-
-        .submit-button:hover {
-            background: linear-gradient(to bottom, #2a9070, #0d3050);
-            opacity: 0.9;
-            color: white !important;
-        }
-    </style>
     <div style="margin-top: 55px;" class="flex-grow-1 p-3">
 
 
-        <!-- ((((((((((((((((((((((((((((((((( filterInputParentDiv ))))))))))))))))))))))))))))))))) -->
-        <div class="filterInputParentDiv bg-light p-3 rounded mb-5 mt-3">
-            <!-- filter dropdown section -->
-            <div class="filterDiv">
-                <h1 class="filterText mb-3">
-                    <span>
-                        <img class="filterImg" src="./assets/filter_icon.png" alt="" />
-                    </span>
-                    <span>Filters</span>
-                </h1>
-                <div class="w-50">
-                    <select id="filterSelect" class="form-select" aria-label="Default select example">
-                        <option value="1" selected>Date</option>
-                        <option value="2">Month</option>
-                        <option value="3">Invoice</option>
-                        <option value="4">Client Name</option>
-                        <option value="5">LPO</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- dynamic input fields -->
-            <div class="inputDiv">
-                <form action="/search-master" method="POST">
-                    @csrf
-                    <!-- <<<<<<<<<< date input field >>>>>>>>>> -->
-                    <div id="dateField">
-                        <h1 class="filterText">
-                            <span>Date</span>
-                        </h1>
-                        <div>
-                            <input class="similarInputStyle" type="date" name="date" id="dateInput">
-                        </div>
-                    </div>
-
-                    <!-- <<<<<<<<<< month dropdown input field >>>>>>>>>> -->
-                    <div id="monthField" style="display: none;">
-                        <h1 class="filterText">
-                            <span>Month</span>
-                        </h1>
-                        <div class="w-50">
-                            <select class="form-select" aria-label="Default select example" id="monthSelect" name="month">
-                                <option value="1" selected>January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- <<<<<<<<<< invoice input field >>>>>>>>>> -->
-                    <div id="invoiceField" style="display: none;">
-                        <h1 class="filterText">
-                            <span>Invoice</span>
-                        </h1>
-                        <div>
-                            <input class="similarInputStyle" type="text" name="invoice_no" id="invoiceInput">
-                        </div>
-                    </div>
-
-                    <!-- <<<<<<<<<< client Name input field >>>>>>>>>> -->
-                    <div id="clientNameField" style="display: none;">
-                        <h1 class="filterText">
-                            <span>Client Name</span>
-                        </h1>
-                        <div>
-                            <input class="similarInputStyle" type="text" name="client_name" id="clientNameInput">
-                        </div>
-                    </div>
-
-                    <!-- <<<<<<<<<< LPO input field >>>>>>>>>> -->
-                    <div id="lpoField" style="display: none;">
-                        <h1 class="filterText">
-                            <span>LPO</span>
-                        </h1>
-                        <div>
-                            <input class="similarInputStyle" type="text" name="lpo" id="lpoInput">
-                        </div>
-                    </div>
-            </div>
-            <!-- submit button -->
-            <div class="ms-3">
-                <button type="submit" class="submit-button">Submit</button>
-            </div>
-            </form>
-        </div>
-        <!-- ((((((((((((((((((((((((((((((((( filterInputParentDiv ))))))))))))))))))))))))))))))))) -->
 
         <div class="bg-light p-3 rounded mb-5">
             <!-- button and filter section  -->
@@ -235,17 +97,16 @@
                                 <!-- Dropdown button   -->
                                 <td>
                                     <div class="dropdown">
-                                        <button class="tableButton dropdown-toggle" type="button"
-                                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
                                             Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item" href="/account-sms/{{ $master->id }} ">SMS</a>
-                                            </li>
+                                            <li><a class="dropdown-item" href="/account-sms/{{$master->id}} ">SMS</a></li>
                                             <li><a class="dropdown-item" href="/master-detail/{{ $input->id }}">Details
                                                 </a></li>
                                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop{{ $master->id }}">Delete</a></li>
+                                                data-bs-target="#staticBackdrop{{ $master->id }}">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -266,8 +127,7 @@
                 <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
                     class="bg-light p-3 rounded mb-3 text-center lh-lg">
                     <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span>
-                        <span>{{ $amount }}</span>
-                    </p>
+                        <span>{{ $amount }}</span> </p>
                     <p class="d-flex justify-content-between"><span>Total Amount Recieved :</span> <span
                             class="text-success">{{ $credit }}</span> </p>
                     <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span
@@ -336,48 +196,6 @@
 
 
 
-        });
-    </script>
-
-    {{-- // dynamic input fields ------------------------------ --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterSelect = document.getElementById('filterSelect');
-            const dateField = document.getElementById('dateField');
-            const monthField = document.getElementById('monthField');
-            const invoiceField = document.getElementById('invoiceField');
-            const clientNameField = document.getElementById('clientNameField');
-            const lpoField = document.getElementById('lpoField');
-
-            filterSelect.addEventListener('change', function() {
-                // Hide all fields initially
-                dateField.style.display = 'none';
-                monthField.style.display = 'none';
-                invoiceField.style.display = 'none';
-                clientNameField.style.display = 'none';
-                lpoField.style.display = 'none';
-
-                // Show the selected field
-                const selectedValue = filterSelect.value;
-
-                switch (selectedValue) {
-                    case '1':
-                        dateField.style.display = 'block';
-                        break;
-                    case '2':
-                        monthField.style.display = 'block';
-                        break;
-                    case '3':
-                        invoiceField.style.display = 'block';
-                        break;
-                    case '4':
-                        clientNameField.style.display = 'block';
-                        break;
-                    case '5':
-                        lpoField.style.display = 'block';
-                        break;
-                }
-            });
         });
     </script>
 @endsection

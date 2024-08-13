@@ -91,8 +91,9 @@ class AccountController extends Controller
 
     // Acount Master
 
-    public function generateInvoice(){
-        $invoice_no = Helper::IdGenerator( new InputMaster(),'invoice_no',5,'QAK');
+    public function generateInvoice()
+    {
+        $invoice_no = Helper::IdGenerator(new InputMaster(), 'invoice_no', 5, 'QAK');
         return response()->json($invoice_no);
     }
 
@@ -129,18 +130,18 @@ class AccountController extends Controller
         $input->trn2 = $req->trn2;
         $input->credit = $req->credit;
         $input->term_pay = $req->term_pay;
-        $input->projects =json_encode($req->projects);
+        $input->projects = json_encode($req->projects);
         $input->amount = $req->amount_topay;
         $input->total_net_amount = $req->total_net_amount;
         $result1 = $data->save();
         $result2 = $input->save();
         if ($result1 && $result2) {
-            if($req->credit > 0){
+            if ($req->credit > 0) {
                 Account::create([
                     'description' => $req->work_scope,
                     'invoice_no' => $req->invoice_no,
-                    'cash_in_credit'=>$req->credit,
-                    'date' =>Carbon::now()->format('Y-m-d')
+                    'cash_in_credit' => $req->credit,
+                    'date' => Carbon::now()->format('Y-m-d')
                 ]);
             }
             return response([
@@ -168,9 +169,52 @@ class AccountController extends Controller
             ]
         );
     }
-    public function purchaseInvoice($id){
-         $data = InputMaster::find($id);
-         return view('mainsection.purchaseOrder',['purchase'=>$data]);
+    public function searchMaster(Request $req)
+    {
+        $data = AccountMaster::query();
+        if ($req->has('date') && !empty($req->input('date'))) {
+            $data->whereDate('invoice_date', $req->input('date'));
+        }
+        if ($req->has('invoice_no') && !empty($req->input('invoice_no'))) {
+            $data->where('invoice_no', 'like', '%' . $req->input('invoice_no') . '%');
+        }
+        if ($req->has('client_name') && !empty($req->input('client_name'))) {
+            $data->where('client_name', 'like', '%' . $req->input('client_name') . '%');
+        }
+        if ($req->has('lpo') && !empty($req->input('lpo'))) {
+            $data->where('lpo', 'like', '%' . $req->input('lpo') . '%');
+        }
+        if ($req->has('month') && !empty($req->input('month'))) {
+
+            $month = $req->input('month');
+            $strtdate = Carbon::create('2024',$month,'01');
+            $formatedStart = $strtdate->format('Y-m-d');
+
+            $enddate = Carbon::create('2024',$month,'30');
+            $formatedEnd = $enddate->format('Y-m-d');
+
+            $data->whereBetween('invoice_date',[$formatedStart,$formatedEnd]);
+        }
+        $masters = $data->get();
+        $total_amount = $data->sum('amount');
+        $total_credit = $data->sum('credit');
+        $total_due = $data->sum('due');
+
+        return view(
+            'account.searchMaster',
+            [
+                'masters' => $masters,
+                'amount' => $total_amount,
+                'credit' => $total_credit,
+                'due'   => $total_due
+
+            ]
+        );
+    }
+    public function purchaseInvoice($id)
+    {
+        $data = InputMaster::find($id);
+        return view('mainsection.purchaseOrder', ['purchase' => $data]);
     }
     function accountMasterDelete($id)
     {
@@ -178,17 +222,17 @@ class AccountController extends Controller
         $data->delete();
         return back()->with('success', 'Your Account Master Deleted Successfully');
     }
-    public function account_sms($id){
+    public function account_sms($id)
+    {
         $data = AccountMaster::find($id);
         $tel = '8801843884571';
         $message = "your order $data->invoice_no 's date is $data->invoice_date";
-        $result = $this->sms_send($tel , $message);
+        $result = $this->sms_send($tel, $message);
         if ($result) {
             return back()->with('success', 'Sms Sent Successfully');
         } else {
             return back()->with('fail', 'something went wrong,try again');
         }
-
     }
     function sms_send($phone, $sms)
     {

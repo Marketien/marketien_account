@@ -58,6 +58,7 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/account-master-table',[AccountController::class,'accountMasterTable'])->name('account-master-table');
     Route::get('/master-detail/{id}',[AccountController::class,'purchaseInvoice'])->name('master-detail');
     Route::get('/account-master-delete/{id}', [AccountController::class, 'accountMasterDelete'])->name('account-master-delete');
+    Route::post('/search-master',[AccountController::class,'searchMaster'])->name('search-master');
 
     //attendance
     Route::get('/attendance',[AttendanceController::class,'attendance'])->name('attendance');
