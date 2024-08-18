@@ -97,6 +97,48 @@
     .submit-button:hover {
         background: linear-gradient(to bottom, #3bb890, #114070);
     }
+    /* alignment of input field */
+
+        .parentInput1{
+            margin-left: 58px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput2{
+            margin-left: 73px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput3{
+            margin-left: 78px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput4{
+            margin-left: 51px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput5{
+            margin-left: 85px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput6{
+            margin-left: 67px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput7{
+            margin-left: 42px;
+            padding: 5px;
+            width: 230px;
+        }
+        .parentInput8{
+            margin-left: 15px;
+            padding: 5px;
+            width: 230px;
+        }
     </style>
     <div id="appq" class="flex-grow-1 main-content-expanded p-3">
 

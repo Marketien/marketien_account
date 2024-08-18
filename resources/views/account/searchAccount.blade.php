@@ -168,103 +168,17 @@
             opacity: 0.9;
             color: white !important;
         }
-
-        .similarInputStyle {
-            margin-bottom: 4px;
-        }
     </style>
 
     <script src="js/table2excel.js"></script>
 
     <div style="margin-top: 55px;" class="flex-grow-1 p-3">
 
-        <!-- ((((((((((((((((((((((((((((((((( filterInputParentDiv ))))))))))))))))))))))))))))))))) -->
-        <form action="/search-account" method="POST" class="filterInputParentDiv bg-light p-3 rounded mb-5 mt-3">
-            @csrf
-            <!-- filter dropdown section -->
-            <div class="filterDiv">
-                <h1 class="filterText mb-3">
-                    <span>
-                        <img class="filterImg" src="./assets/filter_icon.png" alt="" />
-                    </span>
-                    <span>Filters</span>
-                </h1>
-                <div class="w-50">
-                    <select id="filterSelect" class="form-select" aria-label="Default select example">
-                        <option value="1" selected>Date</option>
-                        <option value="2">Month</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- dynamic input fields -->
-
-
-            <div class="inputDiv">
-
-                <!-- <<<<<<<<<< date input field >>>>>>>>>> -->
-                <div id="dateField">
-                    <h1 class="filterText">
-                        <span>From:</span>
-                    </h1>
-                    <div>
-                        <input class="similarInputStyle" type="date" name="dateFrom" id="dateInput">
-                    </div>
-                    <h1 class="filterText">
-                        <span>To:</span>
-                    </h1>
-                    <div>
-                        <input class="similarInputStyle" type="date" name="dateTo" id="dateInput">
-                    </div>
-                </div>
-
-                <!-- <<<<<<<<<< month dropdown input field >>>>>>>>>> -->
-                <div id="monthField" style="display: none;">
-                    <h1 class="filterText">
-                        <span>Month</span>
-                    </h1>
-                    <div class="w-50">
-                        <select class="form-select" aria-label="Default select example" id="monthSelect" name="month">
-                            <option value="" selected disabled>Select a month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <!-- submit button -->
-            <div class="ms-3">
-                <button type="submit" class="submit-button">Submit</button>
-            </div>
-
-        </form>
-        <!-- ((((((((((((((((((((((((((((((((( filterInputParentDiv ))))))))))))))))))))))))))))))))) -->
 
         <div class="bg-light p-3 rounded mb-5">
             <!-- button and filter section  -->
 
             <div class="mb-5 d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-                <!-- selector section  -->
-                <div class="selector-width mb-3 mb-md-0">
-                    <span>Show </span>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>10</option>
-                        <option value="1">20</option>
-                        <option value="2">30</option>
-                        <option value="3">40</option>
-                    </select>
-                    <span> Entries </span>
-                </div>
                 <!-- button section  -->
                 <div class="d-flex gap-2">
                     <!-- Export buttons -->
@@ -293,53 +207,7 @@
             <!-- button and filter section  -->
 
             <!-- input fields  -->
-            <form action="/account-store" method="POST">
-                @csrf
-                <div style="background-color:green;">
-                    @if (Session::get('success'))
-                        <div style="color:black; margin: 1rem; ">
-                            {{ Session::get('success') }}
-                        </div>
-                    @endif
 
-                    @if (Session::get('fail'))
-                        <div style="color: rgb(238, 255, 0);">
-                            {{ Session::get('fail') }}
-                        </div>
-                    @endif
-                </div>
-
-                <div class="container mb-5 ">
-                    <div class="form-row">
-                        {{-- <div class="form-group">
-                        <label for="date">Date:</label>
-                        <input type="date" class="formInput" id="date" required>
-                    </div> --}}
-                        <div class="form-group">
-                            <label for="description">Description:</label>
-                            <input type="text" class="formInput" name="description" id="description"
-                                placeholder="Enter description" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="cashOutDebit">CashOut Debit:</label>
-                            <input type="text" class="formInput" name="cash_out" id="cashOutDebit"
-                                placeholder="Enter amount">
-                        </div>
-                        <div class="form-group">
-                            <label for="cashInCredit">CashIn Credit:</label>
-                            <input type="text" class="formInput" name="cash_in" id="cashInCredit"
-                                placeholder="Enter amount">
-                        </div>
-                        <div class="form-group">
-                            <div class=" btn-div">
-                                <button class="btn search-button" type="submit">ADD</button>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </form>
             <!-- Table section   -->
             <div id="container_content">
                 <table class="overflow-auto" id="myTable">

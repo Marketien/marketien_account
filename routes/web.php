@@ -52,6 +52,7 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::post('/account-edit',[AccountController::class,'accountEdit'])->name('account-edit');
     Route::get('/account-delete/{id}', [AccountController::class, 'accountDelete'])->name('account-delete');
     Route::get('/account-sms/{id}', [AccountController::class, 'account_sms'])->name('account-sms');
+    Route::post('/search-account',[AccountController::class,'searchAccount'])->name('search-account');
 
     //account master
     Route::get('/account-master-form',[AccountController::class,'accountMasterForm'])->name('account-master-form');

@@ -88,7 +88,8 @@
                         </h1>
                         <div class="w-50">
                             <select class="form-select" aria-label="Default select example" id="monthSelect" name="month">
-                                <option value="1" selected>January</option>
+                                <option value="" selected disabled>Select a month</option>
+                                <option value="1" >January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
                                 <option value="4">April</option>

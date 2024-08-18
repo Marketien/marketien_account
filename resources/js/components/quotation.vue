@@ -2,19 +2,18 @@
     <form @submit.prevent="submit()">
     <div class="invoice-box1">
         <div class="header-section">
-            <div>
-                <h7 class="heading">Ref.No:</h7> <input class="parentInput" type="text" name="" id="" v-model="ref_no"><br><br>
-                   <h7 class="heading"> Date:</h7> <input class="parentInput" type="date" name="" id="" v-model="date">
+            <div  class="heading">
+                Ref.No: <input class="parentInput1" type="text" name="" id="">
+                    <br><br>
+                  Date: <input class="parentInput2" type="date" name="" id="">
             </div>
-
-        </div>
-      <br>
-        <p class="heading">M/S: <input class="parentInput" type="text" name="" id="" v-model="ms"><br><br>
-            P.O Box: <input class="parentInput" type="text" name="" id="" v-model="po_box"><br><br>
-            Tel: <input class="parentInput" type="number" name="" id="" v-model="phone_no"><br><br>
-            Email: <input class="parentInput" type="email" name="" id="" v-model="email"></p>
-        <p class="heading">Kind Attn: <input class="parentInput" type="text" name="" id="" v-model="kind_attn"><br><br>
-            Project Name: <input class="parentInput" type="text" name="" id="" v-model="project_name"></p><br>
+        </div> <br>
+        <p class="heading">M/S: <input class="parentInput3" type="text" name="" id=""><br><br>
+          P.O Box: <input class="parentInput4" type="text" name="" id=""><br><br>
+          Tel: <input class="parentInput5" type="number" name="" id=""><br><br>
+          Email: <input class="parentInput6" type="email" name="" id=""></p>
+        <p class="heading">Kind Attn: <input class="parentInput7" type="text" name="" id=""><br><br>
+          Project Name: <input class="parentInput8" type="text" name="" id=""></p><br>
 
         <p>Dear Sir,</p>
         <p>With reference to your inquiry, we are pleased to offer our quotation for the subject items. We welcome the
@@ -89,11 +88,11 @@
             </tr>
             <tr>
                 <td colspan="5" style="text-align: right;">5% VAT</td>
-                <td><input type="number" name="" id="" v-model="vat_amount"></td>
+                <td><input type="number" name="" step="0.01" id="" v-model="vat_amount"></td>
             </tr>
             <tr>
                 <td colspan="5" style="text-align: right;">Total After Discount</td>
-                <td><input type="number" name="" id="" v-model="total_net_amount"></td>
+                <td><input type="number" name="" id="" step="0.01" v-model="total_net_amount"></td>
             </tr>
         </table>
         <p>Total Amount in Words: AED – Forty Thousand Five Only.</p>

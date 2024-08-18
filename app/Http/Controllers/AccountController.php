@@ -75,6 +75,7 @@ class AccountController extends Controller
         $data->description = $req->description;
         $data->cash_in_credit = $req->cash_in;
         $data->cash_out_debit = $req->cash_out;
+        $data->date = $req->date;
         $result = $data->save();
         if ($result) {
             return back()->with('success', 'Your Acoount Edited Successfully');
@@ -87,6 +88,41 @@ class AccountController extends Controller
         $data = Account::find($id);
         $data->delete();
         return back()->with('success', 'Your Acoount Deleted Successfully');
+    }
+    public function searchAccount(Request $req)
+    {
+        $data = Account::query();
+        if($req->has('dateFrom') && $req->has('dateTo') && !empty($req->input('dateFrom')) && !empty($req->input('dateTo'))){
+          $data->whereBetween('date',[$req->dateFrom,$req->dateTo]);
+        }
+        else{
+            if ($req->has('dateFrom') && !empty($req->input('dateFrom'))) {
+                $data->whereDate('date', $req->input('dateFrom'));
+            }
+            if ($req->has('dateTo') && !empty($req->input('dateTo'))) {
+                $data->whereDate('date', $req->input('dateTo'));
+            }
+        }
+        if ($req->has('month') && !empty($req->input('month'))) {
+
+            $month = $req->input('month');
+            $strtdate = Carbon::create('2024',$month,'01');
+            $formatedStart = $strtdate->format('Y-m-d');
+
+            $enddate = Carbon::create('2024',$month,'30');
+            $formatedEnd = $enddate->format('Y-m-d');
+
+            $data->whereBetween('date',[$formatedStart,$formatedEnd]);
+        }
+        $masters = $data->get();
+
+        return view(
+            'account.searchAccount',
+            [
+                'accounts' => $masters,
+
+            ]
+        );
     }
 
     // Acount Master
