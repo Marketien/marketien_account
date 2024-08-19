@@ -30,6 +30,7 @@ class QuotationController extends Controller
         $data->total_amount =$req->total_amount;
         $data->vat_amount =$req->vat_amount;
         $data->total_net_amount =$req->total_net_amount;
+        $data->payment_term =$req->payment_term;
         $result = $data->save();
         if ($result) {
             return response([

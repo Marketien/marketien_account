@@ -250,7 +250,8 @@ class AccountController extends Controller
     public function purchaseInvoice($id)
     {
         $data = InputMaster::find($id);
-        return view('mainsection.purchaseOrder', ['purchase' => $data]);
+
+        return view('mainsection.invoiceOrder', ['purchase' => $data]);
     }
     function accountMasterDelete($id)
     {

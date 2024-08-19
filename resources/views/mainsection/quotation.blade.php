@@ -252,10 +252,13 @@
                     </p>
 
                     <p class="heading4">Payment Terms:</p>
-                    <ul>
-                        <li>100% after work completion.</li>
-                        <li>Any kind of retention not applicable.</li>
-                    </ul>
+                    <p>
+                        @php
+                            $string = $quotation->payment_term;
+                            $string = str_replace('• ', "\n• ", $string);
+                            echo nl2br($string);
+                        @endphp
+                    </p>
                     <p>If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej Accounts Department
                         within 7 days from the receipt of invoices, unless otherwise we will consider the invoice has
                         been

@@ -3,17 +3,17 @@
     <div class="invoice-box1">
         <div class="header-section">
             <div  class="heading">
-                Ref.No: <input class="parentInput1" type="text" name="" id="">
+                Ref.No: <input class="parentInput1" type="text" name="" id="" v-model="ref_no">
                     <br><br>
-                  Date: <input class="parentInput2" type="date" name="" id="">
+                  Date: <input class="parentInput2" type="date" name="" id="" v-model="date">
             </div>
         </div> <br>
-        <p class="heading">M/S: <input class="parentInput3" type="text" name="" id=""><br><br>
-          P.O Box: <input class="parentInput4" type="text" name="" id=""><br><br>
-          Tel: <input class="parentInput5" type="number" name="" id=""><br><br>
-          Email: <input class="parentInput6" type="email" name="" id=""></p>
-        <p class="heading">Kind Attn: <input class="parentInput7" type="text" name="" id=""><br><br>
-          Project Name: <input class="parentInput8" type="text" name="" id=""></p><br>
+        <p class="heading">M/S: <input class="parentInput3" type="text" name="" id="" v-model="ms"><br><br>
+          P.O Box: <input class="parentInput4" type="text" name="" id="" v-model="po_box"><br><br>
+          Tel: <input class="parentInput5" type="number" name="" id="" v-model="phone_no"><br><br>
+          Email: <input class="parentInput6" type="email" name="" id="" v-model="email"></p>
+        <p class="heading">Kind Attn: <input class="parentInput7" type="text" name="" id="" v-model="kind_attn"><br><br>
+          Project Name: <input class="parentInput8" type="text" name="" id="" v-model="project_name"></p><br>
 
         <p>Dear Sir,</p>
         <p>With reference to your inquiry, we are pleased to offer our quotation for the subject items. We welcome the
@@ -103,8 +103,7 @@
             </ul>
             <p class="heading">Payment Terms:</p>
             <ul>
-                <li>100% after work completion.</li>
-                <li>Any kind of retention not applicable.</li>
+                <textarea class="textarea3" id="textarea3" @keydown.enter.prevent="handleEnterKey('textarea3', $event)" placeholder="write something" v-model="payment_term"></textarea>
             </ul>
             <p>If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej Accounts Department within
                 7
@@ -137,6 +136,7 @@ export default {
           email:'',
           kind_attn:'',
           project_name:'',
+          payment_term:'',
           projects:[{
                heading:'',
                description:'',
@@ -262,7 +262,8 @@ export default {
                         conditon:this.conditon,
                         total_amount:this.total_amount,
                         vat_amount: this.vat_amount,
-                        total_net_amount:this.total_net_amount
+                        total_net_amount:this.total_net_amount,
+                        payment_term:this.payment_term
 
                     }).then((response) => {
                         console.log(response.data);
@@ -272,9 +273,9 @@ export default {
                         // this.response = JSON.stringify(response, null, 2)
                         // this.id = response.data;
 
-                            window.location.reload();
+                            // window.location.reload();
 
-                            // window.location.href=('/purchase-total/');
+                            window.location.href=('/quotation-list/');
 
                     });
 
