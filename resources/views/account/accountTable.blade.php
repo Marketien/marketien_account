@@ -284,10 +284,10 @@
                         <span><img class="button-img" src="image/file-storage_8316770.png" alt="" /></span>
                         <span>Visibility</span>
                     </button>
-                    <button type="submit" class="button-width d-flex align-items-center gap-1 btn_print">
+                    <a href="/preview-account" class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/pdf.png" alt="" /></span>
-                        <span>PDF</span>
-                    </button>
+                        <span>Preview</span>
+                    </a>
                 </div>
             </div>
             <!-- button and filter section  -->

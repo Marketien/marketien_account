@@ -124,6 +124,17 @@ class AccountController extends Controller
             ]
         );
     }
+    public function previewAccount(){
+        $data = Account::all();
+        foreach ($data as $account) {
+            $balance = Account::where('created_at', '<', $account->created_at)->get();
+            $debit = $balance->sum('cash_out_debit');
+            $credit = $balance->sum('cash_in_credit');
+            $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit;
+        }
+
+        return view('account.previewAccount',['accounts'=>$data]);
+    }
 
     // Acount Master
 
@@ -247,11 +258,13 @@ class AccountController extends Controller
             ]
         );
     }
+
     public function purchaseInvoice($id)
     {
+
         $data = InputMaster::find($id);
 
-        return view('mainsection.invoiceOrder', ['purchase' => $data]);
+        return view('mainsection.invoiceOrder', ['purchase' => $data,]);
     }
     function accountMasterDelete($id)
     {
