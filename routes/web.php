@@ -46,6 +46,9 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/purchase-invoice', function () {
         return view('mainsection.purchaceOrderForm');
     });
+     //dashboard
+    Route::get('/dashboard',[UserController::class,'dashboard'])->name('dashboard');
+    // Account
     Route::get('/account-table',[AccountController::class,'accountTable'])->name('account-table');
     Route::get('/account-form',[AccountController::class,'accountForm'])->name('account-form');
     Route::post('/account-store',[AccountController::class,'accountStore'])->name('account-store');

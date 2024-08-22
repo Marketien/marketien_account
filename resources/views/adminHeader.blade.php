@@ -20,7 +20,7 @@
                    srcset=""
                  />
                </button>
-                 <a class="navbar-brand text-white adminPanelText" href="#">AdminPanel</a>
+                 <a class="navbar-brand text-white adminPanelText" href="/dashboard">AdminPanel</a>
            <!--+++++++++++++++++++++++++++++ button and admin text +++++++++++++++++++++++++-->
             <!-- menu button  for medium and small device-->
                <button
