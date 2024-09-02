@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QuotationController;
 
 /*
@@ -82,6 +83,9 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/quotation-detail/{id}',[QuotationController::class,'quotationDetail']);
     Route::get('/quotation-delete/{id}', [QuotationController::class, 'quotationDelete'])->name('quotation-delete');
 
+    //Role-Permission
+
+    Route::resource('/permissions',[PermissionController::class]);
 
 
     Route::get('/logout',[UserController::class,'logout'])->name('logout');
