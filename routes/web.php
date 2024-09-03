@@ -6,6 +6,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,7 +86,25 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
 
     //Role-Permission
 
-    Route::resource('/permissions',[PermissionController::class]);
+    // permission
+    Route::get('/permission-index',[PermissionController::class,'index']);
+    Route::get('/permission-form',[PermissionController::class,'create']);
+    Route::get('/permission-edit/{id}',[PermissionController::class,'edit']);
+    Route::get('/permission-delete/{id}',[PermissionController::class,'destroy']);
+    Route::post('/permission-store',[PermissionController::class,'store']);
+    Route::put('/permission-update/{permission}',[PermissionController::class,'update']);
+
+    //  role
+    Route::get('/role-index',[RoleController::class,'index']);
+    Route::get('/role-form',[RoleController::class,'create']);
+    Route::get('/role-edit/{id}',[RoleController::class,'edit']);
+    Route::get('/role-delete/{id}',[RoleController::class,'destroy']);
+    Route::post('/role-store',[RoleController::class,'store']);
+    Route::put('/role-update/{role}',[RoleController::class,'update']);
+
+    Route::get('/role-permission/{id}',[RoleController::class,'addPermissionToRole']);
+
+
 
 
     Route::get('/logout',[UserController::class,'logout'])->name('logout');

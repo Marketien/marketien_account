@@ -1,11 +1,11 @@
 @extends('adminMaster')
 @section('content')
     <!-- bootstrap CDN  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    </script> --}}
     <!-- font CDN  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -115,17 +115,23 @@
     </style>
 
 
-    <div class="adminBody">
+    <div class="adminBody flex-grow-1 p-3">
         <!-- Tag and button section  -->
         <section class="section">
             <div class="tag-section">
+
                 <span>
                     <h1>Permission List</h1>
                 </span>
                 <span>
-                    <button class="addPermissionButton">Add</button>
+                    <a href="/permission-form" class="addPermissionButton">Add</a>
                 </span>
             </div>
+            @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
             <!-- Table section   -->
             <div class="table-responsive">
                 <table>
@@ -138,117 +144,35 @@
                     </thead>
                     <tbody>
                         <!-- table row 1  -->
-                        <tr>
-                            <!-- Dropdown button   -->
-                            <td>01</td>
-                            <td>Shahabagi</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop">
-                                                Delete
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($permissions as $permission)
+                            <tr>
+                                <!-- Dropdown button   -->
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $permission->name }}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li>
+                                                <a href="/permission-edit/{{ $permission->id }}" class="dropdown-item">
+                                                    Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/permission-delete/{{ $permission->id }}" class="dropdown-item">
+                                                    Delete
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                         <!-- table row 2  -->
-                        <tr>
-                            <!-- Dropdown button   -->
-                            <td>01</td>
-                            <td>Shahabagi</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop">
-                                                Delete
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- table row 3  -->
-                        <tr>
-                            <!-- Dropdown button   -->
-                            <td>01</td>
-                            <td>Shahabagi</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop">
-                                                Delete
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- table row 4  -->
-                        <tr>
-                            <!-- Dropdown button   -->
-                            <td>01</td>
-                            <td>Shahabagi</td>
-                            <td>
-                                <div class="dropdown">
-                                    <button class="tableButton dropdown-toggle" type="button" id="dropdownMenuButton"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Action
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Edit
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#staticBackdrop">
-                                                Delete
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
+
 
                     </tbody>
                 </table>
@@ -271,8 +195,8 @@
                                     </div>
                                     <div class="form-group  mb-3">
                                         <label for="cashInCredit">CashIn Credit:</label>
-                                        <input type="text" class="formInput" id="cashInCredit"
-                                            placeholder="Enter amount" required>
+                                        <input type="text" class="formInput" id="cashInCredit" placeholder="Enter amount"
+                                            required>
                                     </div>
                                     <div class="form-group  mb-3">
                                         <label for="description">Description:</label>
