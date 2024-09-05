@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Psy\Command\WhereamiCommand;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -60,9 +62,23 @@ class RoleController extends Controller
        public function addPermissionToRole($id){
         $permissions = Permission::get();
         $role = Role::findOrFail($id);
+        $rolePermissions = DB::table('role_has_permissions')
+                            ->where('role_has_permissions.role_id',$role->id)
+                            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+                            ->all();
+
         return view('role-permission.addPermissionToRole',[
             'role'=>$role,
-            'permissions'=>$permissions
+            'permissions'=>$permissions,
+            'rolePermissions'=>$rolePermissions
         ]);
+       }
+       public function updatePermissionToRole(Request $req ,$id){
+          $req->validate([
+           'permission'=>'required'
+          ]);
+          $role = Role::findOrFail($id);
+          $role->syncPermissions($req->permission);
+          return back()->with('status','Permissions are assigned Succesfully');
        }
 }

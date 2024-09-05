@@ -103,6 +103,17 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::put('/role-update/{role}',[RoleController::class,'update']);
 
     Route::get('/role-permission/{id}',[RoleController::class,'addPermissionToRole']);
+    Route::put('/give-permission/{id}',[RoleController::class,'updatePermissionToRole']);
+
+    //User
+    Route::get('/user-list',[UserController::class,'userList']);
+    Route::get('/user-form',[UserController::class,'userCreate']);
+    Route::get('/user-edit/{id}',[UserController::class,'userEdit']);
+    Route::get('/user-delete/{id}',[UserController::class,'userDestroy']);
+    Route::post('/user-store',[UserController::class,'userStore']);
+    Route::put('/user-update/{user}',[UserController::class,'userUpdate']);
+
+
 
 
 
@@ -110,3 +121,4 @@ Route::group(['name' => 'admin', 'middleware' => 'userRestriction'], function() 
     Route::get('/logout',[UserController::class,'logout'])->name('logout');
 });
 Route::post('/check', [UserController::class, 'userCheck'])->name('check');
+

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -103,4 +105,66 @@ class UserController extends Controller
 
          ]);
     }
+     Public function userList(){
+      $users = User::all();
+      return view('user.userlist',['users'=>$users]);
+     }
+
+     Public function userCreate(){
+      $roles = Role::pluck('name','name')->all();
+      return view('user.addUser',['roles'=>$roles]);
+     }
+     Public function userStore(Request $req){
+       $req->validate([
+        'name'=>'required|string|max:255',
+        'email'=>'required|email|unique:users,email',
+        'password'=>'required|string|min:5|max:20',
+        'roles'=> 'required|array'
+       ]);
+       $user = User::create([
+          'name'=> $req->name,
+          'email'=>$req->email,
+          'password'=>Hash::make($req->password),
+          'role'=>'1'
+       ]);
+       $user->syncRoles($req->roles);
+       return redirect('/user-list')->with('status','user created successfully');
+
+     }
+
+     Public function userEdit($id){
+
+       $user = User::find($id);
+       $roles = Role::pluck('name','name')->all();
+       $userRoles = $user->roles->pluck('name','name')->all();
+       return view('user.editUser',[
+        'user'=>$user,
+        'roles'=>$roles,
+        'userRoles'=>$userRoles
+    ]);
+     }
+     Public function userUpdate(Request $req, User $user){
+     $req->validate([
+        'name'=>'required|string|max:255',
+        'password'=>'required|string|min:5|max:20',
+        'roles'=> 'required|array'
+     ]);
+     $data = [
+        'name'=> $req->name,
+        'email'=>$req->email,
+     ];
+     if(!empty($req->password)){
+        $data += [
+            'password'=>Hash::make($req->password),
+         ];
+     }
+     $user->update($data);
+     $user->syncRoles($req->roles);
+     return redirect('/user-list')->with('status','User updated successfully');
+     }
+     Public function userDestroy(){
+
+     }
+
+
 }

@@ -22,13 +22,18 @@
             gap: 10px;
         }
 
-        .res-form {
-            margin-top: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .res-form{
+        margin-top: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-between;+- */
+        align-items: center;
+    }
+    @media (max-width: 768px) {
+            .res-form {
+                flex: 1 1 100%;
+            }
         }
-
         .form-check {
             margin-bottom: 15px;
         }
@@ -68,26 +73,33 @@
             color: white !important;
         }
 
-        @media (max-width: 768px) {
-            .form-check {
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
-        }
+
     </style>
     <div class="adminSec flex-grow-1 p-3">
         <!-- Tag and button section  -->
         <section class="section">
             <h1>Add Permission To Role</h1>
             <div class="tag-section container">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <h3>Role:{{$role->name}}</h3>
-                <form>
-                    <div class="res-form">
+                <form action="/give-permission/{{$role->id}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="res-form row">
                         @foreach ($permissions as $permission)
 
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{$permission->id}}" id="javaCheckbox" name="permission[]">
+                        <div class="form-check col col-lg-3">
+                            <input class="form-check-input"
+                            type="checkbox"
+                            value="{{$permission->name}}"
+                            {{in_array($permission->id ,$rolePermissions)? "checked": ""}}
+                            id="javaCheckbox"
+                            name="permission[]">
                             <label class="form-check-label" for="javaCheckbox">
                                 {{$permission->name}}
                             </label>
@@ -95,7 +107,7 @@
                         @endforeach
                     </div>
                     <span class="button-div">
-                        <button class="permitButton">Permit</button>
+                        <button type="submit" class="permitButton">Permit</button>
                     </span>
                 </form>
             </div>
