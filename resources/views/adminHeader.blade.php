@@ -49,7 +49,8 @@
                      </a>
                    </li>
                    <li class="nav-item">
-                     <button class="btn logout-btn mt-1" href="/logout">Logout</button>
+
+                     <a class="btn logout-btn mt-1" href="/logout">Logout({{auth()->user()->name}})</a>
                    </li>
                  </ul>
                </div>
@@ -94,6 +95,7 @@
                     <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
                         <li><a class="dropdown-item fst-italic" href="/role-index">Role</a></li>
                         <li><a class="dropdown-item fst-italic" href="/permission-index">Permission</a></li>
+                        <li><a class="dropdown-item fst-italic" href="/user-list">User</a></li>
                     </ul>
                 </div>
 

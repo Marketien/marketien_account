@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Account;
 use App\Models\AccountMaster;
@@ -13,23 +14,40 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    // public function userCheck(Request $req)
+    // {
+    //     $req->validate([
+    //         'email' => 'required|email',
+    //     ]);
+    //     $user = User::where('email', '=', $req->email)->first();
+    //     if ($user) {
+    //         if (Hash::check($req->password, $user->password)) {
+    //             $req->session()->put('admin', $user->id);
+    //             return redirect('/account-master-form');
+    //         } else {
+    //             return back()->with('fail', 'Invalid password');
+    //         }
+    //     } else {
+    //         return back()->with('fail', 'No account for this email');
+    //     }
+    // }
     public function userCheck(Request $req)
-    {
-        $req->validate([
-            'email' => 'required|email',
-        ]);
-        $user = User::where('email', '=', $req->email)->first();
-        if ($user) {
-            if (Hash::check($req->password, $user->password)) {
-                $req->session()->put('admin', $user->id);
-                return redirect('/account-master-form');
-            } else {
-                return back()->with('fail', 'Invalid password');
-            }
-        } else {
-            return back()->with('fail', 'No account for this email');
-        }
+{
+    $req->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    $credentials = $req->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        // Authentication passed
+        return redirect('/account-master-form');
+    } else {
+        // Authentication failed
+        return back()->with('fail', 'Invalid email or password');
     }
+}
     public function registry(Request $req)
     {
         $data = new User();
@@ -45,13 +63,27 @@ class UserController extends Controller
             return back()->with('fail', 'something went wrong,try again');
         }
     }
-    public function logout()
-    {
-        if (session()->has('admin')) {
-            session()->pull('admin');
-            return redirect('/');
-        }
-    }
+    // public function logout()
+    // {
+    //     if (session()->has('admin')) {
+    //         session()->pull('admin');
+    //         return redirect('/');
+    //     }
+    // }
+    public function logout(Request $request)
+{
+    // Log the user out of the application
+    Auth::logout();
+
+    // Invalidate the user's session
+    $request->session()->invalidate();
+
+    // Regenerate the session token to prevent session fixation attacks
+    $request->session()->regenerateToken();
+
+    // Redirect the user to the login page or home page
+    return redirect('/');
+}
     public function dashboard()
     {
         $year = date('Y');
@@ -146,7 +178,7 @@ class UserController extends Controller
      Public function userUpdate(Request $req, User $user){
      $req->validate([
         'name'=>'required|string|max:255',
-        'password'=>'required|string|min:5|max:20',
+        'password'=>'nullable|string|min:5|max:20',
         'roles'=> 'required|array'
      ]);
      $data = [
@@ -162,8 +194,10 @@ class UserController extends Controller
      $user->syncRoles($req->roles);
      return redirect('/user-list')->with('status','User updated successfully');
      }
-     Public function userDestroy(){
-
+     Public function userDestroy($id){
+       $user = User::findOrFail($id);
+       $user->delete();
+       return back()->with('status','User Deleted successfully');
      }
 
 
