@@ -115,7 +115,12 @@ class AccountController extends Controller
             $data->whereBetween('date',[$formatedStart,$formatedEnd]);
         }
         $masters = $data->get();
-
+        foreach($masters as $master){
+            $balance = $masters->where('created_at','<',$master->created_at);
+            $debit = $balance->sum('cash_out_debit');
+            $credit = $balance->sum('cash_in_credit');
+            $master['calc_amount'] = $credit - $debit + $master->cash_in_credit - $master->cash_out_debit;
+        }
         return view(
             'account.searchAccount',
             [

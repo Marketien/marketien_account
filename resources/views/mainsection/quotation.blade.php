@@ -211,10 +211,10 @@
                                     @endphp
                                 </p>
                             </td>
-                            <td>{{ $project->quantity }}</td>
-                            <td>{{ $project->unit }}</td>
-                            <td>{{ $project->unit_rate }}</td>
-                            <td>{{ $project->amount }}</td>
+                            <td>{{ number_format($project->quantity,2,'.',',') }}</td>
+                            <td>{{ number_format($project->unit,2,'.',',') }}</td>
+                            <td>{{ number_format($project->unit_rate,2,'.',',') }}</td>
+                            <td>{{ number_format($project->amount,2,'.',',') }}</td>
                         </tr>
 
                     @endforeach
@@ -228,15 +228,15 @@
                 <table class="table4">
                     <tr>
                         <td colspan="5" style="text-align: right;">Total Cost</td>
-                        <td>{{ $quotation->total_amount }}</td>
+                        <td>{{ number_format($quotation->total_amount,2,'.',',') }}</td>
                     </tr>
                     <tr>
                         <td colspan="5" style="text-align: right;">5% VAT</td>
-                        <td>{{ $quotation->vat_amount }}</td>
+                        <td>{{ number_format($quotation->vat_amount,2,'.',',') }}</td>
                     </tr>
                     <tr>
                         <td colspan="5" style="text-align: right;">Total After Discount</td>
-                        <td>{{ $quotation->total_net_amount }}</td>
+                        <td>{{ number_format($quotation->total_net_amount,2,'.',',') }}</td>
                     </tr>
                 </table>
                 <p>Total Amount in Words: AED – Forty Thousand Five Only.</p>

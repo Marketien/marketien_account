@@ -229,9 +229,9 @@
                                 <!-- Dropdown button   -->
                                 <td>{{ $account->date }}</td>
                                 <td>{{ $account->description }}</td>
-                                <td>{{ $account->cash_out_debit }}</td>
-                                <td>{{ $account->cash_in_credit }}</td>
-                                <td>{{ $account->calc_amount }}</td>
+                                <td>{{ number_format($account->cash_out_debit,2,'.',',') }}</td>
+                                <td>{{ number_format($account->cash_in_credit,2,'.',',') }}</td>
+                                <td>{{ number_format($account->calc_amount,2,'.',',') }}</td>
                                 <td>
 
                                     <div class="dropdown">

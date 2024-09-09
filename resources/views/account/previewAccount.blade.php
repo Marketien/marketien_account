@@ -1,118 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Preview</title>
 
-<style>
-.htmlBody {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    <style>
+        .htmlBody {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.invoice-box {
-  width: 21cm;
-  height: 29.7cm;
-  margin: 0; /* Remove fixed margins */
-  font-family: "Open Sans", sans-serif;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  position: relative;
-}
-     .headerImg {
-       width: 150px;
-     }
-     .invoice-header {
-       text-align: center;
-       margin-bottom: 10px;
-     }
+        .invoice-box {
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0;
+            /* Remove fixed margins */
+            font-family: "Open Sans", sans-serif;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
 
-     .invoice-header h1 {
-       font-size: 24px;
-       margin: 10px 0;
-       color: #004c6d;
-     }
-     .mx-div {
-       margin-left: 40px;
-       margin-right: 40px;
-     }
-     .invoice-table {
-       width: 100%;
-       border-collapse: collapse;
-       margin-top: 10px;
-     }
+        .headerImg {
+            width: 150px;
+        }
 
-     .invoice-table th,
-     .invoice-table td {
-       border: 1px solid #ddd;
-       padding: 8px;
-       text-align: left;
-       font-size: 14px;
-     }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-     .invoice-table th {
-       background-color: #004c6d;
-       color: white;
-       font-weight: bold;
-     }
+        .invoice-header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #004c6d;
+        }
 
-     .invoice-table tbody tr:nth-child(even) {
-       background-color: #f9f9f9;
-     }
+        .mx-div {
+            margin-left: 40px;
+            margin-right: 40px;
+        }
 
-     .invoice-summary {
-       text-align: right;
-       margin-top: 20px;
-     }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
 
-     .invoice-summary p {
-       margin: 5px 0;
-     }
+        .invoice-table th,
+        .invoice-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
 
-     .invoice-summary p.total {
-       font-weight: bold;
-       color: #004c6d;
-     }
+        .invoice-table th {
+            background-color: #004c6d;
+            color: white;
+            font-weight: bold;
+        }
 
-     .invoice-footer {
-       text-align: center;
-       color: #777;
-       margin-top: 30px;
-     }
-     .informationDiv {
-         width: 100%;
-         display: flex;
-         justify-content: space-between;
-         gap: 10px;
-         font-size: 14px;
-     }
-     .information1 {
-         width: 50%;
-     }
-     .information2 {
-         width: 50%;
-     }
-     .boldSpan {
-         font-weight: bold;
-         margin-right: 5px;
-     }
-     .extraParagraph {
-        font-weight: 500;
-        text-align: center;
-        position: absolute;
-        bottom: 30px;
-        left: 0;
-        width: 100%;
-        padding: 0 20px;
-        box-sizing: border-box;
-     }
-     .submit-button {
+        .invoice-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .invoice-summary {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .invoice-summary p {
+            margin: 5px 0;
+        }
+
+        .invoice-summary p.total {
+            font-weight: bold;
+            color: #004c6d;
+        }
+
+        .invoice-footer {
+            text-align: center;
+            color: #777;
+            margin-top: 30px;
+        }
+
+        .informationDiv {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .information1 {
+            width: 50%;
+        }
+
+        .information2 {
+            width: 50%;
+        }
+
+        .boldSpan {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .extraParagraph {
+            font-weight: 500;
+            text-align: center;
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .submit-button {
             display: block;
             width: 100%;
             padding: 10px;
@@ -127,19 +139,20 @@
         .submit-button:hover {
             background: linear-gradient(to bottom, #3bb890, #114070);
         }
-</style>
+    </style>
 </head>
+
 <body>
 
-<div class="htmlBody">
-      <div class="invoice-box" id="container_content">
-        <!-- header img section  -->
+    <div class="htmlBody">
+        <div class="invoice-box" id="container_content">
+            <!-- header img section  -->
 
-        <div class="mx-div">
-            <img class="headerImg" src="image/Qalaat Al Khaleej.png" alt="" />
+            <div class="mx-div">
+                <img class="headerImg" src="image/Qalaat Al Khaleej.png" alt="" />
 
-                  <!-- information section  -->
-                  <div class="informationDiv">
+                <!-- information section  -->
+                <div class="informationDiv">
                     <div class="information1">
                         <p>
                             <span class="boldSpan">Account Number: </span>
@@ -196,42 +209,41 @@
                             <span>carry out carpentry works and replace all 50 locks on lockers in girls changing rooms</span>
                         </p>
                     </div> -->
-                  </div>
+                </div>
 
-          <!-- Table section -->
-          <table class="invoice-table">
-            <tr class="heading">
-              <th>Sl No</th>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Debit Amount</th>
-              <th>Creadit Amount</th>
-              <th>Balanced Amount</th>
-            </tr>
-            @foreach ($accounts as $account )
+                <!-- Table section -->
+                <table class="invoice-table">
+                    <tr class="heading">
+                        <th>Sl No</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Debit Amount</th>
+                        <th>Creadit Amount</th>
+                        <th>Balanced Amount</th>
+                    </tr>
+                    @foreach ($accounts as $account)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $account->date }} </td>
+                            <td>{{ $account->description }}</td>
+                            <td>{{ number_format($account->cash_out_debit,2,'.',',') }}</td>
+                            <td>{{ number_format($account->cash_in_credit,2,'.',',') }}</td>
+                            <td>{{ number_format($account->calc_amount,2,'.',',') }}</td>
 
+                        </tr>
+                    @endforeach
 
-            <tr>
-              <td>{{ $loop->iteration }}</td>
-              <td>{{$account->date}} </td>
-              <td>{{$account->description}}</td>
-              <td>{{$account->cash_out_debit}}</td>
-              <td>{{ $account->cash_in_credit }}</td>
-              <td>{{ $account->calc_amount }}</td>
-
-            </tr>
-            @endforeach
-
-          </table>
-          <div class="extraParagraph">
-              <p>
-                 Thanks for banking with us
-             <br>
-                 Plase notify your branch for any discrepcies or irregularities, with 15 days from the date of the statement is correct .This  computer generated statement required no signature.
-              </p>
-          </div>
+                </table>
+                <div class="extraParagraph">
+                    <p>
+                        Thanks for banking with us
+                        <br>
+                        Plase notify your branch for any discrepcies or irregularities, with 15 days from the date of
+                        the statement is correct .This computer generated statement required no signature.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="invoice-footer">
         <input type="button" id="rep" value="Make PDF" class="submit-button btn_print">
@@ -290,4 +302,5 @@
 
     });
 </script>
+
 </html>

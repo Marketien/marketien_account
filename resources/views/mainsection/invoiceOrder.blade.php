@@ -194,6 +194,10 @@
                 <div class="informationDiv">
                     <div class="information1">
                         <p>
+                            <span class="boldSpan">TRN:</span>
+                            <span>{{ $purchase->trn2 }}</span>
+                        </p>
+                        <p>
                             <span class="boldSpan">To: </span>
                             <span>{{ $purchase->to }}</span>
                         </p>
@@ -209,10 +213,7 @@
                             <span class="boldSpan">Project: </span>
                             <span>{{ $purchase->proect_name }}</span>
                         </p>
-                        <p>
-                            <span class="boldSpan">TRN1:</span>
-                            <span>{{ $purchase->trn1 }}</span>
-                        </p>
+
                         <p>
                             <span class="boldSpan">Address: </span>
                             <span>{{ $purchase->address }}</span>
@@ -232,9 +233,10 @@
                             <span>{{ $purchase->ref_no }}</span>
                         </p>
                         <p>
-                            <span class="boldSpan">TRN:</span>
-                            <span>{{ $purchase->trn2 }}</span>
+                            <span class="boldSpan">TRN1:</span>
+                            <span>{{ $purchase->trn1 }}</span>
                         </p>
+
                         <p>
                             <span class="boldSpan">Scope of Works: </span>
                             <span>{{ $purchase->work_scope }}</span>
@@ -261,9 +263,9 @@
                             <td colspan="2">
                                 {{ $project->description }}
                             </td>
-                            <td>{{ $project->quantity }}</td>
-                            <td>{{ $project->unit_price }}</td>
-                            <td>{{ $project->amount }}</td>
+                            <td>{{ number_format($project->quantity,2,'.',',') }}</td>
+                            <td>{{ number_format($project->unit_price,2,'.',',') }}</td>
+                            <td>{{ number_format($project->amount,2,'.',',') }}</td>
                             @php
                                 $amt += $project->amount;
                             @endphp
@@ -274,19 +276,19 @@
                     @endphp
                     <tr class="total">
                         <td colspan="5" class="right-align">Subtotal:</td>
-                        <td>{{ $amt }}</td>
+                        <td>{{ number_format($amt,2,'.',',') }}</td>
                     </tr>
                     <tr class="total">
                         <td colspan="5" class="right-align">+ 5% VAT Amount:</td>
-                        <td>{{ $vat }}</td>
+                        <td>{{ number_format($vat,2,'.',',') }}</td>
                     </tr>
                     <tr class="total">
                         <td colspan="5" class="right-align">Credit:</td>
-                        <td>{{ $purchase->credit }}</td>
+                        <td>{{ number_format($purchase->credit,2,'.',',') }}</td>
                     </tr>
                     <tr class="total">
                         <td colspan="5" class="right-align">Total Net Amount:</td>
-                        <td>{{ $purchase->total_net_amount }}</td>
+                        <td>{{ number_format($purchase->total_net_amount,2,'.',',') }}</td>
                     </tr>
 
                     <tr class="details text-center fw-bold">

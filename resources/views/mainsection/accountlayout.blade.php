@@ -255,10 +255,10 @@
                                 <td>{{ $master->description }}</td>
                                 <td>{{ $master->invoice_date }}</td>
                                 <td>{{ $master->lpo }}</td>
-                                <td>{{ $master->amount }}</td>
-                                <td>{{ $master->credit }}</td>
-                                <td>{{ $master->due }}</td>
-                                <td>{{ $master->remark }}</td>
+                                <td>{{ number_format($master->amount,2,'.',',') }}</td>
+                                <td>{{ number_format($master->credit,2,'.',',') }}</td>
+                                <td>{{ number_format($master->due,2,'.',',') }}</td>
+                                <td>{{ number_format($master->remark,2,'.',',') }}</td>
                                 @include('account.modalMasterDelete')
                             </tr>
                         @endforeach
@@ -267,12 +267,12 @@
                 <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
                     class="bg-light p-3 rounded mb-3 text-center lh-lg">
                     <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span>
-                        <span>{{ $amount }}</span>
+                        <span>{{ number_format($amount,3,'.',',') }}</span>
                     </p>
                     <p class="d-flex justify-content-between"><span>Total Amount Recieved :</span> <span
-                            class="text-success">{{ $credit }}</span> </p>
+                            class="text-success">{{ number_format($credit,3,'.',',') }}</span> </p>
                     <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span
-                            class="text-danger">{{ $due }}</span>
+                            class="text-danger">{{ number_format($due,3,'.',',') }}</span>
                     </p>
                 </div>
             </div>
