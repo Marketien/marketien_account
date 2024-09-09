@@ -63,11 +63,20 @@
         <div class="sidebar-hidden sidebar-expanded" id="sidebar">
             <div class="list-group list-group-flush">
                 <!-- Accounts dropdown -->
-                <div class="dropdown">
+                @php
+                    $user = auth()->user();
+                    $userRoles = $user->roles->pluck('name','name')->all();
+
+                @endphp
+
+
+<div class="dropdown">
+                    @if (in_array('Admin', $userRoles)||in_array('Accountant', $userRoles))
                     <button class="list-group-item list-group-item-action dropdown-toggle" type="button"
                         id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Accounts
                     </button>
+                    @endif
                     <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
                         <li><a class="dropdown-item fst-italic" href="/account-table">Accounts</a></li>
                         <li><a class="dropdown-item fst-italic" href="/account-master-table">Account master</a></li>
@@ -77,36 +86,44 @@
                         <li><a class="dropdown-item fst-italic" href="/payslip">PaySlip</a></li> --}}
                     </ul>
                 </div>
+
                 <div class="dropdown">
+                    @if (in_array('Admin', $userRoles)||in_array('storekeeper', $userRoles))
                     <button class="list-group-item list-group-item-action dropdown-toggle" type="button"
                         id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Attendance
                     </button>
+                    @endif
                     <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
                         <li><a class="dropdown-item fst-italic" href="/employee-location">Employee & Location</a></li>
                         <li><a class="dropdown-item fst-italic" href="/attendance-form">Attendance Form</a></li>
                     </ul>
                 </div>
                 <div class="dropdown">
+                    @if (in_array('Admin', $userRoles))
                     <button class="list-group-item list-group-item-action dropdown-toggle" type="button"
                         id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Role-Permission
                     </button>
+                    @endif
                     <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
                         <li><a class="dropdown-item fst-italic" href="/role-index">Role</a></li>
                         <li><a class="dropdown-item fst-italic" href="/permission-index">Permission</a></li>
                         <li><a class="dropdown-item fst-italic" href="/user-list">User</a></li>
                     </ul>
                 </div>
-
+                @if (in_array('Admin', $userRoles))
                 <a href="#" class="list-group-item list-group-item-action">Settings</a>
                 <a href="#" class="list-group-item list-group-item-action">Notification</a>
                 <a href="#" class="list-group-item list-group-item-action">SMS</a>
+                @endif
                 <div class="dropdown">
+                    @if (in_array('Admin', $userRoles)||in_array('Accountant', $userRoles))
                     <button class="list-group-item list-group-item-action dropdown-toggle" type="button"
                         id="accountsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         Quotation
                     </button>
+                    @endif
                     <ul class="dropdown-menu " aria-labelledby="accountsDropdown">
                         <li><a class="dropdown-item fst-italic" href="/quotation">Quotation Form</a></li>
                         <li><a class="dropdown-item fst-italic" href="/quotation-list">Quotation List</a></li>

@@ -42,7 +42,16 @@ class UserController extends Controller
 
     if (Auth::attempt($credentials)) {
         // Authentication passed
-        return redirect('/account-master-form');
+        $user = User::where('email',$req->email)->first();
+        $store = 'storekeeper';
+        $userRoles = $user->roles->pluck('name','name')->all();
+        if(in_array($store,$userRoles)){
+
+            return redirect('/attendance-form');
+        }else{
+
+            return redirect('/account-master-form');
+        }
     } else {
         // Authentication failed
         return back()->with('fail', 'Invalid email or password');
