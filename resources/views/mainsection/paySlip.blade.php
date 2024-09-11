@@ -104,7 +104,7 @@
 
 <body>
     <div class="invoice-box" id="container_content">
-        <img class="header-image" src="/image/Header.png" alt="">
+        <img class="header-image" src="image/Header.png" alt="">
         <table>
             <tr>
                 <td colspan="2">

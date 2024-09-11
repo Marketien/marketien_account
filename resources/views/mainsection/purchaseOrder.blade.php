@@ -120,7 +120,7 @@
 
         <div class="invoice-box container_content" id="container_content">
 
-            <img class="header-image" src="/image/Header.png" alt="">
+            <img class="header-image" src="image/Header.png" alt="">
 
             <h2 class="InvoiceText">Order Invoice</h2>
             <!-- table no 1  -->
@@ -234,8 +234,8 @@
                         <th>Approved</th>
                     </thead>
                     <tbody class="signatureBody">
-                        <td><img class="sealImg1" src="/image/Seal & Signature.png" alt=""></td>
-                        <td><img class="sealImg2" src="/image/Seal & Signature.png" alt=""></td>
+                        <td><img class="sealImg1" src="image/Seal & Signature.png" alt=""></td>
+                        <td><img class="sealImg2" src="image/Seal & Signature.png" alt=""></td>
                     </tbody>
                 </table>
             </div>

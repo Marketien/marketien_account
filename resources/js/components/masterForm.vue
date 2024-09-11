@@ -17,7 +17,7 @@
                             <div class="invoiceDiv">
                                 <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no">
                                 <div type="button" @click="getInvoice()" >
-                                    <img id="generateNumberIcon" class="passMngIcon" src="/image/password-manager-icon.png" alt="" >
+                                    <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png" alt="" >
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,13 @@
                         </div>
                         <div>
                             <label for="ref">Ref:</label>
-                            <input type="text" id="ref" name="ref" v-model="ref_no">
+                            <!-- <input type="text" id="ref" name="ref" v-model="ref_no"> -->
+                            <div class="invoiceDiv">
+                                <input type="text" id="refNo" name="invoiceNo" v-model="ref_no">
+                                <div type="button" @click="getRef()" >
+                                    <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png" alt="" >
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -243,6 +249,12 @@ export default {
                   console.log(response.data);
                 });
             },
+            getRef(){
+                axios.get("/api/ref-no").then((response)=>{
+                  this.ref_no = response.data;
+                  console.log(response.data);
+                });
+            },
             calculateRowTotal(keyIndex){
                 var total = parseFloat(this.projects[keyIndex].quantity)* parseFloat(this.projects[keyIndex].unit_price);
                 if (!isNaN(total)) {
@@ -334,6 +346,7 @@ export default {
             this.calculateGrandTotal();
             this.amountToPay();
             this.getInvoice();
+            this.getRef();
         },
 
 

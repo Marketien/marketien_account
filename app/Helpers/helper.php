@@ -6,7 +6,7 @@ namespace App\Helpers;
 class Helper{
 
     public Static Function IdGenerator($model,$trow,$length = 4,$prefix){
-        $data = $model::where('invoice_no','like','%' .$prefix. '%')->orderBy('id','desc')->first();
+        $data = $model::where($trow,'like','%' .$prefix. '%')->orderBy('id','desc')->first();
         if(!$data){
             $og_length = $length;
             $last_number = '';

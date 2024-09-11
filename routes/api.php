@@ -25,3 +25,4 @@ Route::post('/acount-store',[AccountController::class,'accountMasterStore']);
 Route::post('/salary-store',[AttendanceController::class,'salary']);
 Route::post('/quotation-store',[QuotationController::class,'quotationStore']);
 Route::get('/invoice-no',[AccountController::class,'generateInvoice'])->name('invoice-no');
+Route::get('/ref-no',[AccountController::class,'generateRefNo'])->name('ref-no');

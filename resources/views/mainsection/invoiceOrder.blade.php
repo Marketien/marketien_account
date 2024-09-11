@@ -174,7 +174,7 @@
     <div class="htmlBody">
         <div class="invoice-box container_content" id="container_content">
             <!-- header img section  -->
-            <img class="headerImg" src="/image/Invoice-Qalat-Header.png" alt="" />
+            <img class="headerImg" src="image/Invoice-Qalat-Header.png" alt="" />
 
             <!-- invoiceNo  & Date section  -->
             <div class="parentBoldInvoiceData">
@@ -300,7 +300,7 @@
             </div>
 
             <!-- footer img section  -->
-            <img class="footerImg" src="/image/Invoice-Qalat-FOoter.png" alt="" />
+            <img class="footerImg" src="image/Invoice-Qalat-FOoter.png" alt="" />
         </div>
     </div>
     <div class="invoice-footer">
