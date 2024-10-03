@@ -15,7 +15,7 @@ class AccountController extends Controller
     {
         $data = Account::all();
         foreach ($data as $account) {
-            $balance = Account::where('created_at', '<', $account->created_at)->get();
+            $balance = Account::where('id', '<', $account->id)->get();
             $debit = $balance->sum('cash_out_debit');
             $credit = $balance->sum('cash_in_credit');
             $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit;

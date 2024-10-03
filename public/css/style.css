@@ -13,6 +13,16 @@
   header {
     flex: 0 0 auto;
   }
+  .cloud-image{
+    background-color: #ffffff !important;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  .cloud-sm-btn{
+    display: flex;
+    align-items:center ;
+  }
+
   .navbar-brand {
     font-family: "Montserrat", sans-serif;
   }

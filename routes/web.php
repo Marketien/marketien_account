@@ -7,6 +7,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SyncController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,3 +127,5 @@ Route::group(['middleware' => ['role:Admin']], function () {
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // });
 Route::post('/check', [UserController::class, 'userCheck'])->name('check');
+
+Route::get('/sync-test',[SyncController::class,'syncData']);
