@@ -61,9 +61,9 @@ class AttendanceController extends Controller
     public function storeAttendance(Request $req)
     {
         $data = new Attendance();
-        $data->employee_id = $req->employee_id;
+        $data->employee_name = $req->employee_name;
         $data->date = Carbon::now()->format('Y-m-d');
-        $data->location_id = $req->location_id;
+        $data->location_name = $req->location_name;
         $data->attd = $req->attd;
         $data->std_hour = $req->std_hour;
         $data->ot = $req->ot;
@@ -111,8 +111,9 @@ class AttendanceController extends Controller
     }
     public function employeeDetail($id)
     {
+        $employee = Worker::find($id);
         $salary = Salary::where('employee_id', $id)->latest('created_at')->first();
-        $data = Attendance::where('employee_id', $id)->get();
+        $data = Attendance::where('employee_name', $employee->employee_name)->get();
         return view('mainsection.employeeDetail', ['attends' => $data, 'salary' => $salary]);
     }
     public function salary(Request $req)
@@ -143,6 +144,7 @@ class AttendanceController extends Controller
     }
     public function payslip($id)
     {
+
         $year = Carbon::now()->format('Y');
         $month = Carbon::now()->format('m');
         $dayNumber = [];
@@ -154,12 +156,12 @@ class AttendanceController extends Controller
 
 
         foreach ($daysInMonth as &$day) { // Use &$day to modify the original array elements
-            $data = Attendance::where('employee_id', $id)
+            $data = Attendance::where('employee_name', $emp->employee_name)
                 ->where('date', $day['date']) // Access 'date' as array key
                 ->first();
 
             if ($data) {
-                $day['project_location'] = $data->location_id;
+                $day['project_location'] = $data->location_name;
                 $day['attd'] = $data->attd;
                 $day['std_hour'] = $data->std_hour;
                 $day['ph'] = $data->ph;

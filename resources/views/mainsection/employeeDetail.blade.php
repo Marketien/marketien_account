@@ -2,7 +2,7 @@
 @section('content')
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('public/build/assets/app-l0sNRNKZ.js') }}">
-    <script type="module" src="{{ asset('public/build/assets/app-Doh142Dr.js') }}"></script>
+    <script type="module" src="{{ asset('public/build/assets/app-Doh142Dr.js') }}"></script>
     <style>
         textarea {
             width: 100%;
@@ -200,7 +200,7 @@
                     @foreach ($attends as $attend)
                         <tr>
                             <th>{{ $attend->date }}</th>
-                            <td>{{ $attend->location_id }}</td>
+                            <td>{{ $attend->location_name }}</td>
                             <td>{{ $attend->attd }}</td>
                             <td>{{ $attend->std_hour }}</td>
                             <td>{{ $attend->ph }}</td>

@@ -166,22 +166,22 @@
 
                         <div class="form-group col-md-3">
                             <label for="employeeDropdown">Employee Name:</label>
-                            <select class="form-control1" id="employeeDropdown" name="employee_id">
+                            <select class="form-control1" id="employeeDropdown" name="employee_name">
                                 <option value = "" selected>select an employee</option>
                                 @foreach ($workers as $worker)
 
-                                <option value="{{$worker->id}}">{{$worker->employee_name}}</option>
+                                <option value="{{$worker->employee_name}}">{{$worker->employee_name}}</option>
                                 @endforeach
 
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="projectDropdown">Project Location :</label>
-                            <select class="form-control1" id="projectDropdown" name="location_id">
+                            <select class="form-control1" id="projectDropdown" name="location_name">
                                 <option value = "" selected>select an location</option>
                                 @foreach ($locations as $location)
 
-                                <option value="{{$location->id}}">{{$location->location_name}}</option>
+                                <option value="{{$location->location_name}}">{{$location->location_name}}</option>
                                 @endforeach
                             </select>
                         </div>
