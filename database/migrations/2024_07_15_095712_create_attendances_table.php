@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
-            $table->integer('employee_id')->nullable();
+            $table->string('employee_name')->nullable();
             $table->date('date')->nullable();
-            $table->integer('location_id')->nullable();
+            $table->string('location_name')->nullable();
             $table->string('attd')->nullable();
             $table->string('std_hour')->nullable();
             $table->string('ph')->nullable();

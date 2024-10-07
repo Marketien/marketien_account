@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\SyncController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,25 @@ Route::post('/salary-store',[AttendanceController::class,'salary']);
 Route::post('/quotation-store',[QuotationController::class,'quotationStore']);
 Route::get('/invoice-no',[AccountController::class,'generateInvoice'])->name('invoice-no');
 Route::get('/ref-no',[AccountController::class,'generateRefNo'])->name('ref-no');
+
+
+
+// for offline data sync
+
+// Route::get('/sync-account',[SyncController::class,'syncAccount']);
+// Route::post('/sync-store-account',[SyncController::class,'syncAccountStore']);
+
+// Route::get('/sync-account-master',[SyncController::class,'syncAccountMaster']);
+// Route::post('/sync-store-account-master',[SyncController::class,'syncAccountMasterStore']);
+
+// Route::get('/sync-input-master',[SyncController::class,'syncInputMaster']);
+// Route::post('/sync-store-input-master',[SyncController::class,'syncInputMasterStore']);
+
+// Route::get('/sync-employee',[SyncController::class,'syncEmployee']);
+// Route::post('/sync-store-employee',[SyncController::class,'syncEmployeeStore']);
+
+// Route::get('/sync-location',[SyncController::class,'syncLocation']);
+// Route::post('/sync-store-location',[SyncController::class,'syncLocationStore']);
+
+// Route::get('/sync-attendance',[SyncController::class,'syncAttendance']);
+// Route::post('/sync-store-attendance',[SyncController::class,'syncAttendanceStore']);

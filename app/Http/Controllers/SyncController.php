@@ -13,7 +13,94 @@ use Illuminate\Support\Facades\Http;
 
 class SyncController extends Controller
 {
-    public function syncData()
+    //synData for Online
+    // Account
+    // function syncAccount()
+    // {
+    //     $data = Account::all();
+    //     return response()->json($data);
+    // }
+    // function syncAccountStore(Request $req)
+    // {
+    //     foreach ($req->all() as $accountData) {
+    //         Account::create($accountData);
+    //     }
+    //     return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
+    // // AccountMaster
+    // function syncAccountMaster()
+    // {
+    //     $data = AccountMaster::all();
+    //     return response()->json($data);
+    // }
+    // function syncAccountMasterStore(Request $req)
+    // {
+    //     foreach ($req->all() as $accountData) {
+    //         AccountMaster::create($accountData);
+    //     }
+    //     return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
+    // //Input Master
+
+    // function syncInputMaster()
+    // {
+    //     $data = InputMaster::all();
+    //     return response()->json($data);
+    // }
+    // function syncInputMasterStore(Request $req)
+    // {
+    //     foreach ($req->all() as $accountData) {
+    //         InputMaster::create($accountData);
+    //     }
+    //     return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
+    // //Employee
+    // function syncEmployee()
+    // {
+    //     $data = Worker::all();
+    //     return response()->json($data);
+    // }
+    // function syncEmployeeStore(Request $req)
+    // {
+    //     foreach ($req->all() as $accountData) {
+    //         Worker::create($accountData);
+    //     }
+    //     return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
+    // //Location
+
+    // function syncLocation()
+    // {
+    //     $data = Location::all();
+    //     return response()->json($data);
+    // }
+    // function syncLocationStore(Request $req)
+    // {
+    //     foreach ($req->all() as $accountData) {
+    //         Location::create($accountData);
+    //     }
+    //     return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
+    // //Attendance
+    // function syncAttendance()
+    // {
+    //     $data = Attendance::all();
+    //     return response()->json($data);
+    // }
+    // function syncAttendanceStore(Request $req)
+    // {
+    //     foreach ($req->all() as $accountData) {
+    //         Attendance::create($accountData);
+    //     }
+    //     return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
+
+
+
+
+
+
+    public function syncDataForOffline()
     {
         $token = 'Qalat_Al_Khaleej';
         $url1 = 'https://account.softplatoon.com/api/sync-account';
@@ -28,6 +115,7 @@ class SyncController extends Controller
         $showData4 = [];
         $showData5 = [];
         $showData6 = [];
+
         // Make a GET request to the API
         $response1 = Http::get($url1);
         $response2 = Http::get($url2);
@@ -42,38 +130,51 @@ class SyncController extends Controller
         if ($response1->successful()) {
             // Decode the JSON response
             $data1 = $response1->json();
+            $accountX= Account::all();
+            $testCollect1 = collect($data1);
 
             foreach ($data1 as $datom1) {
                 $has1 = Account::where('description', $datom1['description'])->where('date', $datom1['date'])->exists();
                 if (!$has1) {
                     $showData1[] = $datom1;
                 }
+
+            }
+            $testsqx1 =[];
+            foreach($accountX as $accounty){
+                $ext1 = $testCollect1->where('description', $accounty['description'])->where('date', $accounty['date'])->first();
+                if(!$ext1){
+                    $testsqx1[] = $accounty;
+                }
             }
 
-            $existingDescriptions1 = collect($data1)->pluck('description')->toArray();
-            $existingDates1 = collect($data1)->pluck('date')->toArray();
+
+            // $existingDescriptions1 = collect($data1)->pluck('description')->toArray();
+            // $existingDates1 = collect($data1)->pluck('date')->toArray();
 
             // Fetch accounts that do not exist in the response data
-            $missingAccounts1 = Account::whereNotIn('description', $existingDescriptions1)
-                ->orWhereNotIn('date', $existingDates1)
-                ->get();
+            // $missingAccounts1 = Account::whereNotIn('date', $existingDates1)
+            // ->orWhereNotIn('description', $existingDescriptions1)
+            //     ->get();
+
+
             // Return the data, you can also pass it to a view
-            // if ($showData) {
-            //     foreach ($showData as $showDatom) {
+            // if ($showData1) {
+            //     foreach ($showData1 as $showDatom1) {
             //         $saveData1 = Account::create([
-            //             'description' => $showDatom['description'],
-            //             'cash_out_debit' => $showDatom['cash_out_debit'],
-            //             'cash_in_credit' => $showDatom['cash_in_credit'],
-            //             'date' => $showDatom['date']
+            //             'description' => $showDatom1['description'],
+            //             'cash_out_debit' => $showDatom1['cash_out_debit'],
+            //             'cash_in_credit' => $showDatom1['cash_in_credit'],
+            //             'date' => $showDatom1['date']
             //         ]);
             //     }
             // }
             // $post1 = 'https://account.softplatoon.com/api/sync-store-account';
-            // $postResponse1 = Http::post($post,$missingAccounts1);
-
+            // $postResponse1 = Http::post($post1,$testsqx1);
             // return response([
-            //     'data'  =>    $showData,
-            //     'account' => $missingAccounts
+            //     // 'data'  =>    $showData1,
+            //     'account' => $testsqx1,
+            //     // 'test'=>$existingDescriptions1
 
             // ]);
 
@@ -171,7 +272,7 @@ class SyncController extends Controller
             $data5 = $response5->json();
 
             foreach ($data5 as $datom5) {
-                $has5 =Location::where('location_name', $datom5['location_name'])->exists();
+                $has5 = Location::where('location_name', $datom5['location_name'])->exists();
                 if (!$has5) {
                     $showData5[] = $datom5;
                 }
@@ -198,30 +299,41 @@ class SyncController extends Controller
         //Check Attendance
         if ($response6->successful()) {
             $data6 = $response6->json();
+            $attendanceX = Attendance::all();
+            $testCollect6 = collect($data6 );
 
             foreach ($data6 as $datom6) {
-                $has6 =Attendance::where('location_name', $datom6['location_name'])->exists();
+                $has6 = Attendance::where('employee_name', $datom6['employee_name'])->where('date', $datom6['date'])->exists();
                 if (!$has6) {
                     $showData6[] = $datom6;
                 }
             }
+            $testsqx6 =[];
+            foreach($attendanceX as $attendancey){
+                $ext6 = $testCollect6->where('employee_name', $attendancey['employee_name'])->where('date', $attendancey['date'])->first();
+                if(!$ext6){
+                    $testsqx6[] = $attendancey;
+                }
+            }
 
-            $existingDescriptions6 = collect($data6)->pluck('location_name')->toArray();
+            // $existingDescriptions6 = collect($data6)->pluck('employee_name')->toArray();
+            // $existingDates6 = collect($data6)->pluck('date')->toArray();
 
-            // Fetch accounts that do not exist in the response data
-            $missingAccounts6 = Location::whereNotIn('location_name', $existingDescriptions6)
-                ->get();
+            // // Fetch accounts that do not exist in the response data
+            // $missingAccounts6 = Attendance::whereNotIn('employee_name', $existingDescriptions6)
+            //     ->WhereNotIn('date',$existingDates6)
+            //     ->get();
 
             // if ($showData6) {
             //     foreach ($showData6 as $showDatom6) {
-            //         $saveData6 = Location::create($showDatom6);
+            //         $saveData6 = Attendance::create($showDatom6);
             //     }
             // }
-            // $post6 = 'https://account.softplatoon.com/api/sync-store-location';
-            // $postResponse6 = Http::post($post6,$missingAccounts6);
+            // $post6 = 'https://account.softplatoon.com/api/sync-store-attendance';
+            // $postResponse6 = Http::post($post6,$testsqx6);
 
 
-            // return response()->json([$missingAccounts6, $showData6]);
+            return response()->json([$testsqx6 , $showData6]);
 
         }
     }
