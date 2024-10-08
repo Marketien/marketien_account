@@ -217,7 +217,7 @@
             </table>
         </div>
         <div class="submitdiv">
-            <a href="/payslip/{{ optional($salary)->employee_id }}" class="submitbutton">Make PlaySlip</a>
+            <a href="/payslip/{{ optional($salary)->employee_name }}" class="submitbutton">Make PlaySlip</a>
         </div>
     </div>
 @endsection

@@ -8,6 +8,7 @@ use App\Models\Attendance;
 use App\Models\InputMaster;
 use App\Models\Location;
 use App\Models\Worker;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -94,6 +95,17 @@ class SyncController extends Controller
     //     }
     //     return response()->json(['message' => 'Data sent successfully!'], 201);
     // }
+    // //Quotation
+    // function syncQuotation(){
+    //     $data = Quotation::all();
+    //     return response()->json($data);
+    // }
+    // function syncQuotationStore(Request $req){
+    //     foreach($req->all() as $accountData){
+    //         Quotation::create($accountData);
+    //     }
+    //      return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
 
 
 
@@ -109,12 +121,14 @@ class SyncController extends Controller
         $url4 = 'https://account.softplatoon.com/api/sync-employee';
         $url5 = 'https://account.softplatoon.com/api/sync-location';
         $url6 = 'https://account.softplatoon.com/api/sync-attendance';
+        $url7 = 'https://account.softplatoon.com/api/sync-quotation';
         $showData1 = [];
         $showData2 = [];
         $showData3 = [];
         $showData4 = [];
         $showData5 = [];
         $showData6 = [];
+        $showData7 = [];
 
         // Make a GET request to the API
         $response1 = Http::get($url1);
@@ -123,6 +137,7 @@ class SyncController extends Controller
         $response4 = Http::get($url4);
         $response5 = Http::get($url5);
         $response6 = Http::get($url6);
+        $response7 = Http::get($url7);
 
         // $data = [];
 
@@ -333,8 +348,38 @@ class SyncController extends Controller
             // $postResponse6 = Http::post($post6,$testsqx6);
 
 
-            return response()->json([$testsqx6 , $showData6]);
+            // return response()->json([$testsqx6 , $showData6]);
 
         }
+        //check Quotation
+        if ($response7->successful()) {
+            $data7 = $response7->json();
+
+            foreach ($data7 as $datom7) {
+                $has7 = Quotation::where('ref_no', $datom7['ref_no'])->exists();
+                if (!$has7) {
+                    $showData7[] = $datom7;
+                }
+            }
+
+            $existingDescriptions7 = collect($data7)->pluck('ref_no')->toArray();
+
+            // Fetch accounts that do not exist in the response data
+            $missingAccounts7 = Quotation::whereNotIn('ref_no', $existingDescriptions7)
+                ->get();
+
+            if ($showData7) {
+                foreach ($showData7 as $showDatom7) {
+                    $saveData7 = Quotation::create($showDatom7);
+                }
+            }
+            $post7 = 'https://account.softplatoon.com/api/sync-store-quotation';
+            $postResponse7 = Http::post($post7,$missingAccounts7);
+
+
+            return response()->json([$missingAccounts7, $showData7]);
+
+        }
+
     }
 }

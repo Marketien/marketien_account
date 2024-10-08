@@ -112,14 +112,16 @@ class AttendanceController extends Controller
     public function employeeDetail($id)
     {
         $employee = Worker::find($id);
-        $salary = Salary::where('employee_id', $id)->latest('created_at')->first();
+        $salary = Salary::where('employee_name', $employee->employee_name)->first();
         $data = Attendance::where('employee_name', $employee->employee_name)->get();
         return view('mainsection.employeeDetail', ['attends' => $data, 'salary' => $salary]);
+        // return response()->json($salary);
     }
     public function salary(Request $req)
-    {
+    {   $employee = Worker::find($req->id);
+        $salary = Salary::where('employee_name',$employee->employee_name)->first();
         $data = new Salary();
-        $data->employee_id = $req->id;
+        $data->employee_name = $employee->employee_name;
         $data->basic = $req->basic;
         $data->holyday_ot = $req->holyday_ot;
         $data->weekday_ot = $req->weekday_ot;
@@ -133,6 +135,9 @@ class AttendanceController extends Controller
         $data->net_salary = ($req->total_net_salary - $req->deduction);
         $result = $data->save();
         if ($result) {
+            if($salary){
+                $salary->delete();
+            }
             return response([
                 'result' => "data stored successfully"
             ]);
@@ -142,21 +147,21 @@ class AttendanceController extends Controller
             ]);
         }
     }
-    public function payslip($id)
+    public function payslip($name)
     {
 
         $year = Carbon::now()->format('Y');
         $month = Carbon::now()->format('m');
         $dayNumber = [];
         $daysInMonth = $this->findDateHelper($year, $month);
-        $emp = Worker::where('id',$id)->first();
-        $salary = Salary::where('employee_id',$id)->latest('created_at')->first();
+        $emp = Worker::where('employee_name',$name)->first();
+        $salary = Salary::where('employee_name',$name)->first();
         // $dayNumber[] = json_decode($daysInMonth, true);
 
 
 
         foreach ($daysInMonth as &$day) { // Use &$day to modify the original array elements
-            $data = Attendance::where('employee_name', $emp->employee_name)
+            $data = Attendance::where('employee_name', $name)
                 ->where('date', $day['date']) // Access 'date' as array key
                 ->first();
 

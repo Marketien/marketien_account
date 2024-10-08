@@ -86,7 +86,7 @@ Route::group(['middleware' => ['role:Admin']], function () {
     Route::get('/employee-detail/{id}', [AttendanceController::class, 'employeeDetail']);
     Route::get('/employee-delete/{id}', [AttendanceController::class, 'employeeDelete'])->name('employee-delete');
     Route::get('/location-delete/{id}', [AttendanceController::class, 'locationDelete'])->name('location-delete');
-    Route::get('/payslip/{id}', [AttendanceController::class, 'payslip']);
+    Route::get('/payslip/{name}', [AttendanceController::class, 'payslip']);
 
 
 

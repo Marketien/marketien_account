@@ -122,7 +122,7 @@ class UserController extends Controller
         $income = [];
         $expense = [];
         for($i =1;$i<=$number;$i++){
-            $account = Account::where('date',Carbon::create($year,$month,$i))->get();
+            $account = Account::where('date',Carbon::create($year,$month,$i)->format('Y-m-d'))->get();
             $debit = $account->sum('cash_out_debit');
             $credit = $account->sum('cash_in_credit');
             $income[$i-1] = $credit;
@@ -145,6 +145,8 @@ class UserController extends Controller
 
 
          ]);
+        // return response(implode(',',$income));
+        // return response($account);
     }
      Public function userList(){
       $users = User::all();

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->integer('employee_id')->nullable();
+            $table->string('employee_name')->nullable();
             $table->string('basic')->nullable();
             $table->string('holyday_ot')->nullable();
             $table->string('weekday_ot')->nullable();
