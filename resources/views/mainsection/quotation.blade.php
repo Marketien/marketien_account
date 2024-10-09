@@ -167,7 +167,7 @@
     <div id="container_content">
         <div class="invoice3body">
             <div class="invoice-box3">
-                <img class="header-image" src="image/Header.png" alt="">
+                <img class="header-image" src="{{asset('image/Header.png')}}" alt="">
                 <div class="header-section3">
                     <div>
                         <h7 class="heading3">Ref.No: {{ $quotation->ref_no }}<br>Date: {{ $quotation->date }}</h7>

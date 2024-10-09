@@ -9,6 +9,7 @@ use App\Models\InputMaster;
 use App\Models\Location;
 use App\Models\Worker;
 use App\Models\Quotation;
+use App\Models\Salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -106,7 +107,18 @@ class SyncController extends Controller
     //     }
     //      return response()->json(['message' => 'Data sent successfully!'], 201);
     // }
+    ////Salary
 
+    // function syncSalary(){
+    //     $data = Salary::all();
+    //     return response()->json($data);
+    // }
+    // function syncSalaryStore(Request $req){
+    //     foreach($req->all() as $accountData){
+    //         Salary::create($accountData);
+    //     }
+    //      return response()->json(['message' => 'Data sent successfully!'], 201);
+    // }
 
 
 
@@ -122,6 +134,7 @@ class SyncController extends Controller
         $url5 = 'https://account.softplatoon.com/api/sync-location';
         $url6 = 'https://account.softplatoon.com/api/sync-attendance';
         $url7 = 'https://account.softplatoon.com/api/sync-quotation';
+        $url8 = 'https://account.softplatoon.com/api/sync-salary';
         $showData1 = [];
         $showData2 = [];
         $showData3 = [];
@@ -129,6 +142,7 @@ class SyncController extends Controller
         $showData5 = [];
         $showData6 = [];
         $showData7 = [];
+        $showData8 = [];
 
         // Make a GET request to the API
         $response1 = Http::get($url1);
@@ -138,6 +152,7 @@ class SyncController extends Controller
         $response5 = Http::get($url5);
         $response6 = Http::get($url6);
         $response7 = Http::get($url7);
+        $response8 = Http::get($url8);
 
         // $data = [];
 
@@ -174,18 +189,18 @@ class SyncController extends Controller
 
 
             // Return the data, you can also pass it to a view
-            // if ($showData1) {
-            //     foreach ($showData1 as $showDatom1) {
-            //         $saveData1 = Account::create([
-            //             'description' => $showDatom1['description'],
-            //             'cash_out_debit' => $showDatom1['cash_out_debit'],
-            //             'cash_in_credit' => $showDatom1['cash_in_credit'],
-            //             'date' => $showDatom1['date']
-            //         ]);
-            //     }
-            // }
-            // $post1 = 'https://account.softplatoon.com/api/sync-store-account';
-            // $postResponse1 = Http::post($post1,$testsqx1);
+            if ($showData1) {
+                foreach ($showData1 as $showDatom1) {
+                    $saveData1 = Account::create([
+                        'description' => $showDatom1['description'],
+                        'cash_out_debit' => $showDatom1['cash_out_debit'],
+                        'cash_in_credit' => $showDatom1['cash_in_credit'],
+                        'date' => $showDatom1['date']
+                    ]);
+                }
+            }
+            $post1 = 'https://account.softplatoon.com/api/sync-store-account';
+            $postResponse1 = Http::post($post1,$testsqx1);
             // return response([
             //     // 'data'  =>    $showData1,
             //     'account' => $testsqx1,
@@ -211,13 +226,13 @@ class SyncController extends Controller
             $missingAccounts2 = AccountMaster::whereNotIn('invoice_no', $existingDescriptions2)
                 ->get();
 
-            // if ($showData2) {
-            //     foreach ($showData2 as $showDatom2) {
-            //         $saveData2 = AccountMaster::create($showDatom2);
-            //     }
-            // }
-            // $post2 = 'https://account.softplatoon.com/api/sync-store-account-master';
-            // $postResponse2 = Http::post($post2,$missingAccounts2);
+            if ($showData2) {
+                foreach ($showData2 as $showDatom2) {
+                    $saveData2 = AccountMaster::create($showDatom2);
+                }
+            }
+            $post2 = 'https://account.softplatoon.com/api/sync-store-account-master';
+            $postResponse2 = Http::post($post2,$missingAccounts2);
 
 
             // return response()->json([$missingAccounts2, $showData2]);
@@ -239,13 +254,13 @@ class SyncController extends Controller
             $missingAccounts3 = InputMaster::whereNotIn('invoice_no', $existingDescriptions3)
                 ->get();
 
-            // if ($showData3) {
-            //     foreach ($showData3 as $showDatom3) {
-            //         $saveData3 = InputMaster::create($showDatom3);
-            //     }
-            // }
-            // $post3 = 'https://account.softplatoon.com/api/sync-store-input-master';
-            // $postResponse3 = Http::post($post3,$missingAccounts3);
+            if ($showData3) {
+                foreach ($showData3 as $showDatom3) {
+                    $saveData3 = InputMaster::create($showDatom3);
+                }
+            }
+            $post3 = 'https://account.softplatoon.com/api/sync-store-input-master';
+            $postResponse3 = Http::post($post3,$missingAccounts3);
 
             // $input = InputMaster::all();
             // return response()->json([$missingAccounts3, $showData3]);
@@ -269,13 +284,13 @@ class SyncController extends Controller
             $missingAccounts4 = Worker::whereNotIn('employee_name', $existingDescriptions4)
                 ->get();
 
-            // if ($showData4) {
-            //     foreach ($showData4 as $showDatom4) {
-            //         $saveData4 = Worker::create($showDatom4);
-            //     }
-            // }
-            // $post4 = 'https://account.softplatoon.com/api/sync-store-employee';
-            // $postResponse4 = Http::post($post4,$missingAccounts4);
+            if ($showData4) {
+                foreach ($showData4 as $showDatom4) {
+                    $saveData4 = Worker::create($showDatom4);
+                }
+            }
+            $post4 = 'https://account.softplatoon.com/api/sync-store-employee';
+            $postResponse4 = Http::post($post4,$missingAccounts4);
 
 
             // return response()->json([$missingAccounts4, $showData4]);
@@ -299,13 +314,13 @@ class SyncController extends Controller
             $missingAccounts5 = Location::whereNotIn('location_name', $existingDescriptions5)
                 ->get();
 
-            // if ($showData5) {
-            //     foreach ($showData5 as $showDatom5) {
-            //         $saveData5 = Location::create($showDatom5);
-            //     }
-            // }
-            // $post5 = 'https://account.softplatoon.com/api/sync-store-location';
-            // $postResponse5 = Http::post($post5,$missingAccounts5);
+            if ($showData5) {
+                foreach ($showData5 as $showDatom5) {
+                    $saveData5 = Location::create($showDatom5);
+                }
+            }
+            $post5 = 'https://account.softplatoon.com/api/sync-store-location';
+            $postResponse5 = Http::post($post5,$missingAccounts5);
 
 
             // return response()->json([$missingAccounts5, $showData5]);
@@ -339,13 +354,13 @@ class SyncController extends Controller
             //     ->WhereNotIn('date',$existingDates6)
             //     ->get();
 
-            // if ($showData6) {
-            //     foreach ($showData6 as $showDatom6) {
-            //         $saveData6 = Attendance::create($showDatom6);
-            //     }
-            // }
-            // $post6 = 'https://account.softplatoon.com/api/sync-store-attendance';
-            // $postResponse6 = Http::post($post6,$testsqx6);
+            if ($showData6) {
+                foreach ($showData6 as $showDatom6) {
+                    $saveData6 = Attendance::create($showDatom6);
+                }
+            }
+            $post6 = 'https://account.softplatoon.com/api/sync-store-attendance';
+            $postResponse6 = Http::post($post6,$testsqx6);
 
 
             // return response()->json([$testsqx6 , $showData6]);
@@ -377,7 +392,39 @@ class SyncController extends Controller
             $postResponse7 = Http::post($post7,$missingAccounts7);
 
 
-            return response()->json([$missingAccounts7, $showData7]);
+            // return response()->json([$missingAccounts7, $showData7]);
+
+        }
+        //check salary
+        if ($response8->successful()) {
+            $data8 = $response8->json();
+
+            foreach ($data8 as $datom8) {
+                $has8 = Salary::where('employee_name', $datom8['employee_name'])->exists();
+                if (!$has8) {
+                    $showData8[] = $datom8;
+                }
+            }
+
+            $existingDescriptions8 = collect($data8)->pluck('employee_name')->toArray();
+
+            // Fetch accounts that do not exist in the response data
+            $missingAccounts8 = Salary::whereNotIn('employee_name', $existingDescriptions8)
+                ->get();
+
+            if ($showData8) {
+                foreach ($showData8 as $showDatom8) {
+                    $saveData8 = Salary::create($showDatom8);
+                }
+            }
+
+            $post8 = 'https://account.softplatoon.com/api/sync-store-salary';
+            $postResponse8 = Http::post($post8,$missingAccounts8);
+
+
+            return response()->json(['message'=>'Data is synced successfully']);
+
+
 
         }
 

@@ -36,10 +36,10 @@
     table th,
     table td {
         border: 1px solid black;
-        padding: 4px;
+        padding: 0px;
         text-align: left;
         height: 1px;
-        font-size: 10px;
+        font-size:10px;
     }
 
     /* Adjust date table header width */
@@ -98,13 +98,14 @@
         background: linear-gradient(to bottom, #3bb890, #114070);
     }
     .header-image {
+        height: 130px;
         width: 100%;
     }
 </style>
 
 <body>
     <div class="invoice-box" id="container_content">
-        <img class="header-image" src="image/Header.png" alt="">
+        <img class="header-image" src="{{asset('image/Header.png')}}" alt="">
         <table>
             <tr>
                 <td colspan="2">

@@ -49,3 +49,9 @@ Route::get('/ref-no',[AccountController::class,'generateRefNo'])->name('ref-no')
 
 // Route::get('/sync-attendance',[SyncController::class,'syncAttendance']);
 // Route::post('/sync-store-attendance',[SyncController::class,'syncAttendanceStore']);
+
+// Route::get('/sync-quotation',[SyncController::class,'syncQuotation']);
+// Route::post('/sync-store-quotation',[SyncController::class,'syncQuotationStore']);
+
+// Route::get('/sync-salary',[SyncController::class,'syncSalary']);
+// Route::post('/sync-store-salary',[SyncController::class,'syncSalaryStore']);
