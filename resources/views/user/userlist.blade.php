@@ -116,10 +116,10 @@
                 </span>
             </div>
             @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <!-- Table section   -->
             <div class="table-responsive">
                 <table>
@@ -143,11 +143,9 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if (!empty($user->getRoleNames()))
-                                        @foreach($user->getRoleNames() as $roleName)
-                                            <label class="badge bg-primary">{{$roleName}}</label>
+                                        @foreach ($user->getRoleNames() as $roleName)
+                                            <label class="badge bg-primary">{{ $roleName }}</label>
                                         @endforeach
-
-
                                     @endif
                                 </td>
                                 <td>
@@ -158,12 +156,12 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <li>
-                                                <a href="/user-edit/{{$user->id}}" class="dropdown-item">
+                                                <a href="/user-edit/{{ $user->id }}" class="dropdown-item">
                                                     Edit
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/user-delete/{{$user->id}}" class="dropdown-item" >
+                                                <a href="/user-delete/{{ $user->id }}" class="dropdown-item">
                                                     Delete
                                                 </a>
                                             </li>

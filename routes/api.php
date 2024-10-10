@@ -6,6 +6,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\SyncController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,8 @@ Route::get('/ref-no',[AccountController::class,'generateRefNo'])->name('ref-no')
 
 // Route::get('/sync-salary',[SyncController::class,'syncSalary']);
 // Route::post('/sync-store-salary',[SyncController::class,'syncSalaryStore']);
+
+// for offline data store (User/Roles/Permission)
+// Route::get('/user-delete-api/{id}', [UserController::class, 'userDestroyApi']);
+// Route::post('/user-store-api', [UserController::class, 'userStoreApi']);
+// Route::put('/user-update-api/{user}', [UserController::class, 'userUpdateApi']);
