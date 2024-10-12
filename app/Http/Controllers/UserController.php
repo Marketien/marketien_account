@@ -189,6 +189,7 @@ class UserController extends Controller
                 $postUser = 'https://account.softplatoon.com/api/user-store-api';
                 $postResponse1 = Http::post($postUser, $userpost);
                 return redirect('/user-list')->with('status', 'user created successfully');
+                // return response()->json($req);
             }
         } catch (\Exception $e) {
 
@@ -242,10 +243,11 @@ class UserController extends Controller
             'userRoles' => $userRoles
         ]);
     }
-    public function userUpdate(Request $req, User $user)
+    public function userUpdate(Request $req, $user)
     {
+        $userEd = User::where('name', $user)->first();
         try {
-            $response = Http::timeout(5)->get('https://account.softplatoon.com');
+            $response = Http::get('https://account.softplatoon.com');
             if ($response->successful()) {
 
                 $req->validate([
@@ -253,30 +255,73 @@ class UserController extends Controller
                     'password' => 'nullable|string|min:5|max:20',
                     'roles' => 'required|array'
                 ]);
-                // $data = [
-                //     'name' => $req->name,
-                //     'email' => $req->email,
-                // ];
-                // if (!empty($req->password)) {
-                //     $data += [
-                //         'password' => Hash::make($req->password),
-                //     ];
-                // }
-                // $user->update($data);
-                // $user->syncRoles($req->roles);
+
                 $userpost = $req->all();
-                $userId = $user->id;
-                $userpost['userId'] = $userId;
-                $postUser = "https://account.softplatoon.com/api/user-update-api";
+                // // unset($userpost['_method']);
+                // unset($userpost['_token']);
+
+                $postUser = "https://account.softplatoon.com/api/user-update-api/{$userEd->name}";
                 $postResponse1 = Http::put($postUser, $userpost);
-                $res = $postResponse1->json();
+                $data = [
+                    'name' => $req->name,
+                    'email' => $req->email,
+                ];
+                if (!empty($req->password)) {
+                    $data += [
+                        'password' => Hash::make($req->password),
+                    ];
+                }
+                $userEd->update($data);
+                $userEd->syncRoles($req->roles);
                 // return redirect('/user-list')->with('status', 'User updated successfully');
-                return response()->json($res);
+                return response()->json($userpost);
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('fail', 'Your Internet connection is failed, try with internet');
         }
     }
+    //for online
+    // Public function userUpdate(Request $req, User $user){
+    //     $req->validate([
+    //        'name'=>'required|string|max:255',
+    //        'password'=>'nullable|string|min:5|max:20',
+    //        'roles'=> 'required|array'
+    //     ]);
+    //     $data = [
+    //        'name'=> $req->name,
+    //        'email'=>$req->email,
+    //     ];
+    //     if(!empty($req->password)){
+    //        $data += [
+    //            'password'=>Hash::make($req->password),
+    //         ];
+    //     }
+    //     $user->update($data);
+    //     $user->syncRoles($req->roles);
+    //     return redirect('/user-list')->with('status','User updated successfully');
+    //     }
+    //     Public function userUpdateApi(Request $req, $user){
+    //        $userEd = User::where('name', $user)->first();
+    //     $data = [
+    //        'name'=> $req->name,
+    //        'email'=>$req->email,
+    //     ];
+    //     if(!empty($req->password)){
+    //        $data += [
+    //            'password'=>Hash::make($req->password),
+    //         ];
+    //     }
+    //    // $user->name = $req->name;
+    //    // $user->email = $req->email;
+    //    //  if(!empty($req->password)){
+    //    //     $user->password = $req->password;
+    //    //  }
+    //    $userEd->update($data);
+    //    // $user->save();
+    //    $userEd->syncRoles($req->roles);
+
+    //     return response()->json(['message'=>'Data updated Successfully']);
+    //     }
     public function userDestroy($id)
     {
         $user = User::findOrFail($id);

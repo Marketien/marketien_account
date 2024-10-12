@@ -105,11 +105,16 @@
 
     <body>
         <div class="adminSec flex-grow-1 p-3">
+            @if (session('fail'))
+            <div class="alert alert-danger">
+                {{ session('fail') }}
+            </div>
+            @endif
             <!-- Tag and button section  -->
             <section class="section">
                 <h1>Update User</h1>
                 <div class="tag-section container">
-                    <form action="/user-update/{{$user->id}}" method="POST">
+                    <form action="/user-update/{{$user->name}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="parent-form-group row g-3">

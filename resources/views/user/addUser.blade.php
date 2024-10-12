@@ -105,10 +105,10 @@
     <body>
         <div class="adminSec flex-grow-1 p-3">
             @if (session('fail'))
-            <div class="alert alert-danger">
-                {{ session('fail') }}
-            </div>
-        @endif
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
             <!-- Tag and button section  -->
             <section class="section">
                 <h1>Create User</h1>
@@ -118,8 +118,8 @@
                         <div class="parent-form-group row g-3">
                             <span class="form-group col col-lg-4 col-md-6 col-sm-12">
                                 <label for="name">Name:</label>
-                                <input type="text" class="formInput" id="name" name="name" placeholder="Enter Name"
-                                    required />
+                                <input type="text" class="formInput" id="name" name="name"
+                                    placeholder="Enter Name" required />
                             </span>
                             <span class="form-group col col-lg-4 col-md-6 col-sm-12">
                                 <label for="email">Email:</label>
@@ -142,7 +142,7 @@
                                     <select name="roles[]" multiple class="form-control">
                                         <option value="">select roles</option>
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role }}">{{ $role}}</option>
+                                            <option value="{{ $role }}">{{ $role }}</option>
                                         @endforeach
 
                                     </select>
