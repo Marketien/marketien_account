@@ -127,11 +127,15 @@
                     <a href="/permission-form" class="addPermissionButton">Add</a>
                 </span>
             </div>
-            @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
             <!-- Table section   -->
             <div class="table-responsive">
                 <table>

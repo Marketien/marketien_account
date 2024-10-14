@@ -115,10 +115,14 @@
                     <a href="/user-form" class="addRoleButton">Add </a>
                 </span>
             </div>
-            @if (session('status'))
+            @if (session('success'))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {{ session('success') }}
                 </div>
+            @elseif (session('fail'))
+            <div class="alert alert-danger">
+                {{ session('fail') }}
+            </div>
             @endif
             <!-- Table section   -->
             <div class="table-responsive">

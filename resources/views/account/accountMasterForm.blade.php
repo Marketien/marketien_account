@@ -195,6 +195,15 @@
     }
     </style>
     <div class="master-form flex-grow-1 main-content-expanded p-3">
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif (session('fail'))
+        <div class="alert alert-danger">
+            {{ session('fail') }}
+        </div>
+    @endif
         <div class="form-container">
             {{-- <h2 class="text-center mb-4">Form-0</h2>
         <form>

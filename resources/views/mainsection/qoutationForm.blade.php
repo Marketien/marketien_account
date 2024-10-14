@@ -1,8 +1,8 @@
 @extends('adminMaster')
 @section('content')
-@vite(['resources/js/app.js','resources/css/app.css'])
-<link rel="stylesheet" href="{{ asset('public/build/assets/app-l0sNRNKZ.js') }}">
-<script type="module" src="{{ asset('public/build/assets/app-Doh142Dr.js')}}"></script>
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <link rel="stylesheet" href="{{ asset('public/build/assets/app-l0sNRNKZ.js') }}">
+    <script type="module" src="{{ asset('public/build/assets/app-Doh142Dr.js') }}"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,64 +84,83 @@
         .content {
             margin-top: 20px;
         }
-        .submit-button {
-        margin-top: -50px;
-        display: block;
-        width: 100%;
-        padding: 10px;
-        background: linear-gradient(to top, #3bb890, #114070);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-    .submit-button:hover {
-        background: linear-gradient(to bottom, #3bb890, #114070);
-    }
-    /* alignment of input field */
 
-        .parentInput1{
+        .submit-button {
+            margin-top: -50px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(to top, #3bb890, #114070);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background: linear-gradient(to bottom, #3bb890, #114070);
+        }
+
+        /* alignment of input field */
+
+        .parentInput1 {
             margin-left: 58px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput2{
+
+        .parentInput2 {
             margin-left: 73px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput3{
+
+        .parentInput3 {
             margin-left: 78px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput4{
+
+        .parentInput4 {
             margin-left: 51px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput5{
+
+        .parentInput5 {
             margin-left: 85px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput6{
+
+        .parentInput6 {
             margin-left: 67px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput7{
+
+        .parentInput7 {
             margin-left: 42px;
             padding: 5px;
             width: 230px;
         }
-        .parentInput8{
+
+        .parentInput8 {
             margin-left: 15px;
             padding: 5px;
             width: 230px;
         }
     </style>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @elseif (session('fail'))
+        <div class="alert alert-danger">
+            {{ session('fail') }}
+        </div>
+    @endif
     <div id="appq" class="flex-grow-1 main-content-expanded p-3">
 
     </div>

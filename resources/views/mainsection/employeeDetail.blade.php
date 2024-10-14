@@ -139,6 +139,15 @@
     </style>
 
     <div class="attn-table flex-grow-1 main-content-expanded p-3">
+        @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
         <div class="sos">
             <!-- Salary & Benefits  -->
             <div class="tableDiv1" id="apps"></div>

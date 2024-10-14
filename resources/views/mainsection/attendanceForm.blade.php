@@ -83,19 +83,15 @@
     <div class="attend-body flex-grow-1 main-content-expanded p-3">
         <div class="container-attend">
             <!-- Section 1 -->
-            <div style="background-color:green;">
-                @if (Session::get('success'))
-                    <div style="color:black; margin: 1rem; ">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-
-                @if (Session::get('fail'))
-                    <div style="color: rgb(238, 255, 0);">
-                        {{ Session::get('fail') }}
-                    </div>
-                @endif
-            </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
             <section class="section-container">
                 <h2 class="section-title"></h2>
                 <form action="/employee-store" method="POST">

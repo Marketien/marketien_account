@@ -295,19 +295,15 @@
             <!-- input fields  -->
             <form action="/account-store" method="POST">
                 @csrf
-                <div style="background-color:green;">
-                    @if (Session::get('success'))
-                        <div style="color:black; margin: 1rem; ">
-                            {{ Session::get('success') }}
-                        </div>
-                    @endif
-
-                    @if (Session::get('fail'))
-                        <div style="color: rgb(238, 255, 0);">
-                            {{ Session::get('fail') }}
-                        </div>
-                    @endif
-                </div>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @elseif (session('fail'))
+                    <div class="alert alert-danger">
+                        {{ session('fail') }}
+                    </div>
+                @endif
 
                 <div class="container mb-5 ">
                     <div class="form-row">
@@ -361,9 +357,9 @@
                                 <!-- Dropdown button   -->
                                 <td>{{ $account->date }}</td>
                                 <td>{{ $account->description }}</td>
-                                <td>{{ number_format($account->cash_out_debit,2,'.',',') }}</td>
-                                <td>{{ number_format($account->cash_in_credit,2,'.',',') }}</td>
-                                <td>{{ number_format($account->calc_amount,2,'.',',') }}</td>
+                                <td>{{ number_format($account->cash_out_debit, 2, '.', ',') }}</td>
+                                <td>{{ number_format($account->cash_in_credit, 2, '.', ',') }}</td>
+                                <td>{{ number_format($account->calc_amount, 2, '.', ',') }}</td>
                                 <td>
 
                                     <div class="dropdown">

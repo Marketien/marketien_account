@@ -57,6 +57,15 @@
         }
     </style>
     <div class="emp-body flex-grow-1 main-content-expanded p-3" >
+        @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
         <div class="InvoiceTableContainer">
             <div class="InvoiceTable-container">
                 <table>

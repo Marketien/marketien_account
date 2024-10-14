@@ -57,6 +57,15 @@
 
 
     <div class="adminSec flex-grow-1 p-3">
+        @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
       <!-- Tag and button section  -->
       <section class="section">
         <h1>Update Permission</h1>

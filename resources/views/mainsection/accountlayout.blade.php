@@ -89,7 +89,7 @@
                         <div class="w-50">
                             <select class="form-select" aria-label="Default select example" id="monthSelect" name="month">
                                 <option value="" selected disabled>Select a month</option>
-                                <option value="1" >January</option>
+                                <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
                                 <option value="4">April</option>
@@ -196,19 +196,15 @@
                 </div>
             </div>
             <!-- Table section   -->
-            <div style="background-color:green;">
-                @if (Session::get('success'))
-                    <div style="color:black; margin: 1rem; ">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-
-                @if (Session::get('fail'))
-                    <div style="color: rgb(238, 255, 0);">
-                        {{ Session::get('fail') }}
-                    </div>
-                @endif
-            </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
             <div id="container_content">
                 <table class="overflow-auto" id="myTable">
                     <thead>
@@ -255,10 +251,10 @@
                                 <td>{{ $master->description }}</td>
                                 <td>{{ $master->invoice_date }}</td>
                                 <td>{{ $master->lpo }}</td>
-                                <td>{{ number_format($master->amount,2,'.',',') }}</td>
-                                <td>{{ number_format($master->credit,2,'.',',') }}</td>
-                                <td>{{ number_format($master->due,2,'.',',') }}</td>
-                                <td>{{ number_format($master->remark,2,'.',',') }}</td>
+                                <td>{{ number_format($master->amount, 2, '.', ',') }}</td>
+                                <td>{{ number_format($master->credit, 2, '.', ',') }}</td>
+                                <td>{{ number_format($master->due, 2, '.', ',') }}</td>
+                                <td>{{ number_format($master->remark, 2, '.', ',') }}</td>
                                 @include('account.modalMasterDelete')
                             </tr>
                         @endforeach
@@ -267,12 +263,12 @@
                 <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
                     class="bg-light p-3 rounded mb-3 text-center lh-lg">
                     <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span>
-                        <span>{{ number_format($amount,3,'.',',') }}</span>
+                        <span>{{ number_format($amount, 3, '.', ',') }}</span>
                     </p>
                     <p class="d-flex justify-content-between"><span>Total Amount Recieved :</span> <span
-                            class="text-success">{{ number_format($credit,3,'.',',') }}</span> </p>
+                            class="text-success">{{ number_format($credit, 3, '.', ',') }}</span> </p>
                     <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span
-                            class="text-danger">{{ number_format($due,3,'.',',') }}</span>
+                            class="text-danger">{{ number_format($due, 3, '.', ',') }}</span>
                     </p>
                 </div>
             </div>

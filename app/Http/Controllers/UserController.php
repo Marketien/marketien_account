@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redis;
+use PhpParser\Node\Stmt\TryCatch;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -188,7 +189,7 @@ class UserController extends Controller
                 $userpost = $req->all();
                 $postUser = 'https://account.softplatoon.com/api/user-store-api';
                 $postResponse1 = Http::post($postUser, $userpost);
-                return redirect('/user-list')->with('status', 'user created successfully');
+                return redirect('/user-list')->with('success', 'user created successfully');
                 // return response()->json($req);
             }
         } catch (\Exception $e) {
@@ -211,7 +212,7 @@ class UserController extends Controller
     //       'role'=>'1'
     //   ]);
     //   $user->syncRoles($req->roles);
-    //   return redirect('/user-list')->with('status','user created successfully');
+    //   return redirect('/user-list')->with('success','user created successfully');
 
     //  }
 
@@ -273,8 +274,8 @@ class UserController extends Controller
                 }
                 $userEd->update($data);
                 $userEd->syncRoles($req->roles);
-                // return redirect('/user-list')->with('status', 'User updated successfully');
-                return response()->json($userpost);
+                return redirect('/user-list')->with('success', 'User updated successfully');
+                // return response()->json($userpost);
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('fail', 'Your Internet connection is failed, try with internet');
@@ -298,7 +299,7 @@ class UserController extends Controller
     //     }
     //     $user->update($data);
     //     $user->syncRoles($req->roles);
-    //     return redirect('/user-list')->with('status','User updated successfully');
+    //     return redirect('/user-list')->with('success','User updated successfully');
     //     }
     //     Public function userUpdateApi(Request $req, $user){
     //        $userEd = User::where('name', $user)->first();
@@ -325,7 +326,26 @@ class UserController extends Controller
     public function userDestroy($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
-        return back()->with('status', 'User Deleted successfully');
+        try {
+            $response = Http::get('https://account.softplatoon.com');
+            if ($response->successful()) {
+                $user->delete();
+                $postUser = Http::get("https://account.softplatoon.com/api/user-delete-api/{$user->name}");
+                return back()->with('success', 'User Deleted successfully');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('fail', 'Your Internet connection is failed, try with internet');
+        }
     }
+    //for online
+    // Public function userDestroy($id){
+    //     $user = User::findOrFail($id);
+    //     $user->delete();
+    //     return back()->with('success','User Deleted successfully');
+    //   }
+    //   Public function userDestroyApi($name){
+    //     $user = User::where('name',$name)->first();
+    //     $user->delete();
+    //     return response()->json(['message'=>'Data Deleted Successfully']);
+    //   }
 }
