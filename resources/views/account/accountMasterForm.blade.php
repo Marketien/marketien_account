@@ -2,7 +2,7 @@
 @section('content')
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('public/build/assets/app-l0sNRNKZ.js') }}">
-    <script type="module" src="{{ asset('public/build/assets/app-Doh142Dr.js')}}"></script>
+    <script type="module" src="{{ asset('public/build/assets/app-Doh142Dr.js') }}"></script>
     <style>
         .master-form-body {
             display: flex;
@@ -111,14 +111,16 @@
             padding: 8px;
             text-align: left;
         }
+
         .dateinput {
-        width: 100%; /* Ensure input fields take full width */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
+            width: 100%;
+            /* Ensure input fields take full width */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
 
         .submit-button {
             margin-top: -50px;
@@ -190,20 +192,22 @@
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
-        .passMngIcon:hover{
-        background-color: rgba(128, 128, 128, 0.441);
-    }
+
+        .passMngIcon:hover {
+            background-color: rgba(128, 128, 128, 0.441);
+        }
     </style>
     <div class="master-form flex-grow-1 main-content-expanded p-3">
-        @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @elseif (session('fail'))
-        <div class="alert alert-danger">
-            {{ session('fail') }}
-        </div>
-    @endif
+        @if (session('success'))
+            <div class="alert alert-success" >
+                {{ session('success') }}
+            </div>
+        @elseif (session('fail'))
+            <div class="alert alert-danger" >
+                {{ session('fail') }}
+            </div>
+        @endif
+        <div id="result"></div>
         <div class="form-container">
             {{-- <h2 class="text-center mb-4">Form-0</h2>
         <form>

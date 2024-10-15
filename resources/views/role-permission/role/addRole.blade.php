@@ -96,7 +96,7 @@ rel="stylesheet"
         <!-- Tag and button section  -->
         <section class="section">
             <h1>Add Role</h1>
-            <form class="tag-section" action="/role-store" method="POST" >
+            <form class="tag-section " action="/role-store" method="POST" >
                 @csrf
                 <span class="form-group">
                     <label for="name">Name:</label>

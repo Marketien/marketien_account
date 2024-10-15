@@ -1,3 +1,4 @@
+
 <header>
     <!-- Navbar -->
     <!-- Navbar -->
@@ -31,7 +32,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         {{-- for large and medium device --}}
-                        <a class="nav-link cloud-image" href="/sync-test">
+                        <a class="nav-link cloud-image" id="fetchDataButton">
                             <img src="{{ asset('image/sync_black.png') }}" alt="Profile" class="rounded-circle"
                                 width="30" height="30" />
                         </a>
@@ -132,3 +133,5 @@
     </div>
 
 </header>
+
+

@@ -424,11 +424,12 @@ class SyncController extends Controller
                     $postResponse8 = Http::post($post8, $missingAccounts8);
 
 
-                    return redirect()->back()->with('success', 'Data is synced successfully');
+                    // return redirect()->back()->with('success', 'Data is synced successfully');
+                    return response()->json('success', 200);
                 }
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('fail', 'Your Internet connection is failed, try with internet');
+            return response()->json(['error' => 'Your Internet connection failed, try again with internet'], 500);
         }
     }
 }
