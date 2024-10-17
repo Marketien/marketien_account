@@ -129,3 +129,6 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::post('/check', [UserController::class, 'userCheck'])->name('check');
 
 Route::get('/sync-test',[SyncController::class,'syncDataForOffline']);
+
+Route::get('/account-pdf',[AccountController::class,'accountPDF']);
+

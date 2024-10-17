@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\AccountMaster;
 use App\Models\InputMaster;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 
 class AccountController extends Controller
@@ -130,7 +132,7 @@ class AccountController extends Controller
         );
     }
     public function previewAccount(){
-        $data = Account::all();
+        $data = Account::paginate(20);
         foreach ($data as $account) {
             $balance = Account::where('created_at', '<', $account->created_at)->get();
             $debit = $balance->sum('cash_out_debit');
@@ -139,6 +141,17 @@ class AccountController extends Controller
         }
 
         return view('account.previewAccount',['accounts'=>$data]);
+    }
+    public function accountPDF(){
+        $data = Account::all();
+        foreach ($data as $account) {
+            $balance = Account::where('created_at', '<', $account->created_at)->get();
+            $debit = $balance->sum('cash_out_debit');
+            $credit = $balance->sum('cash_in_credit');
+            $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit;
+        }
+        $pdf = FacadePdf::loadView('account.pdfAccount',['accounts'=>$data]);
+        return $pdf->setPaper('a4', 'letter')->download();
     }
 
     // Acount Master

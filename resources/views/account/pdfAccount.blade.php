@@ -23,8 +23,8 @@
 
         .invoice-box {
             width: 21cm;
-            height: 29.7cm;
-            margin: 0;
+            /* height: 29.7cm; */
+            margin-left: -40px;
             /* Remove fixed margins */
             font-family: "Open Sans", sans-serif;
             background-color: #ffffff;
@@ -94,7 +94,6 @@
         .invoice-footer {
             display: flex;
             justify-content: center;
-            gap: 10px;
             text-align: center;
             color: #777;
             margin-top: 30px;
@@ -124,8 +123,8 @@
         .extraParagraph {
             font-weight: 500;
             text-align: center;
-            position: absolute;
-            bottom: 30px;
+            /* position: absolute;
+            bottom: -10px; */
             left: 0;
             width: 100%;
             padding: 0 20px;
@@ -146,6 +145,9 @@
 
         .submit-button:hover {
             background: linear-gradient(to bottom, #3bb890, #114070);
+        }
+        .page-break{
+            page-break-after: always;
         }
 
 
@@ -216,6 +218,9 @@
                         <th>Creadit Amount</th>
                         <th>Balanced Amount</th>
                     </tr>
+                    {{-- @php
+                        $index = 0;
+                    @endphp --}}
                     @foreach ($accounts as $account)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -226,6 +231,10 @@
                             <td>{{ number_format($account->calc_amount, 2, '.', ',') }}</td>
 
                         </tr>
+                        {{-- {{$index++}}
+                        @if ($index = 15)
+                        <div class="page-break"></div>
+                        @endif --}}
                     @endforeach
 
                 </table>
@@ -240,75 +249,11 @@
             </div>
         </div>
     </div>
-    {{ $accounts->links() }}
+    {{-- {{ $accounts->links() }} --}}
 
-    <div class="invoice-footer">
+    {{-- <div class="invoice-footer">
         <input type="button" id="rep" value="Make PDF" class="submit-button btn_print">
-        <a type="button"  href="/account-pdf"  class="submit-button"> Entire Pdf </a>
-    </div>
+    </div> --}}
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-<script src="https://rawgit.com/ephilipson/html2pdf/master/dist/html2pdf.bundle.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function($) {
-
-        // const rows = document.querySelectorAll('table tr');
-        // rows.forEach((row, index) => {
-        //     if ((index + 1) % 21 === 0) {
-        //         row.style.pageBreakAfter = 'always';
-        //     }
-        // });
-        $(document).on('click', '.btn_print', function(event) {
-            event.preventDefault();
-
-            //credit : https://ekoopmans.github.io/html2pdf.js
-
-            var element = document.getElementById('container_content');
-
-            //easy
-            // html2pdf().from(element).save();
-
-            //custom file name
-            // html2pdf().set({
-            //     filename: 'account-preview' + '_Qalat-al-khaleej' + '.pdf'
-            // }).from(element).save();
-
-
-            //more custom settings
-            var opt = {
-                margin: 0,
-                filename: 'pageContent_' + '_Qalat-al-khaleej' + '.pdf',
-                image: {
-                    type: 'jpeg',
-                    quality: 0.98
-                },
-                html2canvas: {
-                    scale: 2
-                },
-                jsPDF: {
-                    unit: 'in',
-                    format: 'a4',
-                    orientation: 'portrait'
-                }
-            };
-
-            // New Promise-based usage:
-            html2pdf().set(opt).from(element).save();
-
-
-        });
-
-
-
-    });
-</script>
-
-
 </html>
