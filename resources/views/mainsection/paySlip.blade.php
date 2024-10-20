@@ -16,8 +16,8 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #eee;
-        background-color: #f3f1f1;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        /* background-color: #f3f1f1; */
+        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
         font-size: 12px;
         line-height: 18px;
         color: #555;
@@ -35,16 +35,16 @@
 
     table th,
     table td {
-        border: 1px solid black;
-        padding: 0px;
+        border: 0.5px solid black;
+        padding: 0px 2px;
         text-align: left;
         height: 1px;
-        font-size:10px;
+        font-size: 10px;
     }
 
     /* Adjust date table header width */
     table.date-table th:first-child {
-        width:450px;
+        width: 300px;
     }
 
     /* Media query for medium devices */
@@ -82,9 +82,14 @@
         text-align: center;
     }
 
+    .invoice-footer {
+        display: flex;
+        justify-content: center;
+    }
+
     .submit-button {
         display: block;
-        width: 100%;
+        width: 20%;
         padding: 10px;
         background: linear-gradient(to top, #3bb890, #114070);
         color: white;
@@ -97,15 +102,30 @@
     .submit-button:hover {
         background: linear-gradient(to bottom, #3bb890, #114070);
     }
+
     .header-image {
         height: 130px;
         width: 100%;
     }
+    .back-button{
+        width: 20px ;
+        background-color: rgb(176, 176, 176) ;
+        padding: 5px ;
+        border-radius: 50%
+    }
+    .back-button:hover{
+        background-color: rgb(194, 162, 162) ;
+    }
 </style>
 
 <body>
+
+    <a title="back-button" href="/employee-detail/{{$employee->id}}">
+        <img class="back-button" src="{{asset('image/left-arrow.png')}}" alt="">
+    </a>
+
     <div class="invoice-box" id="container_content">
-        <img class="header-image" src="{{asset('image/Header.png')}}" alt="">
+        <img class="header-image" src="{{ asset('image/Header.png') }}" alt="">
         <table>
             <tr>
                 <td colspan="2">
@@ -246,7 +266,7 @@
             // }).from(element).save();
 
 
-            // more custom settings
+            more custom settings
             var opt = {
                 margin: 0,
                 filename: 'pageContent_{{ $employee->employee_name }}' + '.pdf',
@@ -264,8 +284,8 @@
                 }
             };
 
-            // New Promise-based usage:
-            html2pdf().set(opt).from(element).save();
+            New Promise - based usage:
+                html2pdf().set(opt).from(element).save();
 
 
         });

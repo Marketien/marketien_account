@@ -148,11 +148,23 @@
             background: linear-gradient(to bottom, #3bb890, #114070);
         }
 
+        .back-button {
+            width: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
 
+        .back-button:hover {
+            background-color: rgb(194, 162, 162);
+        }
     </style>
 </head>
 
 <body>
+    <a title="back-button" href="/account-table">
+        <img class="back-button" src="{{ asset('image/left-arrow.png') }}" alt="">
+    </a>
 
     <div class="htmlBody" id="container">
         <div class="invoice-box" id="container_content">
@@ -244,7 +256,7 @@
 
     <div class="invoice-footer">
         <input type="button" id="rep" value="Make PDF" class="submit-button btn_print">
-        <a type="button"  href="/account-pdf"  class="submit-button"> Entire Pdf </a>
+        <a type="button" href="/account-pdf" class="submit-button"> Entire Pdf </a>
     </div>
 
 </body>

@@ -152,9 +152,14 @@
             margin-right: 5px;
         }
 
+        .invoice-footer {
+            display: flex;
+            justify-content: center;
+        }
+
         .submit-button {
             display: block;
-            width: 100%;
+            width: 20%;
             padding: 10px;
             background: linear-gradient(to top, #3bb890, #114070);
             color: white;
@@ -167,14 +172,29 @@
         .submit-button:hover {
             background: linear-gradient(to bottom, #3bb890, #114070);
         }
+
+        .back-button {
+            width: 20px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+        .back-button:hover {
+            background-color: rgb(194, 162, 162);
+        }
     </style>
 </head>
 
 <body>
+    <a title="back-button" href="/account-master-table">
+        <img class="back-button" src="{{ asset('image/left-arrow.png') }}" alt="">
+    </a>
     <div class="htmlBody">
+
         <div class="invoice-box container_content" id="container_content">
             <!-- header img section  -->
-            <img class="headerImg" src="image/Invoice-Qalat-Header.png" alt="" />
+            <img class="headerImg" src="{{ asset('image/Invoice-Qalat-Header.png') }}" alt="" />
 
             <!-- invoiceNo  & Date section  -->
             <div class="parentBoldInvoiceData">
@@ -263,9 +283,9 @@
                             <td colspan="2">
                                 {{ $project->description }}
                             </td>
-                            <td>{{ number_format($project->quantity,2,'.',',') }}</td>
-                            <td>{{ number_format($project->unit_price,2,'.',',') }}</td>
-                            <td>{{ number_format($project->amount,2,'.',',') }}</td>
+                            <td>{{ number_format($project->quantity, 2, '.', ',') }}</td>
+                            <td>{{ number_format($project->unit_price, 2, '.', ',') }}</td>
+                            <td>{{ number_format($project->amount, 2, '.', ',') }}</td>
                             @php
                                 $amt += $project->amount;
                             @endphp
@@ -276,19 +296,19 @@
                     @endphp
                     <tr class="total">
                         <td colspan="5" class="right-align">Subtotal:</td>
-                        <td>{{ number_format($amt,2,'.',',') }}</td>
+                        <td>{{ number_format($amt, 2, '.', ',') }}</td>
                     </tr>
                     <tr class="total">
                         <td colspan="5" class="right-align">+ 5% VAT Amount:</td>
-                        <td>{{ number_format($vat,2,'.',',') }}</td>
+                        <td>{{ number_format($vat, 2, '.', ',') }}</td>
                     </tr>
                     <tr class="total">
                         <td colspan="5" class="right-align">Credit:</td>
-                        <td>{{ number_format($purchase->credit,2,'.',',') }}</td>
+                        <td>{{ number_format($purchase->credit, 2, '.', ',') }}</td>
                     </tr>
                     <tr class="total">
                         <td colspan="5" class="right-align">Total Net Amount:</td>
-                        <td>{{ number_format($purchase->total_net_amount,2,'.',',') }}</td>
+                        <td>{{ number_format($purchase->total_net_amount, 2, '.', ',') }}</td>
                     </tr>
 
                     <tr class="details text-center fw-bold">
@@ -300,7 +320,7 @@
             </div>
 
             <!-- footer img section  -->
-            <img class="footerImg" src="image/Invoice-Qalat-FOoter.png" alt="" />
+            <img class="footerImg" src="{{ asset('image/Invoice-Qalat-FOoter.png') }}" alt="" />
         </div>
     </div>
     <div class="invoice-footer">

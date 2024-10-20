@@ -8,144 +8,83 @@
 </head>
 
 <style>
-    .invoice3body {
+    .invoicebody {
         font-family: Arial, sans-serif;
     }
 
-    .invoice-box3 {
-        max-width: 800px;
+    .invoice-box {
+        /* max-width: 800px; */
+        width: 21cm;
+        /* height: 29.7cm; */
         margin: auto;
         padding: 20px;
         border: 1px solid #eee;
-        background-color: #f3f1f1;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        /* background-color: #f3f1f1; */
+        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
         font-size: 14px;
         line-height: 24px;
         color: #555;
     }
 
-    .table3 {
+    .table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 20px;
+        line-height: 14px;
     }
 
-    .table3 th,
-    .table3 td {
+    .table th,
+    .table td {
         border: 1px solid black;
         padding: 8px;
         text-align: left;
     }
 
-    .header-section3 {
+    .header-section {
         display: flex;
         justify-content: space-between;
-        align-items: center;
     }
 
-    .header-section3 div {
+    .header-section div {
         display: inline-block;
     }
 
-    .heading3 {
+    .heading {
         font-weight: 700;
     }
 
-    .content3 {
-        margin-top: 20px;
-    }
-
-    /* Second Section */
-    .invoice4body {
-        font-family: Arial, sans-serif;
-    }
-
-    .invoice-box4 {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #eee;
-        background-color: #f3f1f1;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-        font-size: 14px;
-        line-height: 24px;
-        color: #555;
-    }
-
-    .table3{
-        height:850px;
-    }
-    .table4 {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    .table4 th,
-    .table4 td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-    }
-
-    .header-section4 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .header-section4 div {
-        display: inline-block;
-    }
-
-    .heading4 {
+    .heading {
         font-weight: 700;
         text-decoration: underline;
     }
 
-    .content4 {
+    .content {
         margin-top: 20px;
     }
 
-    /* third section  */
-    .invoice5body {
-        font-family: Arial, sans-serif;
-    }
-
-    .invoice-box5 {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #eee;
-        background-color: #f3f1f1;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-        font-size: 14px;
-        line-height: 24px;
-        color: #555;
-    }
-
-    .heading5 {
+    .heading {
         font-weight: 700;
         text-decoration: underline;
     }
 
-    .content5 {
-        margin-top: 20px;
-    }
-
-    .details5 {
+    .details {
 
         font-weight: 700;
     }
 
-    .ownerName5 {
+    .ownerName {
         margin-top: 130px;
         font-weight: 700;
     }
 
+    .invoice-footer {
+        display: flex;
+        justify-content: center;
+        margin: 20px 20px;
+    }
+
     .submit-button {
-        display: block;
-        width: 100%;
+
+        width: 20%;
         padding: 10px;
         background: linear-gradient(to top, #3bb890, #114070);
         color: white;
@@ -159,34 +98,66 @@
     .submit-button:hover {
         background: linear-gradient(to bottom, #3bb890, #114070);
     }
+
     .header-image {
         width: 100%;
+    }
+
+    .page-break {
+        page-break-after: always;
+    }
+    .back-button{
+        width: 20px ;
+        background-color: rgb(176, 176, 176) ;
+        padding: 5px ;
+        border-radius: 50%
+    }
+    .back-button:hover{
+        background-color: rgb(194, 162, 162) ;
     }
 </style>
 
 <body>
+    <a title="back-button" href="/quotation-list">
+        <img class="back-button" src="{{ asset('image/left-arrow.png') }}" alt="">
+    </a>
     <div id="container_content">
-        <div class="invoice3body">
-            <div class="invoice-box3">
-                <img class="header-image" src="{{asset('image/Header.png')}}" alt="">
-                <div class="header-section3">
+        <div class="invoicebody">
+            <div class="invoice-box">
+                <img class="header-image" src="{{ asset('image/Header.png') }}" alt="">
+                <div class="header-section">
+
                     <div>
-                        <h7 class="heading3">Ref.No: {{ $quotation->ref_no }}<br>Date: {{ $quotation->date }}</h7>
+                        <p class="heading">M/S: {{ $quotation->ms }}
+                            <br>
+                            P.O Box: {{ $quotation->po_box }}
+                            <br>
+                            Tel:
+                            {{ $quotation->phone_no }}
+                            <br>
+                            Email: {{ $quotation->email }}
+                        </p>
+                        <p class="heading">Kind Attn: {{ $quotation->kind_attn }}
+                            <br>
+                            Project Name:
+                            {{ $quotation->project_name }}
+                        </p>
+                    </div>
+                    <div>
+                        <h7 class="heading">Ref.No: {{ $quotation->ref_no }}
+                            <br>
+                            Date: {{ $quotation->date }}
+                        </h7>
                     </div>
                 </div>
-                <p class="heading3">M/S: {{ $quotation->ms }}<br>P.O Box: {{ $quotation->po_box }}<br>Tel:
-                    {{ $quotation->phone_no }}<br>Email: {{ $quotation->email }}</p>
-                <p class="heading3">Kind Attn: {{ $quotation->kind_attn }}<br>Project Name:
-                    {{ $quotation->project_name }}
-                </p>
                 <p>Dear Sir,</p>
                 <p>With reference to your inquiry, we are pleased to offer our quotation for the subject items. We
                     welcome
                     the opportunity to provide this business solution for you and look forward to establishing a
                     mutually
                     rewarding relationship with your esteemed organization.</p>
-                <p class="heading3">Scope of Works:</p>
-                <table class="table3">
+                <p class="heading">Scope of Works:</p>
+                <table class="table">
                     <tr>
                         <th>Sl No.</th>
                         <th>Work Description</th>
@@ -200,9 +171,9 @@
                     @endphp
                     @foreach ($projects as $project)
                         <tr>
-                            <td>1.</td>
+                            <td>{{$loop->iteration}}</td>
                             <td>
-                                <p class="heading3">{{ $project->heading }}</p>
+                                <p class="heading">{{ $project->heading }}</p>
                                 <p id="output">
                                     {{-- {{$project->description}} --}}
                                     @php
@@ -212,37 +183,31 @@
                                     @endphp
                                 </p>
                             </td>
-                            <td>{{ number_format($project->quantity,2,'.',',') }}</td>
-                            <td>{{ number_format($project->unit,2,'.',',') }}</td>
-                            <td>{{ number_format($project->unit_rate,2,'.',',') }}</td>
-                            <td>{{ number_format($project->amount,2,'.',',') }}</td>
+                            <td>{{ number_format($project->quantity, 2, '.', ',') }}</td>
+                            <td>{{ number_format($project->unit, 2, '.', ',') }}</td>
+                            <td>{{ number_format($project->unit_rate, 2, '.', ',') }}</td>
+                            <td>{{ number_format($project->amount, 2, '.', ',') }}</td>
                         </tr>
-
                     @endforeach
-                </table>
-            </div>
-        </div>
-        <div class="invoice4body">
-            <div class="invoice-box4">
-                <div class="header-section4">
-                </div>
-                <table class="table4">
                     <tr>
                         <td colspan="5" style="text-align: right;">Total Cost</td>
-                        <td>{{ number_format($quotation->total_amount,2,'.',',') }}</td>
+                        <td>{{ number_format($quotation->total_amount, 2, '.', ',') }}</td>
                     </tr>
                     <tr>
                         <td colspan="5" style="text-align: right;">5% VAT</td>
-                        <td>{{ number_format($quotation->vat_amount,2,'.',',') }}</td>
+                        <td>{{ number_format($quotation->vat_amount, 2, '.', ',') }}</td>
                     </tr>
                     <tr>
                         <td colspan="5" style="text-align: right;">Total After Discount</td>
-                        <td>{{ number_format($quotation->total_net_amount,2,'.',',') }}</td>
+                        <td>{{ number_format($quotation->total_net_amount, 2, '.', ',') }}</td>
                     </tr>
+
+
                 </table>
                 <p>Total Amount in Words: AED – Forty Thousand Five Only.</p>
-                <div class="content4">
-                    <p class="heading4">General Condition:</p>
+                <div class="page-break"></div>
+                <div class="content">
+                    <p class="heading">General Condition:</p>
 
                     <p>
                         @php
@@ -252,7 +217,7 @@
                         @endphp
                     </p>
 
-                    <p class="heading4">Payment Terms:</p>
+                    <p class="heading">Payment Terms:</p>
                     <p>
                         @php
                             $string = $quotation->payment_term;
@@ -264,28 +229,24 @@
                         within 7 days from the receipt of invoices, unless otherwise we will consider the invoice has
                         been
                         accepted for payment.</p>
-                    <p class="heading4">Project Duration:</p>
+                    <p class="heading">Project Duration:</p>
                     <p>To be discussed.</p>
                 </div>
-            </div>
-        </div>
-        <div class="invoice5body">
-            <div class="invoice-box5">
-                <p class="heading5">Quotation Validity:</p>
+                <p class="heading">Quotation Validity:</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet assumenda recusandae consequuntur
                     officiis rem fugiat perspiciatis laudantium, inventore facere voluptas eaque officia ut doloremque,
                     laborum harum magni! Nulla, eligendi doloremque.?</p>
 
-                <div class="details5">
+                <div class="details">
                     <p>Thanks & Best Regards<br /></p>
-                    <p class="ownerName5">Preethi S</p>
+                    <p class="ownerName">Preethi S</p>
                     <p>Tel: +971 50273 6738 </p>
                 </div>
             </div>
         </div>
     </div>
     <div class="invoice-footer">
-        <a type="submit" href="/quotation-pdf/{{$quotation->id}}" class="submit-button">Make PDF</a>
+        <a type="submit" href="/quotation-pdf/{{ $quotation->id }}" class="submit-button">Make PDF</a>
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
