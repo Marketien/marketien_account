@@ -132,7 +132,7 @@ class AccountController extends Controller
         );
     }
     public function previewAccount(){
-        $data = Account::paginate(20);
+        $data = Account::paginate(18);
         foreach ($data as $account) {
             $balance = Account::where('created_at', '<', $account->created_at)->get();
             $debit = $balance->sum('cash_out_debit');

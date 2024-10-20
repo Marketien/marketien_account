@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quotation;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class QuotationController extends Controller
@@ -14,6 +15,11 @@ class QuotationController extends Controller
     public function quotationDetail($id){
         $data = Quotation::find($id);
         return view('mainsection.quotation',['quotation'=>$data]);
+    }
+    public function quotationPdf($id){
+        $data = Quotation::find($id);
+        $pdf = Pdf::loadView('mainsection.pdfQuotation',['quotation'=>$data]);
+        return $pdf->download();
     }
     public function quotationStore(Request $req){
         $data = new Quotation();

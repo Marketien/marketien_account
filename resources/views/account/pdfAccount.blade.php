@@ -23,7 +23,7 @@
 
         .invoice-box {
             width: 21cm;
-            /* height: 29.7cm; */
+            height: 29.7cm;
             margin-left: -40px;
             /* Remove fixed margins */
             font-family: "Open Sans", sans-serif;
@@ -121,12 +121,12 @@
         }
 
         .extraParagraph {
-            font-weight: 500;
+            font-weight: 300;
             text-align: center;
-            /* position: absolute;
-            bottom: -10px; */
+            position: absolute;
+            bottom: 60px;
             left: 0;
-            width: 100%;
+            width: 90%;
             padding: 0 20px;
             box-sizing: border-box;
         }

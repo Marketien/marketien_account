@@ -131,4 +131,5 @@ Route::post('/check', [UserController::class, 'userCheck'])->name('check');
 Route::get('/sync-test',[SyncController::class,'syncDataForOffline']);
 
 Route::get('/account-pdf',[AccountController::class,'accountPDF']);
+Route::get('/quotation-pdf/{id}',[QuotationController::class,'quotationPdf']);
 
