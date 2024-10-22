@@ -300,6 +300,7 @@ class AccountController extends Controller
         $data = AccountMaster::find($id);
         $tel = '8801843884571';
         $message = "your order $data->invoice_no 's date is $data->invoice_date";
+        // $message = "Hi, How are you?";
         $result = $this->sms_send($tel, $message);
         if ($result) {
             return back()->with('success', 'Sms Sent Successfully');

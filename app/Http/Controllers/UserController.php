@@ -348,4 +348,14 @@ class UserController extends Controller
     //     $user->delete();
     //     return response()->json(['message'=>'Data Deleted Successfully']);
     //   }
+    public function otpGenerate(Request $req){
+     $data = User::where('email', $req->email)->first();
+     if($data){
+
+     }
+     else{
+        return back()->with('fail','Your email is not registered');
+     }
+    }
+
 }

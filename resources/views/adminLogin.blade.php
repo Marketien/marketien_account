@@ -29,6 +29,7 @@
             </div>
             <button type="submit" class="login-btn" >Login</button>
         </form>
+        <a href="/forgot-pass1">forgot your password?</a>
     </div>
 
     {{-- <script src="js/script.js"></script> --}}

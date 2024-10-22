@@ -7,6 +7,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\SyncController;
 
 /*
@@ -127,9 +128,19 @@ Route::group(['middleware' => ['role:Admin']], function () {
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // });
 Route::post('/check', [UserController::class, 'userCheck'])->name('check');
+Route::get('/forgot-pass1', function () {
+    return view('forgotPass1');
+});
+Route::get('/forgot-pass2', function () {
+    return view('forgotPass2');
+});
+Route::get('/forgot-pass3', function () {
+    return view('forgotPass3');
+});
 
 Route::get('/sync-test',[SyncController::class,'syncDataForOffline']);
 
 Route::get('/account-pdf',[AccountController::class,'accountPDF']);
 Route::get('/quotation-pdf/{id}',[QuotationController::class,'quotationPdf']);
+Route::get('/test-sms',[SmsController::class,'sms']);
 
