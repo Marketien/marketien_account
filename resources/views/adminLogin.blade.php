@@ -8,16 +8,19 @@
 </head>
 <body class="loginBody">
     <div class="login-container">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @elseif (session('fail'))
+            <div class="alert alert-danger">
+                {{ session('fail') }}
+            </div>
+        @endif
         <h1>Login</h1>
         <form id="login-form" action="check" method="POST">
             @csrf
-            <div style="color:greenyellow;">
-                @if(Session::get('fail'))
-                <div style="color:red;">
-                    {{Session::get('fail')}}
-                </div>
-                @endif
-            </div>
+
             <div class="input-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" >

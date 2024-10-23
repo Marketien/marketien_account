@@ -69,3 +69,4 @@ Route::get('/ref-no',[AccountController::class,'generateRefNo'])->name('ref-no')
 // Route::put('/role-update-api/{role}', [RoleController::class, 'update']);
 // Route::put('/give-permission-api/{name}', [RoleController::class, 'updatePermissionToRoleApi']);
 
+// Route::post('/reset-pass-api', [UserController::class, 'passUpdateApi']);

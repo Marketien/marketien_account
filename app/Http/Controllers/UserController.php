@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\AccountController;
 use App\Models\Account;
 use App\Models\AccountMaster;
+use App\Models\Otp;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
@@ -17,6 +18,12 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    protected $accountController;
+
+    public function __construct()
+    {
+        $this->accountController = new AccountController;
+    }
     // public function userCheck(Request $req)
     // {
     //     $req->validate([
@@ -348,14 +355,101 @@ class UserController extends Controller
     //     $user->delete();
     //     return response()->json(['message'=>'Data Deleted Successfully']);
     //   }
-    public function otpGenerate(Request $req){
-     $data = User::where('email', $req->email)->first();
-     if($data){
-
-     }
-     else{
-        return back()->with('fail','Your email is not registered');
-     }
+    public function otpGenerate(Request $req)
+    {
+        $data = User::where('email', $req->email)->first();
+        if ($data) {
+            $userOtp = Otp::where('email', $data->email)->first();
+            if ($userOtp) {
+                $userOtp->delete();
+            }
+            $createOtp = Otp::create([
+                'otp' => rand(123456, 999999),
+                'phoneNo' => $data->phoneNo,
+                'email' => $data->email
+            ]);
+            $msg = 'Your OTP for password reset:' . $createOtp->otp;
+            if ($createOtp) {
+                $this->accountController->sms_send($data->phoneNo, $msg);
+                return redirect('forgot-pass2/' . $data->email)->with('success', 'otp is sent to your phone,please check');
+            } else {
+                return back()->with('fail', 'something went wrong, try again later');
+            }
+        } else {
+            return back()->with('fail', 'Your email is not registered');
+        }
     }
+    public function resendOtp($mail)
+    {
+        $data = User::where('email', $mail)->first();
+        if ($data) {
+            $userOtp = Otp::where('email', $data->email)->first();
+            if ($userOtp) {
+                $userOtp->delete();
+            }
+            $createOtp = Otp::create([
+                'otp' => rand(123456, 999999),
+                'phoneNo' => $data->phoneNo,
+                'email' => $data->email
+            ]);
+            $msg = 'Your OTP for password reset:' . $createOtp->otp;
+            if ($createOtp) {
+                $this->accountController->sms_send($data->phoneNo, $msg);
+                return back()->with('success', 'otp is sent to your phone again');
+            } else {
+                return back()->with('fail', 'something went wrong, try again later');
+            }
+        } else {
+            return back()->with('fail', 'Your email is not registered');
+        }
+    }
+    public function otpVerify(Request $req)
+    {
+        $data = Otp::where('email', $req->email)->first();
+        if ($data) {
+            if ($data->created_at > Carbon::now()->subMinutes(35)->toDateTimeString()) {
+                if ($data->otp === $req->otp) {
+                    return redirect('forgot-pass3/' . $data->email . '/' . $data->otp)->with('success', 'You otp is accepted');
+                } else {
+                    return back()->with('fail', 'your otp didnot match,try again');
+                }
+            } else {
+                return back()->with('fail', 'your otp is expired');
+            }
+        } else {
+            return back()->with('fail', 'invalid number');
+        }
+    }
+    public function resetPass(Request $req)
+    {
 
+        try {
+            $response = Http::get('https://account.softplatoon.com');
+            if ($response->successful()) {
+
+                $data = User::where('email', $req->email)->first();
+                if ($data) {
+                    $userOtp = Otp::where('email', $data->email)->where('otp', $req->otp)->first();
+                    if ($userOtp) {
+                        $userpost = $req->all();
+                        $postUser = "https://account.softplatoon.com/api/reset-pass-api";
+                        $postResponse1 = Http::post($postUser, $userpost);
+                        $data->password = Hash::make($req->password);
+                        $result = $data->save();
+                        if ($result) {
+                            return redirect('/')->with('success', 'Your new password is generated');
+                        } else {
+                            return back()->with('fail', 'Something went wrong');
+                        }
+                    } else {
+                        return back()->with('fail', 'Invalid OTP');
+                    }
+                } else {
+                    return back()->with('fail', 'Invalid Email');
+                }
+            }
+        } catch (\Exception $e) {
+            return back() - with('fail', 'Your Internet connection is failed, try with internet');
+        }
+    }
 }

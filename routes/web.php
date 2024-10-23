@@ -131,12 +131,17 @@ Route::post('/check', [UserController::class, 'userCheck'])->name('check');
 Route::get('/forgot-pass1', function () {
     return view('forgotPass1');
 });
-Route::get('/forgot-pass2', function () {
-    return view('forgotPass2');
+Route::post('/otp-generate',[UserController::class,'otpGenerate']);
+Route::get('/resend-otp/{mail}',[UserController::class,'resendOtp']);
+Route::get('/forgot-pass2/{mail}', function ($mail) {
+    return view('forgotPass2',['mail'=>$mail]);
 });
-Route::get('/forgot-pass3', function () {
-    return view('forgotPass3');
+Route::post('/otp-check',[UserController::class,'otpVerify']);
+
+Route::get('/forgot-pass3/{mail}/{otp}', function ($mail,$otp) {
+    return view('forgotPass3',['mail'=>$mail,'otp'=>$otp]);
 });
+Route::post('/reset-pass',[UserController::class,'resetPass']);
 
 Route::get('/sync-test',[SyncController::class,'syncDataForOffline']);
 
