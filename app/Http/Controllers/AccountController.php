@@ -121,7 +121,7 @@ class AccountController extends Controller
             $balance = $masters->where('created_at','<',$master->created_at);
             $debit = $balance->sum('cash_out_debit');
             $credit = $balance->sum('cash_in_credit');
-            $master['calc_amount'] = $credit - $debit + $master->cash_in_credit - $master->cash_out_debit;
+            $master['calc_amount'] = strval($credit - $debit + $master->cash_in_credit - $master->cash_out_debit);
         }
         return view(
             'account.searchAccount',
@@ -131,6 +131,18 @@ class AccountController extends Controller
             ]
         );
     }
+    public function previewSearch(Request $req){
+       $accounts = json_decode($req->input('data'),true);
+    //    $accounts->paginate(2);
+       return view('account.previewSearch', compact('accounts'));
+    }
+    public function pdfSearch(Request $req){
+        $accounts = json_decode($req->input('data'),true);
+        $pdf = FacadePdf::loadView('account.pdfAccount',compact('accounts'));
+        return $pdf->setPaper('a4', 'letter')->download();
+        // return $accounts;
+
+     }
     public function previewAccount(){
         $data = Account::paginate(18);
         foreach ($data as $account) {

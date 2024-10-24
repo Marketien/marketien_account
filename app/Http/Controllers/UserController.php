@@ -452,4 +452,15 @@ class UserController extends Controller
             return back() - with('fail', 'Your Internet connection is failed, try with internet');
         }
     }
+    //for online
+    // public function passUpdateApi(Request $req){
+    //     $data = User::where('email',$req->email)->first();
+    //     $data->password = Hash::make($req->password);
+    //     $result = $data->save();
+    //     if($result){
+    //        return response()->json(['message'=>'Password Updated Successfully']);
+    //     }else{
+    //          return response()->json(['message'=>'Something went wrong']);
+    //     }
+    // }
 }

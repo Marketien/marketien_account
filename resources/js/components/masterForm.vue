@@ -81,11 +81,11 @@
                     <div class="form-group">
                         <div>
                             <label for="address">Address:</label>
-                            <input class="addressScope" type="text"  id="address" name="address" v-model="address">
+                            <textarea class="addressScope" type="text"  id="address" name="address" v-model="address"></textarea>
                         </div>
                         <div>
                             <label for="scopeOfWork">Scope of Work:</label>
-                            <input class="addressScope" type="text" id="scopeOfWork" name="scopeOfWork" v-model="work_scope" >
+                            <textarea class="addressScope" type="text" id="scopeOfWork" name="scopeOfWork" v-model="work_scope" ></textarea>
                         </div>
                     </div>
 

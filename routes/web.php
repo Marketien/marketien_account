@@ -62,6 +62,8 @@ Route::group(['middleware' => ['role:Accountant|Admin']], function () {
     Route::get('/account-sms/{id}', [AccountController::class, 'account_sms'])->name('account-sms');
     Route::post('/search-account', [AccountController::class, 'searchAccount'])->name('search-account');
     Route::get('/preview-account', [AccountController::class, 'previewAccount'])->name('preview-account');
+    Route::get('/preview-search', [AccountController::class, 'previewSearch'])->name('preview-search');
+    Route::get('/pdf-search', [AccountController::class, 'pdfSearch'])->name('pdf-search');
 
     //account master
     Route::get('/account-master-form', [AccountController::class, 'accountMasterForm'])->name('account-master-form');
