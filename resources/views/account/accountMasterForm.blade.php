@@ -9,14 +9,14 @@
             justify-content: center;
             align-items: center;
             margin: 0;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: rgba(67, 68, 76, 0.404);
         }
 
         .invoice-container {
             margin-top: 80px;
             margin-bottom: 20px;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: white;
             padding: 20px;
             max-width: 800px;
             width: 100%;
@@ -25,6 +25,13 @@
 
         .invoice-header {
             margin-bottom: 50px;
+        }
+
+        .invoice-header h1 {
+            font-weight: 600;
+            font-size: 40px;
+            text-transform: uppercase;
+            color: #213167;
         }
 
         .form-group {
@@ -101,7 +108,7 @@
             border: 1px solid #000;
             padding: 8px;
             text-align: left;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #21a1eb;
             color: white;
         }
 
@@ -127,7 +134,10 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
             color: white;
             border: none;
             border-radius: 4px;
@@ -136,7 +146,33 @@
         }
 
         .submit-button:hover {
-            background: linear-gradient(to bottom, #3bb890, #114070);
+            box-shadow: 3px 3px rgba(2, 2, 2, 0.764);
+        }
+
+        .add-button {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
+            text-transform: uppercase;
+        }
+
+        .delete-button {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #ff0000 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
+            text-transform: uppercase;
         }
 
         /* Adjusting form-group1 to justify-content-end */
@@ -199,11 +235,11 @@
     </style>
     <div class="master-form flex-grow-1 main-content-expanded p-3">
         @if (session('success'))
-            <div class="alert alert-success" >
+            <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @elseif (session('fail'))
-            <div class="alert alert-danger" >
+            <div class="alert alert-danger">
                 {{ session('fail') }}
             </div>
         @endif

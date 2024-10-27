@@ -44,7 +44,7 @@
         }
 
         .invoiceTable .thead {
-            background: linear-gradient(to left, #37d8a5, #114070);
+            background: #21a1eb;
             color: white;
         }
 
@@ -77,7 +77,7 @@
 
         .thead1,
         .thead2 {
-            background: linear-gradient(to left, #37d8a5, #114070);
+            background: #21a1eb;
             color: white;
             font-weight: bold;
         }
@@ -120,7 +120,10 @@
         }
 
         .submitbutton {
-            background: linear-gradient(to top, #37d8a5, #114070);
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: #213167;
             color: white;
             font-weight: 500;
             padding: 10px;
@@ -129,7 +132,7 @@
         }
 
         .submitbutton:hover {
-            background: linear-gradient(to bottom, #37d8a5, #114070);
+            background: #21a1eb;
             color: white;
             font-weight: 500;
             padding: 10px;

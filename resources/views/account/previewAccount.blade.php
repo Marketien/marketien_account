@@ -136,7 +136,7 @@
             display: block;
             width: 10%;
             padding: 10px;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
             color: white;
             border: none;
             border-radius: 4px;
@@ -145,7 +145,7 @@
         }
 
         .submit-button:hover {
-            background: linear-gradient(to bottom, #3bb890, #114070);
+            background: #21a1eb;
         }
 
         .back-button {

@@ -6,9 +6,9 @@
         <div class="container-fluid">
             <!--+++++++++++++++++++++++++++++ button and admin text +++++++++++++++++++++++++-->
             <!-- Menu button for large devices -->
-            <button class="btn menu-button d-none d-lg-block text-white" id="sidebarToggle" aria-controls="sidebar"
+            <button class=" menu-button d-none d-lg-block" id="sidebarToggle" aria-controls="sidebar"
                 aria-expanded="false" aria-label="Toggle sidebar">
-                <img class="menu-button-img" style="height: 20px" src="{{ asset('image/menu.png') }}" alt=""
+                <img class="" style="height: 20px" src="{{ asset('image/window-menu.png') }}" alt=""
                     srcset="" />
             </button>
             <a class="navbar-brand text-white adminPanelText" href="/dashboard">AdminPanel</a>
@@ -24,7 +24,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation" id="menuButton">
-                    <span class="navbar-toggler-icon"></span>
+                    {{-- <span class="navbar-toggler-icon"></span> --}}
+                    <img class="navbar-toggler-icon" style="height: 20px" src="{{ asset('image/window-menu.png') }}" alt=""
+                    srcset="" />
                 </button>
             </div>
 
@@ -38,8 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-
-                        <a class="btn logout-btn mt-1" href="/logout">Logout({{ auth()->user()->name }})</a>
+                        <a class=" logout-btn mt-1" href="/logout">Logout({{ auth()->user()->name }})</a>
                     </li>
                 </ul>
             </div>
@@ -123,7 +124,7 @@
                 {{-- <a href="quotation" class="list-group-item list-group-item-action">Quotation</a> --}}
             </div>
             <div class="text-center">
-                <a class="btn small-logout-btn mt-1 d-lg-none" href="/logout">Logout</a>
+                <a class=" small-logout-btn mt-1 d-lg-none" href="/logout">Logout</a>
             </div>
             </ul>
         </div>

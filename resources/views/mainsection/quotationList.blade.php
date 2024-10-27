@@ -40,8 +40,34 @@
         }
 
         .InvoiceTable-container th {
-            background: linear-gradient(to left, #37d8a5, #114070);
+            background: #21a1eb;
             color: white;
+        }
+
+        .tableButton {
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+        }
+
+        .dropdown-menu {
+            z-index: 5;
+            background-color: #213167 !important;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown-item {
+            color: white !important;
+        }
+
+        .dropdown-item:hover {
+            background-color: #21a1eb !important;
+            color: black !important;
         }
 
         /* Responsive adjustments */
@@ -59,14 +85,14 @@
     </style>
     <div class="flex-grow-1 main-content-expanded p-3">
         @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @elseif (session('fail'))
-                <div class="alert alert-danger">
-                    {{ session('fail') }}
-                </div>
-            @endif
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @elseif (session('fail'))
+            <div class="alert alert-danger">
+                {{ session('fail') }}
+            </div>
+        @endif
         <div class="emp-body">
             <div class="InvoiceTableContainer">
 
@@ -108,7 +134,8 @@
                                                 <li><a class="dropdown-item editBtn"
                                                         href="/quotation-detail/{{ $quotation->id }}">Detail</a></li>
                                                 {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
-                                                <li><a class="dropdown-item" href="/quotation-delete/{{ $quotation->id }}" >Delete</a></li>
+                                                <li><a class="dropdown-item"
+                                                        href="/quotation-delete/{{ $quotation->id }}">Delete</a></li>
                                             </ul>
                                         </div>
                                     </td>

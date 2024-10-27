@@ -3,7 +3,7 @@
     <style>
         .emp-body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: white;
             padding: 20px;
         }
 
@@ -39,8 +39,17 @@
         }
 
         .InvoiceTable-container th {
-            background: linear-gradient(to left, #37d8a5, #114070);
+            background: #21a1eb;
             color: white;
+        }
+        .tableButton{
+            border-radius: 5px;
+            color: white ;
+            padding: 0px 20px ;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
         }
 
         /* Responsive adjustments */

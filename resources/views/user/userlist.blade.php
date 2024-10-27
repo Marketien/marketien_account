@@ -23,9 +23,10 @@
         }
 
         .addRoleButton {
+            text-decoration: none;
             width: 50px;
             font-family: "Montserrat", sans-serif;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
             color: white !important;
             border: none;
             padding: 5px;
@@ -37,7 +38,7 @@
         }
 
         .addRoleButton:hover {
-            background: linear-gradient(to bottom, #3bb890, #114070);
+            background: #21a1eb;
             opacity: 0.9;
             color: white !important;
         }
@@ -62,7 +63,7 @@
 
         thead {
             color: white;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #21a1eb;
             font-weight: 600;
             border-bottom: 1px solid black;
         }
@@ -80,25 +81,35 @@
         }
 
         .tableButton {
-            background: linear-gradient(to top, #b83b3b, #114070);
-            color: white !important;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: small;
-            font-family: "Montserrat", sans-serif;
-            transition: background 0.3s ease;
-            padding: 5px;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
         }
 
         .tableButton:hover {
-            background: linear-gradient(to bottom, #b83b3b, #0d3050);
+            background: #21a1eb;
             opacity: 0.9;
             color: white !important;
         }
 
         .dropdown-menu {
-            background: linear-gradient(to right, #ffffff, #b8b8b8);
+            z-index: 5;
+            background-color: #213167 !important;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown-item {
+            color: white !important;
+        }
+
+        .dropdown-item:hover {
+            background-color: #21a1eb !important;
+            color: black !important;
         }
     </style>
 
@@ -120,9 +131,9 @@
                     {{ session('success') }}
                 </div>
             @elseif (session('fail'))
-            <div class="alert alert-danger">
-                {{ session('fail') }}
-            </div>
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
             @endif
             <!-- Table section   -->
             <div class="table-responsive">

@@ -53,7 +53,7 @@
             height: 40px;
             width: 50px;
             padding: 10px;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
             color: white;
             border: none;
             border-radius: 4px;
@@ -66,7 +66,7 @@
             height: 40px;
             width: 80px;
             padding: 10px;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
             color: white;
             border: none;
             border-radius: 4px;

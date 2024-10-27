@@ -3,7 +3,7 @@
         <div class="invoice-container">
             <div>
                 <div class="invoice-header">
-                    <h1>Invoice Form</h1>
+                    <h1>Invoice</h1>
                 </div>
 
                 <form @submit.prevent="submit()">
@@ -113,10 +113,10 @@
                                         <div class="col-md-2">
                                             <!--                <label  class="row" v-if="keyIndex == 0"></label><br>-->
 
-                                                            <button  class="btn btn-success btn-sm mt-2 ml-2 " style="margin-bottom: 0; width:50px;" v-if="keyIndex == Object.keys(projects).length -1" @click="add" title="add" id="add_more_fields">
+                                                            <button  class="add-button mt-2 ml-2 " style="margin-bottom: 0; width:50px;" v-if="keyIndex == Object.keys(projects).length -1" @click="add" title="add" id="add_more_fields">
                                                                 <i class="fa fa-plus-circle">add</i>
                                                             </button>
-                                                            <button  class="btn btn-danger btn-sm mt-2 ml-2" style="width:50px;" v-if="keyIndex >> 0" @click="remove"  title="remove">
+                                                            <button  class="delete-button text-uppercase  mt-2 ml-2" style="width:50px;" v-if="keyIndex >> 0" @click="remove"  title="remove">
                                                                 <i class="fa fa-minus-circle">del</i>
                                                             </button>
                                         </div>

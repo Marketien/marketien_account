@@ -64,7 +64,7 @@ rel="stylesheet"
             margin-top: 23px;
             width: 90px;
             font-family: "Montserrat", sans-serif;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
             color: white !important;
             border: none;
             padding: 5px;
@@ -76,7 +76,7 @@ rel="stylesheet"
         }
 
         .addPermissionButton:hover {
-            background: linear-gradient(to bottom, #3bb890, #114070);
+            background: #21a1eb;
             opacity: 0.9;
             color: white !important;
         }

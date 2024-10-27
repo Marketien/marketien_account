@@ -85,12 +85,18 @@
             margin-top: 20px;
         }
 
+        .invoice-footer {
+            display: flex;
+            justify-content: center;
+            margin: 20px 20px;
+        }
+
         .submit-button {
             margin-top: -50px;
             display: block;
-            width: 100%;
+            width: 20%;
             padding: 10px;
-            background: linear-gradient(to top, #3bb890, #114070);
+            background: #213167;
             color: white;
             border: none;
             border-radius: 4px;
@@ -99,7 +105,7 @@
         }
 
         .submit-button:hover {
-            background: linear-gradient(to bottom, #3bb890, #114070);
+            background: #21a1eb;
         }
 
         /* alignment of input field */
@@ -150,6 +156,32 @@
             margin-left: 15px;
             padding: 5px;
             width: 230px;
+        }
+
+        .add-button {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
+            text-transform: uppercase;
+        }
+
+        .delete-button {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #ff0000 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
+            text-transform: uppercase;
         }
     </style>
     @if (session('success'))

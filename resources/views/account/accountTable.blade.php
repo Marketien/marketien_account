@@ -29,10 +29,35 @@
                 /* Adjust spacing */
             }
 
-            .button-width {
-                width: 100%;
-                /* Make buttons full width */
-            }
+            .button-width-1 {
+            background: #1b6328;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
+
+        .button-width-2 {
+            background: #a46800;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none; padding: 0px 10px ;
+        }
+
+        .button-width-3 {
+            text-decoration: none ;
+            background: #213167;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
         }
 
         /* For small devices */
@@ -102,29 +127,59 @@
             margin-top: 15px;
         }
 
-        .btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
+        .button-width-1 {
+            background: #1b6328;
+            text-transform: uppercase;
             color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
             border: none;
-            border-radius: 4px;
-            cursor: pointer;
+            padding: 0px 10px ;
         }
 
-        .btn:hover {
-            background-color: #0056b3;
+        .button-width-2 {
+            background: #a46800;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none; padding: 0px 10px ;
         }
 
-        .search-button {
+        .button-width-3 {
+            text-decoration: none ;
+            background: #213167;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
+
+        .add-button {
+            border-radius: 5px;
+            color: white ;
+            padding: 0px 20px ;
+            background: #213167 !important;
             justify-self: start;
             align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
         }
 
         .table-responsive {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             /* Enables smooth scrolling on iOS */
+        }
+        .tableButton{
+            border-radius: 5px;
+            color: white ;
+            padding: 0px 20px ;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
         }
 
         /****************************** filter and input  section ***************************** */
@@ -150,23 +205,16 @@
         }
 
         .submit-button {
-            font-family: "Montserrat", sans-serif;
-            background: linear-gradient(to top, #3bb890, #114070);
-            color: white !important;
-            border: none;
-            padding: 8px;
-            font-weight: 500;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-            font-family: "Montserrat", sans-serif;
-            transition: background 0.3s ease;
+            border-radius: 5px;
+            color: white ;
+            padding: 0px 20px ;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
         }
-
         .submit-button:hover {
-            background: linear-gradient(to bottom, #2a9070, #0d3050);
-            opacity: 0.9;
-            color: white !important;
+            box-shadow: 3px 3px rgba(44, 43, 43, 0.764);
         }
 
         .similarInputStyle {
@@ -268,23 +316,23 @@
                 <!-- button section  -->
                 <div class="d-flex gap-2">
                     <!-- Export buttons -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    {{-- <button class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span>CSV</span>
-                    </button>
-                    <button class="button-width d-flex align-items-center gap-1" id="downloadexcel">
+                    </button> --}}
+                    <button class="button-width-1 d-flex align-items-center gap-1" id="downloadexcel">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span>Excel</span>
                     </button>
-                    <button class="button-width d-flex align-items-center gap-1">
+                    <button class="button-width-2 d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/printer_1041985.png" alt="" /></span>
                         <span>Print</span>
                     </button>
-                    <button class="button-width d-flex align-items-center gap-1">
+                    {{-- <button class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/file-storage_8316770.png" alt="" /></span>
                         <span>Visibility</span>
-                    </button>
-                    <a href="/preview-account" class="button-width d-flex align-items-center gap-1">
+                    </button> --}}
+                    <a href="/preview-account" class="button-width-3 d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/pdf.png" alt="" /></span>
                         <span>Preview</span>
                     </a>
@@ -328,7 +376,7 @@
                         </div>
                         <div class="form-group">
                             <div class=" btn-div">
-                                <button class="btn search-button" type="submit">ADD</button>
+                                <button class=" add-button" type="submit">ADD</button>
                             </div>
 
                         </div>
