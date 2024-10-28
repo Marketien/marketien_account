@@ -24,14 +24,10 @@
             @csrf
 
             <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <span style="color:red">
-                    @error('email')
-                        {{ $message }}
-                    @enderror
-                </span>
-            </div>
+                <label1 for="email">Email:</label1>
+                <input type="email" id="email" name="email" required />
+                <span style="color:red">@error('email'){{$message}}@enderror</span>
+              </div>
 
             <button type="submit" class="login-btn">Next</button>
         </form>

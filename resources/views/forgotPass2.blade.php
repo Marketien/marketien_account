@@ -32,15 +32,15 @@
                 </span>
             </div>
             <div class="input-group">
-                <label for="email">OTP:</label>
+                <label1 for="email">OTP:</label1>
                 <input type="text" id="otp" name="otp">
                 <span style="color:red">
                     @error('otp')
                         {{ $message }}
                     @enderror
                 </span>
-                <a href="/resend-otp/{{$mail}}">resend code again</a>
             </div>
+            <p class="forgot-passtext"><a href="/resend-otp/{{$mail}}">resend code again</a></p>
 
             <button type="submit" class="login-btn">Submit</button>
         </form>

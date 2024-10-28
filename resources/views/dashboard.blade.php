@@ -19,7 +19,7 @@
         }
 
         .box-div {
-            background: linear-gradient(to right, #3bb890, #114070);
+            background: #21a1eb;
             color: white;
             border-radius: 5px;
         }
@@ -27,7 +27,7 @@
         .box-title {
             margin: auto;
             padding: 8px;
-            background: linear-gradient(to left, #3bb890, #114070);
+            background: #213167;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
@@ -51,7 +51,7 @@
         .card-link {
             margin: auto;
             padding: 8px;
-            background: linear-gradient(to left, #3bb890, #114070);
+            background: #213167;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
         }
@@ -68,7 +68,7 @@
         }
 
         .box-div1 {
-            background: linear-gradient(to left, #3bb890, #114070);
+            background: #21a1eb;
             color: white;
             border-radius: 5px;
         }
@@ -76,7 +76,7 @@
         .box-title1 {
             margin: auto;
             padding: 8px;
-            background: linear-gradient(to right, #3bb890, #114070);
+            background: #213167;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
@@ -96,7 +96,7 @@
         .card-link1 {
             margin: auto;
             padding: 8px;
-            background: linear-gradient(to right, #3bb890, #114070);
+            background: #213167;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
         }
@@ -121,7 +121,7 @@
         th {
             border: 1px solid black;
             color: white !important;
-            background: linear-gradient(to right, #3bb890, #114070);
+            background: #21a1eb !important;
             text-align: center;
         }
 
@@ -267,15 +267,15 @@
             datasets: [{
                     label: "Income",
                     data: [{{$income}}],
-                    backgroundColor: "black",
-                    borderColor: "black",
+                    backgroundColor: "#213167",
+                    borderColor: "#213167",
                     borderWidth: 1,
                 },
                 {
                     label: "Expense",
                     data: [{{$expense}}],
-                    backgroundColor: "red",
-                    borderColor: "red",
+                    backgroundColor: "#21a1eb",
+                    borderColor: "#21a1eb",
                     borderWidth: 1,
                 },
             ],
