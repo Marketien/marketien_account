@@ -101,6 +101,35 @@
             justify-content: center;
             margin-top: 15px;
         }
+        .button-width-1 {
+            background: #1b6328;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
+
+        .button-width-2 {
+            background: #a46800;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none; padding: 0px 10px ;
+        }
+
+        .button-width-3 {
+            text-decoration: none ;
+            background: #213167;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
 
         .btn {
             padding: 10px 20px;
@@ -148,6 +177,15 @@
             border-radius: 5px;
             border: 1px solid rgba(128, 128, 128, 0.493);
         }
+        .tableButton{
+            border-radius: 5px;
+            color: white ;
+            padding: 0px 20px ;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+        }
 
         .submit-button {
             font-family: "Montserrat", sans-serif;
@@ -182,27 +220,27 @@
                 <!-- button section  -->
                 <div class="d-flex gap-2">
                     <!-- Export buttons -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    {{-- <button class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span>CSV</span>
-                    </button>
-                    <button class="button-width d-flex align-items-center gap-1" id="downloadexcel">
+                    </button> --}}
+                    <button class="button-width-1 d-flex align-items-center gap-1" id="downloadexcel">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span>Excel</span>
                     </button>
-                    <button class="button-width d-flex align-items-center gap-1">
+                    <button class="button-width-2 d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/printer_1041985.png" alt="" /></span>
                         <span>Print</span>
                     </button>
-                    <button class="button-width d-flex align-items-center gap-1">
+                    {{-- <button class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/file-storage_8316770.png" alt="" /></span>
                         <span>Visibility</span>
-                    </button>
+                    </button> --}}
                     {{-- <button type="submit" class="button-width d-flex align-items-center gap-1 btn_print">
                         <span><img class="button-img" src="image/pdf.png" alt="" /></span>
                         <span>PDF</span>
                     </button> --}}
-                    <a  class="button-width d-flex align-items-center gap-1" href="{{route('preview-search',['data'=>json_encode($accounts)])}}">
+                    <a  class="button-width-3 d-flex align-items-center gap-1" href="{{route('preview-search',['data'=>json_encode($accounts)])}}">
                         <span><img class="button-img" src="image/pdf.png" alt="" /></span>
                         <span>preview</span>
                     </a>

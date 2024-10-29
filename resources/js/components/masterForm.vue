@@ -3,7 +3,7 @@
         <div class="invoice-container">
             <div>
                 <div class="invoice-header">
-                    <h1>Invoice</h1>
+                    <h1>Create Invoice</h1>
                 </div>
 
                 <form @submit.prevent="submit()">

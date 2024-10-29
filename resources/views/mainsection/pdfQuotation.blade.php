@@ -70,7 +70,7 @@
     }
 
     .ownerName {
-        margin-top: 130px;
+        /* margin-top: 130px; */
         font-weight: 700;
     }
 
@@ -230,8 +230,10 @@
 
             <div class="details">
                 <p>Thanks & Best Regards<br /></p>
-                <p class="ownerName">Preethi S</p>
-                <p>Tel: +971 50273 6738 </p>
+                <p class="ownerName">Zahid Faisal</p>
+                <p class="ownerName">Qalat Al Khaleej</p>
+                <p class="ownerName">info@qalatalkhaleej.com</p>
+                <p>Tel: +971 50265 7281 </p>
             </div>
         </div>
 

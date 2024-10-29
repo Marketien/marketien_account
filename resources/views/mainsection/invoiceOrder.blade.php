@@ -214,7 +214,7 @@
                 <div class="informationDiv">
                     <div class="information1">
                         <p>
-                            <span class="boldSpan">TRN:</span>
+                            <span class="boldSpan">TRN2:</span>
                             <span>{{ $purchase->trn2 }}</span>
                         </p>
                         <p>

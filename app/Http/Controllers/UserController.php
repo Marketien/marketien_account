@@ -371,7 +371,7 @@ class UserController extends Controller
             $msg = 'Your OTP for password reset:' . $createOtp->otp;
             if ($createOtp) {
                 $this->accountController->sms_send($data->phoneNo, $msg);
-                return redirect('forgot-pass2/' . $data->email)->with('success', 'otp is sent to your phone,please check');
+                return redirect('forgot-pass2/'.$data->email)->with('success', 'otp is sent to your phone,please check');
             } else {
                 return back()->with('fail', 'something went wrong, try again later');
             }

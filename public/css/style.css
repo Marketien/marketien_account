@@ -180,6 +180,14 @@ header {
 
 /*+++++++++++++++++++++++++++++++ Media query starts ++++++++++++++++++++++++++++++ */
 /*+++++++++++++++++++++++++++++++ Media query starts ++++++++++++++++++++++++++++++ */
+@media screen and (max-width: 576px){
+    .list-group-item{
+        margin-left: 5px !important;
+    }
+    .sidebar-hidden{
+        height: 100%;
+    }
+}
 @media (max-width: 479px) {
     .navbar-collapse {
         display: none;
@@ -187,6 +195,9 @@ header {
 }
 
 @media (min-width: 767px) {
+    .list-group-item{
+        margin-left: 5px !important;
+    }
     .small-logout-btn {
         display: none;
     }
@@ -224,6 +235,9 @@ header {
     }
     .list-group {
         padding-top: 0px;
+    }
+    .list-group-item{
+        margin-left: 5px !important;
     }
     .navbar-collapse {
         display: flex;

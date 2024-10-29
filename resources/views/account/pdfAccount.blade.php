@@ -168,20 +168,20 @@
                     <div class="information1">
 
                         <p>
-                            <span class="boldSpan">Date of Opening:</span>
-                            <span>10059856233685452</span>
+                            <span class="boldSpan">Company:</span>
+                            <span>Qalat Al Khaleej</span>
                         </p>
                         <p>
-                            <span class="boldSpan">CUstomer Code: </span>
-                            <span>Sila</span>
+                            <span class="boldSpan">Email: </span>
+                            <span>info@qalatalkhaleej.com</span>
                         </p>
                         <p>
-                            <span class="boldSpan">Adress: </span>
-                            <span>24th Floor, Al Sila Tower 1, Abu-Dhabi Global Market Square, U.A.E</span>
+                            <span class="boldSpan">Address: </span>
+                            <span>Office No. 15, Plot 87, M-10, Musaffah, AbuDhabi-UAE</span>
                         </p>
                         <p>
-                            <span class="boldSpan">Tran. Description: </span>
-                            <span>Not Available</span>
+                            <span class="boldSpan">Tel: </span>
+                            <span>+971 50 2657281</span>
                         </p>
                     </div>
                     <!-- <div class="information2">
@@ -246,9 +246,9 @@
                 </table>
                 <div class="extraParagraph">
                     <p>
-                        Thanks for banking with us
+                        Thanks for business with us
                         <br>
-                        Plase notify your branch for any discrepcies or irregularities, with 15 days from the date of
+                        Plase notify our office for any discrepcies or irregularities, with 15 days from the date of
                         the statement is correct .This computer generated statement required no signature.
                     </p>
                 </div>

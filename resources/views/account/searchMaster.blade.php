@@ -1,5 +1,45 @@
 @extends('adminMaster')
 @section('content')
+<style>
+     .button-width-1 {
+            background: #1b6328;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
+
+        .button-width-2 {
+            background: #a46800;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none; padding: 0px 10px ;
+        }
+
+        .button-width-3 {
+            text-decoration: none ;
+            background: #213167;
+            text-transform: uppercase;
+            color: white;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+            border-radius: 5px;
+            border: none;
+            padding: 0px 10px ;
+        }
+        .tableButton{
+            border-radius: 5px;
+            color: white ;
+            padding: 0px 20px ;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+        }
+</style>
     <div style="margin-top: 55px;" class="flex-grow-1 p-3">
 
 
@@ -21,27 +61,27 @@
                 <!-- button section  -->
                 <div class="d-flex align-items-center gap-2">
                     <!-- Export to CSV button -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    {{-- <button class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span>CSV</span>
-                    </button>
+                    </button> --}}
                     <!-- Export to Excel button -->
-                    <button class="button-width d-flex align-items-center gap-1" id="downloadexcel">
+                    <button class="button-width-1 d-flex align-items-center gap-1" id="downloadexcel">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
                         <span> Excel</span>
                     </button>
                     <!-- Print button -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    <button class="button-width-2 d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/printer_1041985.png" alt="" /></span>
                         <span>Print</span>
                     </button>
                     <!-- Column visibility  -->
-                    <button class="button-width d-flex align-items-center gap-1">
+                    {{-- <button class="button-width d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/file-storage_8316770.png" alt="" /></span>
                         <span>visibility</span>
-                    </button>
+                    </button> --}}
                     <!-- Export to PDF button  -->
-                    <button type="submit" class="button-width d-flex align-items-center gap-1 btn_print">
+                    <button type="submit" class="button-width-3 d-flex align-items-center gap-1 btn_print">
                         <span><img class="button-img" src="image/pdf.png" alt="" /></span>
                         <span>PDF</span>
                     </button>
