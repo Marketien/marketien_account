@@ -56,11 +56,10 @@
         }
 
         /****************************** Table section ***************************** */
-        .table-responsive {
+        .table-role {
             margin-top: 50px;
             margin-bottom: 50px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            position: relative !important;
             /* Enables smooth scrolling on iOS */
 
         }
@@ -69,8 +68,6 @@
             width: 100%;
             border: 1px solid black;
             padding: 5%;
-            overflow: visible;
-            position: relative;
         }
 
         thead {
@@ -93,16 +90,16 @@
         }
 
         /* .tableButton {
-                background: #213167;
-                color: white !important;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: small;
-                font-family: "Montserrat", sans-serif;
-                transition: background 0.3s ease;
-                padding: 5px;
-            } */
+                    background: #213167;
+                    color: white !important;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: small;
+                    font-family: "Montserrat", sans-serif;
+                    transition: background 0.3s ease;
+                    padding: 5px;
+                } */
 
         .tableButton {
             border-radius: 5px;
@@ -121,7 +118,8 @@
         }
 
         .dropdown-menu {
-            z-index: 5;
+            position: absolute !important;
+            z-index: 10 !important;
             background-color: #213167 !important;
             font-weight: 600;
             text-transform: uppercase;
@@ -160,7 +158,7 @@
                 </div>
             @endif
             <!-- Table section   -->
-            <div class="table-responsive">
+            <div class="table-role">
                 <table>
                     <thead>
                         <tr>

@@ -44,11 +44,10 @@
         }
 
         /****************************** Table section ***************************** */
-        .table-responsive {
+        .table-user {
             margin-top: 50px;
             margin-bottom: 50px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            position: relative !important;
             /* Enables smooth scrolling on iOS */
 
         }
@@ -57,7 +56,6 @@
             width: 100%;
             border: 1px solid black;
             padding: 5%;
-            overflow: visible;
             position: relative;
         }
 
@@ -97,7 +95,9 @@
         }
 
         .dropdown-menu {
-            z-index: 5;
+            position: absolute !important;
+            z-index: 10 !important;
+            z-index: 10;
             background-color: #213167 !important;
             font-weight: 600;
             text-transform: uppercase;
@@ -136,7 +136,7 @@
                 </div>
             @endif
             <!-- Table section   -->
-            <div class="table-responsive">
+            <div class="table-user">
                 <table>
                     <thead>
                         <tr>

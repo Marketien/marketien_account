@@ -25,6 +25,9 @@ use App\Http\Controllers\SyncController;
 Route::get('/', function () {
     return view('adminLogin');
 });
+Route::get('/account-new', function () {
+    return view('account.newAccountTable');
+});
 // Route::middleware('auth')->group(function () {
 // Route::get('/admin', function () {
 //     return view('mainsection.accountlayout');

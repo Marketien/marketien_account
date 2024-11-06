@@ -13,24 +13,27 @@
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            overflow-x: auto !important;
         }
 
         .InvoiceTable-container {
-            overflow-x: auto !important;
+            position: relative ;
             flex: 1;
             margin: 10px;
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            overflow: hidden;
         }
 
         .InvoiceTable-container table {
             width: 100%;
             border-collapse: collapse;
+
         }
 
+.dropdown-menu{
+    position: absolute !important;
+    z-index: 10;
+}
         .InvoiceTable-container th,
         td {
             padding: 12px 15px;
@@ -42,10 +45,11 @@
             background: #21a1eb;
             color: white;
         }
-        .tableButton{
+
+        .tableButton {
             border-radius: 5px;
-            color: white ;
-            padding: 0px 20px ;
+            color: white;
+            padding: 0px 20px;
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -65,19 +69,19 @@
             }
         }
     </style>
-    <div class="emp-body flex-grow-1 main-content-expanded p-3" >
+    <div class="emp-body flex-grow-1 main-content-expanded p-3">
         @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @elseif (session('fail'))
-                <div class="alert alert-danger">
-                    {{ session('fail') }}
-                </div>
-            @endif
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @elseif (session('fail'))
+            <div class="alert alert-danger">
+                {{ session('fail') }}
+            </div>
+        @endif
         <div class="InvoiceTableContainer">
             <div class="InvoiceTable-container">
-                <table>
+                <table class="overflow-auto">
                     <thead>
                         <tr>
                             <th>Employee Name</th>
@@ -99,7 +103,8 @@
                                             Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item editBtn" href="/employee-detail/{{$worker->id}}">Detail</a></li>
+                                            <li><a class="dropdown-item editBtn"
+                                                    href="/employee-detail/{{ $worker->id }}">Detail</a></li>
                                             {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
                                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
                                                     data-bs-target="#staticBackdrop{{ $worker->id }}">Delete</a></li>
@@ -116,7 +121,7 @@
             </div>
 
             <div class="InvoiceTable-container">
-                <table>
+                <table class="overflow-auto">
                     <thead>
                         <tr>
                             <th>Location Name</th>

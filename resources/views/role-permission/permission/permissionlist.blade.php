@@ -56,21 +56,17 @@
         }
 
         /****************************** Table section ***************************** */
-        .table-responsive {
+        .table-permisson {
             margin-top: 50px;
             margin-bottom: 50px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            position: relative !important;
             /* Enables smooth scrolling on iOS */
 
         }
-
         table {
             width: 100%;
             border: 1px solid black;
             padding: 5%;
-            overflow: visible;
-            position: relative;
         }
 
         thead {
@@ -109,7 +105,8 @@
         }
 
         .dropdown-menu {
-            z-index: 5;
+            position: absolute !important;
+            z-index: 10 !important;
             background-color: #213167 !important;
             font-weight: 600;
             text-transform: uppercase;
@@ -148,7 +145,7 @@
                 </div>
             @endif
             <!-- Table section   -->
-            <div class="table-responsive">
+            <div class="table-permisson">
                 <table>
                     <thead>
                         <tr>

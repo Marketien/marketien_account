@@ -1,6 +1,5 @@
 @extends('adminMaster')
 @section('content')
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .dashboardBody {
@@ -19,13 +18,30 @@
         }
 
         .box-div {
-            background: #21a1eb;
+            background: #213167;
             color: white;
             border-radius: 5px;
         }
 
         .box-title {
-            margin: auto;
+            text-transform: uppercase;
+            text-align: center;
+            padding: 8px;
+            background: #21a1eb;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
+        }
+
+        .box-div0 {
+            background: #21a1eb;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .box-title0 {
+            text-transform: uppercase;
+            text-align: center;
             padding: 8px;
             background: #213167;
             border-top-left-radius: 5px;
@@ -33,15 +49,12 @@
         }
 
         .box-text {
+            text-align: center;
             margin: auto;
             width: 16rem;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-right: 10px;
-            padding-left: 10px;
-            display: flex;
-            justify-content: space-between;
-            font-size: xx-large;
+            padding: 20px 10px 20px 10px;
+            font-size: 45px;
+            font-weight: 700;
         }
 
         .icon {
@@ -131,7 +144,7 @@
         }
     </style>
 
-    <div class="dashboardBody flex-grow-1 p-3" >
+    <div class="dashboardBody flex-grow-1 p-3">
         <!--------------------<<<<<<<<< Number status section >>>>>>>>>> -------------------->
         <div class="NSD">
             <div class="row">
@@ -140,21 +153,23 @@
                     <div class="box-div">
                         <h5 class="box-title">Income Today</h5>
                         <p class="box-text">
-                            <span><img class="icon" src="image/income.png" alt="" srcset="" /></span>
-                            <span>{{$incToday}}</span>
+                            {{-- <span><img class="icon" src="image/income.png" alt="" srcset="" /></span> --}}
+                            <span>{{$incToday}} د.إ</span>
+                            {{-- <span>6700 د.إ</span> --}}
                         </p>
-                        <p href="#" class="card-link">view more...</p>
+                        {{-- <p href="#" class="card-link">view more...</p> --}}
                     </div>
                 </div>
                 <!-- card two  -->
                 <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="box-div">
-                        <h5 class="box-title">Expense Today</h5>
+                    <div class="box-div0">
+                        <h5 class="box-title0">Expense Today</h5>
                         <p class="box-text">
-                            <span><img class="icon" src="image/expenses.png" alt="" srcset="" /></span>
-                            <span>{{$expToday}}</span>
+                            {{-- <span><img class="icon" src="image/expenses.png" alt="" srcset="" /></span> --}}
+                            <span>{{ $expToday }} د.إ</span>
+                            {{-- <span>6700 د.إ</span> --}}
                         </p>
-                        <p href="#" class="card-link">view more...</p>
+
                     </div>
                 </div>
                 <!-- card three  -->
@@ -162,21 +177,23 @@
                     <div class="box-div">
                         <h5 class="box-title">Monthly Income</h5>
                         <p class="box-text">
-                            <span><img class="icon" src="image/growth.png" alt="" srcset="" /></span>
-                            <span>{{$incMonth}}</span>
+                            {{-- <span><img  class="icon" src="image/growth.png" alt="" srcset="" /></span> --}}
+                            <span>{{ $incMonth }} د.إ</span>
+                            {{-- <span>6700 د.إ </span> --}}
                         </p>
-                        <p href="#" class="card-link">view more...</p>
+
                     </div>
                 </div>
                 <!-- card four  -->
                 <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="box-div">
-                        <h5 class="box-title">Monthly Expense</h5>
+                    <div class="box-div0">
+                        <h5 class="box-title0">Monthly Expense</h5>
                         <p class="box-text">
-                            <span><img class="icon" src="image/expense-month.png" alt="" srcset="" /></span>
-                            <span>{{$expMonth}}</span>
+                            {{-- <span><img class="icon" src="image/expense-month.png" alt="" srcset="" /></span> --}}
+                            <span>{{ $expMonth }} د.إ</span>
+                            {{-- <span>6700 د.إ</span> --}}
                         </p>
-                        <p href="#" class="card-link">view more...</p>
+
                     </div>
                 </div>
             </div>
@@ -190,35 +207,35 @@
             <div class="row">
                 <!-- card one  -->
                 <div class="col-md-6 col-lg-4 mb-3">
-                    <div class="box-div1">
-                        <h5 class="box-title1">Total Order</h5>
+                    <div class="box-div">
+                        <h5 class="box-title">Total Order</h5>
                         <p class="box-text">
-                            <span>{{$totalOrder}}</span>
-                            <span><img class="icon" src="image/money-bag.png" alt="" srcset="" /></span>
+                            <span>{{ $totalOrder }} د.إ</span>
+                            {{-- <span><img class="icon" src="image/money-bag.png" alt="" srcset="" /></span> --}}
                         </p>
-                        <p href="#" class="card-link1">view more...</p>
+
                     </div>
                 </div>
                 <!-- card two  -->
                 <div class="col-md-6 col-lg-4 mb-3">
-                    <div class="box-div1">
-                        <h5 class="box-title1">Total Credit</h5>
+                    <div class="box-div0">
+                        <h5 class="box-title0">Total Credit</h5>
                         <p class="box-text">
-                            <span>{{$totalRecieved}}</span>
-                            <span><img class="icon" src="image/total-expenses.png" alt="" srcset="" /></span>
+                            <span>{{ $totalRecieved }} د.إ</span>
+                            {{-- <span><img class="icon" src="image/total-expenses.png" alt="" srcset="" /></span> --}}
                         </p>
-                        <p href="#" class="card-link1">view more...</p>
+
                     </div>
                 </div>
                 <!-- card three  -->
                 <div class="col-md-6 col-lg-4 mb-3">
-                    <div class="box-div1">
-                        <h5 class="box-title1">Total Dues</h5>
+                    <div class="box-div">
+                        <h5 class="box-title">Total Dues</h5>
                         <p class="box-text">
-                            <span>{{$totalDue}}</span>
-                            <span><img class="icon" src="image/dues.png" alt="" srcset="" /></span>
+                            <span>{{ $totalDue }} د.إ</span>
+                            {{-- <span><img class="icon" src="image/dues.png" alt="" srcset="" /></span> --}}
                         </p>
-                        <p href="#" class="card-link1">view more...</p>
+
                     </div>
                 </div>
             </div>
@@ -238,17 +255,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($maturity as $mature )
-
-
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$mature->client_name}}</td>
-                        <td>{{$mature->lpo}}</td>
-                        <td>{{$mature->invoice_no}}</td>
-                        <td>{{$mature->invoice_date}}</td>
-                        <td style="color:red;">BillMatured:  <span style="color:black">{{$mature->due}}</span></td>
-                    </tr>
+                    @foreach ($maturity as $mature)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $mature->client_name }}</td>
+                            <td>{{ $mature->lpo }}</td>
+                            <td>{{ $mature->invoice_no }}</td>
+                            <td>{{ $mature->invoice_date }}</td>
+                            <td style="color:red;">BillMatured: <span style="color:black">{{ $mature->due }}</span></td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -266,14 +281,14 @@
             labels: labels,
             datasets: [{
                     label: "Income",
-                    data: [{{$income}}],
+                    data: [{{ $income }}],
                     backgroundColor: "#213167",
                     borderColor: "#213167",
                     borderWidth: 1,
                 },
                 {
                     label: "Expense",
-                    data: [{{$expense}}],
+                    data: [{{ $expense }}],
                     backgroundColor: "#21a1eb",
                     borderColor: "#21a1eb",
                     borderWidth: 1,
