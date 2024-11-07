@@ -154,3 +154,4 @@ Route::get('/account-pdf',[AccountController::class,'accountPDF']);
 Route::get('/quotation-pdf/{id}',[QuotationController::class,'quotationPdf']);
 Route::get('/test-sms',[SmsController::class,'sms']);
 
+

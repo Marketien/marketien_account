@@ -10,7 +10,7 @@
 
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 50px;
             align-items: center;
             padding: 20px;
             margin: 95px 10px;
@@ -60,13 +60,16 @@
         }
 
         .button-width-1 {
-            background: #1b6328;
+            background: #103b18;
             text-transform: uppercase;
             color: white;
-            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-            border-radius: 5px;
-            border: none;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764); */
+            /* border-radius: 5px; */
+            /* border: none; */
             padding: 8px 8px;
+            border: 2px solid darkgreen;
+            box-shadow: inset 4px 4px 8px #349646, inset -4px -4px 8px #3c8d4b;
+            border-radius: 8px;
         }
 
         .button-width-2 {
@@ -135,7 +138,7 @@
         /* Styling for form inputs and labels */
         .form-group {
             /* display: flex;
-                      flex-direction: column; */
+                          flex-direction: column; */
             display: flex;
             align-items: center;
             width: 100%;

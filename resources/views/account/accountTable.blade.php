@@ -12,6 +12,10 @@
             border-radius: 8px;
             background-color: #f9f9f9;
         }
+        .fullBody{
+            margin-top: 80px;
+            position: relative;
+        }
 
         /* Grid layout for large devices */
         .form-row {
@@ -220,11 +224,25 @@
         .similarInputStyle {
             margin-bottom: 4px;
         }
+        .back-button {
+            position: absolute;
+            top: -3px;
+            left: 20px;
+            width: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+        .back-button:hover {
+            background-color: rgb(194, 162, 162);
+        }
     </style>
 
     <script src="js/table2excel.js"></script>
 
-    <div style="margin-top: 55px;" class="flex-grow-1 p-3">
+
+    <div  class="fullBody flex-grow-1 p-3">
 
         <!-- ((((((((((((((((((((((((((((((((( filterInputParentDiv ))))))))))))))))))))))))))))))))) -->
         <form action="/search-account" method="POST" class="filterInputParentDiv bg-light p-3 rounded mb-5 mt-3">
@@ -435,6 +453,10 @@
                 </table>
             </div>
         </div>
+        <button title="back-button" onclick="window.history.back();" >
+            <img class="back-button" src="{{ asset('image/left-arrow.png') }}" alt="">
+
+        </button>
     </div>
     {{-- modal body --}}
     <!--Edit Modal -->
