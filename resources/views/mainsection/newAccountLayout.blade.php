@@ -7,7 +7,6 @@
 
     <style>
         .InputParentDiv {
-
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 50px;
@@ -80,8 +79,8 @@
             border-radius: 4px;
             color: white;
             /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-                            border-radius: 5px;
-                            border: none; */
+                                                                    border-radius: 5px;
+                                                                    border: none; */
             /* padding: 8px 8px; */
             text-transform: uppercase;
         }
@@ -93,8 +92,8 @@
             background: #142357;
             color: white;
             /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-                            border-radius: 5px;
-                            border: none; */
+                                                                    border-radius: 5px;
+                                                                    border: none; */
             border: 2px solid rgb(23, 10, 94);
             box-shadow: inset 4px 4px 8px #4f49a0, inset -4px -4px 8px #4f49a0;
             border-radius: 4px;
@@ -137,6 +136,7 @@
         }
 
         .tableButton {
+            position: !important;
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
@@ -153,7 +153,7 @@
         /* Styling for form inputs and labels */
         .form-group {
             /* display: flex;
-                                          flex-direction: column; */
+                                                                                  flex-direction: column; */
             display: flex;
             align-items: center;
             width: 100%;
@@ -232,11 +232,18 @@
             align-self: center;
         }
 
-        .table-responsive {
+        .master-table-responsive {
             padding: 10px;
             margin-top: 50px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            position: !important;
+        }
+
+        .dropdown-menu {
+            position: absolute !important;
+            z-index: 10 !important;
+            background-color: #213167 !important;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         /****************************** filter and input  section ***************************** */
@@ -352,6 +359,32 @@
             color: rgb(176, 171, 171) !important;
         }
 
+        .billing-section-flex-div {
+            display: flex;
+            justify-content: center;
+            margin-top: 5rem;
+        }
+
+        .billing-section {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            background-color: #213167 !important;
+            width: 500px;
+        }
+
+        .billing-section-p {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 10px;
+        }
+
+        .billing-section-span {
+            padding-left: 10px;
+            padding-right: 6px;
+            background-color: rgb(203, 199 ,199) !important;
+        }
+
         /* --------------------------- Media Query  section ---------------------- */
         @media screen and (max-width: 576px) {
             .InputParentDiv {
@@ -406,7 +439,8 @@
                 padding: 13px 0px !important;
             }
 
-            .table-responsive {
+            .master-table-responsive {
+                overflow-x: auto  !important;
                 margin: 10px;
             }
         }
@@ -475,7 +509,8 @@
                 left: 80px;
             }
 
-            .table-responsive {
+            .master-table-responsive {
+                overflow-x: auto  !important;
                 padding: 10px;
             }
         }
@@ -486,30 +521,21 @@
     <div class="flex-grow-1 p-3">
         <div class="InputParentDiv">
             <!-- account-table-section-1 -->
-            <form action="/search-account" method="POST" class="account-table-section-1">
+            <form action="/search-master" method="POST" class="account-table-section-1">
                 @csrf
-                <!-- from-to-div  -->
-                <div id="dateField" class="from-to-div">
-                    <!-- from div  -->
+                {{-- Date dropdown input field --}}
+
+                <div id="dateField" class="from-to-div" style="margin-top: 20px;">
+
                     <div>
-                        <h1 class="filterText">
-                            <span>From:</span>
-                        </h1>
+
                         <div class="form-group">
                             <label for="date">Date:</label>
-                            <input type="date" class="formInput" id="date" name="dateFrom" />
+                            <input type="date" class="formInput" name="date" id="dateInput" />
                         </div>
                     </div>
-                    <!-- To div  -->
-                    <div class="to-date">
-                        <h1 class="filterText">
-                            <span>To:</span>
-                        </h1>
-                        <div class="form-group">
-                            <label for="date">Date:</label>
-                            <input type="date" class="formInput" id="date" name="dateTo" />
-                        </div>
-                    </div>
+
+
                 </div>
                 <!-- <<<<<<<<<< month dropdown input field >>>>>>>>>> -->
                 <div id="monthField" style="display: none; margin-top: 20px;">
@@ -518,7 +544,7 @@
                         <label for="date">
                             Month</label>
 
-                        <select class=" formInput" aria-label="Default select example" id="monthSelect" name="month">
+                        <select class="formInput" aria-label="Default select example" id="monthSelect" name="month">
                             <option value="" selected disabled>Select a month</option>
                             <option value="1">January</option>
                             <option value="2">February</option>
@@ -535,6 +561,36 @@
                         </select>
                     </div>
                 </div>
+                <!-- <<<<<<<<<< invoice dropdown input field >>>>>>>>>> -->
+                <div id="invoiceField" style="display: none; margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="date">
+                            Invoice</label>
+
+                        <input class="formInput" type="text" name="invoice_no" id="invoiceInput">
+
+                    </div>
+                </div>
+
+                <!-- <<<<<<<<<< client name dropdown input field >>>>>>>>>> -->
+
+                <div id="clientNameField" style="display: none; margin-top: 20px;">
+                    <div class="form-group">
+                        <label for="date">
+                            Client Name</label>
+                        <input class="formInput" type="text" name="client_name" id="clientNameInput">
+                    </div>
+                </div>
+
+                <!-- <<<<<<<<<< LPO input field >>>>>>>>>> -->
+                <div id="lpoField" style="display: none; margin-top: 20px;">
+
+                    <div class="form-group">
+                        <label for="date">
+                            LPO</label>
+                        <input class="formInput" type="text" name="lpo" id="lpoInput">
+                    </div>
+                </div>
                 <!-- fiter-submit-div  -->
                 <div class="fiter-submit-div">
                     <div class="form-group">
@@ -542,6 +598,9 @@
                         <select id="filterSelect" class="formInput1" aria-label="Default select example">
                             <option value="1" selected>Date</option>
                             <option value="2">Month</option>
+                            <option value="3">Invoice</option>
+                            <option value="4">Client Name</option>
+                            <option value="5">LPO</option>
                         </select>
                     </div>
                     <!-- submit button -->
@@ -564,10 +623,10 @@
                         <span><img class="button-img" src="image/file-storage_8316770.png" alt="" /></span>
                         <span>Visibility</span>
                     </button>
-                    <a href="/preview-account" class="button-width-3 d-flex align-items-center gap-1">
+                    <button type="submit" class="button-width-3 d-flex align-items-center gap-1 btn_print">
                         <span><img class="button-img" src="image/document_16509258.png" alt="" /></span>
-                        <span>Preview</span>
-                    </a>
+                        <span>PDF</span>
+                    </button>
                 </div>
                 <!-- selector section  -->
                 <div class="form-group">
@@ -586,112 +645,91 @@
         <!-- ((((((((((((((((((((((((((((((((( InputParentDiv ))))))))))))))))))))))))))))))))) -->
 
         <div>
-            <!-- input fields  -->
-            <form action="/account-store" method="POST" class="container mt-5  mb-5">
-                @csrf
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @elseif (session('fail'))
-                    <div class="alert alert-danger">
-                        {{ session('fail') }}
-                    </div>
-                @endif
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="description">Description:</label>
-                        <input type="text" class="formInput" id="description" placeholder="Enter description"
-                            name="description" />
-                    </div>
-                    <div class="form-group">
-                        <label for="cashOutDebit">Cash Out Db:</label>
-                        <input type="text" class="formInput" id="cashOutDebit" placeholder="Enter amount"
-                            name="cash_out" />
-                    </div>
-                    <div class="form-group">
-                        <label for="cashInCredit">Cash In Cr:</label>
-                        <input type="text" class="formInput" id="cashInCredit" placeholder="Enter amount"
-                            name="cash_in" />
-                    </div>
-                </div>
-                <div class="btn-div">
-                    <button class="add-button" type="submit">ADD</button>
-                </div>
-            </form>
+
             <hr />
 
             <!-- Table section   -->
-            <div class="table-responsive">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif (session('fail'))
+                <div class="alert alert-danger">
+                    {{ session('fail') }}
+                </div>
+            @endif
+            <div class="master-table-responsive" id="container_content">
                 <table id="myTable">
                     <thead>
                         <tr>
-                            <td>Date</td>
-                            <td>Description</td>
-                            <td>CashOut Debit</td>
-                            <td>CashIn Credit</td>
-                            <td>Balance Amount</td>
                             <td>Actions</td>
+                            <td style="background-color: #213167 ">Invoice No.</td>
+                            <td>Client Name</td>
+                            <td>Project Description</td>
+                            <td style="background-color: #213167 ">Inv. Date</td>
+                            <td>LPO</td>
+                            <td>Amount(A&D)</td>
+                            <td>Credit</td>
+                            <td>Balance Amount <br>(A&C)</td>
+                            <td style="background-color: #213167">Remarks</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- table row 1  -->
-                        @foreach ($accounts as $account)
+                        @foreach ($masters as $master)
+                            @php
+                                $input = \App\Models\InputMaster::where('invoice_no', $master->invoice_no)->first();
+                            @endphp
+
                             <tr>
                                 <!-- Dropdown button   -->
-
-                                <td>{{ $account->date }}</td>
-                                <td>{{ $account->description }}</td>
-                                <td>{{ number_format($account->cash_out_debit, 2, '.', ',') }}</td>
-                                <td>{{ number_format($account->cash_in_credit, 2, '.', ',') }}</td>
-                                <td>{{ number_format($account->calc_amount, 2, '.', ',') }}</td>
                                 <td>
-                                    {{-- <div class="dropdown">
-                                        <button class="tableButton dropdown-toggle" type="button"
-                                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Action
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li>
-                                                <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal">
-                                                    Edit
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop">
-                                                    Delete
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </div> --}}
                                     <div class="dropdown">
                                         <button class="tableButton dropdown-toggle" type="button"
                                             id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                             Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <li><a class="dropdown-item editBtn" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#editModal{{ $account->id }}"
-                                                    data-id="{{ $account->id }}">Edit</a></li>
-                                            {{-- <li><button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal" data-id="{{$account->id}}">Edit</button></li> --}}
+                                            <li><a class="dropdown-item" href="/account-sms/{{ $master->id }} ">SMS</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="/master-detail/{{ $input->id }}">Details
+                                                </a></li>
                                             <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#staticBackdrop{{ $account->id }}">Delete</a></li>
+                                                    data-bs-target="#staticBackdrop{{ $master->id }}">Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
-                                @include('account.modalAccount')
-                                @include('account.modalDelete')
-                                </td>
+                                <td>{{ $master->invoice_no }}</td>
+                                <td>{{ $master->client_name }}</td>
+                                <td>{{ $master->description }}</td>
+                                <td>{{ $master->invoice_date }}</td>
+                                <td>{{ $master->lpo }}</td>
+                                <td>{{ number_format($master->amount, 2, '.', ',') }}</td>
+                                <td>{{ number_format($master->credit, 2, '.', ',') }}</td>
+                                <td>{{ number_format($master->due, 2, '.', ',') }}</td>
+                                <td>{{ number_format($master->remark, 2, '.', ',') }}</td>
+                                @include('account.modalMasterDelete')
                             </tr>
-                            <!-- table row 1  -->
                         @endforeach
+
 
                     </tbody>
                 </table>
 
             </div>
+            {{-- Billing-section  --}}
+            <div class="billing-section-flex-div">
+                <div class="billing-section p-3 rounded mb-3 text-center lh-lg">
+                    <p class="billing-section-p"><span class="billing-section-span">Total Bill Submitted :</span>
+                        <span>{{ number_format($amount, 3, '.', ',') }}</span>
+                    </p>
+                    <p class="billing-section-p"><span class="billing-section-span">Total Amount Recieved :</span> <span
+                            class="text-success">{{ number_format($credit, 3, '.', ',') }}</span> </p>
+                    <p class="billing-section-p"><span class="billing-section-span">Total OutStanding:</span> <span
+                            class="text-danger">{{ number_format($due, 3, '.', ',') }}</span>
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -755,17 +793,63 @@
     </script>
 
 
+    {{-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const filterSelect = document.getElementById("filterSelect");
+        const dateField = document.getElementById("dateField");
+        const monthField = document.getElementById("monthField");
+        const invoiceField = document.getElementById("invoiceField");
+        const clientNameField = document.getElementById("clientNameField");
+        const lpoField = document.getElementById("lpoField");
+
+        filterSelect.addEventListener("change", function() {
+            // Hide all fields initially
+            dateField.style.display = "none";
+            monthField.style.display = "none";
+            invoiceField.style.display = "none";
+            clientNameField.style.display = "none";
+            lpoField.style.display = "none";
+
+            // Show the selected field
+            const selectedValue = filterSelect.value;
+
+            switch (selectedValue) {
+                case "1":
+                    dateField.style.display = "block";
+                    break;
+                case "2":
+                    monthField.style.display = "block";
+                    break;
+                case "3":
+                    invoiceField.style.display = "block";
+                    break;
+                case "4":
+                    clientNameField.style.display = "block";
+                    break;
+                case "5":
+                    lpoField.style.display = "block";
+                    break;
+            }
+        });
+    });
+</script> --}}
     <script>
         // dynamic input fields ------------------------------
         document.addEventListener("DOMContentLoaded", function() {
             const filterSelect = document.getElementById("filterSelect");
             const dateField = document.getElementById("dateField");
             const monthField = document.getElementById("monthField");
+            const invoiceField = document.getElementById("invoiceField");
+            const clientNameField = document.getElementById("clientNameField");
+            const lpoField = document.getElementById("lpoField");
 
             filterSelect.addEventListener("change", function() {
                 // Hide all fields initially
                 dateField.style.display = "none";
                 monthField.style.display = "none";
+                invoiceField.style.display = "none";
+                clientNameField.style.display = "none";
+                lpoField.style.display = "none";
 
                 // Show the selected field
                 const selectedValue = filterSelect.value;
@@ -776,6 +860,16 @@
                         break;
                     case "2":
                         monthField.style.display = "block";
+                        break;
+                    case "3":
+                        invoiceField.style.display = "block";
+                        break;
+                    case "4":
+                        clientNameField.style.display = "block";
+                        break;
+
+                    case "5":
+                        lpoField.style.display = "block";
                         break;
                 }
             });

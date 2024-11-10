@@ -102,35 +102,53 @@
             margin-top: 15px;
         }
         .button-width-1 {
-            background: #1b6328;
+            font-size: 13px;
+            background: #103b18;
             text-transform: uppercase;
             color: white;
-            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-            border-radius: 5px;
-            border: none;
-            padding: 0px 10px ;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764); */
+            /* border-radius: 5px; */
+            /* border: none; */
+            /* padding: 8px 8px; */
+            border: 2px solid darkgreen;
+            box-shadow: inset 4px 4px 8px #349646, inset -4px -4px 8px #3c8d4b;
+            border-radius: 4px;
         }
 
         .button-width-2 {
-            background: #a46800;
-            text-transform: uppercase;
+            font-size: 13px;
+            background: #704c0d;
+            border: 2px solid darkgoldenrod;
+            box-shadow: inset 4px 4px 8px #c7b72a, inset -4px -4px 8px #c7b72a;
+            border-radius: 4px;
             color: white;
-            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-            border-radius: 5px;
-            border: none; padding: 0px 10px ;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+                            border-radius: 5px;
+                            border: none; */
+            /* padding: 8px 8px; */
+            text-transform: uppercase;
         }
 
         .button-width-3 {
-            text-decoration: none ;
-            background: #213167;
-            text-transform: uppercase;
+            font-size: 13px;
+            text-decoration: none;
+            background: #142357;
             color: white;
-            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-            border-radius: 5px;
-            border: none;
-            padding: 0px 10px ;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+                            border-radius: 5px;
+                            border: none; */
+            border: 2px solid rgb(23, 10, 94);
+            box-shadow: inset 4px 4px 8px #4f49a0, inset -4px -4px 8px #4f49a0;
+            border-radius: 4px;
+            /* padding: 8px 8px; */
+            text-transform: uppercase;
         }
 
+        .button-width-1:hover,
+        .button-width-2:hover,
+        .button-width-3:hover {
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+        }
         .btn {
             padding: 10px 20px;
             font-size: 16px;

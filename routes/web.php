@@ -26,7 +26,7 @@ Route::get('/', function () {
     return view('adminLogin');
 });
 Route::get('/account-new', function () {
-    return view('account.newAccountTable');
+    return view('mainsection.newAccountLayout');
 });
 // Route::middleware('auth')->group(function () {
 // Route::get('/admin', function () {

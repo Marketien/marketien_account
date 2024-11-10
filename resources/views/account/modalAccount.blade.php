@@ -20,11 +20,11 @@
                     </div>
 
                     <div class="form-group  mb-3">
-                        <label for="cashOutDebit">CashOut Debit:</label>
+                        <label for="cashOutDebit">Debit:</label>
                         <input type="text" class="formInput" name="cash_out" value="{{ $account->cash_out_debit }}">
                     </div>
                     <div class="form-group  mb-3">
-                        <label for="cashInCredit">CashIn Credit:</label>
+                        <label for="cashInCredit">Credit:</label>
                         <input type="text" class="formInput" name="cash_in" value="{{ $account->cash_in_credit }}">
                     </div>
                     <div class="form-group  mb-3">

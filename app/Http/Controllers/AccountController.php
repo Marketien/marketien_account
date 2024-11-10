@@ -22,7 +22,7 @@ class AccountController extends Controller
             $credit = $balance->sum('cash_in_credit');
             $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit;
         }
-        return view('account.accountTable', ['accounts' => $data]);
+        return view('account.newAccountTable', ['accounts' => $data]);
     }
 
     public function accountForm()
@@ -242,7 +242,7 @@ class AccountController extends Controller
         $total_credit = $data->sum('credit');
         $total_due = $data->sum('due');
         return view(
-            'mainsection.accountlayout',
+            'mainsection.newAccountLayout',
             [
                 'masters' => $data,
                 'amount' => $total_amount,
