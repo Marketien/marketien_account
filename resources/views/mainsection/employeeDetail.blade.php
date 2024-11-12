@@ -44,6 +44,7 @@
         }
 
         .invoiceTable .thead {
+            /* background: #21a1eb; */
             background: #21a1eb;
             color: white;
         }
@@ -77,6 +78,7 @@
 
         .thead1,
         .thead2 {
+            /* background: #21a1eb; */
             background: #21a1eb;
             color: white;
             font-weight: bold;
@@ -123,6 +125,7 @@
             font-weight: 600;
             text-transform: uppercase;
             text-decoration: none;
+            /* background: #213167; */
             background: #213167;
             color: white;
             font-weight: 500;
@@ -132,6 +135,7 @@
         }
 
         .submitbutton:hover {
+            /* background: #21a1eb; */
             background: #21a1eb;
             color: white;
             font-weight: 500;

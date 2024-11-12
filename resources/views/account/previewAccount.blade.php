@@ -34,7 +34,11 @@
         }
 
         .headerImg {
-            width: 150px;
+            width: 180px;
+
+            /* only for marketien */
+            /* margin-top: 30px;
+            margin-bottom:30px; */
         }
 
         .invoice-header {
@@ -68,7 +72,8 @@
         }
 
         .invoice-table th {
-            background-color: #004c6d;
+            /* background-color: #004c6d; */
+            background-color: #213167;
             color: white;
             font-weight: bold;
         }
@@ -136,7 +141,8 @@
             display: block;
             width: 10%;
             padding: 10px;
-            background: #213167;
+            /* background-color: #213167; */
+            background-color: #213167;
             color: white;
             border: none;
             border-radius: 4px;
@@ -145,7 +151,8 @@
         }
 
         .submit-button:hover {
-            background: #21a1eb;
+            /* background: #21a1eb !important; */
+            background: #21a1eb !important;
         }
 
         .back-button {
@@ -172,6 +179,7 @@
 
             <div class="mx-div">
                 <img class="headerImg" src="image/Qalaat Al Khaleej.png" alt="" />
+                {{-- <img class="headerImg" src="image/marketien/Main Logo-01.png" alt="" /> --}}
 
                 <!-- information section  -->
                 <div class="informationDiv">

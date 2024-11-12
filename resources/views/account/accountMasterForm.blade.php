@@ -1,8 +1,8 @@
 @extends('adminMaster')
 @section('content')
     @vite(['resources/js/app.js', 'resources/css/app.css'])
-    <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js')}}">
-    <script type="module" src="{{ asset('build/assets/app-DpKeprz2.js')}}"></script>
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js')}}">
+    <script type="module" src="{{ asset('build/assets/app-DpKeprz2.js')}}"></script> --}}
     <style>
         .master-form-body {
             display: flex;
@@ -31,6 +31,7 @@
             font-weight: 600;
             font-size: 40px;
             text-transform: uppercase;
+            /* color: #213167; */
             color: #213167;
         }
 
@@ -108,7 +109,8 @@
             border: 1px solid #000;
             padding: 8px;
             text-align: left;
-            background: #21a1eb;
+            /* background: #21a1eb !important; */
+            background: #21a1eb !important;
             color: white;
         }
 
@@ -134,7 +136,8 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background: #213167;
+            /* background: #213167 !important; */
+            background: #213167 !important;
             font-weight: 600;
             text-transform: uppercase;
             box-shadow: 2px 2px rgba(2, 2, 2, 0.764);

@@ -96,6 +96,7 @@
             display: block;
             width: 20%;
             padding: 10px;
+            /* background: #213167; */
             background: #213167;
             color: white;
             border: none;
@@ -164,6 +165,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;

@@ -112,6 +112,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -119,6 +120,7 @@
         }
 
         .add-button:hover {
+            /* background: #21a1eb !important; */
             background: #21a1eb !important;
         }
 
@@ -126,6 +128,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -133,6 +136,7 @@
         }
 
         .submit-button:hover {
+            /* background: #21a1eb !important; */
             background: #21a1eb !important;
         }
 
@@ -140,6 +144,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -147,6 +152,7 @@
         }
 
         .tableButton:hover {
+            /* background: #21a1eb !important; */
             background: #21a1eb !important;
         }
 
@@ -269,6 +275,7 @@
         /* Modal css section ------------------------------------------------------------------------>  */
         .modal-content {
             font-family: "Montserrat", sans-serif;
+            /* background-color: #21a1eb; */
             background-color: #21a1eb;
             position: relative;
         }
@@ -277,6 +284,7 @@
             position: absolute;
             top: 0px;
             left: 180px;
+            /* background-color: #213167; */
             background-color: #213167;
             color: white;
             text-transform: uppercase;
@@ -290,6 +298,7 @@
             position: absolute;
             top: 0px;
             left: 90px;
+            /* background-color: #213167; */
             background-color: #213167;
             color: white;
             text-transform: uppercase;

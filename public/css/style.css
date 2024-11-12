@@ -6,6 +6,7 @@
     background: rgb(255, 255, 255);
 }
 .NAV {
+    /* background: #213167; */
     background: #213167;
     z-index: 2;
     width: 100%;
@@ -112,13 +113,15 @@ header {
     border-radius: 8px;
 }
 .list-group-item:hover {
-    background: #0d3050 !important;
+    /* background: #0d3050 !important; */
+    background: #213167 !important;
     color: white !important;
 }
 /* Adjustments for Sidebar and List-group */
 
 .sidebar-hidden {
     display: none;
+    /* background: #21a1eb; */
     background: #21a1eb;
     z-index: 1;
     position: fixed;
@@ -137,7 +140,8 @@ header {
 }
 
 .list-group-item {
-    background-color: #114070;
+    /* background-color: #114070; */
+    /* background-color: #213167; */
     border: none;
     color: white !important;
     font-family: "Montserrat", sans-serif;
@@ -260,6 +264,7 @@ table {
 }
 thead {
     color: white;
+    /* background: #21a1eb; */
     background: #21a1eb;
     font-weight: 600;
     border-bottom: 1px solid black;
@@ -296,6 +301,7 @@ table td {
 
 .dropdown-menu {
     /* z-index: 5; */
+    /* background-color: #213167 !important; */
     background-color: #213167 !important;
     font-weight: 600;
     text-transform: uppercase;
@@ -304,6 +310,7 @@ table td {
     color: white !important;
 }
 .dropdown-item:hover {
+    /* background-color: #21a1eb !important; */
     background-color: #21a1eb !important;
     color: black !important;
 }

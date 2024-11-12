@@ -22,18 +22,20 @@
             gap: 10px;
         }
 
-        .res-form{
-        margin-top: 50px;
-        display: flex;
-        flex-wrap: wrap;
-        /* justify-content: space-between;+- */
-        align-items: center;
-    }
-    @media (max-width: 768px) {
+        .res-form {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: space-between;+- */
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
             .res-form {
                 flex: 1 1 100%;
             }
         }
+
         .form-check {
             margin-bottom: 15px;
         }
@@ -56,6 +58,7 @@
             margin-top: 23px;
             width: 90px;
             font-family: "Montserrat", sans-serif;
+            /* background: #213167; */
             background: #213167;
             color: white !important;
             border: none;
@@ -68,23 +71,22 @@
         }
 
         .permitButton:hover {
+            /* background: #21a1eb; */
             background: #21a1eb;
             opacity: 0.9;
             color: white !important;
         }
-
-
     </style>
     <div class="adminSec flex-grow-1 p-3">
         @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @elseif (session('fail'))
-                <div class="alert alert-danger">
-                    {{ session('fail') }}
-                </div>
-            @endif
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @elseif (session('fail'))
+            <div class="alert alert-danger">
+                {{ session('fail') }}
+            </div>
+        @endif
         <!-- Tag and button section  -->
         <section class="section">
             <h1>Add Permission To Role</h1>
@@ -94,25 +96,20 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <h3>Role:{{$role->name}}</h3>
-                <form action="/give-permission/{{$role->id}}" method="POST">
+                <h3>Role:{{ $role->name }}</h3>
+                <form action="/give-permission/{{ $role->id }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="res-form row">
                         @foreach ($permissions as $permission)
-
-
-                        <div class="form-check col col-lg-3">
-                            <input class="form-check-input"
-                            type="checkbox"
-                            value="{{$permission->name}}"
-                            {{in_array($permission->id ,$rolePermissions)? "checked": ""}}
-                            id="javaCheckbox"
-                            name="permission[]">
-                            <label class="form-check-label" for="javaCheckbox">
-                                {{$permission->name}}
-                            </label>
-                        </div>
+                            <div class="form-check col col-lg-3">
+                                <input class="form-check-input" type="checkbox" value="{{ $permission->name }}"
+                                    {{ in_array($permission->id, $rolePermissions) ? 'checked' : '' }} id="javaCheckbox"
+                                    name="permission[]">
+                                <label class="form-check-label" for="javaCheckbox">
+                                    {{ $permission->name }}
+                                </label>
+                            </div>
                         @endforeach
                     </div>
                     <span class="button-div">

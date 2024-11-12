@@ -111,6 +111,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -118,6 +119,7 @@
         }
 
         .add-button:hover {
+            /* background: #21a1eb !important; */
             background: #21a1eb !important;
         }
 
@@ -125,6 +127,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+           /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -132,6 +135,7 @@
         }
 
         .submit-button:hover {
+            /* background: #21a1eb !important; */
             background: #21a1eb !important;
         }
 
@@ -140,6 +144,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -147,6 +152,7 @@
         }
 
         .tableButton:hover {
+         /* background: #21a1eb !important; */
             background: #21a1eb !important;
         }
 
@@ -241,7 +247,8 @@
         .dropdown-menu {
             position: absolute !important;
             z-index: 10 !important;
-            background-color: #213167 !important;
+            /* background-color: #213167; */
+            background-color: #213167;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -276,7 +283,8 @@
         /* Modal css section ------------------------------------------------------------------------>  */
         .modal-content {
             font-family: "Montserrat", sans-serif;
-            background-color: #21a1eb;
+            /* background: #21a1eb !important; */
+            background: #21a1eb !important;
             position: relative;
         }
 
@@ -297,6 +305,7 @@
             position: absolute;
             top: 0px;
             left: 90px;
+            /* background-color: #213167; */
             background-color: #213167;
             color: white;
             text-transform: uppercase;
@@ -368,6 +377,7 @@
         .billing-section {
             font-family: 'Montserrat', sans-serif;
             font-weight: bold;
+            /* background-color: #213167 !important; */
             background-color: #213167 !important;
             width: 500px;
         }

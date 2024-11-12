@@ -18,6 +18,7 @@
         }
 
         .box-div {
+            /* background: #213167; */
             background: #213167;
             color: white;
             border-radius: 5px;
@@ -27,6 +28,7 @@
             text-transform: uppercase;
             text-align: center;
             padding: 8px;
+            /* background: #21a1eb; */
             background: #21a1eb;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -34,6 +36,7 @@
         }
 
         .box-div0 {
+            /* background: #21a1eb; */
             background: #21a1eb;
             color: white;
             border-radius: 5px;
@@ -43,6 +46,7 @@
             text-transform: uppercase;
             text-align: center;
             padding: 8px;
+            /* background: #213167; */
             background: #213167;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -64,6 +68,7 @@
         .card-link {
             margin: auto;
             padding: 8px;
+            /* background: #213167; */
             background: #213167;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -81,6 +86,7 @@
         }
 
         .box-div1 {
+            /* background: #21a1eb; */
             background: #21a1eb;
             color: white;
             border-radius: 5px;
@@ -89,7 +95,8 @@
         .box-title1 {
             margin: auto;
             padding: 8px;
-            background: #213167;
+           /* background: #213167; */
+           background: #213167;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
@@ -109,6 +116,7 @@
         .card-link1 {
             margin: auto;
             padding: 8px;
+            /* background: #213167; */
             background: #213167;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -134,6 +142,7 @@
         th {
             border: 1px solid black;
             color: white !important;
+            /* background: #21a1eb !important; */
             background: #21a1eb !important;
             text-align: center;
         }
@@ -282,14 +291,18 @@
             datasets: [{
                     label: "Income",
                     data: [{{ $income }}],
+                    // backgroundColor: "#213167",
                     backgroundColor: "#213167",
+                    // borderColor: "#213167",
                     borderColor: "#213167",
                     borderWidth: 1,
                 },
                 {
                     label: "Expense",
                     data: [{{ $expense }}],
+                    // backgroundColor: "#21a1eb",
                     backgroundColor: "#21a1eb",
+                    // borderColor: "#21a1eb",
                     borderColor: "#21a1eb",
                     borderWidth: 1,
                 },

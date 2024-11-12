@@ -87,6 +87,7 @@
         text-transform: uppercase;
         width: 20%;
         padding: 10px;
+        /* background: #213167; */
         background: #213167;
         color: white;
         border: none;
@@ -97,7 +98,8 @@
     }
 
     .submit-button:hover {
-        background: #21a1eb;
+        /* background: #21a1eb; */
+      background: #21a1eb;
     }
 
     .header-image {
@@ -126,6 +128,7 @@
         <div class="invoicebody">
             <div class="invoice-box">
                 <img class="header-image" src="{{ asset('image/Header.png') }}" alt="">
+                {{-- <img class="header-image" src="{{ asset('image/marketien/Main Logo-01.png') }}" alt=""> --}}
                 <div class="header-section">
 
                     <div>

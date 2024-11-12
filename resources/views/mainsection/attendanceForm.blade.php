@@ -53,6 +53,7 @@
             height: 40px;
             width: 50px;
             padding: 10px;
+            /* background: #213167; */
             background: #213167;
             color: white;
             border: none;
@@ -66,6 +67,7 @@
             height: 40px;
             width: 80px;
             padding: 10px;
+            /* background: #213167; */
             background: #213167;
             color: white;
             border: none;
@@ -73,9 +75,12 @@
             cursor: pointer;
             font-size: 16px;
         }
+        .submit-btn:hover{
+            background: #21a1eb;
+        }
 
         .addButton:hover {
-            background: linear-gradient(to bottom, #3bb890, #114070);
+            background: #21a1eb;
         }
     </style>
 

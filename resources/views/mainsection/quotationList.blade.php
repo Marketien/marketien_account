@@ -40,7 +40,8 @@
         }
 
         .InvoiceTable-container th {
-            background: #21a1eb;
+            /* background: #21a1eb; */
+      background: #21a1eb;
             color: white;
         }
 
@@ -48,6 +49,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -56,7 +58,8 @@
 
         .dropdown-menu {
             z-index: 5;
-            background-color: #213167 !important;
+            /* background: #213167 !important; */
+            background: #213167 !important;
             font-weight: 600;
             text-transform: uppercase;
         }
@@ -66,6 +69,7 @@
         }
 
         .dropdown-item:hover {
+            /* background-color: #21a1eb !important; */
             background-color: #21a1eb !important;
             color: black !important;
         }

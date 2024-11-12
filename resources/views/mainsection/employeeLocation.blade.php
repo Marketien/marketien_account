@@ -16,7 +16,7 @@
         }
 
         .InvoiceTable-container {
-            position: relative ;
+            position: relative;
             flex: 1;
             margin: 10px;
             background-color: #fff;
@@ -30,10 +30,11 @@
 
         }
 
-.dropdown-menu{
-    position: absolute !important;
-    z-index: 10;
-}
+        .dropdown-menu {
+            position: absolute !important;
+            z-index: 10;
+        }
+
         .InvoiceTable-container th,
         td {
             padding: 12px 15px;
@@ -42,6 +43,7 @@
         }
 
         .InvoiceTable-container th {
+            /* background: #21a1eb; */
             background: #21a1eb;
             color: white;
         }
@@ -50,6 +52,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;

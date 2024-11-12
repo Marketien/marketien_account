@@ -38,6 +38,7 @@
             text-decoration: none;
             width: 50px;
             font-family: "Montserrat", sans-serif;
+            /* background: #213167; */
             background: #213167;
             color: white !important;
             border: none;
@@ -50,6 +51,7 @@
         }
 
         .addPermissionButton:hover {
+            /* background: #21a1eb; */
             background: #21a1eb;
             opacity: 0.9;
             color: white !important;
@@ -72,6 +74,7 @@
 
         thead {
             color: white;
+            /* background: #21a1eb; */
             background: #21a1eb;
             font-weight: 600;
             border-bottom: 1px solid black;
@@ -105,6 +108,7 @@
             border-radius: 5px;
             color: white;
             padding: 0px 20px;
+            /* background: #213167 !important; */
             background: #213167 !important;
             justify-self: start;
             align-self: center;
@@ -120,6 +124,7 @@
         .dropdown-menu {
             position: absolute !important;
             z-index: 10 !important;
+            /* background-color: #213167 !important; */
             background-color: #213167 !important;
             font-weight: 600;
             text-transform: uppercase;
@@ -130,7 +135,8 @@
         }
 
         .dropdown-item:hover {
-            background-color: #21a1eb !important;
+            /* background-color: #21a1eb !important; */
+            background-color: #21a1eb!important;
             color: black !important;
         }
     </style>

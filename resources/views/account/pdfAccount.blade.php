@@ -35,6 +35,10 @@
 
         .headerImg {
             width: 150px;
+
+            /* only for marketien */
+            /* margin-top: 30px;
+            margin-bottom:30px; */
         }
 
         .invoice-header {
@@ -162,6 +166,7 @@
 
             <div class="mx-div">
                 <img class="headerImg" src="image/Qalaat Al Khaleej.png" alt="" />
+                {{-- <img class="headerImg" src="image/marketien/Main Logo-01.png" alt="" /> --}}
 
                 <!-- information section  -->
                 <div class="informationDiv">

@@ -5,7 +5,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #213167;
+    /* background: #213167; */
+    background: linear-gradient(to top, #21a1eb, #213167);
     margin: 0;
   }
 
@@ -13,7 +14,8 @@
     background: white;
     padding: 2em;
     border-radius: 8px;
-    box-shadow: 0 10px 20px #21a1eb;
+    /* box-shadow: 0 10px 20px #21a1eb; */
+    box-shadow: 0 10px 20px #213167;
     text-align: center;
     width: 100%;
     max-width: 500px;
@@ -22,7 +24,8 @@
   .login-container h1 {
     margin-bottom: 1em;
     font-size: 2em;
-    color: #114070;
+    /* color: #114070; */
+    color: #213167;
     text-transform: uppercase;
   }
 
@@ -38,6 +41,7 @@
     text-align: start;
     font-weight: 700;
     text-transform: uppercase;
+    /* background-color: #213167; */
     background-color: #213167;
     padding: 9px 30px 9px 30px;
     color: white;
@@ -47,6 +51,7 @@
     text-align: start;
     font-weight: 700;
     text-transform: uppercase;
+    /* background-color: #21a1eb; */
     background-color: #21a1eb;
     padding: 9px 30px 9px 30px;
     color: white;
@@ -57,6 +62,7 @@
     display: flex;
     justify-content: center;
     text-transform: uppercase;
+    /* background-color: #213167; */
     background-color: #213167;
     padding: 8px 10px 8px 10px;
     color: white;
@@ -79,6 +85,7 @@
 
   .login-btn {
     text-transform: uppercase;
+    /* background: #213167; */
     background: #213167;
     color: white;
     border: none;
@@ -94,6 +101,7 @@
   }
 
   .login-btn:hover {
+    /* background: #21a1eb; */
     background: #21a1eb;
     opacity: 0.9;
   }
@@ -102,6 +110,7 @@
     width: 200px;
   }
   .forgot-passtext {
+    /* color: #21a1eb; */
     color: #21a1eb;
     text-decoration: underline;
     font-weight: 600;

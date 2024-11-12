@@ -31,13 +31,20 @@
         .headerImg {
             width: 100%;
             height: 150px;
+
+            /* for only marketien */
+            /* margin-top: 30px; */
+
         }
 
         .footerImg {
+
             width: 100%;
             height: 120px;
+
             position: relative;
-            top: 173px;
+            top: 235px;
+
         }
 
         .invoice-header {
@@ -102,7 +109,8 @@
         }
 
         .invoice-table th {
-            background-color: #004c6d;
+            /* background-color: #004c6d; */
+            background-color: #21a1eb;
             color: white;
             font-weight: bold;
         }
@@ -161,7 +169,8 @@
             display: block;
             width: 20%;
             padding: 10px;
-            background: #213167;
+            /* background: #213167 !important; */
+            background: #213167 !important;
             color: white;
             border: none;
             border-radius: 4px;
@@ -195,6 +204,7 @@
         <div class="invoice-box container_content" id="container_content">
             <!-- header img section  -->
             <img class="headerImg" src="{{ asset('image/Invoice-Qalat-Header.png') }}" alt="" />
+            {{-- <img class="headerImg" src="{{ asset('image/marketien/Main Logo-01.png') }}" alt="" /> --}}
 
             <!-- invoiceNo  & Date section  -->
             <div class="parentBoldInvoiceData">
@@ -321,6 +331,7 @@
 
             <!-- footer img section  -->
             <img class="footerImg" src="{{ asset('image/Invoice-Qalat-FOoter.png') }}" alt="" />
+            {{-- <img class="footerImg" src="{{ asset('image/marketien/Main Logo White-01.png') }}" alt="" /> --}}
         </div>
     </div>
     <div class="invoice-footer">
