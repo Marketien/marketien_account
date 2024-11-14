@@ -2,7 +2,7 @@
 @section('content')
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js') }}">
-    <script type="module" src="{{ asset('build/assets/app-DpKeprz2.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/app-ZYuboFVO.js') }}"></script>
     <style>
         body {
             font-family: Arial, sans-serif;

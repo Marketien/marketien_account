@@ -2,33 +2,72 @@
 @section('content')
 <style>
      .button-width-1 {
-            background: #1b6328;
+            /* background: #1b6328;
             text-transform: uppercase;
             color: white;
             box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
             border-radius: 5px;
             border: none;
-            padding: 0px 10px ;
+            padding: 0px 10px ; */
+            font-size: 13px;
+            background: #103b18;
+            text-transform: uppercase;
+            color: white;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764); */
+            /* border-radius: 5px; */
+            /* border: none; */
+            /* padding: 8px 8px; */
+            border: 2px solid darkgreen;
+            box-shadow: inset 4px 4px 8px #349646, inset -4px -4px 8px #3c8d4b;
+            border-radius: 4px;
         }
 
         .button-width-2 {
-            background: #a46800;
+            /* background: #a46800;
             text-transform: uppercase;
             color: white;
             box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
             border-radius: 5px;
-            border: none; padding: 0px 10px ;
+            border: none; padding: 0px 10px ; */
+            font-size: 13px;
+            background: #704c0d;
+            border: 2px solid darkgoldenrod;
+            box-shadow: inset 4px 4px 8px #c7b72a, inset -4px -4px 8px #c7b72a;
+            border-radius: 4px;
+            color: white;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+                                                                    border-radius: 5px;
+                                                                    border: none; */
+            /* padding: 8px 8px; */
+            text-transform: uppercase;
         }
 
         .button-width-3 {
-            text-decoration: none ;
+            /* text-decoration: none ;
             background: #213167;
             text-transform: uppercase;
             color: white;
             box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
             border-radius: 5px;
             border: none;
-            padding: 0px 10px ;
+            padding: 0px 10px ; */
+            font-size: 13px;
+            text-decoration: none;
+            background: #142357;
+            color: white;
+            /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+                                                                    border-radius: 5px;
+                                                                    border: none; */
+            border: 2px solid rgb(23, 10, 94);
+            box-shadow: inset 4px 4px 8px #4f49a0, inset -4px -4px 8px #4f49a0;
+            border-radius: 4px;
+            /* padding: 8px 8px; */
+            text-transform: uppercase;
+        }
+        .button-width-1:hover,
+        .button-width-2:hover,
+        .button-width-3:hover {
+            box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
         }
         .tableButton{
             border-radius: 5px;
@@ -39,6 +78,32 @@
             justify-self: start;
             align-self: center;
             box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
+        }
+        .billing-section-flex-div {
+            display: flex;
+            justify-content: center;
+            margin-top: 5rem;
+        }
+
+        .billing-section {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            /* background-color: #213167 !important; */
+            background-color: #213167 !important;
+            width: 500px;
+        }
+
+        .billing-section-p {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 10px;
+        }
+
+        .billing-section-span {
+            padding-left: 10px;
+            padding-right: 6px;
+            background-color: rgb(203, 199 ,199) !important;
         }
 </style>
     <div style="margin-top: 55px;" class="flex-grow-1 p-3">
@@ -74,7 +139,7 @@
                     <!-- Print button -->
                     <button class="button-width-2 d-flex align-items-center gap-1">
                         <span><img class="button-img" src="image/printer_1041985.png" alt="" /></span>
-                        <span>Print</span>
+                        <span>Visibility</span>
                     </button>
                     <!-- Column visibility  -->
                     {{-- <button class="button-width d-flex align-items-center gap-1">
@@ -165,7 +230,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
+                {{-- <div style="font-family: 'Montserrat', sans-serif; font-weight: bold;"
                     class="bg-light p-3 rounded mb-3 text-center lh-lg">
                     <p class="d-flex justify-content-between"><span>Total Bill Submitted :</span>
                         <span>{{ $amount }}</span> </p>
@@ -174,6 +239,18 @@
                     <p class="d-flex justify-content-between"><span>Total OutStanding:</span> <span
                             class="text-danger">{{ $due }}</span>
                     </p>
+                </div> --}}
+                <div class="billing-section-flex-div">
+                    <div class="billing-section p-3 rounded mb-3 text-center lh-lg">
+                        <p class="billing-section-p"><span class="billing-section-span">Total Bill Submitted :</span>
+                            <span>{{ number_format($amount, 3, '.', ',') }}</span>
+                        </p>
+                        <p class="billing-section-p"><span class="billing-section-span">Total Amount Recieved :</span> <span
+                                class="text-success">{{ number_format($credit, 3, '.', ',') }}</span> </p>
+                        <p class="billing-section-p"><span class="billing-section-span">Total OutStanding:</span> <span
+                                class="text-danger">{{ number_format($due, 3, '.', ',') }}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

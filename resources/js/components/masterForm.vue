@@ -2,18 +2,33 @@
     <div class="master-form-body">
         <div class="invoice-container">
             <div>
-                <div class="invoice-header">
-                    <h1>Create Invoice</h1>
+                <form @submit.prevent="submit()">
+                <div class="invoice-header-div">
+                    <div class="invoice-header-heading">Create Invoice</div>
+                <div class="header-input">
+                    <div>
+                        <label class="head-label" for="date">Date:</label>
+                        <input type="date" id="date" name="date" class="head-input mb-1" required>
+                    </div>
+                    <div>
+                        <label class="head-label" for="invoiceNo">Invoice No:</label>
+                        <input type="text" id="invoiceNo" name="invoiceNo" class="head-input-invoice" v-model="invoice_no" required>
+
+                        <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png"
+                            alt="" @click="getInvoice()" >
+
+                    </div>
                 </div>
 
-                <form @submit.prevent="submit()">
+                </div>
+
                     <div class="form-group">
                         <div>
                             <label for="to">To:</label>
                             <input type="text" id="to" name="to" v-model="to" >
                         </div>
                         <div>
-                            <label for="invoiceNo">Invoice No:</label>
+                            <label for="invoiceNo">Invoice No :</label>
                             <div class="invoiceDiv">
                                 <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no">
                                 <div type="button" @click="getInvoice()" >

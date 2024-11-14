@@ -304,7 +304,9 @@ class AccountController extends Controller
     function accountMasterDelete($id)
     {
         $data = AccountMaster::find($id);
+        $input = InputMaster::where('invoice_no',$data->invoice_no)->first();
         $data->delete();
+        $input->delete();
         return back()->with('success', 'Your Account Master Deleted Successfully');
     }
     public function account_sms($id)
