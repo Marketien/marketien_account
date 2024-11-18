@@ -5,159 +5,143 @@
     <script type="module" src="{{ asset('build/assets/app-ZYuboFVO.js') }}"></script> --}}
     <style>
         /* body {
-                        font-family: Arial, sans-serif;
-                    }
+                                    font-family: Arial, sans-serif;
+                                }
 
-                    .invoice-box1 {
+                                .invoice-box1 {
 
-                        margin: auto;
-                        margin-top: 60px;
-                        padding: 20px;
-                        border: 1px solid #eee;
-                        background-color: #f3f1f1;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-                        font-size: 14px;
-                        line-height: 24px;
-                        color: #555;
-                    } */
+                                    margin: auto;
+                                    margin-top: 60px;
+                                    padding: 20px;
+                                    border: 1px solid #eee;
+                                    background-color: #f3f1f1;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+                                    font-size: 14px;
+                                    line-height: 24px;
+                                    color: #555;
+                                } */
 
         /* .invoice-box2 {
-                        margin: auto;
-                        padding: 20px;
-                        border: 1px solid #eee;
-                        background-color: #f3f1f1;
-                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-                        font-size: 14px;
-                        line-height: 24px;
-                        color: #555;
-                    }
+                                    margin: auto;
+                                    padding: 20px;
+                                    border: 1px solid #eee;
+                                    background-color: #f3f1f1;
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+                                    font-size: 14px;
+                                    line-height: 24px;
+                                    color: #555;
+                                }
 
-                    .parentInput {
-                        margin-left: 15px;
-                        padding: 5px;
-                        width: 230px;
-                    } */
+                                .parentInput {
+                                    margin-left: 15px;
+                                    padding: 5px;
+                                    width: 230px;
+                                } */
 
         /* .childInput {
-                        margin-left: 40px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                    margin-left: 40px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    textarea {
-                        width: 100%;
-                        height: 100px;
-                    }
+                                textarea {
+                                    width: 100%;
+                                    height: 100px;
+                                }
 
-                    .textarea3 {
-                        width: 50%;
-                        height: 150px;
-                    }
+                                .textarea3 {
+                                    width: 50%;
+                                    height: 150px;
+                                }
 
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        margin-top: 20px;
-                    }
+                                table {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    margin-top: 20px;
+                                }
 
-                    table th,
-                    table td {
-                        border: 1px solid black;
-                        padding: 10px;
-                        text-align: left;
-                    }
+                                table th,
+                                table td {
+                                    border: 1px solid black;
+                                    padding: 10px;
+                                    text-align: left;
+                                }
 
-                    .header-section {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    } */
+                                .header-section {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                } */
 
         /* .header-section div {
-                        display: inline-block;
-                    }
+                                    display: inline-block;
+                                }
 
-                    .heading {
-                        font-weight: 700;
-                    }
+                                .heading {
+                                    font-weight: 700;
+                                }
 
-                    .content {
-                        margin-top: 20px;
-                    }
+                                .content {
+                                    margin-top: 20px;
+                                }
 
-                    .invoice-footer {
-                        display: flex;
-                        justify-content: center;
-                        margin: 20px 20px;
-                    } */
+                                .invoice-footer {
+                                    display: flex;
+                                    justify-content: center;
+                                    margin: 20px 20px;
+                                } */
 
-        /* .submit-button {
-                        margin-top: -50px;
-                        display: block;
-                        width: 20%;
-                        padding: 10px;
 
-                        background: #213167;
-                        color: white;
-                        border: none;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        font-size: 16px;
-                    }
-
-                    .submit-button:hover {
-                        background: #21a1eb;
-                    } */
 
         /* alignment of input field */
 
         /* .parentInput1 {
-                        margin-left: 58px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                    margin-left: 58px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput2 {
-                        margin-left: 73px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                .parentInput2 {
+                                    margin-left: 73px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput3 {
-                        margin-left: 78px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                .parentInput3 {
+                                    margin-left: 78px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput4 {
-                        margin-left: 51px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                .parentInput4 {
+                                    margin-left: 51px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput5 {
-                        margin-left: 85px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                .parentInput5 {
+                                    margin-left: 85px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput6 {
-                        margin-left: 67px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                .parentInput6 {
+                                    margin-left: 67px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput7 {
-                        margin-left: 42px;
-                        padding: 5px;
-                        width: 230px;
-                    }
+                                .parentInput7 {
+                                    margin-left: 42px;
+                                    padding: 5px;
+                                    width: 230px;
+                                }
 
-                    .parentInput8 {
-                        margin-left: 15px;
-                        padding: 5px;
-                        width: 230px;
-                    } */
+                                .parentInput8 {
+                                    margin-left: 15px;
+                                    padding: 5px;
+                                    width: 230px;
+                                } */
 
         .add-button {
             display: flex;
@@ -184,6 +168,23 @@
             align-self: center;
             box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
             text-transform: uppercase;
+        }
+        .submit-button {
+            /* margin-top: -50px; */
+            display: block;
+            width: 100%;
+            padding: 10px;
+
+            background: #213167;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background: #21a1eb;
         }
 
         form {
@@ -438,7 +439,7 @@
 
         .formInput-8 {
             width: 59%;
-            padding: 6px 0px 7px 0px;
+            padding: 6px 0px 7px 12px;
             font-size: 16px;
             border-top: 1px solid #d1cdcd;
             border-bottom: 1px solid #d1cdcd;
@@ -450,7 +451,7 @@
 
         .formInput-9 {
             width: 59%;
-            padding: 6px 0px 7px 0px;
+            padding: 6px 0px 7px 12px;
             font-size: 16px;
             border-top: 1px solid #d1cdcd;
             border-bottom: 1px solid #d1cdcd;
@@ -463,7 +464,7 @@
         .formInput-10,
         .formInput-11 {
             width: 59%;
-            padding: 6px 0px 7px 0px;
+            padding: 6px 0px 7px 12px;
             font-size: 16px;
             border-top: 1px solid #d1cdcd;
             border-bottom: 1px solid #d1cdcd;
@@ -475,7 +476,7 @@
 
         .formInput-12 {
             width: 59%;
-            padding: 4px 0px 6px 0px;
+            padding: 4px 0px 6px 12px;
             font-size: 16px;
             border-top: 1px solid #d1cdcd;
             border-bottom: 1px solid #d1cdcd;
@@ -490,11 +491,11 @@
             border-bottom: 1px solid rgb(142, 140, 140);
             border-right: 1px solid rgb(142, 140, 140);
             border-left: 1px solid rgb(142, 140, 140);
-            width: 97%;
+            width: 100%;
             box-sizing: border-box;
             font-size: 14px;
             height: 150px;
-            margin-top: 6px;
+            /* margin-top: 6px; */
 
         }
 
@@ -506,6 +507,14 @@
 
         .heading {
             font-weight: 700;
+        }
+
+        .formIn {
+            width: 90%;
+            box-sizing: border-box;
+            font-size: 14px;
+            height: 95px;
+            margin-top: 6px;
         }
 
 
@@ -669,9 +678,8 @@
                 width: 51%;
                 padding: 9px 0px 9px 0px;
             }
-            textarea{
-                width: 100%;
-            }
+
+
             .form-group-textarea {
                 display: grid !important;
                 grid-template-columns: 1fr;
@@ -690,6 +698,8 @@
             .formInput-13 {
                 width: 100%;
             }
+
+
         }
     </style>
     @if (session('success'))

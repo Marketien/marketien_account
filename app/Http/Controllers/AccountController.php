@@ -298,6 +298,7 @@ class AccountController extends Controller
     {
 
         $data = InputMaster::find($id);
+        // $data->formatted_date = $data->date->format('m-d-Y');
 
         return view('mainsection.invoiceOrder', ['purchase' => $data,]);
     }

@@ -66,6 +66,7 @@
 
         .boldInvoiceData1 {
             visibility: hidden;
+
             background-color: rgba(127, 217, 255, 0.495);
             display: flex;
             gap: 40px;
@@ -77,9 +78,10 @@
 
         .boldInvoiceData2 {
             width: 400px;
-            height: 45px;
+
+            height: 77px;
             background-color: rgba(127, 217, 255, 0.495);
-            display: flex;
+            /* display: flex; */
             align-items: center;
             gap: 10px;
             font-weight: 700;
@@ -209,12 +211,17 @@
             <!-- invoiceNo  & Date section  -->
             <div class="parentBoldInvoiceData">
                 <div class="boldInvoiceData1">
-                    <p><span>Invoice No: </span><span>akz-0042223</span></p>
-                    <p><span>Date: </span><span>2024-07-15</span></p>
+                    {{-- <p><span>Invoice No: </span><span>akz-0042223</span></p>
+                    <p><span>Date: </span><span>2024-07-15</span></p> --}}
+
                 </div>
                 <div class="boldInvoiceData2">
-                    <p><span>Invoice No: </span><span>{{ $purchase->invoice_no }}</span></p>
-                    <p><span>Date: </span><span>{{ $purchase->date }}</span></p>
+                    <?php
+                    $formatte_date = \Carbon\Carbon::parse($purchase->date)->format('m-d-Y');
+                    ?>
+                    <p><span>Invoice No: </span><span>{{ $purchase->invoice_no }} <span style="margin-left: 10px;">Date: </span><span>{{ $formatte_date }}</span></span></p>
+                    {{-- <p><span>Date: </span><span>{{ $formatte_date }}</span></p> --}}
+                    <p><span>TRN1:</span></p>
                 </div>
             </div>
             <!-- Table section -->
@@ -239,10 +246,7 @@
                             <span class="boldSpan">Atn: </span>
                             <span>{{ $purchase->name }}</span>
                         </p>
-                        <p>
-                            <span class="boldSpan">Project: </span>
-                            <span>{{ $purchase->proect_name }}</span>
-                        </p>
+
 
                         <p>
                             <span class="boldSpan">Address: </span>
@@ -263,9 +267,13 @@
                             <span>{{ $purchase->ref_no }}</span>
                         </p>
                         <p>
+                            <span class="boldSpan">Project: </span>
+                            <span>{{ $purchase->proect_name }}</span>
+                        </p>
+                        {{-- <p>
                             <span class="boldSpan">TRN1:</span>
                             <span>{{ $purchase->trn1 }}</span>
-                        </p>
+                        </p> --}}
 
                         <p>
                             <span class="boldSpan">Scope of Works: </span>

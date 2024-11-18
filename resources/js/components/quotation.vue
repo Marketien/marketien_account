@@ -5,31 +5,55 @@
         <div class="form-group">
           <div>
             <label for="ref-no">Ref.No:</label>
-            <input type="text" id="ref-no" name="ref-no" class="formInput" required />
+            <input
+              type="text"
+              id="ref-no"
+              name="ref-no"
+              class="formInput"
+              v-model="ref_no"
+            />
           </div>
           <div>
             <label class="label-1" for="date">Date:</label>
-            <input type="date" id="date" name="date" class="formInput-1" required />
+            <input type="date" id="date" name="date" class="formInput-1" v-model="date" />
           </div>
         </div>
         <div class="form-group">
           <div>
             <label for="m-s">M/S:</label>
-            <input type="text" id="m-s" name="m-s" class="formInput-3" required />
+            <input type="text" id="m-s" name="m-s" class="formInput-3" v-model="ms" />
           </div>
           <div>
             <label class="" for="po-box">P.O Box:</label>
-            <input type="text" id="po-box" name="po-box" class="formInput-4" required />
+            <input
+              type="text"
+              id="po-box"
+              name="po-box"
+              class="formInput-4"
+              v-model="po_box"
+            />
           </div>
         </div>
         <div class="form-group">
           <div>
             <label for="tek">Tel:</label>
-            <input type="text" id="tel" name="tel" class="formInput-5" required />
+            <input
+              type="text"
+              id="tel"
+              name="tel"
+              class="formInput-5"
+              v-model="phone_no"
+            />
           </div>
           <div>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" class="formInput-7" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="formInput-7"
+              v-model="email"
+            />
           </div>
         </div>
         <div class="form-group">
@@ -40,7 +64,7 @@
               id="kind-attn"
               name="kind-attn"
               class="formInput-6"
-              required
+              v-model="kind_attn"
             />
           </div>
           <div>
@@ -50,21 +74,21 @@
               id="project-name"
               name="project-name"
               class="formInput-2"
-              required
+              v-model="project_name"
             />
           </div>
         </div>
-        </div>
-        <div>
-          <p class="heading">Dear Sir,</p>
-          <p>
-            With reference to your inquiry, we are pleased to offer our quotation for the
-            subject items. We welcome the opportunity to provide this business solution
-            for you and look forward to establishing a mutually rewarding relationship
-            with your esteemed organization.
-          </p>
-          <p class="heading">Scope of Works:</p>
-          <!-- <div class="header-section">
+      </div>
+      <div>
+        <p class="heading">Dear Sir,</p>
+        <p>
+          With reference to your inquiry, we are pleased to offer our quotation for the
+          subject items. We welcome the opportunity to provide this business solution for
+          you and look forward to establishing a mutually rewarding relationship with your
+          esteemed organization.
+        </p>
+        <p class="heading">Scope of Works:</p>
+        <!-- <div class="header-section">
             <div  class="heading">
                 Ref.No: <input class="parentInput1" type="text" name="" id="" v-model="ref_no">
                     <br><br>
@@ -83,246 +107,247 @@
             opportunity to provide this business solution for you and look forward to establishing a mutually rewarding
             relationship with your esteemed organization.</p>
         <p class="heading">Scope of Works:</p> -->
-        </div>
-        <div class="invoice-section2">
-          <table class="invoice-table">
-            <thead>
-              <tr>
-                <th>Sl No.</th>
-                <th>Work Description</th>
-                <th>Qty</th>
-                <th>Unit</th>
-                <th>Unit Rate</th>
-                <th>Total Amount</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- <tr>
+      </div>
+      <div class="invoice-section2">
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th>Sl No.</th>
+              <th>Work Description</th>
+              <th>Qty</th>
+              <th>Unit</th>
+              <th>Unit Rate</th>
+              <th>Total Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
               <td>1</td>
               <td><input id="description" name="description" rows="2" required></input></td>
               <td><input type="number" id="quantity" name="quantity" required></td>
               <td><input type="number" id="unit-price" name="unit-price" step="0.01" required></td>
               <td><input type="number" id="amount" name="amount" step="0.01" required></td>
             </tr> -->
-              <tr v-for="(key, keyIndex) in projects" :key="key.id">
-                <td>1.</td>
-                <td>
-                  <p class="heading">
-                    <input
-                      class="parentInput"
-                      type="text"
-                      name=""
-                      id=""
-                      v-model="key.heading"
-                    />
-                  </p>
-                  <p>
-                    <textarea
-
-                      :id="'textarea1' + keyIndex"
-                      @keydown.enter.prevent="
-                        handleEnterKey('textarea1' + keyIndex, $event)
-                      "
-                      placeholder="write something"
-                      v-model="key.description"
-                    ></textarea>
-                  </p>
-                </td>
-                <td>
+            <tr v-for="(key, keyIndex) in projects" :key="key.id">
+              <td>1.</td>
+              <td>
+                <p class="heading">
                   <input
-                    type="number"
+                    class="parentInput"
+                    type="text"
                     name=""
                     id=""
-                    v-model="key.quantity"
-                    @change="calculateRowTotal(keyIndex)"
+                    v-model="key.heading"
                   />
-                </td>
-                <td><input type="text" name="" id="" v-model="key.unit" /></td>
-                <td>
-                  <input
-                    type="number"
-                    name=""
-                    id=""
-                    v-model="key.unit_rate"
-                    @change="calculateRowTotal(keyIndex)"
-                  />
-                </td>
-                <td>
-                  <input type="number" name="" id="" v-model="key.amount" readonly />
-                </td>
-                <td>
-                  <div class="col-md-2">
-                    <!--                <label  class="row" v-if="keyIndex == 0"></label><br>-->
+                </p>
+                <p>
+                  <textarea
+                    :id="'textarea1' + keyIndex"
+                    @keydown.enter.prevent="
+                      handleEnterKey('textarea1' + keyIndex, $event)
+                    "
+                    placeholder="write something "
+                    v-model="key.description"
+                    class="formIn"
+                  ></textarea>
+                </p>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name=""
+                  id=""
+                  v-model="key.quantity"
+                  @change="calculateRowTotal(keyIndex)"
+                />
+              </td>
+              <td><input type="text" name="" id="" v-model="key.unit" /></td>
+              <td>
+                <input
+                  type="number"
+                  name=""
+                  id=""
+                  v-model="key.unit_rate"
+                  @change="calculateRowTotal(keyIndex)"
+                />
+              </td>
+              <td>
+                <input type="number" name="" id="" v-model="key.amount" readonly />
+              </td>
+              <td>
+                <div class="col-md-2">
+                  <!--                <label  class="row" v-if="keyIndex == 0"></label><br>-->
 
-                    <button
-                      class="add-button mt-2 ml-2"
-                      style="margin-bottom: 0; width: 50px"
-                      v-if="keyIndex == Object.keys(projects).length - 1"
-                      @click="add"
-                      title="add"
-                      id="add_more_fields"
-                    >
-                      <i class="fa fa-plus-circle">add</i>
-                    </button>
-                    <button
-                      class="delete-button text-uppercase mt-2 ml-2"
-                      style="width: 50px"
-                      v-if="keyIndex >> 0"
-                      @click="remove"
-                      title="remove"
-                    >
-                      <i class="fa fa-minus-circle">del</i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                  <button
+                    class="add-button mt-2 ml-2"
+                    style="margin-bottom: 0; width: 50px"
+                    v-if="keyIndex == Object.keys(projects).length - 1"
+                    @click="add"
+                    title="add"
+                    id="add_more_fields"
+                  >
+                    <i class="fa fa-plus-circle">add</i>
+                  </button>
+                  <button
+                    class="delete-button text-uppercase mt-2 ml-2"
+                    style="width: 50px"
+                    v-if="keyIndex >> 0"
+                    @click="remove"
+                    title="remove"
+                  >
+                    <i class="fa fa-minus-circle">del</i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="amount-section-div">
+        <div class="form-group-1">
+          <div>
+            <label class="label-2" for="totalAmount">Total Cost:</label>
+            <input
+              class="formInput-8"
+              type="text"
+              id="totalAmount"
+              name="totalAmount"
+              required
+            />
+          </div>
+          <div>
+            <label class="label-2" for="vatAmount">+5% vat Amount:</label>
+            <input
+              class="formInput-9"
+              type="text"
+              id="vatAmount"
+              name="vatAmount"
+              required
+            />
+          </div>
+          <div>
+            <label class="label-2" for="vatAmount">To Pay:</label>
+            <input
+              class="formInput-10"
+              type="text"
+              id="vatAmount"
+              name="vatAmount"
+              required
+            />
+          </div>
+          <div>
+            <label class="label-2" for="vatAmount">Credit:</label>
+            <input
+              class="formInput-11"
+              type="text"
+              id="vatAmount"
+              name="vatAmount"
+              required
+            />
+          </div>
+          <div>
+            <label class="label-2" for="netAmount">Total Net Amount:</label>
+            <input
+              class="formInput-12"
+              type="text"
+              id="netAmount"
+              name="netAmount"
+              required
+            />
+          </div>
         </div>
-        <div class="amount-section-div">
-          <div class="form-group-1">
+
+        <div class="form-group-2">
+          <div>
             <div>
               <label class="label-2" for="totalAmount">Total Cost:</label>
               <input
                 class="formInput-8"
-                type="text"
+                type="number"
                 id="totalAmount"
                 name="totalAmount"
-                required
+                v-model="total_amount"
+                readonly
+                step="0.01"
               />
             </div>
             <div>
               <label class="label-2" for="vatAmount">+5% vat Amount:</label>
               <input
                 class="formInput-9"
-                type="text"
+                type="number"
                 id="vatAmount"
                 name="vatAmount"
-                required
+                step="0.01"
+                v-model="vat_amount"
+                readonly
               />
             </div>
-            <div>
-              <label class="label-2" for="vatAmount">To Pay:</label>
-              <input
-                class="formInput-10"
-                type="text"
-                id="vatAmount"
-                name="vatAmount"
-                required
-              />
-            </div>
-            <div>
-              <label class="label-2" for="vatAmount">Credit:</label>
-              <input
-                class="formInput-11"
-                type="text"
-                id="vatAmount"
-                name="vatAmount"
-                required
-              />
-            </div>
-            <div>
-              <label class="label-2" for="netAmount">Total Net Amount:</label>
-              <input
-                class="formInput-12"
-                type="text"
-                id="netAmount"
-                name="netAmount"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="form-group-2">
-            <div>
-              <div>
-                <label class="label-2" for="totalAmount">Total Cost:</label>
-                <input
-                  class="formInput-8"
-                  type="text"
-                  id="totalAmount"
-                  name="totalAmount"
-                  required
-                />
-              </div>
-              <div>
-                <label class="label-2" for="vatAmount">+5% vat Amount:</label>
-                <input
-                  class="formInput-9"
-                  type="text"
-                  id="vatAmount"
-                  name="vatAmount"
-                  required
-                />
-              </div>
-              <!-- <div>
+            <!-- <div>
               <label class="label-2" for="vatAmount">To Pay:</label>
               <input class="formInput-10" type="text" id="vatAmount" name="vatAmount" required>
             </div> -->
-              <div>
-                <label class="label-2" for="vatAmount">Discount:</label>
-                <input
-                  class="formInput-11"
-                  type="text"
-                  id="vatAmount"
-                  name="vatAmount"
-                  required
-                />
-              </div>
-              <div>
-                <label class="label-2" for="netAmount" style="font-size: 10px !important"
-                  >Total Net Amount:</label
-                >
-                <input
-                  class="formInput-12"
-                  type="text"
-                  id="netAmount"
-                  name="netAmount"
-                  required
-                />
-              </div>
+            <div>
+              <label class="label-2" for="vatAmount">Discount:</label>
+              <input
+                class="formInput-11"
+                type="number"
+                id="vatAmount"
+                name="vatAmount"
+                v-model="discount"
+                step="0.01"
+                @change="calculateGrandTotal()"
+              />
+            </div>
+            <div>
+              <label class="label-2" for="netAmount" style="font-size: 10px !important"
+                >Total Net Amount:</label
+              >
+              <input
+                class="formInput-12"
+                type="number"
+                id="netAmount"
+                name="netAmount"
+                v-model="total_net_amount"
+                step="0.01"
+                readonly
+              />
             </div>
           </div>
         </div>
+      </div>
 
       <div class="form-group-textarea">
         <div>
           <label class="label-3" for="address">General Condition:</label>
           <textarea
-            class="formInput-13"
+            class="formInput-13 textarea3"
             type="text"
-            id="address"
-            name="address"
-            required
+            id="textarea2"
+            @keydown.enter.prevent="handleEnterKey('textarea2', $event)"
+            placeholder="write something"
+            name="condition"
+            v-model="conditon"
           ></textarea>
         </div>
         <div>
           <label class="label-4" for="scopeOfWork">Payment Terms:</label>
           <textarea
-            class="formInput-13"
+            class="formInput-13 textarea3"
             type="text"
-            id="scopeOfWork"
+            id="textarea3"
+            @keydown.enter.prevent="handleEnterKey('textarea3', $event)"
+            placeholder="write something"
             name="scopeOfWork"
-            required
+            v-model="payment_term"
           ></textarea>
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-      <div class="invoice-box2">
-        <div class="header-section"></div>
-        <table>
+      <!-- <div class="invoice-box2">
+        <div class="header-section"></div> -->
+        <!-- <table>
           <tr>
             <th>Sl No.</th>
             <th>Work Description</th>
@@ -375,7 +400,6 @@
             <td><input type="number" name="" id="" v-model="key.amount" readonly /></td>
             <td>
               <div class="col-md-2">
-                <!--                <label  class="row" v-if="keyIndex == 0"></label><br>-->
 
                 <button
                   class="add-button mt-2 ml-2"
@@ -442,29 +466,29 @@
               />
             </td>
           </tr>
-        </table>
-        <p>Total Amount in Words: AED – Forty Thousand Five Only.</p>
+        </table> -->
+        <!-- <p>Total Amount in Words: AED – Forty Thousand Five Only.</p>
         <div class="content">
           <p class="heading">General Condition:</p>
-          <ul>
-            <textarea
+          <ul> -->
+            <!-- <textarea
               class="textarea3"
               id="textarea2"
               @keydown.enter.prevent="handleEnterKey('textarea2', $event)"
               placeholder="write something"
               v-model="conditon"
-            ></textarea>
-          </ul>
+            ></textarea> -->
+          <!-- </ul>
           <p class="heading">Payment Terms:</p>
-          <ul>
-            <textarea
+          <ul> -->
+            <!-- <textarea
               class="textarea3"
               id="textarea3"
               @keydown.enter.prevent="handleEnterKey('textarea3', $event)"
               placeholder="write something"
               v-model="payment_term"
-            ></textarea>
-          </ul>
+            ></textarea> -->
+          <!-- </ul>
           <p>
             If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej
             Accounts Department within 7 days from the receipt of invoices, unless
@@ -472,14 +496,19 @@
           </p>
           <p class="heading">Project Duration:</p>
           <p>To be discussed.</p>
-        </div>
-        <br />
-        <br />
+        </div> -->
+        <!-- <br />
+        <br /> -->
+        <p>If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej Accounts Department within 7
+        days from the receipt of invoices, unless otherwise we will consider the invoice has been accepted for
+        payment.</p>
+      <p class="heading">Project Duration:</p>
+      <p>To be discussed.</p>
         <div class="invoice-footer">
           <input type="submit" value="Submit" class="submit-button" />
         </div>
       </div>
-    </div>
+    <!-- </div> -->
   </form>
 </template>
 <script type="module">
@@ -497,6 +526,7 @@ export default {
       kind_attn: "",
       project_name: "",
       payment_term: "",
+      conditon:"",
       projects: [
         {
           heading: "",
