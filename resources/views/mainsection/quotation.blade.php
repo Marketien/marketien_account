@@ -188,7 +188,7 @@
                                 </p>
                             </td>
                             <td>{{ number_format($project->quantity, 2, '.', ',') }}</td>
-                            <td>{{ number_format($project->unit, 2, '.', ',') }}</td>
+                            <td>{{ $project->unit }}</td>
                             <td>{{ number_format($project->unit_rate, 2, '.', ',') }}</td>
                             <td>{{ number_format($project->amount, 2, '.', ',') }}</td>
                         </tr>
@@ -201,8 +201,13 @@
                         <td colspan="5" style="text-align: right;">5% VAT</td>
                         <td>{{ number_format($quotation->vat_amount, 2, '.', ',') }}</td>
                     </tr>
+                    {{ $discount = $quotation->total_amount + $quotation->vat_amount - $quotation->total_net_amount}}
                     <tr>
-                        <td colspan="5" style="text-align: right;">Total After Discount</td>
+                        <td colspan="5" style="text-align: right;">Discount</td>
+                        <td>{{ number_format($discount, 2, '.', ',') }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="text-align: right;">Total Net Amount</td>
                         <td>{{ number_format($quotation->total_net_amount, 2, '.', ',') }}</td>
                     </tr>
 

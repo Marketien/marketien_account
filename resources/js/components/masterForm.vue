@@ -8,7 +8,7 @@
                 <div class="header-input">
                     <div>
                         <label class="head-label" for="date">Date:</label>
-                        <input type="date" id="date" name="date" class="head-input mb-1" required>
+                        <input type="date" id="date" name="date" class="head-input mb-1" v-model="date" required>
                     </div>
                     <div>
                         <label class="head-label" for="invoiceNo">Invoice No:</label>
@@ -21,91 +21,74 @@
                 </div>
 
                 </div>
-
-                    <div class="form-group">
-                        <div>
-                            <label for="to">To:</label>
-                            <input type="text" id="to" name="to" v-model="to" >
-                        </div>
-                        <div>
-                            <label for="invoiceNo">Invoice No :</label>
-                            <div class="invoiceDiv">
-                                <input type="text" id="invoiceNo" name="invoiceNo" v-model="invoice_no">
-                                <div type="button" @click="getInvoice()" >
-                                    <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png" alt="" >
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="date">Date:</label>
-                            <input class="dateinput" type="date" id="date" name="date" v-model="date" >
-                        </div>
+                <div class="form-group-single">
+                    <div>
+                        <label class="label-1" for="trn1">Trn1:</label>
+                        <input type="text" id="trn1" name="trn1" class="formInput-1" v-model="trn1" required>
                     </div>
-
-                    <div class="form-group">
-                        <div>
-                            <label for="phoneNo">Phone No:</label>
-                            <input type="text" id="phoneNo" name="phoneNo" v-model="phone_no" >
-                        </div>
-                        <div>
-                            <label for="LPO">LPO:</label>
-                            <input type="text" id="LPO" name="LPO" v-model="lpo" >
-                        </div>
-                        <div>
-                            <label for="projectName">Project Name:</label>
-                            <input type="text" id="projectName" name="projectName" v-model="project_name">
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="to">To:</label>
+                        <input type="text" id="to" name="to" class="formInput" v-model="to" required>
                     </div>
-
-                    <div class="form-group">
-                        <div>
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" v-model="email">
-                        </div>
-                        <div>
-                            <label for="termOfPay">Term of Pay:</label>
-                            <input type="text" id="termOfPay" name="termOfPay" v-model="term_pay">
-                        </div>
-                        <div>
-                            <label for="ref">Ref:</label>
-                            <!-- <input type="text" id="ref" name="ref" v-model="ref_no"> -->
-                            <div class="invoiceDiv">
-                                <input type="text" id="refNo" name="invoiceNo" v-model="ref_no">
-                                <div type="button" @click="getRef()" >
-                                    <img id="generateNumberIcon" class="passMngIcon" src="image/password-manager-icon.png" alt="" >
-                                </div>
-                            </div>
-                        </div>
+                    <div>
+                        <label class="label-2" for="phoneNo">Phone No:</label>
+                        <input type="text" id="phoneNo" name="phoneNo" class="formInput-2" v-model="phone_no" required>
                     </div>
-
-                    <div class="form-group">
-                        <div>
-                            <label for="nameAttn">Name/Attn:</label>
-                            <input type="text" id="nameAttn" name="nameAttn" v-model="name" >
-                        </div>
-                        <div>
-                            <label for="trn1">Trn1:</label>
-                            <input type="text" id="trn1" name="trn1" v-model="trn1">
-                        </div>
-                        <div>
-                            <label for="trn2">Trn2:</label>
-                            <input type="text" id="trn2" name="trn2" v-model="trn2">
-                        </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="LPO">LPO:</label>
+                        <input type="text" id="LPO" name="LPO" class="formInput" v-model="lpo" required>
                     </div>
-
-                    <div class="form-group">
-                        <div>
-                            <label for="address">Address:</label>
-                            <textarea class="addressScope" type="text"  id="address" name="address" v-model="address"></textarea>
-                        </div>
-                        <div>
-                            <label for="scopeOfWork">Scope of Work:</label>
-                            <textarea class="addressScope" type="text" id="scopeOfWork" name="scopeOfWork" v-model="work_scope" ></textarea>
-                        </div>
+                    <div>
+                        <label class="label-2" for="projectName">Project Name:</label>
+                        <input type="text" id="projectName" name="projectName" class="formInput-2" v-model="project_name" required>
                     </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="formInput" v-model="email" required>
+                    </div>
+                    <div>
+                        <label class="label-2" for="termOfPay">Term of Pay:</label>
+                        <input type="text" id="termOfPay" name="termOfPay" class="formInput-2" v-model="term_pay" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="ref">Ref:</label>
+                        <input type="text" id="ref" name="ref" class="formInput" v-model="ref_no" required>
 
-                    <div class="invoice-section2">
-                        <table class="invoice-table">
+                        <img id="generateNumberIcon" class="passMngIcon2" src="image/password-manager-icon.png"
+                            alt="" @click="getRef()" >
+
+                    </div>
+                    <div>
+                        <label class="label-2" for="nameAttn">Name/Attn:</label>
+                        <input type="text" id="nameAttn" name="nameAttn" class="formInput-2" v-model="name" required>
+                    </div>
+                </div>
+                <div class="form-group-single">
+                    <div>
+                        <label class="label-1" for="trn2">Trn2:</label>
+                        <input type="text" id="trn2" name="trn2" class="formInput-1" v-model="trn2" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label class="label-3" for="address">Address:</label>
+                        <textarea class="formInput-3" type="text" id="address" name="address" v-model="address" required></textarea>
+                    </div>
+                    <div>
+                        <label class="label-3" for="scopeOfWork">Scope of Work:</label>
+                        <textarea class="formInput-3" type="text" id="scopeOfWork" name="scopeOfWork" v-model="work_scope" required></textarea>
+                    </div>
+                </div>
+                <div class="invoice-section2">
+                    <table class="invoice-table">
                             <thead>
                                 <tr>
                                     <th>SR.</th>
@@ -139,66 +122,61 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <!------------- lkhaodghloashgdloashgoh------------- -->
-                        <div class="d-flex justify-content-between">
-                            <!-- hidden section -->
-                            <div class="form-group2">
-                                <div>
-                                <div>
-                                    <label for="totalAmount">Total Amount:</label>
-                                    <input type="text" id="totalAmount" name="totalAmount" >
-                                </div>
-                                <div>
-                                    <label for="vatAmount">+5% vat Amount:</label>
-                                    <input type="text" id="vatAmount" name="vatAmount">
-                                </div>
-                                <div>
-                                    <label for="vatAmount">+5% vat Amount:</label>
-                                    <input type="text" id="vatAmount" name="vatAmount">
-                                </div>
-                                <div>
-                                    <label for="vatAmount">Credit:</label>
-                                    <input type="text" id="vatAmount" name="vatAmount">
-                                </div>
-                                <div>
-                                    <label for="netAmount">Total Net Amount:</label>
-                                    <input type="text" id="netAmount" name="netAmount">
-                                </div>
+                </div>
+                <div class="amount-section-div">
+                    <div class="form-group-1">
+                        <div>
+                            <div>
+                                <label class="label-4" for="totalAmount">Total Amount:</label>
+                                <input class="formInput-4" type="text" id="totalAmount" name="totalAmount" >
                             </div>
+                            <div>
+                                <label class="label-4" for="vatAmount">+5% vat Amount:</label>
+                                <input class="formInput-4" type="text" id="vatAmount" name="vatAmount" >
                             </div>
-                            <div class="form-group1">
-                                <div>
-                                <div class="d-flex ">
-                                    <label class="form-group1Label" for="totalAmount">Total Amount:</label>
-                                    <input type="number" id="totalAmount" name="totalAmount" v-model="total_amount" readonly @change="calculateGrandTotal()">
-                                </div>
-                                <div class="d-flex ">
-                                    <label class="form-group1Label" for="vatAmount">+5% vat Amount:</label>
-                                    <input type="number" id="vatAmount" name="vatAmount" v-model="vat_amount" readonly @change="calculateGrandTotal()">
-                                </div>
-                                <div class="d-flex ">
-                                    <label class="form-group1Label" for="vatAmount">Amount To Pay:</label>
-                                    <input type="number" id="vatAmount" name="vatAmount" v-model="amount_topay" readonly >
-                                </div>
-                                <div class="d-flex ">
-                                    <label class="form-group1Label" for="vatAmount">Credit:</label>
-                                    <input type="number" id="vatAmount" name="vatAmount" v-model="credit" @change="calculateGrandTotal()">
-                                </div>
-                                <div class="d-flex ">
-                                    <label class="form-group1Label" for="netAmount">Total Net Amount:</label>
-                                    <input type="text" id="netAmount" name="netAmount" v-model="total_net_amount" readonly>
-                                </div>
+                            <div>
+                                <label class="label-4" for="vatAmount">To Pay:</label>
+                                <input class="formInput-4" type="text" id="vatAmount" name="vatAmount" >
                             </div>
+                            <div>
+                                <label class="label-4" for="vatAmount">Credit:</label>
+                                <input class="formInput-4" type="text" id="vatAmount" name="vatAmount" >
+                            </div>
+                            <div>
+                                <label class="label-4" for="netAmount">Total Net Amount:</label>
+                                <input class="formInput-4" type="text" id="netAmount" name="netAmount" >
                             </div>
                         </div>
                     </div>
-
-
-
-
-                    <div class="invoice-footer">
-                        <input type="submit" value="Submit" class="submit-button">
+                    <div class="form-group-2">
+                        <div>
+                            <div>
+                                <label class="label-4" for="totalAmount">Total Amount:</label>
+                                <input class="formInput-4" type="text" id="totalAmount" name="totalAmount" v-model="total_amount" readonly @change="calculateGrandTotal()" >
+                            </div>
+                            <div>
+                                <label class="label-4" for="vatAmount">+5% vat Amount:</label>
+                                <input class="formInput-4" type="text" id="vatAmount" name="vatAmount" v-model="vat_amount" readonly @change="calculateGrandTotal()">
+                            </div>
+                            <div>
+                                <label class="label-4" for="vatAmount">To Pay:</label>
+                                <input class="formInput-4" type="text" id="vatAmount" name="vatAmount" v-model="amount_topay" readonly >
+                            </div>
+                            <div>
+                                <label class="label-4" for="vatAmount">Credit:</label>
+                                <input class="formInput-4" type="text" id="vatAmount" name="vatAmount" v-model="credit" @change="calculateGrandTotal()" >
+                            </div>
+                            <div>
+                                <label class="label-4" for="netAmount">Total Net Amount:</label>
+                                <input class="formInput-4" type="text" id="netAmount" name="netAmount" v-model="total_net_amount" readonly>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="invoice-footer">
+                 <input type="submit" value="Submit" class="submit-button">
+               </div>
+
                 </form>
             </div>
         </div>
@@ -228,11 +206,11 @@ export default {
             vat_amount: 0,
             amount_topay:0,
             credit:0,
-            total_amount:0,
+            total_amount: 0,
             projects:[{
                description:'',
-               quantity:'',
-               unit_price:'',
+               quantity:0,
+               unit_price:0,
                amount:0,
             }],
         }

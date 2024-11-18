@@ -320,6 +320,19 @@
         .passMngIcon:hover {
             background-color: rgba(190, 188, 188, 0.635);
         }
+        .passMngIcon2{
+            margin-left: -5px;
+            border-top: 1px solid rgb(142, 140, 140);
+            border-bottom: 1px solid rgb(142, 140, 140);
+            border-right: 1px solid rgb(142, 140, 140);
+            width: 48px;
+            background-color: rgba(235, 235, 235);
+            padding-top: 2px;
+            height: 40px;
+        }
+        .passMngIcon2:hover {
+            background-color: rgba(190, 188, 188, 0.635);
+        }
 
         label {
             background-color: #f1f1f1 !important;
@@ -327,7 +340,7 @@
             border-bottom: 1px solid rgb(142, 140, 140);
             border-left: 1px solid rgb(142, 140, 140);
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             width: 20%;
             padding: 9px 6px 6px 6px;
@@ -434,7 +447,7 @@
 
         .formInput-4[type="text"] {
             width: 60%;
-            padding: 5px 0px 4px 0px;
+            padding: 5px 0px 4px 10px;
             font-size: 16px;
             border-top: 1px solid rgb(142, 140, 140);
             border-bottom: 1px solid rgb(142, 140, 140);
@@ -468,7 +481,7 @@
 
         .form-group input[type="text"],
         .form-group input[type="email"] {
-            width: 79%;
+            width: 68%;
             padding: 7px 0px 5px 0px;
             border: 1px solid #ccc;
             box-sizing: border-box;
@@ -515,6 +528,32 @@
             display: flex;
             justify-content: space-between;
         }
+        .add-button {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #213167 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
+            text-transform: uppercase;
+        }
+
+        .delete-button {
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            padding: 0px 20px;
+            background: #ff0000 !important;
+            justify-self: start;
+            align-self: center;
+            box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
+            text-transform: uppercase;
+        }
+
 
         .submit-button {
             margin-top: -50px;

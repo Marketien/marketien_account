@@ -5,23 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TextIInvoiceData3</title>
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" /> --}}
 </head>
 
 <style>
     .invoice-box {
-        font-family: Arial, sans-serif;
+        font-family: "Montserrat", sans-serif;
 
-        /* max-width: 800px; */
-        /* width: 21cm; */
-        /* height: 29.7cm; */
-        /* margin: auto; */
-        /* padding: 20px; */
-        /* border: 1px solid #eee; */
-        /* background-color: #f3f1f1; */
-        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
         font-size: 14px;
-        line-height: 24px;
-        color: #555;
+        font-weight: 400;
+        line-height: 20px;
+        color: black !important;
+        -webkit-text-stroke: 2px #000000;
+        /* Stroke thickness and color */
+        /* text-st: 2px #000000; */
+        /* Fallback (not widely supported) */
+
     }
 
     .table {
@@ -171,7 +171,7 @@
                             </p>
                         </td>
                         <td>{{ number_format($project->quantity, 2, '.', ',') }}</td>
-                        <td>{{ number_format($project->unit, 2, '.', ',') }}</td>
+                        <td>{{ $project->unit }}</td>
                         <td>{{ number_format($project->unit_rate, 2, '.', ',') }}</td>
                         <td>{{ number_format($project->amount, 2, '.', ',') }}</td>
                     </tr>
