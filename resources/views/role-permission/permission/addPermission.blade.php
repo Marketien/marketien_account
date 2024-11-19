@@ -21,6 +21,22 @@
             align-items: center;
             /* Center vertically */
             margin: 0;
+            position: relative;
+        }
+        .back-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+
+        .back-button:hover {
+            background-color: rgb(75, 74, 74);
         }
 
         .section {
@@ -102,5 +118,7 @@
                 </span>
             </form>
         </section>
+        <img class="back-button" title="back-button" onclick="window.history.back();" src="{{ asset('image/left-arrow.png') }}" alt="">
+
     </div>
 @endsection

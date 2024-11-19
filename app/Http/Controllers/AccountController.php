@@ -302,6 +302,12 @@ class AccountController extends Controller
 
         return view('mainsection.invoiceOrder', ['purchase' => $data,]);
     }
+    public function pdfInvoice($id){
+        $data = InputMaster::find($id);
+        $pdf = FacadePdf::loadView('mainsection.pdfInvoiceOrder',['purchase' => $data]);
+        return $pdf->setPaper('a4', 'letter')->download();
+
+    }
     function accountMasterDelete($id)
     {
         $data = AccountMaster::find($id);

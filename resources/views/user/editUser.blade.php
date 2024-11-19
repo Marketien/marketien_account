@@ -18,12 +18,28 @@
             display: flex;
             flex-direction: column;
         }
+        .back-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+
+        .back-button:hover {
+            background-color: rgb(75, 74, 74);
+        }
 
         .section {
             background-color: white;
             margin: 50px 20px 0;
             padding: 10px;
             border-radius: 6px;
+            position: relative;
         }
 
         .tag-section {
@@ -168,6 +184,8 @@
                         </span>
                     </form>
                 </div>
+                <img class="back-button" title="back-button" onclick="window.history.back();" src="{{ asset('image/left-arrow.png') }}" alt="">
+
             </section>
         </div>
     @endsection

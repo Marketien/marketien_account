@@ -6,13 +6,33 @@
         rel="stylesheet" />
 
     <style>
+        .parentBody {
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+
+        .back-button:hover {
+            background-color: rgb(75, 74, 74);
+        }
+
         .InputParentDiv {
 
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 50px;
             align-items: center;
-            margin: 80px 10px;
+            margin: 100px 0px 80px 10px;
         }
 
         .account-table-section-1 {
@@ -80,8 +100,8 @@
             border-radius: 4px;
             color: white;
             /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-                            border-radius: 5px;
-                            border: none; */
+                                    border-radius: 5px;
+                                    border: none; */
             /* padding: 8px 8px; */
             text-transform: uppercase;
         }
@@ -93,8 +113,8 @@
             background: #142357;
             color: white;
             /* box-shadow: 2px 2px rgba(2, 2, 2, 0.764);
-                            border-radius: 5px;
-                            border: none; */
+                                    border-radius: 5px;
+                                    border: none; */
             border: 2px solid rgb(23, 10, 94);
             box-shadow: inset 4px 4px 8px #4f49a0, inset -4px -4px 8px #4f49a0;
             border-radius: 4px;
@@ -159,7 +179,7 @@
         /* Styling for form inputs and labels */
         .form-group {
             /* display: flex;
-                                          flex-direction: column; */
+                                                  flex-direction: column; */
             display: flex;
             align-items: center;
             width: 100%;
@@ -487,12 +507,13 @@
             .table-responsive {
                 padding: 10px;
             }
+
         }
     </style>
     <script src="js/table2excel.js"></script>
 
     <!-- ((((((((((((((((((((((((((((((((( InputParentDiv ))))))))))))))))))))))))))))))))) -->
-    <div class="flex-grow-1 p-3">
+    <div class="flex-grow-1 p-3 parentBody">
         <div class="InputParentDiv">
             <!-- account-table-section-1 -->
             <form action="/search-account" method="POST" class="account-table-section-1">
@@ -702,6 +723,9 @@
 
             </div>
         </div>
+        {{-- <button > --}}
+            <img class="back-button" title="back-button" onclick="window.history.back();" src="{{ asset('image/left-arrow.png') }}" alt="">
+        {{-- </button> --}}
     </div>
 
     <script>

@@ -9,7 +9,7 @@
 
     <style>
         .htmlBody {
-            margin: 0;
+            margin: -15px;
             padding: 0;
             display: flex;
             justify-content: center;
@@ -17,8 +17,8 @@
         }
 
         .invoice-box {
-            width: 21cm;
-            height: 29.7cm;
+            /* width: 21cm;
+            height: 29.7cm; */
             margin: 0;
             /* Remove fixed margins */
             font-family: "Open Sans", sans-serif;
@@ -42,8 +42,8 @@
             width: 100%;
             height: 120px;
 
-            position: relative;
-            top: 235px;
+            /* position: relative;
+            top: 235px; */
 
         }
 
@@ -62,11 +62,12 @@
             margin-top: 10px;
             display: flex;
             justify-content: space-between;
+            /* overflow: hidden; */
         }
 
         .boldInvoiceData1 {
             visibility: hidden;
-
+            width: 200px;
             background-color: rgba(127, 217, 255, 0.495);
             display: flex;
             gap: 40px;
@@ -77,8 +78,7 @@
         }
 
         .boldInvoiceData2 {
-            width: 400px;
-
+            width: 325px;
             height: 77px;
             background-color: rgba(127, 217, 255, 0.495);
             /* display: flex; */
@@ -198,30 +198,31 @@
 </head>
 
 <body>
-    <a title="back-button" href="/account-master-table">
-        <img class="back-button" src="{{ asset('image/left-arrow.png') }}" alt="">
-    </a>
+    {{-- <a title="back-button" href="/account-master-table">
+        <img class="back-button" src="image/left-arrow.png" alt="">
+    </a> --}}
     <div class="htmlBody">
 
         <div class="invoice-box container_content" id="container_content">
             <!-- header img section  -->
-            <img class="headerImg" src="{{ asset('image/Invoice-Qalat-Header.png') }}" alt="" />
+            <img class="headerImg" src="image/Invoice-Qalat-Header.png" alt="" />
             {{-- <img class="headerImg" src="{{ asset('image/marketien/Main Logo-01.png') }}" alt="" /> --}}
 
             <!-- invoiceNo  & Date section  -->
             <div class="parentBoldInvoiceData">
                 <div class="boldInvoiceData1">
-                    {{-- <p><span>Invoice No: </span><span>akz-0042223</span></p>
-                    <p><span>Date: </span><span>2024-07-15</span></p> --}}
+                    <p><span>Invoice No: </span><span>akz-0042223</span></p>
+                    <p><span>Date: </span><span>2024-07-15</span></p>
 
                 </div>
                 <div class="boldInvoiceData2">
                     <?php
                     $formatte_date = \Carbon\Carbon::parse($purchase->date)->format('m-d-Y');
                     ?>
-                    <p><span>Invoice No: </span><span>{{ $purchase->invoice_no }} <span style="margin-left: 10px;">Date: </span><span>{{ $formatte_date }}</span></span></p>
+                    <p><span>Invoice No: </span><span>{{ $purchase->invoice_no }} <span style="margin-left: 10px;">Date:
+                            </span><span>{{ $formatte_date }}</span></span></p>
                     {{-- <p><span>Date: </span><span>{{ $formatte_date }}</span></p> --}}
-                    <p><span>TRN1:{{$purchase->trn1}}</span></p>
+                    <p><span>TRN1:{{ $purchase->trn1 }}</span></p>
                 </div>
             </div>
             <!-- Table section -->
@@ -338,13 +339,13 @@
             </div>
 
             <!-- footer img section  -->
-            <img class="footerImg" src="{{ asset('image/Invoice-Qalat-FOoter.png') }}" alt="" />
+            <img class="footerImg" src="image/Invoice-Qalat-FOoter.png" alt="" />
             {{-- <img class="footerImg" src="{{ asset('image/marketien/Main Logo White-01.png') }}" alt="" /> --}}
         </div>
     </div>
-    <div class="invoice-footer">
-        <a href="/invoice-pdf/{{$purchase->id}}" id="rep" value="Make PDF" class="submit-button"> Make PDF </a>
-    </div>
+    {{-- <div class="invoice-footer">
+        <input type="button" id="rep" value="Make PDF" class="submit-button btn_print">
+    </div> --}}
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

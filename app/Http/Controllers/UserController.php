@@ -336,9 +336,14 @@ class UserController extends Controller
         try {
             $response = Http::get('https://account.softplatoon.com');
             if ($response->successful()) {
-                $user->delete();
-                $postUser = Http::get("https://account.softplatoon.com/api/user-delete-api/{$user->name}");
-                return back()->with('success', 'User Deleted successfully');
+                if($user->email != "admin@test.com"){
+
+                    $user->delete();
+                    $postUser = Http::get("https://account.softplatoon.com/api/user-delete-api/{$user->name}");
+                    return back()->with('success', 'User Deleted successfully');
+                }else{
+                    return back()->with('fail', 'Admin Credential Cannot be Deleted');
+                }
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('fail', 'Your Internet connection is failed, try with internet');

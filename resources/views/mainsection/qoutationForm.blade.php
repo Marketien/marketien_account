@@ -4,144 +4,25 @@
     {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js') }}">
     <script type="module" src="{{ asset('build/assets/app-ZYuboFVO.js') }}"></script> --}}
     <style>
-        /* body {
-                                    font-family: Arial, sans-serif;
-                                }
+        .parentBody {
+            position: relative;
+        }
 
-                                .invoice-box1 {
-
-                                    margin: auto;
-                                    margin-top: 60px;
-                                    padding: 20px;
-                                    border: 1px solid #eee;
-                                    background-color: #f3f1f1;
-                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-                                    font-size: 14px;
-                                    line-height: 24px;
-                                    color: #555;
-                                } */
-
-        /* .invoice-box2 {
-                                    margin: auto;
-                                    padding: 20px;
-                                    border: 1px solid #eee;
-                                    background-color: #f3f1f1;
-                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-                                    font-size: 14px;
-                                    line-height: 24px;
-                                    color: #555;
-                                }
-
-                                .parentInput {
-                                    margin-left: 15px;
-                                    padding: 5px;
-                                    width: 230px;
-                                } */
-
-        /* .childInput {
-                                    margin-left: 40px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                textarea {
-                                    width: 100%;
-                                    height: 100px;
-                                }
-
-                                .textarea3 {
-                                    width: 50%;
-                                    height: 150px;
-                                }
-
-                                table {
-                                    width: 100%;
-                                    border-collapse: collapse;
-                                    margin-top: 20px;
-                                }
-
-                                table th,
-                                table td {
-                                    border: 1px solid black;
-                                    padding: 10px;
-                                    text-align: left;
-                                }
-
-                                .header-section {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                } */
-
-        /* .header-section div {
-                                    display: inline-block;
-                                }
-
-                                .heading {
-                                    font-weight: 700;
-                                }
-
-                                .content {
-                                    margin-top: 20px;
-                                }
-
-                                .invoice-footer {
-                                    display: flex;
-                                    justify-content: center;
-                                    margin: 20px 20px;
-                                } */
+        .back-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
 
 
-
-        /* alignment of input field */
-
-        /* .parentInput1 {
-                                    margin-left: 58px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput2 {
-                                    margin-left: 73px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput3 {
-                                    margin-left: 78px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput4 {
-                                    margin-left: 51px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput5 {
-                                    margin-left: 85px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput6 {
-                                    margin-left: 67px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput7 {
-                                    margin-left: 42px;
-                                    padding: 5px;
-                                    width: 230px;
-                                }
-
-                                .parentInput8 {
-                                    margin-left: 15px;
-                                    padding: 5px;
-                                    width: 230px;
-                                } */
+        .back-button:hover {
+            background-color: rgb(75, 74, 74);
+        }
 
         .add-button {
             display: flex;
@@ -169,6 +50,7 @@
             box-shadow: 1px 1px rgba(2, 2, 2, 0.764);
             text-transform: uppercase;
         }
+
         .submit-button {
             /* margin-top: -50px; */
             display: block;
@@ -711,8 +593,12 @@
             {{ session('fail') }}
         </div>
     @endif
-    <div id="appq" class="flex-grow-1 main-content-expanded p-3">
+    <div class="parentBody">
+        <div id="appq" class="flex-grow-1 main-content-expanded p-3 ">
 
+        </div>
+        <img class="back-button" title="back-button" onclick="window.history.back();"
+            src="{{ asset('image/left-arrow.png') }}" alt="">
     </div>
 
     <!-- Bullet point script  -->

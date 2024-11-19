@@ -1,6 +1,24 @@
 @extends('adminMaster')
 @section('content')
     <style>
+         .parentBody {
+            position: relative;
+        }
+        .back-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+
+        .back-button:hover {
+            background-color: rgb(75, 74, 74);
+        }
         .emp-body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -87,7 +105,7 @@
             }
         }
     </style>
-    <div class="flex-grow-1 main-content-expanded p-3">
+    <div class="flex-grow-1 main-content-expanded p-3 parentBody">
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -152,5 +170,7 @@
                 </div>
             </div>
         </div>
+        <img class="back-button" title="back-button" onclick="window.history.back();" src="{{ asset('image/left-arrow.png') }}" alt="">
+
     </div>
 @endsection

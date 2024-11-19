@@ -143,13 +143,14 @@
                 </p>
                 <p>
                   <textarea
-                    :id="'textarea1' + keyIndex"
+                    :id="'textarea1' + keyIndex "
                     @keydown.enter.prevent="
                       handleEnterKey('textarea1' + keyIndex, $event)
                     "
-                    placeholder="write something "
+                    placeholder="write something"
                     v-model="key.description"
                     class="formIn"
+
                   ></textarea>
                 </p>
               </td>
@@ -213,7 +214,7 @@
               type="text"
               id="totalAmount"
               name="totalAmount"
-              required
+
             />
           </div>
           <div>
@@ -223,7 +224,7 @@
               type="text"
               id="vatAmount"
               name="vatAmount"
-              required
+
             />
           </div>
           <div>
@@ -233,7 +234,7 @@
               type="text"
               id="vatAmount"
               name="vatAmount"
-              required
+
             />
           </div>
           <div>
@@ -243,7 +244,7 @@
               type="text"
               id="vatAmount"
               name="vatAmount"
-              required
+
             />
           </div>
           <div>
@@ -253,7 +254,7 @@
               type="text"
               id="netAmount"
               name="netAmount"
-              required
+
             />
           </div>
         </div>
@@ -345,160 +346,7 @@
         </div>
       </div>
 
-      <!-- <div class="invoice-box2">
-        <div class="header-section"></div> -->
-        <!-- <table>
-          <tr>
-            <th>Sl No.</th>
-            <th>Work Description</th>
-            <th>Qty</th>
-            <th>Unit</th>
-            <th>Unit Rate</th>
-            <th>Total Amount</th>
-            <th>Action</th>
-          </tr>
-          <tr v-for="(key, keyIndex) in projects" :key="key.id">
-            <td>1.</td>
-            <td>
-              <p class="heading">
-                <input
-                  class="parentInput"
-                  type="text"
-                  name=""
-                  id=""
-                  v-model="key.heading"
-                />
-              </p>
-              <ul>
-                <textarea
-                  :id="'textarea1' + keyIndex"
-                  @keydown.enter.prevent="handleEnterKey('textarea1' + keyIndex, $event)"
-                  placeholder="write something"
-                  v-model="key.description"
-                ></textarea>
-              </ul>
-            </td>
-            <td>
-              <input
-                type="number"
-                name=""
-                id=""
-                v-model="key.quantity"
-                @change="calculateRowTotal(keyIndex)"
-              />
-            </td>
-            <td><input type="text" name="" id="" v-model="key.unit" /></td>
-            <td>
-              <input
-                type="number"
-                name=""
-                id=""
-                v-model="key.unit_rate"
-                @change="calculateRowTotal(keyIndex)"
-              />
-            </td>
-            <td><input type="number" name="" id="" v-model="key.amount" readonly /></td>
-            <td>
-              <div class="col-md-2">
 
-                <button
-                  class="add-button mt-2 ml-2"
-                  style="margin-bottom: 0; width: 50px"
-                  v-if="keyIndex == Object.keys(projects).length - 1"
-                  @click="add"
-                  title="add"
-                  id="add_more_fields"
-                >
-                  <i class="fa fa-plus-circle">add</i>
-                </button>
-                <button
-                  class="delete-button text-uppercase mt-2 ml-2"
-                  style="width: 50px"
-                  v-if="keyIndex >> 0"
-                  @click="remove"
-                  title="remove"
-                >
-                  <i class="fa fa-minus-circle">del</i>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5" style="text-align: right">Total Cost</td>
-            <td><input type="number" name="" id="" v-model="total_amount" readonly /></td>
-          </tr>
-          <tr>
-            <td colspan="5" style="text-align: right">5% VAT</td>
-            <td>
-              <input
-                type="number"
-                name=""
-                step="0.01"
-                id=""
-                v-model="vat_amount"
-                readonly
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5" style="text-align: right">Discount</td>
-            <td>
-              <input
-                type="number"
-                name=""
-                id=""
-                step="0.01"
-                v-model="discount"
-                @change="calculateGrandTotal()"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colspan="5" style="text-align: right">Total Net Amount</td>
-            <td>
-              <input
-                type="number"
-                name=""
-                id=""
-                step="0.01"
-                v-model="total_net_amount"
-                readonly
-              />
-            </td>
-          </tr>
-        </table> -->
-        <!-- <p>Total Amount in Words: AED – Forty Thousand Five Only.</p>
-        <div class="content">
-          <p class="heading">General Condition:</p>
-          <ul> -->
-            <!-- <textarea
-              class="textarea3"
-              id="textarea2"
-              @keydown.enter.prevent="handleEnterKey('textarea2', $event)"
-              placeholder="write something"
-              v-model="conditon"
-            ></textarea> -->
-          <!-- </ul>
-          <p class="heading">Payment Terms:</p>
-          <ul> -->
-            <!-- <textarea
-              class="textarea3"
-              id="textarea3"
-              @keydown.enter.prevent="handleEnterKey('textarea3', $event)"
-              placeholder="write something"
-              v-model="payment_term"
-            ></textarea> -->
-          <!-- </ul>
-          <p>
-            If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej
-            Accounts Department within 7 days from the receipt of invoices, unless
-            otherwise we will consider the invoice has been accepted for payment.
-          </p>
-          <p class="heading">Project Duration:</p>
-          <p>To be discussed.</p>
-        </div> -->
-        <!-- <br />
-        <br /> -->
         <p>If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej Accounts Department within 7
         days from the receipt of invoices, unless otherwise we will consider the invoice has been accepted for
         payment.</p>
@@ -530,7 +378,7 @@ export default {
       projects: [
         {
           heading: "",
-          description: "",
+          description: '',
           quantity: "",
           unit: "",
           unit_rate: "",

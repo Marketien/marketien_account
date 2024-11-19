@@ -152,6 +152,7 @@ Route::get('/sync-test',[SyncController::class,'syncDataForOffline']);
 
 Route::get('/account-pdf',[AccountController::class,'accountPDF']);
 Route::get('/quotation-pdf/{id}',[QuotationController::class,'quotationPdf']);
+Route::get('/invoice-pdf/{id}',[AccountController::class,'pdfInvoice']);
 Route::get('/test-sms',[SmsController::class,'sms']);
 
 

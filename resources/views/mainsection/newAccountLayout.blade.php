@@ -6,6 +6,24 @@
         rel="stylesheet" />
 
     <style>
+         .parentBody {
+            position: relative;
+        }
+        .back-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            width: 25px;
+            height: 25px;
+            background-color: rgb(176, 176, 176);
+            padding: 5px;
+            border-radius: 50%
+        }
+
+
+        .back-button:hover {
+            background-color: rgb(75, 74, 74);
+        }
         .InputParentDiv {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -528,7 +546,7 @@
     <script src="js/table2excel.js"></script>
 
     <!-- ((((((((((((((((((((((((((((((((( InputParentDiv ))))))))))))))))))))))))))))))))) -->
-    <div class="flex-grow-1 p-3">
+    <div class="flex-grow-1 p-3 parentBody">
         <div class="InputParentDiv">
             <!-- account-table-section-1 -->
             <form action="/search-master" method="POST" class="account-table-section-1">
@@ -741,6 +759,7 @@
             </div>
 
         </div>
+        <img class="back-button" title="back-button" onclick="window.history.back();" src="{{ asset('image/left-arrow.png') }}" alt="">
     </div>
 
     <script>
