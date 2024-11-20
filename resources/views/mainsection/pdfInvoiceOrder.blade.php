@@ -9,7 +9,7 @@
 
     <style>
         .htmlBody {
-            margin: -15px;
+            margin: -40px;
             padding: 0;
             display: flex;
             justify-content: center;
@@ -17,8 +17,8 @@
         }
 
         .invoice-box {
-            /* width: 21cm;
-            height: 29.7cm; */
+            width: 20.7cm;
+            height: 29.7cm;
             margin: 0;
             /* Remove fixed margins */
             font-family: "Open Sans", sans-serif;
@@ -38,9 +38,13 @@
         }
 
         .footerImg {
-
+            position: absolute;
             width: 100%;
             height: 120px;
+            /* margin-top: 100px; */
+            /* margin-bottom: -50px; */
+            bottom: 20px;
+
 
             /* position: relative;
             top: 235px; */
@@ -59,13 +63,16 @@
         }
 
         .parentBoldInvoiceData {
+            width: 100%;
             margin-top: 10px;
             display: flex;
             justify-content: space-between;
+            position: relative;
+
             /* overflow: hidden; */
         }
 
-        .boldInvoiceData1 {
+        /* .boldInvoiceData1 {
             visibility: hidden;
             width: 200px;
             background-color: rgba(127, 217, 255, 0.495);
@@ -75,9 +82,10 @@
             padding-left: 40px;
             border-top-left-radius: 50px;
             border-bottom-left-radius: 50px;
-        }
+        } */
 
         .boldInvoiceData2 {
+            position:absolute;
             width: 325px;
             height: 77px;
             background-color: rgba(127, 217, 255, 0.495);
@@ -88,6 +96,7 @@
             padding-left: 20px;
             border-top-left-radius: 50px;
             border-bottom-left-radius: 50px;
+            right: 0;
         }
 
         .mx-div {
@@ -98,7 +107,7 @@
         .invoice-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 300px;
             margin-bottom: 100px;
         }
 
@@ -142,18 +151,28 @@
         }
 
         .informationDiv {
+
             width: 100%;
             display: flex;
             justify-content: space-between;
             gap: 10px;
             font-size: 14px;
+            position: relative;
         }
 
         .information1 {
+            position: absolute;
+            left: 0;
+            top: 90px;
+            display: inherit;
             width: 50%;
         }
 
         .information2 {
+            display: inherit;
+            position: absolute;
+            right: 0;
+            top: 90px;
             width: 50%;
         }
 
@@ -210,11 +229,11 @@
 
             <!-- invoiceNo  & Date section  -->
             <div class="parentBoldInvoiceData">
-                <div class="boldInvoiceData1">
+                {{-- <div class="boldInvoiceData1">
                     <p><span>Invoice No: </span><span>akz-0042223</span></p>
                     <p><span>Date: </span><span>2024-07-15</span></p>
 
-                </div>
+                </div> --}}
                 <div class="boldInvoiceData2">
                     <?php
                     $formatte_date = \Carbon\Carbon::parse($purchase->date)->format('m-d-Y');

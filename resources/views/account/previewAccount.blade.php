@@ -70,6 +70,10 @@
             text-align: left;
             font-size: 10px;
         }
+        .invoice-table td{
+            color: black !important;
+
+        }
 
         .invoice-table th {
             /* background-color: #004c6d; */
@@ -307,15 +311,19 @@
                 filename: 'pageContent_' + '_Qalat-al-khaleej' + '.pdf',
                 image: {
                     type: 'jpeg',
-                    quality: 0.98
+                    quality: 1.0
                 },
                 html2canvas: {
-                    scale: 2
+                    scale: 4,
+                    logging: false,  // Disable logging for better performance
+                    useCORS: true  // Allow cross-origin images
                 },
                 jsPDF: {
                     unit: 'in',
                     format: 'a4',
-                    orientation: 'portrait'
+                    orientation: 'portrait',
+                    compress: true, // Compress the PDF for smaller file size
+                    putOnlyUsedFonts: true // Reduce file size by embedding only used fonts
                 }
             };
 

@@ -42,8 +42,8 @@
             width: 100%;
             height: 120px;
 
-            position: relative;
-            top: 235px;
+            position: absolute;
+            bottom: 20px;
 
         }
 

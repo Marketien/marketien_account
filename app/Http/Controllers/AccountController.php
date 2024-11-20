@@ -312,6 +312,10 @@ class AccountController extends Controller
     {
         $data = AccountMaster::find($id);
         $input = InputMaster::where('invoice_no',$data->invoice_no)->first();
+        $account = Account::where('invoice_no',$data->invoice_no)->first();
+        if($account){
+         $account->delete();
+        }
         $data->delete();
         $input->delete();
         return back()->with('success', 'Your Account Master Deleted Successfully');
