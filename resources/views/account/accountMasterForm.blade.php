@@ -1,8 +1,8 @@
 @extends('adminMaster')
 @section('content')
     @vite(['resources/js/app.js', 'resources/css/app.css'])
-    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js')}}">
-    <script type="module" src="{{ asset('build/assets/app-ZYuboFVO.js')}}"></script> --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js')}}">
+    <script type="module" src="{{ asset('build/assets/app-D-LwkkZA.js')}}"></script>
 
     <style>
          .parentBody {
