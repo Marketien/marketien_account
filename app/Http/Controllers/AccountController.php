@@ -170,12 +170,12 @@ class AccountController extends Controller
 
     public function generateInvoice()
     {
-        $invoice_no = Helper::IdGenerator(new InputMaster(), 'invoice_no', 5, 'QAK');
+        $invoice_no = Helper::IdGenerator(new InputMaster(), 'invoice_no', 6, 'INV-QAK');
         return response()->json($invoice_no);
     }
     public function generateRefNo()
     {
-        $ref_no = Helper::IdGenerator(new InputMaster(), 'ref_no', 5, 'REF');
+        $ref_no = Helper::IdGenerator(new InputMaster(), 'ref_no', 6, 'PO');
         return response()->json($ref_no);
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
+use App\Models\InputMaster;
 use App\Models\Quotation;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -12,9 +14,15 @@ class QuotationController extends Controller
         $data = Quotation::all();
         return view('mainsection.quotationList',['quotations'=>$data]);
     }
+    
     public function quotationDetail($id){
         $data = Quotation::find($id);
         return view('mainsection.quotation',['quotation'=>$data]);
+    }
+    public function generateRefNo()
+    {
+        $ref_no = Helper::IdGenerator(new Quotation(), 'ref_no', 3, 'QAK/QTN/RM/24');
+        return response()->json($ref_no);
     }
     public function quotationPdf($id){
         set_time_limit(120);

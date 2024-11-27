@@ -2,7 +2,7 @@
 @section('content')
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('build/assets/app-l0sNRNKZ.js') }}">
-    <script type="module" src="{{ asset('build/assets/app-D-LwkkZA.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/app-C_qB6sYg.js') }}"></script>
     <style>
         .parentBody {
             position: relative;
@@ -136,9 +136,9 @@
         }
 
         .formInput {
-            /* width: 66%; */
-            padding: 9px;
-            font-size: 16px;
+            width: 59%;
+            padding: 13px 13px 11px 13px;
+            font-size: 12px;
             border-top: 1px solid #d1cdcd;
             border-bottom: 1px solid #d1cdcd;
             border-right: 1px solid #d1cdcd;
@@ -397,6 +397,19 @@
             font-size: 14px;
             height: 95px;
             margin-top: 6px;
+        }
+        .passMngIcon2{
+            margin-left: -5px;
+            border-top: 1px solid rgb(142, 140, 140);
+            border-bottom: 1px solid rgb(142, 140, 140);
+            border-right: 1px solid rgb(142, 140, 140);
+            width: 48px;
+            background-color: rgba(235, 235, 235);
+            padding-top: 2px;
+            height: 43px;
+        }
+        .passMngIcon2:hover {
+            background-color: rgba(190, 188, 188, 0.635);
         }
 
 

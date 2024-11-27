@@ -36,14 +36,19 @@
             /* margin-top: 30px; */
 
         }
+        .footerdiv{
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+
+        }
 
         .footerImg {
 
             width: 100%;
             height: 120px;
 
-            position: absolute;
-            bottom: 20px;
 
         }
 
@@ -230,10 +235,7 @@
                 <!-- information section  -->
                 <div class="informationDiv">
                     <div class="information1">
-                        <p>
-                            <span class="boldSpan">TRN2:</span>
-                            <span>{{ $purchase->trn2 }}</span>
-                        </p>
+
                         <p>
                             <span class="boldSpan">To: </span>
                             <span>{{ $purchase->to }}</span>
@@ -245,6 +247,10 @@
                         <p>
                             <span class="boldSpan">Atn: </span>
                             <span>{{ $purchase->name }}</span>
+                        </p>
+                        <p>
+                            <span class="boldSpan">TRN2:</span>
+                            <span>{{ $purchase->trn2 }}</span>
                         </p>
 
 
@@ -337,9 +343,13 @@
                 </table>
             </div>
 
-            <!-- footer img section  -->
-            <img class="footerImg" src="{{ asset('image/Invoice-Qalat-FOoter.png') }}" alt="" />
-            {{-- <img class="footerImg" src="{{ asset('image/marketien/Main Logo White-01.png') }}" alt="" /> --}}
+            <div class="footerdiv">
+                <p>Invoice system generated, no need any sign of stamp</p>
+                <!-- footer img section  -->
+                <img class="footerImg" src="{{ asset('image/Invoice-Qalat-FOoter.png') }}" alt="" />
+                {{-- <img class="footerImg" src="{{ asset('image/marketien/Main Logo White-01.png') }}" alt="" /> --}}
+            </div>
+
         </div>
     </div>
     <div class="invoice-footer">

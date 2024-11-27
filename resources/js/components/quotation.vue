@@ -12,6 +12,13 @@
               class="formInput"
               v-model="ref_no"
             />
+            <img
+              id="generateNumberIcon"
+              class="passMngIcon2"
+              src="image/password-manager-icon.png"
+              alt=""
+              @click="getRef()"
+            />
           </div>
           <div>
             <label class="label-1" for="date">Date:</label>
@@ -143,14 +150,13 @@
                 </p>
                 <p>
                   <textarea
-                    :id="'textarea1' + keyIndex "
+                    :id="'textarea1' + keyIndex"
                     @keydown.enter.prevent="
                       handleEnterKey('textarea1' + keyIndex, $event)
                     "
                     placeholder="write something"
                     v-model="key.description"
                     class="formIn"
-
                   ></textarea>
                 </p>
               </td>
@@ -209,53 +215,23 @@
         <div class="form-group-1">
           <div>
             <label class="label-2" for="totalAmount">Total Cost:</label>
-            <input
-              class="formInput-8"
-              type="text"
-              id="totalAmount"
-              name="totalAmount"
-
-            />
+            <input class="formInput-8" type="text" id="totalAmount" name="totalAmount" />
           </div>
           <div>
             <label class="label-2" for="vatAmount">+5% vat Amount:</label>
-            <input
-              class="formInput-9"
-              type="text"
-              id="vatAmount"
-              name="vatAmount"
-
-            />
+            <input class="formInput-9" type="text" id="vatAmount" name="vatAmount" />
           </div>
           <div>
             <label class="label-2" for="vatAmount">To Pay:</label>
-            <input
-              class="formInput-10"
-              type="text"
-              id="vatAmount"
-              name="vatAmount"
-
-            />
+            <input class="formInput-10" type="text" id="vatAmount" name="vatAmount" />
           </div>
           <div>
             <label class="label-2" for="vatAmount">Credit:</label>
-            <input
-              class="formInput-11"
-              type="text"
-              id="vatAmount"
-              name="vatAmount"
-
-            />
+            <input class="formInput-11" type="text" id="vatAmount" name="vatAmount" />
           </div>
           <div>
             <label class="label-2" for="netAmount">Total Net Amount:</label>
-            <input
-              class="formInput-12"
-              type="text"
-              id="netAmount"
-              name="netAmount"
-
-            />
+            <input class="formInput-12" type="text" id="netAmount" name="netAmount" />
           </div>
         </div>
 
@@ -346,16 +322,17 @@
         </div>
       </div>
 
-
-        <p>If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej Accounts Department within 7
-        days from the receipt of invoices, unless otherwise we will consider the invoice has been accepted for
-        payment.</p>
+      <p>
+        If any discrepancies in the invoice, Client should inform to Qalat-Al-Khaleej
+        Accounts Department within 7 days from the receipt of invoices, unless otherwise
+        we will consider the invoice has been accepted for payment.
+      </p>
       <p class="heading">Project Duration:</p>
       <p>To be discussed.</p>
-        <div class="invoice-footer">
-          <input type="submit" value="Submit" class="submit-button" />
-        </div>
+      <div class="invoice-footer">
+        <input type="submit" value="Submit" class="submit-button" />
       </div>
+    </div>
     <!-- </div> -->
   </form>
 </template>
@@ -374,14 +351,14 @@ export default {
       kind_attn: "",
       project_name: "",
       payment_term: "",
-      conditon:"",
+      conditon: "",
       projects: [
         {
           heading: "",
-          description: '',
-          quantity: "",
+          description: "",
+          quantity: 0,
           unit: "",
-          unit_rate: "",
+          unit_rate: 0,
           amount: 0,
         },
       ],
@@ -412,6 +389,12 @@ export default {
         this.projects.splice(idx, 1);
         localStorage.setItem("projects", JSON.stringify(this.projects));
       }
+    },
+    getRef() {
+      axios.get("/api/qt-ref-no").then((response) => {
+        this.ref_no = response.data;
+        console.log(response.data);
+      });
     },
     calculateRowTotal(keyIndex) {
       var total =
