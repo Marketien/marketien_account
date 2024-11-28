@@ -36,18 +36,23 @@
             /* margin-top: 30px; */
 
         }
-        .footerdiv{
+
+        .footerdiv {
             width: 100%;
             position: absolute;
-            bottom: 20px;
+            bottom: 0px;
             text-align: center;
 
+        }
+
+        .footerdiv p {
+            font-size: 12px;
         }
 
         .footerImg {
 
             width: 100%;
-            height: 120px;
+            height: 50px;
 
 
         }
@@ -82,17 +87,18 @@
         }
 
         .boldInvoiceData2 {
-            width: 400px;
-
-            height: 77px;
+            width: 235px;
+            height: 88px;
             background-color: rgba(127, 217, 255, 0.495);
             /* display: flex; */
             align-items: center;
             gap: 10px;
             font-weight: 700;
-            padding-left: 20px;
+            padding-left: 30px;
             border-top-left-radius: 50px;
             border-bottom-left-radius: 50px;
+            font-size: 14px ;
+            line-height: 12px ;
         }
 
         .mx-div {
@@ -104,11 +110,10 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
-            margin-bottom: 100px;
+            margin-bottom: 10px;
         }
 
-        .invoice-table th,
-        .invoice-table td {
+        .invoice-table th {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
@@ -122,8 +127,60 @@
             font-weight: bold;
         }
 
+        .invoice-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .invoice-table .right-align {
+            text-align: right !important;
+        }
+
+        #amount-in-words {
+            text-align: center;
+        }
+
         .invoice-table tbody tr:nth-child(even) {
             background-color: #f9f9f9;
+        }
+
+        .payment-name-of .heading {
+            text-decoration: underline;
+        }
+        .payment-name-of .title-1 {
+            margin-right: 40px;
+        }
+        .payment-name-of .title-2 {
+            margin-right: 25px;
+        }
+        .payment-name-of .title-3 {
+            margin-right: 100px;
+        }
+        .payment-name-of .title-4 {
+            margin-right: 100px;
+        }
+
+        .payment-name-of span {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 30px;
+        }
+
+        .signature-section {
+            margin-top: 10px;
+        }
+
+        .signature-image {
+            margin-left: 80px ;
+            margin-top: 10px;
+            width: 135px;
+        }
+
+        .signature-section span {
+            font-size: 13px;
+            font-weight: 700;
         }
 
         .invoice-summary {
@@ -224,9 +281,10 @@
                     <?php
                     $formatte_date = \Carbon\Carbon::parse($purchase->date)->format('m-d-Y');
                     ?>
-                    <p><span>Invoice No: </span><span>{{ $purchase->invoice_no }} <span style="margin-left: 10px;">Date: </span><span>{{ $formatte_date }}</span></span></p>
+                    <p><span>Invoice No: </span><span>{{ $purchase->invoice_no }} </span></p>
                     {{-- <p><span>Date: </span><span>{{ $formatte_date }}</span></p> --}}
-                    <p><span>TRN1:{{$purchase->trn1}}</span></p>
+                    <p><span>Date: </span><span>{{ $formatte_date }}</span></p>
+                    <p><span>TRN1:{{ $purchase->trn1 }}</span></p>
                 </div>
             </div>
             <!-- Table section -->
@@ -341,19 +399,37 @@
                         </td>
                     </tr>
                 </table>
+                {{-- payment name of section  --}}
+                <div class="payment-name-of">
+                    <span class="heading">Payment Shall be made in the Name of:</span> <br>
+                    <span> <span class="title-1">Account Name</span>: &nbsp;&nbsp;&nbsp;QALAT AL KHALEEJ GENERAL CON N MNTC</span>
+                    <br>
+                    <span> <span class="title-2">Account Number</span>: &nbsp;&nbsp;&nbsp;13206284920001</span> <br>
+                    <span> <span class="title-3">IBAN</span>: &nbsp;&nbsp;&nbsp;AE230030013206284920001</span> <br>
+                    <span> <span class="title-4">Bank</span>: &nbsp;&nbsp;&nbsp; ADCB, 155 MUSAFFAH BRANCH, ABU-DHABI, UAE</span>
+                </div>
+                {{-- signature section  --}}
+                <div class="signature-section">
+                    <span>Thanks & Best Regards </span> <br>
+                    <img class="signature-image" src="{{ asset('image/Seal & Signature.png') }}" alt="" />
+                    <div class="signature-title-div">
+                        <span>Ahsan Sagar</span>
+                        <br>
+                        <span>Accountant/Administrator</span>
+                    </div>
+                </div>
             </div>
 
             <div class="footerdiv">
-                <p>Invoice system generated, no need any sign of stamp</p>
+                <p>This computer generated statement required no signature.</p>
                 <!-- footer img section  -->
                 <img class="footerImg" src="{{ asset('image/Invoice-Qalat-FOoter.png') }}" alt="" />
-                {{-- <img class="footerImg" src="{{ asset('image/marketien/Main Logo White-01.png') }}" alt="" /> --}}
             </div>
 
         </div>
     </div>
     <div class="invoice-footer">
-        <a href="/invoice-pdf/{{$purchase->id}}" id="rep" value="Make PDF" class="submit-button"> Make PDF </a>
+        <a href="/invoice-pdf/{{ $purchase->id }}" id="rep" value="Make PDF" class="submit-button"> Make PDF </a>
     </div>
 
 </body>
@@ -468,7 +544,7 @@
     function updateAmountInWords() {
         const number = {{ (int) $purchase->total_net_amount }}; // Replace this with your dynamic number
         const amountInWords = numberToWords(number);
-        document.getElementById('amount-in-words').innerText = amountInWords;
+        document.getElementById('amount-in-words').innerText = "Amount In Words:  " + amountInWords;
     }
 
     // Call the function to update the <td> element when the page loads

@@ -117,6 +117,9 @@ class AttendanceController extends Controller
         return view('mainsection.employeeDetail', ['attends' => $data, 'salary' => $salary]);
         // return response()->json($salary);
     }
+    // public function findOvertime(){
+    //     $data = Salary::
+    // }
     public function salary(Request $req)
     {   $employee = Worker::find($req->id);
         $salary = Salary::where('employee_name',$employee->employee_name)->first();

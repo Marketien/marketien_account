@@ -16,36 +16,41 @@
                 <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="holiday_ot" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
+                <td colspan="3">Overtime</td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="housing" readonly></td>
+            </tr>
+            <tr>
                 <td colspan="3">Ot - Weekdays (1.25X Basic /Hr)</td>
                 <td colspan="3"><input class="textInput" type="number" name="" id="" step="0.01" v-model="weekday_ot" @change="getTotalNetSalary()"></td>
             </tr>
-            <tr>
-                <td colspan="3">Housing</td>
-                <td colspan="3"><input class="textInput" type="text" name="" id="" v-model="housing" readonly></td>
-            </tr>
+
             <tr>
                 <td colspan="3">Transport</td>
                 <td colspan="3"><input class="textInput" type="text" name="" id="" v-model="transport" readonly></td>
             </tr>
             <tr>
                 <td colspan="3">Food Allowance</td>
-                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="food" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="food" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Other Allowances</td>
-                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="other" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="other" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Ohter Dues</td>
-                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="other_due" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="other_due" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Project Bonus</td>
-                <td colspan="3"><input class="textInput" type="number" name="" id="" v-model="project_bonus" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="project_bonus" @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Total Salary</td>
-                <td colspan="3"><input class="textInput" type="text" name="" id="" v-model="total_salary" readonly @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="text" step="0.01"  name="" id="" v-model="total_salary" readonly @change="getTotalNetSalary()"></td>
+            </tr>
+            <tr>
+                <td colspan="3">Deduction</td>
+                <td colspan="3"><input class="textInput" type="text" step="0.01"  name="" id="" v-model="deduction"  @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Total Salary(Net Gross)</td>
@@ -71,7 +76,7 @@ export default {
             basic:'',
             holiday_ot:0.00,
             weekday_ot:0.00,
-            housing:'Nill',
+            housing:0,
             transport:'Company Provided',
             food:0,
             other:0,
@@ -95,7 +100,7 @@ export default {
             total = this.total_salary+
                this.food + this.other
                + this.other_due + this.project_bonus
-               + this.holiday_ot + this.weekday_ot;
+               + this.holiday_ot + this.weekday_ot - this.deduction;
                this.total_net_salary = total.toFixed(2);
         },
         submit: function (e) {

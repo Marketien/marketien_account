@@ -170,7 +170,7 @@ class AccountController extends Controller
 
     public function generateInvoice()
     {
-        $invoice_no = Helper::IdGenerator(new InputMaster(), 'invoice_no', 6, 'INV-QAK');
+        $invoice_no = Helper::IdGenerator(new InputMaster(), 'invoice_no', 6, 'INV-QAK-24');
         return response()->json($invoice_no);
     }
     public function generateRefNo()
@@ -302,9 +302,77 @@ class AccountController extends Controller
 
         return view('mainsection.invoiceOrder', ['purchase' => $data,]);
     }
+
+    function numberToWords($num) {
+        $ones = array(
+            0 => 'Zero', 1 => 'One', 2 => 'Two', 3 => 'Three', 4 => 'Four', 5 => 'Five',
+            6 => 'Six', 7 => 'Seven', 8 => 'Eight', 9 => 'Nine', 10 => 'Ten',
+            11 => 'Eleven', 12 => 'Twelve', 13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen',
+            16 => 'Sixteen', 17 => 'Seventeen', 18 => 'Eighteen', 19 => 'Nineteen'
+        );
+
+        $tens = array(
+            20 => 'Twenty', 30 => 'Thirty', 40 => 'Forty', 50 => 'Fifty', 60 => 'Sixty',
+            70 => 'Seventy', 80 => 'Eighty', 90 => 'Ninety'
+        );
+
+        $hundreds = array(
+            1 => 'Hundred'
+        );
+
+        $thousands = array(
+            1 => 'Thousand',
+            2 => 'Lakh',
+            3 => 'Crore'
+        );
+
+        if ($num == 0) {
+            return 'Zero';
+        }
+
+        $result = '';
+
+        // Handle numbers in different ranges
+        if ($num >= 10000000) {
+            $crore = floor($num / 10000000);
+            $num = $num % 10000000;
+            $result .= $this->numberToWords($crore) . ' Crore ';
+        }
+        if ($num >= 100000) {
+            $lakh = floor($num / 100000);
+            $num = $num % 100000;
+            $result .= $this->numberToWords($lakh) . ' Lakh ';
+        }
+        if ($num >= 1000) {
+            $thousand = floor($num / 1000);
+            $num = $num % 1000;
+            $result .= $this->numberToWords($thousand) . ' Thousand ';
+        }
+        if ($num >= 100) {
+            $hundred = floor($num / 100);
+            $num = $num % 100;
+            $result .= $this->numberToWords($hundred) . ' Hundred ';
+        }
+        if ($num > 0) {
+            if ($num < 20) {
+                $result .= $ones[$num];
+            } else {
+                $tensPlace = floor($num / 10) * 10;
+                $onesPlace = $num % 10;
+                $result .= $tens[$tensPlace];
+                if ($onesPlace > 0) {
+                    $result .= ' ' . $ones[$onesPlace];
+                }
+            }
+        }
+
+        return trim($result);
+    }
+
     public function pdfInvoice($id){
         $data = InputMaster::find($id);
-        $pdf = FacadePdf::loadView('mainsection.pdfInvoiceOrder',['purchase' => $data]);
+        $word = $this->numberToWords($data->total_net_amount);
+        $pdf = FacadePdf::loadView('mainsection.pdfInvoiceOrder',['purchase' => $data,'word'=>$word]);
         return $pdf->setPaper('a4', 'letter')->download();
 
     }

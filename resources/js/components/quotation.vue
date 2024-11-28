@@ -175,6 +175,7 @@
                   type="number"
                   name=""
                   id=""
+                  step="0.01"
                   v-model="key.unit_rate"
                   @change="calculateRowTotal(keyIndex)"
                 />
