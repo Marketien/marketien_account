@@ -60,6 +60,12 @@ class AttendanceController extends Controller
     }
     public function storeAttendance(Request $req)
     {
+        $today = Carbon::now()->format('Y-m-d');
+        $exist = Attendance::where('employee_name',$req->employee_name)
+        ->where('date',$today)->first();
+        if($exist){
+            $exist->delete();
+        }
         $data = new Attendance();
         $data->employee_name = $req->employee_name;
         $data->date = Carbon::now()->format('Y-m-d');
@@ -111,15 +117,29 @@ class AttendanceController extends Controller
     }
     public function employeeDetail($id)
     {
+        $currentMonth = Carbon::now()->month;
+        $currentYear = Carbon::now()->year;
         $employee = Worker::find($id);
         $salary = Salary::where('employee_name', $employee->employee_name)->first();
-        $data = Attendance::where('employee_name', $employee->employee_name)->get();
+        $data = Attendance::where('employee_name', $employee->employee_name)
+        ->whereYear('date',$currentYear)
+        ->whereMonth('date',$currentMonth)->get();
         return view('mainsection.employeeDetail', ['attends' => $data, 'salary' => $salary]);
         // return response()->json($salary);
     }
-    // public function findOvertime(){
-    //     $data = Salary::
-    // }
+    public function findOvertime(){
+        $id = request('id');
+        // $id = 1;
+        $previousMonth = Carbon::now()->subMonth()->month;
+        $currentYear = Carbon::now()->year;
+        $data = Worker::find($id);
+
+        $attendance = Attendance::where('employee_name',$data->employee_name)
+        ->whereYear('date',$currentYear)
+        ->whereMonth('date',$previousMonth)->get();
+        $overtime = $attendance->sum('ot');
+        return response()->json($overtime);
+    }
     public function salary(Request $req)
     {   $employee = Worker::find($req->id);
         $salary = Salary::where('employee_name',$employee->employee_name)->first();
@@ -154,7 +174,7 @@ class AttendanceController extends Controller
     {
 
         $year = Carbon::now()->format('Y');
-        $month = Carbon::now()->format('m');
+        $month = Carbon::now()->subMonth()->format('m');
         $dayNumber = [];
         $daysInMonth = $this->findDateHelper($year, $month);
         $emp = Worker::where('employee_name',$name)->first();
@@ -192,7 +212,7 @@ class AttendanceController extends Controller
                 $day['remarks'] = null;
             }
         }
-        return view('mainsection.paySlip',['attendances'=>$daysInMonth,'employee'=>$emp, 'salary'=> $salary]);
+        return view('mainsection.paySlip',['attendances'=>$daysInMonth,'employee'=>$emp, 'salary'=> $salary,'month'=>$month,'year'=>$year]);
         // return $daysInMonth;
     }
 }

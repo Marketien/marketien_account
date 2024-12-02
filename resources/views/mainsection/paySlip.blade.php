@@ -136,7 +136,7 @@
                     <strong>Designation:</strong> {{ $employee->designation }}<br />
                     <strong>ID#:</strong> <br />
                     <strong>Department:</strong> {{ $employee->department }}<br />
-                    <strong>Month:</strong> Mar-23<br />
+                    <strong>Month:</strong>{{$month}}-{{$year}}<br />
                 </td>
                 <td colspan="2" class="imgsummary">
                     <img class="img" src="image/Qalaat Al Khaleej-Logo-01.png" alt="" srcset="" />
@@ -144,7 +144,7 @@
                 <td colspan="2" class="summary">
                     <strong>SUMMARY</strong><br />
                     <strong>Salary & Benefits:</strong> AED {{ $salary->salary }}<br />
-                    <strong>Deductions:</strong> AED {{ $salary->deduction }}<br />
+                    <strong style="color: red;">Deductions:</strong> AED {{ $salary->deduction }}<br />
                     <strong>Due:</strong> AED {{ $salary->net_salary }}<br />s
                     <strong>Paid:</strong> AED <br />
                     <strong>Leave Balance:</strong> <br />
@@ -166,7 +166,7 @@
                         <td>
                             <strong>OT - Weekdays (1.25x Basic/Hr):</strong> AED {{ $salary->weekday_ot }}
                         </td>
-                        <td><strong>Incentive:</strong> NIL</td>
+                        <td><strong>Other Allow.:{{$salary->other}}</strong> AED</td>
                     </tr>
                     <tr>
                         <td><strong>Food Allowance:</strong> Company Provided</td>
@@ -185,8 +185,8 @@
                         <th colspan="4">Deductions</th>
                     </tr>
                     <tr>
-                        <td>Absent Deduction:</td>
-                        <td colspan="3">AED 0.00</td>
+                        <td>Deduction:</td>
+                        <td colspan="3">AED {{$salary->deduction}}</td>
                     </tr>
                 </table>
             </div>
@@ -212,7 +212,7 @@
                             <td>{{ $attend['weekday'] }}</td>
                             <td>{{ $attend['project_location'] }}</td>
                             <td>{{ $attend['attd'] }}</td>
-                            <td>{{ $attend['ph'] }}</td>
+                            <td>{{ $attend['std_hour'] }}</td>
                             <td>{{ $attend['ph'] }}</td>
                             <td>{{ $attend['we'] }}</td>
                             <td>{{ $attend['ot'] }}</td>

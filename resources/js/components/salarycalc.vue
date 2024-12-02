@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <td colspan="3">OT - Sunday & Public holidays <br> (1.50k Basic /Hr) </td>
-                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="holiday_ot" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="holiday_ot" @change="getTotalNetSalary(),getNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Overtime</td>
@@ -30,23 +30,23 @@
             </tr>
             <tr>
                 <td colspan="3">Food Allowance</td>
-                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="food" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="food" @change="getTotalNetSalary(),getNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Other Allowances</td>
-                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="other" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="other" @change="getTotalNetSalary(),getNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Ohter Dues</td>
-                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="other_due" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01"  name="" id="" v-model="other_due" @change="getTotalNetSalary(),getNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Project Bonus</td>
-                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="project_bonus" @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="number" step="0.01" name="" id="" v-model="project_bonus" @change="getTotalNetSalary(),getNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Total Salary</td>
-                <td colspan="3"><input class="textInput" type="text" step="0.01"  name="" id="" v-model="total_salary" readonly @change="getTotalNetSalary()"></td>
+                <td colspan="3"><input class="textInput" type="text" step="0.01"  name="" id="" v-model="net_salary" readonly @change="getTotalNetSalary()"></td>
             </tr>
             <tr>
                 <td colspan="3">Deduction</td>
@@ -84,14 +84,25 @@ export default {
             project_bonus:0,
             total_salary:0,
             total_net_salary:0,
-
+            net_salary:0,
 
         }
     },
     methods:{
+
         getTotalSalary(){
             this.total_salary = this.basic;
             this.getTotalNetSalary();
+            this.getOT();
+            this.getOverTime();
+        },
+
+        getNetSalary(){
+          var total_net = 0;
+          total_net = this.basic + this.food + this.other
+               + this.other_due + this.project_bonus
+               + this.holiday_ot + this.weekday_ot;
+               this.net_salary = total_net.toFixed(2);
         },
         getTotalNetSalary(){
             var total = 0;
@@ -102,6 +113,27 @@ export default {
                + this.other_due + this.project_bonus
                + this.holiday_ot + this.weekday_ot - this.deduction;
                this.total_net_salary = total.toFixed(2);
+            //    this.getNetSalary();
+        },
+
+        getOT(){
+            axios.get('/api/get-ot',{
+                params:{
+                    id:this.id,
+                },
+            }).then(function(response){
+                this.housing = response.data;
+            }.bind(this)
+
+            );
+            this.getOverTime();
+            this.getTotalNetSalary();
+            console.log(response.data);
+        },
+        getOverTime(){
+            this.weekday_ot = ((this.basic /100) * this.housing) ;
+            console.log(this.id);
+            this.getNetSalary();
         },
         submit: function (e) {
                     axios.post('/api/salary-store', {
@@ -114,7 +146,7 @@ export default {
                        other: this.other,
                        other_due: this.other_due,
                        project_bonus: this.project_bonus,
-                       total_net_salary: this.total_net_salary,
+                       total_net_salary: this.net_salary,
                     }).then((response) => {
                         console.log(response.data);
                         // this.response = response.data
@@ -137,6 +169,9 @@ export default {
     mounted() {
         this.getTotalSalary();
         this.getTotalNetSalary();
+        this.getOT();
+        this.getOverTime();
+        this.getNetSalary();
         },
 }
 </script>

@@ -32,6 +32,9 @@ Route::get('/ref-no',[AccountController::class,'generateRefNo'])->name('ref-no')
 Route::get('/qt-ref-no',[QuotationController::class,'generateRefNo'])->name('qt-ref-no');
 
 
+Route::get('/get-ot',[AttendanceController::class,'findOvertime'])->name('get-ot');
+
+
 
 // for offline data sync
 
