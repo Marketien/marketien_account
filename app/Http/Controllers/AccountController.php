@@ -139,7 +139,7 @@ class AccountController extends Controller
     public function pdfSearch(Request $req){
         $accounts = json_decode($req->input('data'),true);
         $pdf = FacadePdf::loadView('account.pdfAccount',compact('accounts'));
-        return $pdf->setPaper('a4', 'letter')->download();
+        return $pdf->setPaper('a4', 'letter')->download('account_preview.pdf');
         // return $accounts;
 
      }
@@ -163,7 +163,7 @@ class AccountController extends Controller
             $account->calc_amount = $credit - $debit + $account->cash_in_credit - $account->cash_out_debit;
         }
         $pdf = FacadePdf::loadView('account.pdfAccount',['accounts'=>$data]);
-        return $pdf->setPaper('a4', 'letter')->download();
+        return $pdf->setPaper('a4', 'letter')->download('QAK_account_preview.pdf');
     }
 
     // Acount Master
@@ -373,7 +373,8 @@ class AccountController extends Controller
         $data = InputMaster::find($id);
         $word = $this->numberToWords($data->total_net_amount);
         $pdf = FacadePdf::loadView('mainsection.pdfInvoiceOrder',['purchase' => $data,'word'=>$word]);
-        return $pdf->setPaper('a4', 'letter')->download();
+        $invoice_name = "invoice_no_". $data->invoice_no .".pdf";
+        return $pdf->setPaper('a4', 'letter')->download($invoice_name);
 
     }
     function accountMasterDelete($id)

@@ -14,7 +14,7 @@ class QuotationController extends Controller
         $data = Quotation::all();
         return view('mainsection.quotationList',['quotations'=>$data]);
     }
-    
+
     public function quotationDetail($id){
         $data = Quotation::find($id);
         return view('mainsection.quotation',['quotation'=>$data]);
@@ -28,7 +28,8 @@ class QuotationController extends Controller
         set_time_limit(120);
         $data = Quotation::find($id);
         $pdf = Pdf::loadView('mainsection.pdfQuotation',['quotation'=>$data]);
-        return $pdf->setPaper('a4', 'letter')->download();
+        $quotation_name = "Quotation_" . $data->project_name . ".pdf";
+        return $pdf->setPaper('a4', 'letter')->download($quotation_name);
     }
     public function quotationStore(Request $req){
         $data = new Quotation();

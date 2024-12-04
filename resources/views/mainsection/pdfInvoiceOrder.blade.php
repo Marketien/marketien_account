@@ -434,7 +434,7 @@
             {{-- signature section  --}}
             <div class="signature-section">
                 <span>Thanks & Best Regards </span> <br>
-                <img class="signature-image" src="image/Seal & Signature.png" alt="" />
+                <img class="signature-image" src="image/Seal &Sagor.png" alt="" />
                 <div class="signature-title-div">
                     <span>Ahsan Sagar</span>
                     <br>

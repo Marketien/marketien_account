@@ -411,7 +411,7 @@
                 {{-- signature section  --}}
                 <div class="signature-section">
                     <span>Thanks & Best Regards </span> <br>
-                    <img class="signature-image" src="{{ asset('image/Seal & Signature.png') }}" alt="" />
+                    <img class="signature-image" src="{{ asset('image/Seal &Sagor.png') }}" alt="" />
                     <div class="signature-title-div">
                         <span>Ahsan Sagar</span>
                         <br>
