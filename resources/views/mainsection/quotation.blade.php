@@ -69,12 +69,20 @@
     .details {
 
         font-weight: 700;
+        line-height: 0.2;
+
     }
 
     .ownerName {
         /* margin-top: 130px; */
         font-weight: 700;
+
     }
+    .signature-image {
+            margin-left: 80px ;
+            margin-top: 10px;
+            width: 135px;
+        }
 
     .invoice-footer {
         display: flex;
@@ -248,10 +256,11 @@
 
                 <div class="details">
                     <p>Thanks & Best Regards<br /></p>
+                    <img class="signature-image" src="{{ asset('image/Seal & Signature.png') }}" alt="" />
                     <p class="ownerName">Zahid Faisal</p>
                     <p class="ownerName">Qalat Al Khaleej</p>
                     <p class="ownerName">info@qalatalkhaleej.com</p>
-                    <p>Tel: +971 50265 7281 </p>
+                    <p class="ownerName">Tel: +971 50265 7281 </p>
                 </div>
             </div>
         </div>
